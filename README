@@ -9,3 +9,10 @@ WhySpam is an opensource set of tools online tools to fight spam. Plain an simpl
 
  To start using the mail fetcher, run:
 
+sudo god -c ./config/fetcher-daemon.god -D
+
+Then start your server: script/server
+
+Navigate to http://localhost:3000 and read the directions, if you have any comments, thoughts, or criticisms...let me know. I need all sorts of help. From wording, and images, basic layout, to optimizing code, security, and maybe a little therapy. 
+
+
