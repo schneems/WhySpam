@@ -34,4 +34,11 @@ config.action_mailer.default_charset = 'utf-8'
 #}
 
 
-
+config.action_mailer.smtp_settings = {
+  :address => "mail.whyspam.me",
+  :port => "587",
+  :domain => "whyspam.me" , 
+  :authentication => :login,
+  :user_name => "postmaster@whyspam.me",
+  :password => "H3lloj3d" 
+}

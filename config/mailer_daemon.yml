@@ -1,0 +1,33 @@
+#development: 
+#  type: imap 
+#  server: imap.gmail.com 
+#  ssl: true 
+#  username: admin@uniteddictionary.com 
+#  password: Dick999 
+#  receiver: MyMailer 
+#  port: 993
+#  use_login: true
+  
+development: 
+  type: pop                             
+  server: mail.whyspam.me
+  username: postmaster@whyspam.me 
+  password: H3lloj3d 
+  receiver: MyMailer 
+  port: 110
+ # use_login: true                        
+  
+  
+test:
+  type: pop
+  server: localhost
+  username: username
+  password: password
+  
+production: 
+  type: pop                             
+  server: mail.whyspam.me
+  username: postmaster@whyspam.me 
+  password: H3lloj3d 
+  receiver: MyMailer 
+  port: 110

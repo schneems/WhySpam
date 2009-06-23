@@ -22,3 +22,18 @@ config.action_controller.perform_caching             = true
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+config.action_mailer.raise_delivery_errors = true
+
+# set delivery method to :smtp, :sendmail or :test
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.default_charset = 'utf-8'
+
+
+config.action_mailer.smtp_settings = {
+  :address => "mail.whyspam.me",
+  :port => "587",
+  :domain => "whyspam.me" , 
+  :authentication => :login,
+  :user_name => "postmaster@whyspam.me",
+  :password => "H3lloj3d" 
+}
