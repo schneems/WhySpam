@@ -1,6 +1,6 @@
 [submodule "fetcher"]
 	path = fetcher
-	url = git://github.com/look/fetcher.git
+	url = 
 [submodule "vendor/plugins/fetcher"]
 	path = vendor/plugins/fetcher
 	url = git://github.com/look/fetcher.git
