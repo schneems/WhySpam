@@ -1,0 +1,67 @@
+/* @override 
+	http://localhost:3000/stylesheets/prettyPopin.css?1238960860
+	http://localhost:3000/stylesheets/prettyPopin.css?1238961177
+	http://localhost:3000/stylesheets/prettyPopin.css?1238961422
+	http://localhost:3000/stylesheets/prettyPopin.css?1238961512
+	http://localhost:3000/stylesheets/prettyPopin.css?1238962727
+	http://localhost:3000/stylesheets/prettyPopin.css?1238971278
+	http://localhost:3000/stylesheets/prettyPopin.css?1238971444
+	http://localhost:3000/stylesheets/prettyPopin.css?1238978072
+	http://localhost:3000/stylesheets/prettyPopin.css?1239077210
+	http://localhost:3000/stylesheets/prettyPopin.css?1239571872
+	http://localhost:3000/stylesheets/prettyPopin.css?1239571929
+	http://localhost:3000/stylesheets/prettyPopin.css?1239572535
+	http://localhost:3000/stylesheets/prettyPopin.css?1239594866
+*/
+
+/* ------------------------------------------------------------------------
+	Popin
+------------------------------------------------------------------------- */
+
+#containPop {
+	height: 110%;
+	width: 100%;
+}
+
+	#overlay {
+		background: #000;
+		position: absolute; top: 0; left: 0;
+		z-index: 10000;
+		width: 100%;
+	}
+
+	.prettyPopin {
+		margin-top: 50px;
+		position: absolute; z-index: 11000;
+		top: 50%; left: 50%;
+	}
+	
+		.prettyPopin a#b_close {
+			position: absolute; 
+			height: 55px;
+			width: 50px;
+			
+			z-index: 2000;
+			top: -36px; right: 6px;
+			text-indent: -10000px;
+			background: url(../images/prettyPopin/My_b_close.png) 
+			bottom left no-repeat;
+			
+		}
+	
+		.prettyPopin .prettyContent {
+			position: relative;
+			width: 100%; height: 100%;
+			font-size: 1.2em;
+		}
+		
+			.prettyPopin .prettyContent .prettyContent-container {
+				display: none;
+				padding: 20px 15px 15px 15px;
+			}
+		
+			.prettyPopin .prettyContent .loader {
+				position: absolute;
+				top: 50%; left: 50%;
+				margin: -14px 0 0 -14px;
+			}

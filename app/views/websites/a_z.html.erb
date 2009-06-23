@@ -1,0 +1,36 @@
+<div id = "alphabet">
+	<% alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']%>
+	<% for letter in alphabet %>
+	<% if letter == @letter %><span id = "selected_letter"><% else %> <span> <% end %>
+		<%= link_to letter, :action => 'a_z', :id => "#{letter}" %> 
+	</span> | 
+	<% end %>
+	
+<hr />	
+</div><br />
+<center>
+	Alphabetic Site Listings Starting with <%= @letter.upcase %><br />
+</center>
+
+<% if !@websites.nil? && !@websites.empty? %>
+	<% for website in @websites %>
+	
+	<%= link_to website.url, website_path(website.id) %>
+	<br />	
+	<% end %>
+	
+	<div class= "flickr_pagination"> <%= will_paginate @websites %><br/></div>
+	
+<% else %>
+	<p>
+		Nothing found. Try Again!!
+		
+		<% form_tag(search_path, :method => "get") do %> 
+		 	<%= label_tag(:query, "Search for:") %>  
+			<%= text_field_tag(:query) %> 
+			<%= submit_tag("Search") %> 
+		<% end %>
+	
+	</p>
+
+<% end %>

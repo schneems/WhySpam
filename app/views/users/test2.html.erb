@@ -1,0 +1,26 @@
+	<%= javascript_include_tag 'jquery', 'application', 'jquery-ui', 'jrails', 
+						'liquid-canvas', 'liquid-canvas-plugins', 'prettyComments', 'niftycube', 'jquery.prettyPopin' %>
+						
+						<%= stylesheet_link_tag 'prettyPopin' %>	
+						
+						<script type="text/javascript">
+						  // First we wait until the document is completely loaded using the handy
+						  // jQuery "ready" method.
+						    $(window).load(function() {
+							//	Nifty("div#test","big");
+
+						      $("#corner_wrapper").liquidCanvas("[shadow fill{color:#fff}] => roundedRect");
+							$("#block_o_stuff").liquidCanvas("[border fill{color:green}] => roundedRect");
+
+						     // $("#corner_wrapper").liquidCanvas("[shadow ] => Header");
+								Nifty("ul.postnav a","transparent");
+								$('textarea').prettyComments();
+								$("a[rel^='prettyPopin']").prettyPopin();
+							   });
+
+</script>
+
+<body>
+	
+<a class = '' href="/HEY" rel="prettyPopin">this link will load in prettyPopin</a>
+</body>

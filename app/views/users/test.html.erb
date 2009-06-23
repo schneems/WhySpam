@@ -1,0 +1,108 @@
+
+   						<!DOCTYPE html>
+						<html xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+								<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+								<title>Liquid Canvas Example</title>
+
+						    <style type="text/css">
+						      /* the CSS is used to position our DIV in the center of the web page */
+						      #example { width:30%; margin:200px auto; }
+						    </style>
+
+						    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+						    <script type="text/javascript" src="jquery-1.3.2.js"></script>
+
+						    <script type="text/javascript" src="liquid-canvas.js"></script>
+						    <script type="text/javascript" src="liquid-canvas-plugins.js"></script>
+
+						    <%= javascript_include_tag 'jquery', 'application', 'jquery-ui', 'jrails', 
+												'liquid-canvas', 'liquid-canvas-plugins', 'prettyComments', 'niftycube', 'prettyPopin' %>
+
+
+
+											    <!--[if IE]><%= javascript_include_tag 'excanvas.js' %><![endif]-->
+
+						<!DOCTYPE html>
+						<html xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+								<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+								<title>Liquid Canvas Demo</title>
+						    <style type="text/css">
+						      html, body { margin:0; padding:0; font-size:95%; font-family:sans-serif; 
+						          background:#333; color:#ccc; }
+						      .meta a { color:#fff; }
+						      #header { overflow:hidden; 1.1%; }
+						      * html #header { height: 1%; }
+						      #header #info { float:left; width:50%; }
+						      #header #title { float:right; width:40%; text-align:right; }
+						      #header #title h1 { margin:0 0 10px 0; }
+						      #header #title p { margin:0; }
+						      #content { background:url(background.jpg); overflow:hidden; 
+						         color:#000; }
+						      * html #content { height:1%; }
+						      .example { width:27.9%; margin:1% 0 1% 1%;float:left; overflow:hidden; }
+						      * html .example { height:1%; }
+						      .newline { clear:left; }
+						      .example h3 { margin:0 0 10px 0; }
+						      .example pre { width:96%; color:#affe73; overflow:auto; background:#000;}
+						      * html .example pre { overflow:scroll; }
+							#rounded_content {width:800px; height:300px; margin: 0 auto 0 auto;}
+						    </style>
+						    <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+						    <script type="text/javascript" src="jquery-1.3.2.js"></script>
+
+						    <script type="text/javascript" src="liquid-canvas.js"></script>
+						    <script type="text/javascript" src="liquid-canvas-plugins.js"></script>
+						    <script type="text/javascript">
+
+						      // register a user defined plugin       
+
+						      $(window).load(function() {
+								$("#rounded_content").liquidCanvas("[shadow fill{color:green}] => roundedRect");
+								$("#normal_canvas").liquidCanvas("[shadow gradient{from:#c2c2ff;to:#3f3cff;}] => roundedRect");
+								$("#hover_canvas").liquidCanvas("[shadow gradient{from:#3f3cff;to:#c2c2ff;}] => roundedRect");
+							
+
+
+						      });
+						    </script>
+							</head>
+							<body>
+
+						    <div id="header" class="meta">
+						      <div id="title">
+
+						        <h1><a href="http://www.ruzee.com/content/liquid-canvas">Liquid Canvas</a></h1>
+						        <p>by Steffen Rusitschka</p>
+						      </div>
+						      <div id="info">
+						        This demonstration doesn't use any images for the container backgrounds. 
+						        Each container is layouted via CSS floats and its background is rendered 
+						        using the operation shown inside.
+						        <a href="http://www.ruzee.com/content/liquid-canvas">Liquid Canvas</a>
+						        is based on HTML canvas, jQuery, and excanvas.
+						        Tested with FF, IE6(!), Safari, Chrome.
+						      </div>
+
+						    </div>
+
+							<div id = "rounded_content" >
+								<div id = "something" style ="margin-left:30px" onmouseover = "$('#hover').show();$('#normal').hide()" onmouseout = "$('#hover').hide();$('#normal').show()">
+									<div id = "normal">
+										<div id = "normal_canvas" style = "width:100px;height:30px;text-align:center;">
+											hey
+										</div>
+									</div>
+								
+								<div id = "hover" style = "display:none">
+									<div id = "hover_canvas"style = "width:100px;height:30px;text-align:center;">
+										hey
+									</div>
+								</div>
+							</div><!-- something -->
+						  
+						</div> <!-- of rounded content -->
+							</body>
+						</html>
+						

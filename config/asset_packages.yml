@@ -1,0 +1,16 @@
+--- 
+javascripts: 
+- base: 
+  - jquery
+  - jquery-ui
+  - jrails
+  - liquid-canvas
+  - liquid-canvas-plugins
+  - prettyComments
+  - jquery.prettyPopin
+  - highlight-active-input
+  - excanvas
+stylesheets: 
+- base: 
+  - why
+  - prettyPopin

@@ -1,0 +1,37 @@
+<%= link_to "Back", manage_path %><br />
+
+
+<p>
+<table >
+
+<tr>
+  <td>Secure Email: </td><td><%= @info.cryptmail + "@whyspam.me" %></td>
+</tr>
+<tr>
+  <td>Reported Website:</td><td> <%= @info.website == "" ? "None" : @info.website  %></td>
+</tr>
+<tr>
+
+  <td>Created:</td><td> <%= @info.created_at.to_s(:short) %></td>
+</tr>
+<tr>
+  <td>Number of Emails Forwarded: </td><td><%= @tickets.count %></td>
+</tr>
+
+  </table>
+<br />
+  <hr />
+<br />
+
+  <table>
+  <tr>
+	
+    <td><%= link_to "Delete This Forwarding Address", spam_survey_url(:info => @info.id) %></td><td> This option will make sure no more mail is forwarded through <%= @info.cryptmail+"@whyspam.me" %> which will ensure no spam makes it through</td>
+  </tr>
+  <tr>
+
+  </tr>
+  </table>
+
+
+</p>

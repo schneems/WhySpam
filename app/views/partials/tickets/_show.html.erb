@@ -1,0 +1,16 @@
+
+
+
+                                                                                   
+<div id = "show_ticket">
+	<%= link_to "Delete", ticket_path(@ticket.id), :confirm => "Are you sure?", :action => :destroy %>
+	<hr />
+From: <%= @ticket.from_email %> <br />
+Subject: <%= @ticket.subject %><br />
+Recieved: <%= @ticket.created_at.to_s(:short) %>	<br />
+<%= @ticket.body %><br />
+</div><!-- show_ticket -->
+
+
+
+

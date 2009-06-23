@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/transitional.dtd">
+
+
+<html>
+
+<head>	
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">	
+		<meta name="author" content="Richard Schneeman">
+		<meta name="verify-v1" content="WtrvU8zUP+Stu6up8RqDNNZ5zXNvWCQZFUe4RjxEpyI=">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<%= stylesheet_link_tag 'why' %>
+</head>
+
+<body>	
+	<!-- special thanks to mollio.org for a design inspiration, i didn't directly copy any code, but sometimes a little reference is all it takes -->
+	<%= javascript_include_tag :defaults %>
+
+	
+	<div id = "center-main">
+		<div id = "content-main">
+		<%= yield %>
+		</div>
+	</div>
+
+</body>
+
+</html>

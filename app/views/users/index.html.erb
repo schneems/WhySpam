@@ -1,0 +1,108 @@
+
+<% @user = User.new %>
+
+  <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').hide().appear();",
+			:url =>  { :action => "no_spam"}, 
+			:html => { } do |f| %>
+			
+			
+<%# form_for @contact, :url => { :action => "no_spam" } do  |f| -%> 
+
+
+<h2>WhySpam™ Secure Email  </h2>
+<div id = "float_wrapper">
+
+<div id = "main_input" >
+<table>
+<tr><td>Your Email:</td><td><%= f.text_field :email , :rows => 2 %></td></tr>
+<tr><td>Website:<span class = "optional">Optional<%= link_to " (Why?)", {:action => "optional", :controller => "users"}, {:rel => "prettyPopin" } %></span></td>
+	
+	
+	<td><%= f.text_field :website %></td></tr>
+	
+
+	
+<tr><td></td><td>
+</td></tr>
+</table>
+<center>
+	<br />
+<%= f.submit "Generate Secure Email" %>
+</center>
+<span class = "float_right">
+	<%= link_to "We Don't Spam", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+</span>
+
+<% end %>
+
+
+
+			<%= error_messages_for :user %>
+
+
+
+</div>
+
+<div id = "ads">
+	<script type="text/javascript"><!--
+	google_ad_client = "pub-9419044821517786";
+	/* WhySpam Square */
+	google_ad_slot = "6597264537";
+	google_ad_width = 200;
+	google_ad_height = 200;
+	//-->
+	</script>
+	<script type="text/javascript"
+	src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+</div><!-- ads -->
+<div class = "float_space"></div>
+</div><!-- wrapper -->
+
+<div id = "update" style = "display:none">
+showing up too soon
+</div>
+
+<center>
+	<%= image_tag("loading.gif",
+				   :id => "indicator",
+				   :style  =>  'display:none') %>
+</center>
+
+
+<br />
+<br />
+<div id = "float_wrapper">
+
+<div id = "email_explained">
+	
+	<h4>What is WhySpam™ Secure Email?</h4>
+	<p>
+
+	WhySpam™ Secure Email is the only way to track websites that sell your information and stop spam in its tracks. We give you a Secure Email address that you only give to one website. When that website sends email to your Secure Email we'll forward it to your personal email.  If they ever spam you or sell your information, you can close a WhySpam™ Secure Email account at any time, and report the website as a spammer. <br /><br />
+	This way you get the mail you want in your inbox, and stop the spam you don't want, all without ever exposing your personal email address. <br /><br />
+		<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+	</p>
+</di>
+</div>
+
+<div id = "email_useage">
+	
+	<h4>How to Use WhySpam™ Secure Email?</h4>
+	<p>
+		When a website asks for your e-mail address, go to <a href = "http://www.whyspam.me">WhySpam.Me</a>. Put your personal Email, 
+		and the website that wants your information in our form, we'll give you a Secure Email address that you can give to the website. 	
+		When they send messages to your Secure Email, we will forward the messages to your personal Email address. So you get your
+		messages without giving out your personal email address.<br /><br /> 
+		If the website ever starts sending spam to your Secure Email address, you can shut it down. That way anyone they sold the Secure 
+		Email to is out of luck! When you shut down a Secure Email, we put the website in our rankings. 
+		
+ <br /><br />
+		<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+	</p>
+</di>
+</div>
+<div class = "float_space">
+</div>
+
+</div><!-- float_wrapper-->

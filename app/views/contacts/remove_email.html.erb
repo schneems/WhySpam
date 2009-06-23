@@ -1,0 +1,15 @@
+<% @email = "C7FDC3B1B31C51E64DCF@whyspam.me" %>
+<%= link_to "Remove this Email", :action => "", :controller => "contacts",  :cryptmail => @email%>
+
+<% @contact = Contact.new %>
+
+<% form_for @contact, :url => { :action => "remove_email", :controller => "contacts" } do |f| %>
+   <%= f.error_messages %>
+
+<table>
+<tr><td>Whyspam Generated Email Address:</td><td><%= text_field :user, :cryptmail, :value => @cryptmail %></td></tr>
+<tr><td>Password (default is your actual email address):</td><td><%= text_field :user, :email %></td></tr>
+</table>
+<%= f.submit "Remove this Email" %>
+
+ <% end %>
