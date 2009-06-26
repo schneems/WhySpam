@@ -1,9 +1,10 @@
-set :user, 'snowmaninthesun'  # Your dreamhost account's username
-set :domain, 'wolverine.dreamhost.com'  # Dreamhost servername where your account is located 
+set :user, 'root'  # Your dreamhost account's username
+set :domain, '174.143.236.205:30000'  # Dreamhost servername where your account is located 
 #set :project, 'myapp_name_from_repository'  # Your application as its called in the repository
 set :application, 'whyspam.me'  # Your app's location (domain or sub-domain name as setup in panel)
-set :applicationdir, "/home/#{user}/#{application}/"  # The standard Dreamhost setup
+set :applicationdir, "/home/#{user}/public_html/#{application}/"  # The standard Dreamhost setup
 
+#/home/demo/public_html/whyspam.me/current/public
 # version control config
 
 set :scm, 'git'
@@ -33,7 +34,12 @@ default_run_options[:pty] = true  # Forgo errors when deploying from windows
 set :chmod755, "app config db lib public vendor script script/* public/disp*"
 set :use_sudo, false
 
-
+namespace :deploy do
+  task :god do
+    "god stop -c /home/demo/public_html/whyspam/.god/pids"
+    "god start -c ./config/fetcher-daemon.god"
+  end
+end
 
 
 

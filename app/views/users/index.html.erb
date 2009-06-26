@@ -3,9 +3,7 @@
 
   <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').hide().appear();",
 			:url =>  { :action => "no_spam"}, 
-			:html => { } do |f| %>
-			
-			
+			:html => { } do |f| %>			
 <%# form_for @contact, :url => { :action => "no_spam" } do  |f| -%> 
 
 

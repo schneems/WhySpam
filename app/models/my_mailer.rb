@@ -1,17 +1,6 @@
 class MyMailer < ActionMailer::Base
-
-
-  def sample(to_email)
-    @recipients   = to_email
-    @from         = "ArubyOnRailsProcess@mycomputer.com" # params[:contact][:email]
-    headers         "Reply-to" => "ArubyOnRailsProcess@mycomputer.com"
-    @subject      = "This is a subject line someone would send"
-    @sent_on      = Time.now
-    @content_type = "text/html"
-  end
   
-    
-  
+# sudo god -c ./config/fetcher-daemon.god -D  
   def forward_form(form_id, from_email, message) 
     
     form =  Forms.find(form_id)
@@ -44,31 +33,34 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
+    puts "==============WORKING================="
+    
     from_email   = email.from[0]
     to_email     = email.to[0]
     message      = email.body
     subject      = email.subject
-    ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})        
+    ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})
     
+            
         if ticket == nil
           cryptmail = to_email.scan(/^[\w]+/)[0].to_s.downcase ## ass7s3j4028234723482918181 ...
             # cryptmail = ticket.to_email[0,40].downcase
           address = to_email.scan(/@[\w.]+$/)[0].to_s.downcase ## @whyspam.me
           info = Info.find(:first, :include => :user, :conditions => ['(cryptmail = ?)', to_email.upcase ] ) # looks up user info profile
-          ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject, :info_id => info.id)||Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject)
-      
           to_email = info.user.email # gets actual "To:" email address
+          
+          ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject, :info_id => info.id)||Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject)
             
           #  my_mail = MyMailer.create_new_body(email.body, cryptmail + address )
           #  my_mail.to = to_email
           #  my_mail.subject = email.subject
           #  MyMailer.deliver(my_mail)
-      
-          if to_email != nil
+          
+          if to_email != nil && ticket.save
             MyMailer.deliver_forward(to_email, from_email, cryptmail.to_s.upcase + address.to_s, subject, message)        
           end
       
-         # MyMailer.deliver_sample("C7FDC3B1B31C51E64DCF@whyspam.me")
+         # MyMailer.deliver_sample("C7FDC3B1B31C51E64DCF@uniteddictionary.com")
          ## sudo god -c ./config/fetcher-daemon.god -D
      
        # Ticket.all.each do |element|
@@ -79,21 +71,21 @@ class MyMailer < ActionMailer::Base
         end
 
       
-    #    MyMailer.deliver_forward("xxx@gmail.com", "yousuck@mail.com", "C7FDC3B1B31C51E64DCF@address.com", "subject", "message")
-    #    MyMailer.deliver_sample("xxx@whyspam.me")
-    # mail = MyMailer.create_sample("xxx@gmail.com")
+    #    MyMailer.deliver_forward("thedickster@gmail.com", "yousuck@mail.com", "C7FDC3B1B31C51E64DCF@address.com", "subject", "message")
+    #    MyMailer.deliver_sample("C7FDC3B1B31C51E64DCF@uniteddictionary.com")
+    # mail = MyMailer.create_sample("thedickster@gmail.com")
     # 
-          #   MyMailer.deliver_sample("xxxx@gmail.com")
+          #   MyMailer.deliver_sample("thedickster@gmail.com")
         
         
     
- #   my_mail = MyMailer.create_new_body(email.body, "xxx@whyspam.me")
- #   my_mail.to = "xxx@gmail.com"
+ #   my_mail = MyMailer.create_new_body(email.body, "C7FDC3B1B31C51E64DCF@address.com")
+ #   my_mail.to = "thedickster@gmail.com"
  #   my_mail.subject = email.subject
  #   
  #     #    my_mail.body = email.body + "<br /> Hey there"
  #   
- #   # my_mail.destinations = "xxx@gmail.com"
+ #   # my_mail.destinations = "thedickster@gmail.com"
  #   MyMailer.deliver(my_mail)
 
  end
@@ -127,13 +119,13 @@ class MyMailer < ActionMailer::Base
   
   def welcome(name, email)
     @recipients   = email
-    @from         = "postmaster@whyspam.me" # params[:contact][:email]
-    headers         "Reply-to" => "do_not_reply@whyspam.me"
-    @subject      = "Welcome to Why Spam Me"
+    @from         = "thedickster@gmail.com" # params[:contact][:email]
+    headers         "Reply-to" => "whateverIwantyouto@gmail.com"
+    @subject      = "Welcome to Add Three"
     @sent_on      = Time.now
     @content_type = "text/html"
     @name = name
-    @email = "asdlkfjalskdfj"
+    @email = "asdfasdfasdfasdfasf@bobity.com"
     body[:name]  = name
     body[:email] = email       
   end
@@ -141,7 +133,14 @@ class MyMailer < ActionMailer::Base
 
 
   
-
+  def sample(to_email)
+    @recipients   = to_email
+    @from         = "ArubyOnRailsProcess@mycomputer.com" # params[:contact][:email]
+    headers         "Reply-to" => "ArubyOnRailsProcess@mycomputer.com"
+    @subject      = "This is a subject line someone would send"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+  end
   
   # ========================================
   
