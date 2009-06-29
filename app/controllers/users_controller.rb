@@ -13,9 +13,9 @@ class UsersController < ApplicationController
   
   include SimpleCaptcha::ControllerHelpers
   
-  layout "users", :except => [:spam_survey, :report_spam, :test, :ie, :ie2, :test2, :HEY, :optional]
+  layout "users", :except => [:index, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional]
 
-  
+
     def index
       
       @users = User.new

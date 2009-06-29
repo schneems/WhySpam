@@ -9,9 +9,7 @@ class MyMailer < ActionMailer::Base
     if ticket == nil
       ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :form_id => form_id)
       if to_email != nil
-        puts "==============WORKED=============="
-        puts "to_email #{to_email}"
-        puts "from_email #{from_email}"
+
         
         @recipients   = to_email
         @from         = from_email # params[:contact][:email]
@@ -33,24 +31,26 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
-    puts "==============WORKING================="
-    
+    puts "=========Start====================="
     from_email   = email.from[0]
     to_email     = email.to[0]
     message      = email.body
     subject      = email.subject
+    puts subject
+    puts to_email
+    puts body
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})
+    info = Info.find(:first, :include => :user, :conditions => ['(cryptmail = ?)', to_email.upcase ] ) 
     
-            
-        if ticket == nil
+        if ticket == nil && info != nil
+          
+          puts "passed======="
           cryptmail = to_email.scan(/^[\w]+/)[0].to_s.downcase ## ass7s3j4028234723482918181 ...
             # cryptmail = ticket.to_email[0,40].downcase
           address = to_email.scan(/@[\w.]+$/)[0].to_s.downcase ## @whyspam.me
-          info = Info.find(:first, :include => :user, :conditions => ['(cryptmail = ?)', to_email.upcase ] ) # looks up user info profile
           to_email = info.user.email # gets actual "To:" email address
           
           ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject, :info_id => info.id)||Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject)
-            
           #  my_mail = MyMailer.create_new_body(email.body, cryptmail + address )
           #  my_mail.to = to_email
           #  my_mail.subject = email.subject

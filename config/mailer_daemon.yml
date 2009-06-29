@@ -1,12 +1,4 @@
-#development: 
-#  type: imap 
-#  server: imap.gmail.com 
-#  ssl: true 
-#  username: admin@uniteddictionary.com 
-#  password: Dick999 
-#  receiver: MyMailer 
-#  port: 993
-#  use_login: true
+
   
 development: 
   type: pop                             

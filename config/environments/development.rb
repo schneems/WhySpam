@@ -24,15 +24,15 @@ config.action_mailer.raise_delivery_errors = true
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.default_charset = 'utf-8'
 
-# these options are only needed if you choose smtp delivery
+## these options are only needed if you choose smtp delivery
 #config.action_mailer.smtp_settings = {
 #  :address => "smtp.gmail.com",
 #  :port => "587",
 #  :authentication => :plain,
-#  :user_name => "xxxxxx",
-#  :password => "xxxxxxx" 
+#  :user_name => "thedickster@gmail.com",
+#  :password => "Dick999" 
 #}
-
+#
 
 config.action_mailer.smtp_settings = {
   :address => "mail.whyspam.me",

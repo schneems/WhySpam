@@ -1,4 +1,4 @@
-set :user, 'root'  # Your dreamhost account's username
+set :user, 'demo'  # Your dreamhost account's username
 set :domain, '174.143.236.205:30000'  # Dreamhost servername where your account is located 
 #set :project, 'myapp_name_from_repository'  # Your application as its called in the repository
 set :application, 'whyspam.me'  # Your app's location (domain or sub-domain name as setup in panel)
@@ -36,8 +36,10 @@ set :use_sudo, false
 
 namespace :deploy do
   task :god do
-    "god stop -c /home/demo/public_html/whyspam/.god/pids"
-    "god start -c ./config/fetcher-daemon.god"
+    "god terminate"
+    # god stop -c /home/demo/.god/whyspam/.god/pids
+    "god start -c ./current/config/fetcher-daemon.god"
+    #  god start -c ./config/fetcher-daemon.god
   end
 end
 

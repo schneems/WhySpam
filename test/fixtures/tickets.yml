@@ -5,3 +5,8 @@
 #
 # two:
 #   column: value
+
+duplicate:
+  subject: "testing testing"
+  body: "hello there are you there, testing testing wtf mate"
+  to_email: "admin@whyspam.me"

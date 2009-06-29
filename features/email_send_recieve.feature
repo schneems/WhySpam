@@ -1,0 +1,26 @@
+Feature: Send Recieve Email
+	In order 
+	As a user
+	I want 
+	
+	
+	
+	## Test Send
+#	Scenario: Send Email
+#		Given I send an email to 
+#		When ...
+#		Then ...
+#
+#	## Test receive
+#	Scenario: 
+#		Given ...
+#		When ...
+#		Then ...
+#		
+#	## Test Send/receive
+#	Scenario: 
+#		Given ...
+#		When ...
+#		Then ...
+#	
+#		

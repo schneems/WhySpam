@@ -2,7 +2,6 @@ RAILS_ROOT = File.dirname(File.dirname(__FILE__))
 FETCHER_SCRIPT = "#{RAILS_ROOT}/script/mailer_daemon_fetcher" 
 
 
-
 God.watch do |w|
 	w.name = "fetcher-daemon" 
 	w.interval = 30.seconds # default      
