@@ -1,6 +1,9 @@
 class Info < ActiveRecord::Base
   belongs_to :user
   has_many :tickets
+    validates_presence_of     :cryptmail
+    validates_uniqueness_of   :cryptmail
+    
     
     named_scope :cryptmail, lambda { |*args| {:conditions => ["cryptmail = ?", args.first.downcase]} }
     

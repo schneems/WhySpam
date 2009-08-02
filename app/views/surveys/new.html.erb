@@ -1,0 +1,77 @@
+
+<div id = "spam_survey">
+<% if @info.website != nil && !@info.website.strip.empty?  %>
+
+
+<p>
+This is the last step before you block all spam coming from <%= @info.cryptmail %>. Once done, this action cannot be undone. If you wish to report <%= @info.website %> as selling your information to another company, or if you have recieved unsolicited emails from them please submit the survey below. Then click on the link at the bottom. <br /> <br />
+
+<% form_for :survey, :url => {:action => 'create', :controller => 'surveys', :info => @info.id}  do |f| -%> 
+
+<%= f.submit "No Thanks, Just Block This Forwarding account" %>
+
+
+<% end %>
+</p>
+
+<% form_for @survey, :url => { :action => 'create', :controller => 'surveys', :info => @info.id } do |f| -%> 
+
+<hr />
+
+
+
+<table>
+	<tr>
+		<td>Did <%= @website %> Require Action on your part to opt  out of Emails? <br /> Such as "Uncheck this box to opt out of receiving our Newsletter " </td>
+		<td> <%= f.radio_button("opt_out", "true") %> Yes</td><td> <%= f.radio_button("opt_out", "false") %> No</td>
+	</tr>
+	<tr>
+		<td>Did this site Send you Un-solicited Emails?": </td>
+		<td> <%= f.radio_button("un_solicited", "true") %> Yes</td><td> <%= f.radio_button("un_solicited", "false") %> No</td>
+	</tr>
+	<tr>
+		<td>Did this website sell your email address? <br />
+			(You received emails from sources you did not give this address to) </td>
+		<td> <%= f.radio_button("sell", "true") %> Yes</td><td> <%= f.radio_button("sell", "false") %> No</td>
+	</tr>
+	<tr>
+		<td>Did you receive vulgar or inappropriate emails at this account?</td>
+		<td> <%= f.radio_button("vulgar", "true") %> Yes</td><td> <%= f.radio_button("vulgar", "false") %> No</td>
+	</tr>
+	<tr>
+		<td>Did you give this email address to anyone other than <%= @info.website %> ?</td>
+		<td> <%= f.radio_button("give_out", "true") %> Yes</td><td> <%= f.radio_button("give_out", "false") %> No</td>
+	</tr>
+	<tr>
+
+	</tr>
+
+
+	
+	
+</table>
+
+<b>Comments</b><br />
+ <%= f.text_area :comments ,:rows => 2 %><br />
+
+<%=  f.hidden_field :user_id, 	:value => @user.id %>
+<%=  f.hidden_field :cryptmail, :value => @info.cryptmail %>
+
+<%= f.submit "Report & Block This Spamer" , :id => "survey_submit_2"%>
+<% end %>
+
+<% else %>
+<p>
+Would you like to block all forwarded emails from <%= @info.cryptmail %> ? Once done, this action cannot be undone. 
+</p>
+
+<% form_for :survey, :url => {:action => 'create', :controller => 'surveys', :info => @info.id} do  |f| -%> 
+
+<%= f.submit "Just Block" %>
+
+
+<% end %>
+
+<p>If you would like to report a website as a known spammer, please include the website name in the form the next time you generate your secure email address. This allows us to track those who sell your information. </p>
+<% end %>
+</div>

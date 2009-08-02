@@ -6,14 +6,6 @@
 # two:
 #   column: value
 
-receive_1:
-    website: "sketchywebsite.com"
-    cryptmail: "C7FDC3B1B31C51E64DCF@whyspam.me"
-    user_id: 1
-    
-receive_2:
-    website: "sketchywebsite.com"
-    cryptmail: "duplicate@whyspam.me"
-    user_id: 1
+
     
     

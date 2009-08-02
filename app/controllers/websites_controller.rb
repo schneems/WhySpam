@@ -7,40 +7,23 @@ class WebsitesController < ApplicationController
    def show
     website_id = params[:id]
     @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])
+    @opt_out_count = @website.opt_out_count
+    @un_solicited_count = @website.un_solicited_count
+    @sell_count = @website.sell_count
+    @vulgar_count = @website.vulgar_count
+    @give_out_count = @website.give_out_count 
     
-    surveys = @website.surveys
-    
-    @opt_out = []
-    @un_solicited = []
-    @sell = []
-    @vulgar = []
-    @give_out = []
-    
-    for survey in surveys
-      if survey.give_out == false
-        @opt_out << survey.opt_out
-        @un_solicited << survey.un_solicited
-        @sell << survey.sell
-        @vulgar << survey.vulgar
-        @give_out << survey.give_out
-      end
+    if !@website.surveys.nil?
+      @surveys_count = @website.surveys.count 
+      @surveys_count -= @give_out_count
+    else      
     end
-        
-    
-
-  #  for survey in surveys
-  #    
-  #  
-  #    @comments_time_stamp << survey.created_at
-  #    @comments <<  survey.comments
-  #    
-  #  end
-     
+    ## @surveys_count - @opt_out_count
+    #@surveys_count - @opt_out_count
    end
    
 
    def a_z
-     puts params[:id]
      value = params[:id]||'A'
      @letter = value
      unless read_fragment({:page => params[:page]||1, :ltr => value||"All"})    
@@ -68,7 +51,26 @@ class WebsitesController < ApplicationController
    def index
     # websites = Websites.find(:all, :limit => 100, :include => :surveys)
     #  @surveys = Surveys.find(:all, :limit => 100, :order => "")
-    @websites = Website.find(:all, :include => :surveys, :conditions => [], :limit => 20, :order => "created_at ASC" )
+    options = {
+      :order => 'created_at ASC'
+      # :page => params[:page]
+    }
+    if params[:query]
+      options[:conditions] = [ "LOWER(url) LIKE :query", {:query => "%#{params[:query]}%"} ]
+      options[:order] = 'created_at ASC'
+      options[:limit] = 100
+      options[:include] = :surveys
+    end
+    
+    ## @websites = Website.find(:all, :include => :surveys, :conditions => [], :limit => 100, :order => "created_at ASC" )
+    
+    @websites = Website.find(:all,  options)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @websites }
+      format.rss  # index.rss.builder
+    end
    end
 
 

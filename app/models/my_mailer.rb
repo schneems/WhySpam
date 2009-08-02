@@ -2,23 +2,20 @@ class MyMailer < ActionMailer::Base
   
 # sudo god -c ./config/fetcher-daemon.god -D  
   def forward_form(form_id, from_email, message) 
-    
     form =  Forms.find(form_id)
     to_email = form.email
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})        
     if ticket == nil
-      ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :form_id => form_id)
-      if to_email != nil
-
-        
+      ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :forms_id => form_id)
+      if to_email != nil        
         @recipients   = to_email
-        @from         = from_email # params[:contact][:email]
+        @from         = from_email 
         headers         "Reply-to" => from_email
         @subject      = "Form Forwarded by WhySpam"
         @sent_on      = Time.now
         @content_type = "text/html"
         
-        body[:crypt_form] = form.cryptmail
+        body[:crypt_form] = form.crypt_form
         body[:message] = message
 
       end
@@ -31,43 +28,29 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
-    puts "=========Start====================="
     from_email   = email.from[0]
     to_email     = email.to[0]
     message      = email.body
     subject      = email.subject
-    puts subject
-    puts to_email
-    puts body
+    
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})
     info = Info.find(:first, :include => :user, :conditions => ['(cryptmail = ?)', to_email.upcase ] ) 
     
         if ticket == nil && info != nil
-          
-          puts "passed======="
           cryptmail = to_email.scan(/^[\w]+/)[0].to_s.downcase ## ass7s3j4028234723482918181 ...
             # cryptmail = ticket.to_email[0,40].downcase
           address = to_email.scan(/@[\w.]+$/)[0].to_s.downcase ## @whyspam.me
           to_email = info.user.email # gets actual "To:" email address
-          
           ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject, :info_id => info.id)||Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject)
-          #  my_mail = MyMailer.create_new_body(email.body, cryptmail + address )
-          #  my_mail.to = to_email
-          #  my_mail.subject = email.subject
-          #  MyMailer.deliver(my_mail)
           
           if to_email != nil && ticket.save
             MyMailer.deliver_forward(to_email, from_email, cryptmail.to_s.upcase + address.to_s, subject, message)        
           end
       
-         # MyMailer.deliver_sample("C7FDC3B1B31C51E64DCF@uniteddictionary.com")
-         ## sudo god -c ./config/fetcher-daemon.god -D
-     
-       # Ticket.all.each do |element|
-       #    element.destroy
-       #  end
-   
-       #  Ticket.all
+        elsif ticket == nil
+          puts "this happens if only ticket == nil"
+          
+          Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject)
         end
 
       
@@ -92,7 +75,7 @@ class MyMailer < ActionMailer::Base
   
   def forward(to_email, from_email, cryptmail, subject, message)
     @recipients   = to_email
-    @from         = from_email # params[:contact][:email]
+    @from         = from_email 
     headers         "Reply-to" => from_email
     @subject      = subject
     @sent_on      = Time.now
@@ -119,7 +102,7 @@ class MyMailer < ActionMailer::Base
   
   def welcome(name, email)
     @recipients   = email
-    @from         = "thedickster@gmail.com" # params[:contact][:email]
+    @from         = "foo@example.com" 
     headers         "Reply-to" => "whateverIwantyouto@gmail.com"
     @subject      = "Welcome to Add Three"
     @sent_on      = Time.now
@@ -135,14 +118,13 @@ class MyMailer < ActionMailer::Base
   
   def sample(to_email)
     @recipients   = to_email
-    @from         = "ArubyOnRailsProcess@mycomputer.com" # params[:contact][:email]
+    @from         = "ArubyOnRailsProcess@mycomputer.com" 
     headers         "Reply-to" => "ArubyOnRailsProcess@mycomputer.com"
     @subject      = "This is a subject line someone would send"
     @sent_on      = Time.now
     @content_type = "text/html"
   end
   
-  # ========================================
   
    #def signup_notification(user)  ## don't want user to be bugged...maybe
    #  setup_email(user)

@@ -4,19 +4,44 @@
 <h2>WhySpam™ Website Rankings  </h2>
 <br />
 <center>
-<%= link_to "A-Z Sites", :action => 'a_z', :id => 'a' %>
  
 </center>
 
 <div id = "float_wrapper">
 
-<div id = "main_input" >
+<div id = "main_input_websites" >
 
 <% if @websites != nil %>
-<% for website in @websites %>
-<%= link_to website.url, website_path(website.id) %><br />
 
-<% end %>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
+	<thead>
+		<tr>
+			<th>Grade</th>
+			 
+			<th>Address</th>
+			<th>Date Added</th>
+		</tr>
+	</thead>
+	<tbody>
+
+	<% for website in @websites %>
+		<tr  class="clickable"  onclick = "window.location.href = '<%=  website_path(website.id) %>' ">
+			<td><%= website.grade %></td>
+			
+			<td><%= link_to website.url, website_path(website.id) %></td>
+			<td><%= website.created_at.strftime("%m/%d/%Y") %></td>
+		</tr>
+		
+	<% end %>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Grade</th>
+			<th>Address</th>
+			<th>Date Added</th>
+		</tr>
+	</tfoot>
+</table>
 
 <% end %>
 

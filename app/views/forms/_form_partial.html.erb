@@ -1,0 +1,78 @@
+
+<div id = "update_this_partial">
+	<% if @rendered != false %>
+	<script type="text/javascript">
+
+	$(document).ready(function(){ 
+
+
+	  $("#main_input").liquidCanvas("[border{width:2;color:#c8c8c8} fill{color:#f9ffb2}] => roundedRect{radius:35}");
+
+
+	});
+	</script>
+	<% end %>
+
+<div id = "float_wrapper">
+<div id = "main_input" >
+	<!-- create -->
+	  <% remote_form_for :form, :url => forms_path, :update => 'update_this_partial', :loading => "$('#indicator').show();$('#update_this_partial').hide();", :complete => "$('#indicator').hide();$('#update_this_partial').hide().appear();" do |f| %>
+<table>
+<tr><td>Your Email:</td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
+<tr><td>Comments:<span class = "optional">(Optional)</span></td><td colspan = 2><%=  f.text_area :comments, :rows => 2 %></td></tr>
+
+<%= show_simple_captcha %>
+</table>
+
+
+<center>
+	<br />
+<%= f.submit "Generate Secure Form" %>
+</center>
+<span class = "float_right">
+	<%= link_to "We Don't Spam", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+</span>
+
+<% end %>
+
+
+
+			<%= error_messages_for :user %>
+
+
+
+</div>
+
+<div class = "float_space"></div>
+</div><!-- wrapper -->
+
+<% if @rendered == true %>
+
+	<script type="text/javascript">
+	  $("#no_spam").liquidCanvas("[shadow fill{color:#fff}] => roundedRect");
+	  $("#no_spam").highlight();
+
+	</script>
+	<hr /><br />
+
+	<div id = "no_spam_container">
+
+	<% if @no_spam != nil %>
+		<div id = "no_spam_label">Your Form Link:</div><br />
+		<div id = "no_spam">
+			<%= @no_spam %>
+		</div>
+		<p> Give This Link to anyone you want to contact you </p>
+	<% end %>
+	<center>
+		
+	<%= @extra_message %>
+	</center>
+	</div>
+	<br />
+	<br />
+	<hr />
+
+<% end %>
+
+</div>

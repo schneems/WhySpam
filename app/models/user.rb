@@ -47,6 +47,15 @@ class User < ActiveRecord::Base
   # This will also let us return a human error message.
   #
   
+  def self.receive_form_test
+ #   mail = gen_mail("", email,"","")
+#    MyMailer.receive(mail)
+    
+  end
+  
+  def self.test_receive_form
+    
+  end
 
                                                                                                   
                                                                                                   
@@ -54,7 +63,14 @@ class User < ActiveRecord::Base
       info = Info.find(:first, :include => :user, :conditions => ["cryptmail = ?", cryptmail ])   
       user = info.user                                                                            
       user                                                                                        
-    end        
+    end    
+    
+    def self.find_or_create_by_email(email)  
+      user = User.find(:first, :conditions => ["email = ?", email])||User.create(:email => email, :login => email, :password => email, :password_confirmation => email)
+      user.update_attribute(:login, "anon_" + user.id.to_s) if user.valid? && user.email == user.login
+      user
+    end
+    
     
     def self.create_by_email(email)                                                                                   
       user = User.create(:email => email, :login => email, :password => email, :password_confirmation => email)
@@ -71,7 +87,6 @@ class User < ActiveRecord::Base
   def self.authenticate(email, password)
     return nil if email.blank? || password.blank?
     u = find :first, :conditions => ['(email = ? OR login = ?)', email, email] # need to get the salt
-    
     if u == nil
       cryptmail = email.scan(/^[\w]+/)[0].to_s.downcase
       info = Info.find(:first, :include => :user, :conditions => ['(cryptmail = ?)', cryptmail ] )

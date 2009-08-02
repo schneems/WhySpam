@@ -82,6 +82,7 @@ Setup
     
     ApplicationController < ActionController::Base
       include SimpleCaptcha::ControllerHelpers
+
     end
 
 Usage

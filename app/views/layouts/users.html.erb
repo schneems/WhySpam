@@ -9,16 +9,25 @@
 		<meta name="author" content="Richard Schneeman">
 		<meta name="verify-v1" content="WtrvU8zUP+Stu6up8RqDNNZ5zXNvWCQZFUe4RjxEpyI=">
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<% the_request = request.host %>
+		<% domain_array = the_request.scan(/([^.||^\d||^\:]+)/) %>
+		<% for entry in domain_array%>
+		  <% entry = entry.to_s%>
+		  <% main_url = entry if entry != "www" && entry.size != 2 && entry != "com" && entry != "local" %>
+		<% end%>
+
+		<% @am_i_testing = true if main_url != "localhost" %>
 		
-		<% bundle do %>
+		<%# bundle do %>
 	  
 			<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 
 								'liquid-canvas', 'liquid-canvas-plugins', 'prettyComments', 
-								'jquery.prettyPopin', 'highlight-active-input',  :cache => true %>
-			<%= stylesheet_link_tag'why.css', 'prettyPopin.css' %>	
+								'jquery.prettyPopin', 'highlight-active-input', 'jquery.dataTables',  	
+								:cache => true %>
+			<%= stylesheet_link_tag 'why.css', 'prettyPopin.css', 'demo_table.css' %>	
 		    <!--[if IE]><%= javascript_include_tag 'excanvas.js' %><![endif]-->
 	
-			<% end %> 
+			<%# end %> 
 	
 		
 		<script type="text/javascript">
@@ -40,7 +49,7 @@
 				$('textarea').prettyComments();
 				$("tr[rel^='prettyPopin']").prettyPopin();
 				$("a[rel^='prettyPopin']").prettyPopin({modal:false});
-				$(".button-to input").prettyPopin({modal:true});
+			//	$(".button-to input").prettyPopin({modal:true});
 				$("button[rel^='prettyPop_No_close']").prettyPopin({modal:true});
 				
 				
@@ -50,7 +59,16 @@
 				
 
 		      $("#main_input").liquidCanvas("[border{width:2;color:#c8c8c8} fill{color:#f9ffb2}] => roundedRect{radius:35}");
+		
+		      $("#main_input_websites").liquidCanvas("[shadow border{color:#fff} fill{color:#FFFFFF}] => roundedRect{radius:30}");
 
+
+		
+			  $('#dataTable_infos').dataTable();
+			
+			  $('#dataTable_forms').dataTable();
+			  $('#dataTable').dataTable();
+			
 
 		    });
 		</script>
@@ -62,7 +80,8 @@
 <body >	
 	<div id = "center_main">
 	<div id = "main_title">
-		<%= render :partial => "partials/users/user_bar" %>
+		<%= render :partial => "/users/user_bar"%>
+		
 		<h1><%= link_to "Why Spam Me", home_path %></h1>
 		<%= link_to image_tag("QuestionEnvelope.png"), home_path %><h3><%= link_to "(Beta)", home_path %></h3>
 		<br />
@@ -74,7 +93,7 @@
 	
 	<% form_tag(search_path, :method => "get", :id => 'main-inline') do %> 
 		<%= text_field_tag(:query) %> 
-		<%= submit_tag("Search") %> 
+		<%= submit_tag("Search Websites") %> 
 	<% end %>
 	
 	<div id = "corner_wrapper">
@@ -152,10 +171,11 @@
 		</div>
 	</div>
 	<div id = "footer">
-		©Think Bohemian
-		 | <%= link_to " Privacy Policy ", {:action => "optional", :controller => "users"}, {:rel => "prettyPopin" } %>
-		 | <%= link_to " Contact Us X ", {:action => "optional", :controller => "users"}, {:rel => "prettyPopin" } %>
-		 | <%= link_to " About Us X ", {:action => "optional", :controller => "users"}, {:rel => "prettyPopin" } %>
+		©<a href = "http://www.thinkbohemian.com">Think Bohemian</a>
+		 | <%= link_to " Privacy Policy ", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+		 | <%= link_to " About Us", {:action => "optional", :controller => "about"}, {:rel => "prettyPopin" } %>
+		 | <%= link_to " Contact Us ", {:action => "contact", :controller => "users"} %>
+
 		
 	</div>
 	</div><!-- center_main -->

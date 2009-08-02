@@ -1,4 +1,14 @@
+
 class UsersController < ApplicationController
+  ## TODO complete the contact form
+  ## TODO complete the about page
+  ## TODO make sure the forms work
+  ## manage a user account, add change password, etc.
+  ## selenium test logging in and submitting a survey
+  ## selenium test website rankings
+  
+  
+
   # Be sure to include AuthenticationSystem in Application Controller instead
   
   ## sudo god -c ./config/fetcher-daemon.god -D
@@ -11,15 +21,83 @@ class UsersController < ApplicationController
   # =end
   
   
-  include SimpleCaptcha::ControllerHelpers
   
-  layout "users", :except => [:index, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional]
+  layout "users", :except => [:test, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional]
 
 
-    def index
+
+  
+  def change_password
+    if logged_in? 
       
-      @users = User.new
+    else
+      flash[:error] = "Please Log In First"
+      redirect_to :controller => 'sessions', :action => 'new'
+    end
 
+  end
+  
+  #
+  # Change user passowrd
+  def change_password_update
+      if User.authenticate(current_user.login, params[:old_password])
+          if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
+              current_user.password_confirmation = params[:password_confirmation]
+              current_user.password = params[:password]
+              
+              if current_user.save!
+                  flash[:notice] = "Password successfully updated"
+                  redirect_to :controller => 'users', :action => 'show', :id => current_user
+              else
+                  flash[:error] = "Password not changed"
+                  render :action => 'change_password'
+              end
+               
+          else
+              flash[:error] = "New Password mismatch" 
+              render :action => 'change_password'
+          end
+      else
+          flash[:error] = "Old password incorrect" 
+          render :action => 'change_password'
+      end
+  end
+  
+  def update_me
+    
+    user_block = params[:user]
+    user_block[:password_confirmation] = params[:user][:password]
+    id = params[:id]
+    
+    
+    @user = User.find(:first, :conditions => ["id = ?", id])
+    @user.update_attributes(user_block) if @user == current_user
+    redirect_to user_path(id)
+    flash[:error] = @user.errors if !@user.errors.empty?
+    
+    
+  end
+
+
+
+  def edit
+    id = params[:id]
+    @user = User.find(:first, :conditions => ["id = ?", id])
+    redirect_to :back if @user != current_user
+  end
+
+  def show
+    id = params[:id]
+    @user = User.find(:first, :conditions => ["id = ? ", id])
+  end
+
+
+  def contact
+    
+  end
+  
+    def index
+      @users = User.new
     end
   
   
@@ -84,8 +162,8 @@ class UsersController < ApplicationController
       @no_spam =  user_info.cryptmail.upcase if user_info != nil ##"@whyspam.me"
       
       respond_to do |format|
-        format.html {render :partial => "partials/users/secure_email"}        
-        format.js { render :partial => "partials/users/secure_email" }
+        format.html {render :partial => "secure_email"}        
+        format.js { render :partial => "secure_email" }
      end
      
    end
@@ -94,43 +172,56 @@ class UsersController < ApplicationController
  
    
     def privacy
-      render :partial => "partials/users/privacy"
+      render :partial => "privacy"
     end  
     
     def optional
-      render :partial => "partials/users/optional"
+      render :partial => "optional"
     end  
+    
+
  
     def read_slop
-      flash[:error] = ""
-    #  @ticket = Ticket.first
-    #  puts @ticket.valid?
-      if simple_captcha_valid?
-        to_email = params[:ticket][:to_email]
-        
-        email_length = to_email.scan(/[\w.]+@/)[0].to_s.size
-        @tickets = Ticket.find(:all, :conditions => ["to_email = ?", to_email])
-        info = Info.find(:first, :conditions => ["cryptmail = ?", cryptmail])
-         
-        
-          if !@tickets[0].nil? and !info.nil?
-            puts "view all spam"
-            @tickets = Array(@ticket)
-            flash[:error]  += "- This is an address that may be used by a WhySpam Secure Email in the future, <br /> to ensure that you never pick a WhySpam Secure email by accident, always pick a url that does not equal 20 characters such as:  1#{to_email}<br />" if email_length == 21
-            render :action => "view_all_spam"
-          else 
-            puts "what???????????????????"
-            flash[:error]  += "- This is an address used by WhySpam Secure Email, <br /> to ensure that you never pick a WhySpam Secure email by accident, always pick a url that does not equal 20 characters such as:  1#{to_email}<br />" if info.nil?
-            flash[:error]  += "- We haven't received any email at this email address, please try again later. <br />" if @tickets[0].nil?
-            redirect_to :back
-          end
-          
-          
-        else
-          flash[:error]  += "- The Text from the Image did not Match the text, please try again <br />"
-          redirect_to :back
-      end
+      puts "======================"
       
+      if simple_captcha_valid?
+        puts "worked"
+      
+      else
+        puts "nope"
+      end
+      redirect_to :back
+      
+      
+ #     flash[:error] = ""
+ #   #  @ticket = Ticket.first
+ #   #  puts @ticket.valid?
+ #   puts "read_slop"
+ #   
+ #     if simple_captcha_valid?
+ #       
+ #       puts "captcha valid"
+ #       to_email = params[:ticket][:to_email]        
+ #       email_length = to_email.scan(/[\w.]+@/)[0].to_s.size
+ #       @tickets = Ticket.find(:all, :conditions => ["to_email = ?", to_email])
+ #       info = Info.find(:first, :conditions => ["cryptmail = ?", cryptmail])
+ #       
+ #         if !@tickets[0].nil? and !info.nil?
+ #           puts "view all spam"
+ #           @tickets = Array(@ticket)
+ #           flash[:error]  += "- This is an address that may be used by a WhySpam Secure Email in the future, <br /> to ensure that you never pick a WhySpam Secure email by accident, always pick a url that does not equal 20 characters such as:  1#{to_email}<br />" if email_length == 21
+ #           render :action => "view_all_spam"
+ #         else 
+ #           puts "what???????????????????"
+ #           flash[:error]  += "- This is an address used by WhySpam Secure Email, <br /> to ensure that you never pick a WhySpam Secure email by accident, always pick a url that does not equal 20 characters such as:  1#{to_email}<br />" if info.nil?
+ #           flash[:error]  += "- We haven't received any email at this email address, please try again later. <br />" if @tickets[0].nil?
+ #           redirect_to :back
+ #         end
+ #         
+ #       else
+ #         flash[:error]  += "- The Text from the Image did not Match the text, please try again <br />"
+ #         redirect_to :back
+ #     end
 
     end  
     
@@ -139,16 +230,13 @@ class UsersController < ApplicationController
     def read_spam
       ticket_id = params[:ticket]
       @ticket = Ticket.find(:first,  :conditions => ["id = ?", ticket_id])
-      render :partial => "partials/users/read_spam"
+      render :partial => "read_spam"
     end
  
  
  
     def view_all_spam
-      info_id = params[:info]
-      @info = Info.find(:first, :include => :tickets, :conditions => ["id = ?", info_id], :order => "created_at DESC")
-      
-      @tickets = @info.tickets
+
     end
   
     # whatif you could give out your email address to website without worrying about getting spam, 
@@ -170,19 +258,7 @@ class UsersController < ApplicationController
       @tickets = @info.tickets
     end
   
-    def manage
-    
-    
-      if logged_in?
-        #@info = user.info
-      @infos = current_user.info
-      else
-        flash[:error]  = "Please Login First"
-        # redirect_back_or_default("new") 
-      
-        redirect_back_or_default :controller => 'sessions', :action => 'new'
-      end
-    end
+
   
   
     def whyspam
@@ -225,7 +301,7 @@ class UsersController < ApplicationController
  
        respond_to do |format|
          format.html {}        
-         format.js { render :partial => "partials/users/secure_email" }
+         format.js { render :partial => "secure_email" }
         ## render :text => "#{@user.errors}"
       end
    end

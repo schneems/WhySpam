@@ -1,5 +1,4 @@
 
-<%# form_for @contact, :url => { :action => "no_spam" } do  |f| -%> 
 
 
 <h2>WhySpam™ Secure Forms  </h2>
@@ -30,15 +29,14 @@
 
 		<div id = "float_wrapper">
 		
-		
 		<div id = "main_input" >
-			<b> This form was created: <%= @form_data.created_at.to_s(:short) %> </b>
+			<b> This form was created: <%= @form_data.created_at.strftime("%m/%d/%Y")%> </b>
 			<br />
 			<br />
 			<b> User comments for this form:</b>
 			<br />
 			<br />
-			<%= @form_data.comments != nil ? @form_data.comments : "This user left no comments for this form"%>
+			<%= @form_data.comments.nil? || @form_data.comments.empty? ? "This user left no comments for this form" : @form_data.comments %>
 		
 			<br />
 			<br />

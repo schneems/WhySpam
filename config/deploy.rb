@@ -36,7 +36,7 @@ set :use_sudo, false
 
 namespace :deploy do
   task :god do
-    "god terminate"
+    "god stop mail_daemon"
     # god stop -c /home/demo/.god/whyspam/.god/pids
     "god start -c ./current/config/fetcher-daemon.god"
     #  god start -c ./config/fetcher-daemon.god

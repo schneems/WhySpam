@@ -1,5 +1,4 @@
 
-<%# form_for @contact, :url => { :action => "no_spam" } do  |f| -%> 
 
 
 <h2>WhySpam™ Secure Forms  </h2>
@@ -19,8 +18,7 @@
 	</script>
 </div><!-- ads -->
 
-	<%= render :partial => "partials/forms/form_partial" %>
-
+<%= render :partial => "form_partial"  %>
 <center>
 	<%= image_tag("loading.gif",
 				   :id => "indicator",

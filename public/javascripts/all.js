@@ -5211,7 +5211,7 @@ var _readyBound = false;
 			opacity: 0.5, /* value from 0 to 1 */
 			animationSpeed: 'fast', /* slow/medium/fast/integer */
 			followScroll: true, /* true/false */
-			loader_path: 'images/prettyPopin/loader.gif', /* path to your loading image */
+			loader_path: 'public/images/prettyPopin/loader.gif', /* path to your loading image */
 			callback: function(){} /* callback called when closing the popin */
 		}, settings);
 

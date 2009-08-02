@@ -3,8 +3,8 @@ FETCHER_SCRIPT = "#{RAILS_ROOT}/script/mailer_daemon_fetcher"
 
 
 God.watch do |w|
-	w.name = "fetcher-daemon" 
-	w.interval = 30.seconds # default      
+	w.name = "mail_daemon" 
+	w.interval = 45.seconds # default      
 	w.start   = "#{FETCHER_SCRIPT} start" 
 	w.stop    = "#{FETCHER_SCRIPT} stop" 
 	w.restart = "#{FETCHER_SCRIPT} restart" 
@@ -24,7 +24,7 @@ God.watch do |w|
 
 	w.restart_if do |restart|
       restart.condition(:memory_usage) do |c|
-        c.above = 150.megabytes
+        c.above = 120.megabytes
         c.times = [3, 5] # 3 out of 5 intervals
       end
     

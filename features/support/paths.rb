@@ -1,16 +1,31 @@
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
-  #   When /^I go to (.+)$/ do |page_name|
   #
   # step definition in webrat_steps.rb
   #
+  
+  
   def path_to(page_name)
     case page_name
     
     when /the homepage/
       '/'
-    
+  
+    when /manage users/
+      manage_path
+  
+    when /home/
+      '/index'
+      
+    when /forms/
+      forms_path
+      
+    when /websites/
+        websites_path
+      
+    when /slop_box/
+      slop_box_path
     # Add more mappings here.
     # Here is a more fancy example:
     #

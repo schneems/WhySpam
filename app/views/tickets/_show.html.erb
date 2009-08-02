@@ -1,0 +1,19 @@
+
+
+                                                                                   
+<div id = "show_ticket">
+	<% if current_user == @user && logged_in?  %>
+		<%= link_to "Delete", {:action => "delete", :id => @ticket.id, :controller => "tickets"}, :confirm => "Are you sure?", :method => :delete %>
+	<hr />
+	
+	<% end %>
+	
+<b>From:</b> <%= @ticket.from_email %> <br />
+<b>Subject:</b> <%= @ticket.subject %><br />
+<b>Recieved:</b> <%= @ticket.created_at.strftime("%m/%d/%Y") %>	<br />
+<%= @ticket.body %><br />
+</div><!-- show_ticket -->
+
+
+
+

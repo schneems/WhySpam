@@ -1,34 +1,67 @@
-<ps<center> Survey Results for: <b><%= @website.url %></b></center>
+<p>
+	<center> Survey Results for: <b><%= @website.url %></b></center>
 
 <hr />
 <br />
 
 Added on: <%= @website.created_at.to_s(:long) %><br />
+Grade: <b><%= @website.grade %></b><br />
+Score: <%= @website.rank %><br />
 
+Total Surveys Counted: <%= @surveys_count %>
 
-
-
+<% if @surveys_count != 0 %>
+<br/>
+<br />
+<b>Survey Results</b>
 <table>
-	<tr><td></td><td><u>Yes</u></td><td><u>No</u></td><td><u>Percentage</u></td></tr>
-		<tr>
-		<td>Did <%= @website.url %> Require Action on the users part to opt  out of Emails? <br /> Such as "Uncheck this box to opt out of receiving our Newsletter " </td><td><%= %></td><td><%= %></td><td></td></tr>
-		
-		<td>Did <%= @website.url %> Send you Un-solicited Emails?":" </td><td><%= %></td><td><%= %></td><td></td></tr>
-		
-		<td>Did <%= @website.url %> sell your email address?  </td><td><%= %></td><td><%= %></td><td></td></tr>
-
-		<td>Did you receive vulgar or inappropriate emails after giving this website account? </td><td><%= %></td><td><%= %></td><td></td></tr>
-
+	<tr>
+		<td></td>
+		<td><u>Yes</u></td>
+		<td><u>No</u></td>
+		<td><u>Percent</u></td>
+	</tr>
+	<tr>
+		<td>Did you have to opt out of emails? </td>
+		<td><%= @opt_out_count %></td>
+		<td><%= @surveys_count - @opt_out_count %></td>
+		<td><%= (@opt_out_count/@surveys_count)*100 %> %</td>
+	</tr>
+	<tr>
+		<td>Did they Send you Un-solicited Emails? </td>
+		<td><%= @un_solicited_count %></td>
+		<td><%= @surveys_count - @un_solicited_count %></td>
+		<td><%= (@un_solicited_count/@surveys_count)*100 %> %</td>
+	</tr>
+	<tr>
+		<td>Did they sell your email address?  </td>
+		<td><%= @sell_count %></td>
+		<td><%= @surveys_count - @sell_count %></td>
+		<td><%= (@sell_count/@surveys_count)*100 %> %</td>
+	</tr>
+	<tr>
+		<td>Did you receive inappropriate emails? </td>
+		<td><%= @vulgar_count %></td>
+		<td><%= @surveys_count - @vulgar_count %></td>
+		<td><%= (@vulgar_count/@surveys_count)*100 %> %</td>
+	</tr>
 
 
 </table>
 <p>*Note that survey listings are only recorded if the user reports that they only gave their Secure Email to <%= @website.url %></p>
+
+<% else %>
+<p>There are no surveys for this website yet</p>
+
+<% end %>
 <br />
 Comments:<br />
+
 <% for survey in @website.surveys %>
-<div>
-<%=  survey.comments %><br />
-<%= survey.created_at.to_s(:short) %> | <%= survey.user.login %>
-</div><br />
+	<div>
+	<%=  survey.comments %><br />
+	<%= survey.created_at.to_s(:short) %> | <%= survey.user.login %>
+	</div><br />
 <% end %>
+
 </p>

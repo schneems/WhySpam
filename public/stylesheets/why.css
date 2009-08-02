@@ -26,7 +26,59 @@
 	http://localhost:3000/stylesheets/why.css?1243541202
 	http://localhost:3000/stylesheets/why.css?1243627528
 	http://localhost:3000/stylesheets/why.css?1243627690
+	http://localhost:3000/stylesheets/cache/bundle.css?1244425265
+	http://localhost:3000/stylesheets/cache/bundle.css?1246814650
+	http://localhost:3000/stylesheets/why.css?1246815376
+	http://localhost:3000/stylesheets/why.css?1247446051
+	http://localhost:3000/stylesheets/why.css?1247446113
+	http://localhost:3000/stylesheets/why.css?1247447384
+	http://localhost:3000/stylesheets/why.css?1247447406
+	http://localhost:3000/stylesheets/why.css?1247448596
+	http://localhost:3000/stylesheets/why.css?1247448632
+	http://localhost:3000/stylesheets/why.css?1247448810
+	http://localhost:3000/stylesheets/why.css?1247536699
+	http://localhost:3000/stylesheets/why.css?1248316316
+	http://localhost:3000/stylesheets/why.css?1248394681
+	http://localhost:3000/stylesheets/why.css?1248725710
+	http://localhost:3000/stylesheets/why.css?1248734763
+	http://localhost:3000/stylesheets/why.css?1248735843
 */
+
+button.ticket_delete_button {
+	
+}
+
+#dataTable_forms tbody tr.clickable.odd td.comments {
+	
+}
+
+#survey_submit {
+	
+}
+
+#survey_opt_out_true {
+	
+}
+
+#survey_un_solicited_true {
+	
+}
+
+#survey_sell_true {
+	
+}
+
+#survey_vulgar_true {
+	
+}
+
+#survey_submit {
+	
+}
+
+#survey_submit_2 {
+	
+}
 
 h1, h2, h3 {
 	padding: 0;
@@ -39,9 +91,7 @@ h1, h2, h3 {
 	margin-left: 20px;
 }
 
-#footer a:hover{
-	color: white;
-}
+
 
 #login_explained{
 	margin-left: 20px;
@@ -78,7 +128,15 @@ height: 20px;
 }
 
 #flash {
-	padding: 10px;
+	margin-top: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: blue;
+	color: white;
+	font-size: 16pt;
+	width: 60%;
+	border: 2px solid black;
 }
 
 
@@ -86,6 +144,10 @@ height: 20px;
 form#inline {
 	display: inline;
 	
+}
+
+button.form_edit_button {
+	z-index: 20;
 }
 
 div#flash.flash_error {
@@ -173,7 +235,6 @@ div.simple_captcha_image {display:inline;}
 
 .clickable {
 	cursor: pointer;
-	text-align: left;	
 	
 }
 
@@ -185,11 +246,7 @@ span.clickable {
 }
 
 
-span.clickable span:first-child {
-	margin-left: 7px;
-	width: 310px;
-	display: inline-block;
-}
+
 
 #optional_website {
 	width: 500px;
@@ -201,19 +258,45 @@ span.clickable span:first-child {
 	float: right;
 }
 
+span.manage_wrapper {
 
-
-span.clickable span:first-child + span{
-	width: 30px;
+	width: 670px;
 	display: inline-block;
 }
 
-
-
-tr.clickable td {
-	min-width: 200px;	
-	border-bottom: solid black 1px;
+span.man_cryptmail {
+display: inline-block;
+width: 270px;
+padding-left: 5px;	
+padding-right: 5px;
 }
+
+span.man_website {
+display: inline-block;
+width: 150px;
+
+
+}
+
+div#example_wrapper.dataTables_wrapper {
+	padding:  0 5px 30px 5px;
+	
+}
+
+#manage_mail {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 30px;
+	
+}
+
+
+
+
+
+
+
+
 
 table.email tbody tr {
 	border-bottom: 1px solid #000;
@@ -225,12 +308,6 @@ td.date {
 	
 }
 
-table.email  {
-	padding: 0;
-	width: 100%;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
 
 #privacy{
 	width: 700px;	
@@ -367,12 +444,23 @@ textarea#form_comments,
 input#ticket_to_email,
 input#login, input#password,
 input#email ,
-input#form_email
-
+input#form_email, 
+input#old_password,
+input#user_login,
+input#password_confirmation,
+input#user_password
 {
 	height: 40px;
 	font-size: 18pt;
 	width: 300px;
+}
+
+ {
+	
+}
+
+ {
+	
 }
 
 
@@ -498,7 +586,19 @@ div.right {
 
 
 
+#footer a:link, 
+#footer a:visited {
+	color: white;
+}
 
+#footer a:hover{
+	color: black;
+}
+
+td:hover {
+	color: black;
+	
+}
 
 a:link, a:visited {
 	color: blue;
@@ -523,6 +623,10 @@ a:hover{
 #main {
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+td.comments {
+	overflow: hidden;
 }
 
 #example_login {
@@ -581,7 +685,8 @@ body {
 }
 
 #main_input,
-#main_input_in_partial {
+#main_input_in_partial, 
+#main_input_websites {
 	float: left;
 	width: 475px;
 	margin: 0 auto 0 auto;
@@ -671,13 +776,16 @@ div#corner_wrapper {
 
 #no_spam_container{
 	margin: 0 auto 0 auto;
-	width: 400px;
+	width: 450px;
+	text-align: center;
 	margin-bottom: -30px;
 	
 }
 
 
 #no_spam {
+	text-align: center;
+	width: 450px;
 	padding: 10px;
 	font-size: 16pt;
 	
@@ -699,4 +807,9 @@ div#corner_wrapper {
 
 #main_title a:hover{
 	color: white;
+}
+
+#dataTable tbody td{
+	font-size: 14px;
+	
 }

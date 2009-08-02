@@ -1,0 +1,71 @@
+<div class = "center">
+<b>Manage Your:</b>
+<%= link_to "Secure Email" %> |
+<%= link_to "Secure Forms" %> |
+<%= link_to "Account Settings", user_path(current_user) %> 
+</div>
+
+<hr />
+<br />
+
+<div id = "manage_mail">
+<h3>WhySpam.me Secure Email Addresses</h3><br />
+<hr />
+
+<br />
+<br />
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
+	<thead>
+		<tr>
+			<th>Secure Email Address</th>
+			<th>Website</th>
+			<th>Last Used</th>
+			<th>Created</th>
+			<% if current_user == @user && logged_in?  %>
+				<th>Action</th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		
+<% @infos.each do |info| %>
+<tr class="clickable"  onclick = "window.location.href = '<%= url_for :controller => 'info', :id => info.id, :action => 'show' %>' "   >
+	<td><%= info.cryptmail %></td>
+	<td><%= info.website %></td>
+	<td><%= info.created_at.strftime("%m/%d/%Y") %></td>
+	<td><%= info.created_at.strftime("%m/%d/%Y") %></td>
+	<% if  current_user == @user && logged_in?  %>
+		<td>
+			<button href = "<%= report_spam_url(:info => info.id) %>"
+				rel = "prettyPop_No_close"  >Edit</button>
+			<button href = "<%= spam_survey_url(:info => info.id) %>" 
+				rel = "prettyPop_No_close"  >Delete</button>
+		</td>
+	<% end %>
+</tr>    
+                                      
+<% end %>                                                                                     
+	</tbody>
+	<tfoot>
+		<tr>
+			<th>Secure Email Address</th>
+			<th>Website</th>
+			<th>Last Used</th>
+			<th>Created</th>
+			<% if current_user == @user && logged_in? %>
+				<th>Action</th>
+			<% end %>
+		</tr>
+	</tfoot>
+</table>
+
+
+
+</div>
+
+
+
+
+
+	

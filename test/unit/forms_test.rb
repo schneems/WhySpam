@@ -14,6 +14,28 @@ class FormsTest < ActiveSupport::TestCase
       assert_equal(f.valid?, false )
   end
   
+
+  def test_presence_of_email
+    form = Forms.new
+    assert !form.valid?
+    assert form.errors.invalid?(:email)
+  end
+  
+  
+  def test_validates_format_of_email
+    form = Forms.create(:email => "abcdef@asdf.com")
+    assert form.valid?
+    form = Forms.create(:email => "@asdf.com")
+    assert_equal "should look like an email address.", form.errors.on(:email)
+    form = Forms.create(:email => "asdf@.com")
+    assert !form.errors.on(:email)
+    assert_equal "should look like an email address.", form.errors.on(:email)
+    form = Forms.create(:email => "asdf@aasdf")
+    assert !form.errors.on(:email)
+    assert_equal "should look like an email address.", form.errors.on(:email)
+  end
+   
+  
   test "the truth" do
     assert true
   end

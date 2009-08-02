@@ -1,0 +1,7 @@
+<div id = "show_user">
+User Name: <%= @user.login %> <%= link_to "Edit", edit_user_path(@user) if @user == current_user %><br />
+
+<%= "Personal Email: " + @user.email if @user == current_user%><br />
+<%= link_to "Change Password", change_password_path if @user == current_user %><br />
+</div>
+

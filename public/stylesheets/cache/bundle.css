@@ -27,6 +27,8 @@
 	http://localhost:3000/stylesheets/why.css?1243541202
 	http://localhost:3000/stylesheets/why.css?1243627528
 	http://localhost:3000/stylesheets/why.css?1243627690
+	http://localhost:3000/stylesheets/cache/bundle.css?1244425265
+	http://localhost:3000/stylesheets/cache/bundle.css?1246814650
 */
 
 h1, h2, h3 {
@@ -672,13 +674,16 @@ div#corner_wrapper {
 
 #no_spam_container{
 	margin: 0 auto 0 auto;
-	width: 400px;
+	width: 450px;
+	text-align: center;
 	margin-bottom: -30px;
 	
 }
 
 
 #no_spam {
+	text-align: center;
+	width: 450px;
 	padding: 10px;
 	font-size: 16pt;
 	
@@ -747,8 +752,7 @@ div#corner_wrapper {
 			z-index: 2000;
 			top: -36px; right: 6px;
 			text-indent: -10000px;
-			background: url(/images/prettyPopin/My_b_close.png) 
-			bottom left no-repeat;
+			background: url(/images/prettyPopin/my_b_close.png) no-repeat left;
 			
 		}
 	

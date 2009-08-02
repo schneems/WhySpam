@@ -9,8 +9,11 @@ class SessionsController < ApplicationController
   end
 
   def create
+    
     logout_keeping_session!
+    
     user = User.authenticate(params[:email], params[:password])
+
     if user
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back
@@ -20,7 +23,8 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       redirect_to :action => "manage", :controller => "users"
-      flash[:notice] = "Logged in successfully"
+      flash[:notice] = "- Logged in successfully"
+      flash[:notice] += "<br /> - To help prevent unauthorized use please change your password by clicking 'Account Settings' below " if params[:email] == params[:password]
     else
       note_failed_signin
       @login       = params[:login]

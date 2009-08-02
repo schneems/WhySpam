@@ -1,6 +1,19 @@
 class SurveysController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  layout "users"
+  layout "users" , :except => [:new ]
+  
+
+  def new
+    info_id = params[:info]
+    @info = Info.find(:first, :include => [:tickets, :user] , :conditions => ["id = ?", info_id] )
+    @website = @info.website
+    site = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
+    
+    if site != nil && site.save
+      @survey = site.surveys.create(:opt_out => "false", :un_solicited=> "false", :sell=> "false", :vulgar=> "false", :give_out=> "false")
+    end
+    @user = @info.user
+  end
   
 
   def a_z
@@ -37,21 +50,20 @@ class SurveysController < ApplicationController
 
   
 
- # def create
- #   if logged_in?
- #     puts params[:survey]
- #     info_id = params[:info]
- #     info = Info.find(:first, :include => :user, :conditions => ["id = ?", info_id])
- #     website = Website.create(:url => info.website)
- #   
- #     if params[:survey] != nil
- #       website.surveys.create(params[:survey])
- #     end
- #    # info.cryptmail = nil
- #     info.destroy if info.user == current_user
- #     render :action => "manage", :controller => 'users'
- #   end
- # end
+  def create
+    info_id = params[:info]
+    if logged_in?
+      info = Info.find(:first, :include => :user, :conditions => ["id = ?", info_id])
+      website = Website.create(:url => info.website, :grade => 'NA', :rank => 100)
+
+      if params[:survey] != nil
+        website.surveys.create(params[:survey])
+      end
+     # info.cryptmail = nil
+      info.destroy if info.user == current_user
+      redirect_to :back
+    end
+  end
   
   
 

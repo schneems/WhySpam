@@ -2,7 +2,11 @@ require 'test_helper'
 
 class WebsiteTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  
+  def test_website_after_save
+    Factory.create(:user)
+
   end
+
 end

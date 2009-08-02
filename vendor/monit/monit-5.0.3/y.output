@@ -1,0 +1,8705 @@
+Terminals which are not used
+
+   SYSTEM
+
+
+Grammar
+
+    0 $accept: cfgfile $end
+
+    1 cfgfile: /* empty */
+    2        | statement_list
+
+    3 statement_list: statement
+    4               | statement_list statement
+
+    5 statement: setalert
+    6          | setdaemon
+    7          | setlog
+    8          | seteventqueue
+    9          | setmmonits
+   10          | setmailservers
+   11          | setmailformat
+   12          | sethttpd
+   13          | setpid
+   14          | setidfile
+   15          | setstatefile
+   16          | setexpectbuffer
+   17          | setinit
+   18          | checkproc optproclist
+   19          | checkfile optfilelist
+   20          | checkfilesys optfilesyslist
+   21          | checkdir optdirlist
+   22          | checkhost opthostlist
+   23          | checksystem optsystemlist
+   24          | checkfifo optfifolist
+   25          | checkstatus optstatuslist
+
+   26 optproclist: /* empty */
+   27            | optproclist optproc
+
+   28 optproc: start
+   29        | stop
+   30        | pid
+   31        | ppid
+   32        | connection
+   33        | connectionunix
+   34        | timeout
+   35        | alert
+   36        | every
+   37        | mode
+   38        | group
+   39        | depend
+   40        | resourceprocess
+
+   41 optfilelist: /* empty */
+   42            | optfilelist optfile
+
+   43 optfile: start
+   44        | stop
+   45        | timestamp
+   46        | timeout
+   47        | every
+   48        | alert
+   49        | permission
+   50        | uid
+   51        | gid
+   52        | checksum
+   53        | size
+   54        | match
+   55        | mode
+   56        | group
+   57        | depend
+
+   58 optfilesyslist: /* empty */
+   59               | optfilesyslist optfilesys
+
+   60 optfilesys: start
+   61           | stop
+   62           | timeout
+   63           | every
+   64           | alert
+   65           | permission
+   66           | uid
+   67           | gid
+   68           | mode
+   69           | group
+   70           | depend
+   71           | inode
+   72           | space
+   73           | fsflag
+
+   74 optdirlist: /* empty */
+   75           | optdirlist optdir
+
+   76 optdir: start
+   77       | stop
+   78       | timestamp
+   79       | timeout
+   80       | every
+   81       | alert
+   82       | permission
+   83       | uid
+   84       | gid
+   85       | mode
+   86       | group
+   87       | depend
+
+   88 opthostlist: opthost
+   89            | opthostlist opthost
+
+   90 opthost: start
+   91        | stop
+   92        | connection
+   93        | icmp
+   94        | timeout
+   95        | alert
+   96        | every
+   97        | mode
+   98        | group
+   99        | depend
+
+  100 optsystemlist: /* empty */
+  101              | optsystemlist optsystem
+
+  102 optsystem: timeout
+  103          | alert
+  104          | every
+  105          | group
+  106          | depend
+  107          | resourcesystem
+
+  108 optfifolist: /* empty */
+  109            | optfifolist optfifo
+
+  110 optfifo: start
+  111        | stop
+  112        | timestamp
+  113        | timeout
+  114        | every
+  115        | alert
+  116        | permission
+  117        | uid
+  118        | gid
+  119        | mode
+  120        | group
+  121        | depend
+
+  122 optstatuslist: /* empty */
+  123              | optstatuslist optstatus
+
+  124 optstatus: timeout
+  125          | alert
+  126          | every
+  127          | group
+  128          | depend
+
+  129 setalert: SET alertmail '{' eventoptionlist '}' formatlist reminder
+  130         | SET alertmail formatlist reminder
+  131         | SET alertmail NOT '{' eventoptionlist '}' formatlist reminder
+
+  132 setdaemon: SET DAEMON NUMBER startdelay
+
+  133 startdelay: /* empty */
+  134           | START DELAY NUMBER
+
+  135 setexpectbuffer: SET EXPECTBUFFER NUMBER unit
+
+  136 setinit: SET INIT
+
+  137 setlog: SET LOGFILE PATH
+  138       | SET LOGFILE SYSLOG
+  139       | SET LOGFILE SYSLOG FACILITY STRING
+
+  140 seteventqueue: SET EVENTQUEUE BASEDIR PATH
+  141              | SET EVENTQUEUE BASEDIR PATH SLOT NUMBER
+  142              | SET EVENTQUEUE SLOT NUMBER
+
+  143 setidfile: SET IDFILE PATH
+
+  144 setstatefile: SET STATEFILE PATH
+
+  145 setpid: SET PIDFILE PATH
+
+  146 setmmonits: SET MMONIT mmonitlist
+
+  147 mmonitlist: mmonit
+  148           | mmonitlist mmonit
+
+  149 mmonit: URLOBJECT nettimeout sslversion certmd5
+
+  150 setmailservers: SET MAILSERVER mailserverlist nettimeout hostname
+
+  151 setmailformat: SET MAILFORMAT '{' formatoptionlist '}'
+
+  152 sethttpd: SET HTTPD PORT NUMBER httpdlist
+
+  153 mailserverlist: mailserver
+  154               | mailserverlist mailserver
+
+  155 mailserver: STRING username password sslversion certmd5
+  156           | STRING PORT NUMBER username password sslversion certmd5
+
+  157 httpdlist: /* empty */
+  158          | httpdlist httpdoption
+
+  159 httpdoption: ssl
+  160            | signature
+  161            | bindaddress
+  162            | allow
+
+  163 ssl: ssldisable
+  164    | sslenable pemfile clientpemfile allowselfcert
+
+  165 sslenable: HTTPDSSL
+  166          | HTTPDSSL ENABLE
+  167          | ENABLE HTTPDSSL
+
+  168 ssldisable: HTTPDSSL DISABLE
+  169           | DISABLE HTTPDSSL
+  170           | ssldisable PEMFILE PATH
+  171           | ssldisable CLIENTPEMFILE PATH
+  172           | ssldisable ALLOWSELFCERTIFICATION
+
+  173 signature: sigenable
+  174          | sigdisable
+
+  175 sigenable: SIGNATURE ENABLE
+  176          | ENABLE SIGNATURE
+
+  177 sigdisable: SIGNATURE DISABLE
+  178           | DISABLE SIGNATURE
+
+  179 bindaddress: ADDRESS STRING
+
+  180 pemfile: PEMFILE PATH
+
+  181 clientpemfile: /* empty */
+  182              | CLIENTPEMFILE PATH
+
+  183 allowselfcert: /* empty */
+  184              | ALLOWSELFCERTIFICATION
+
+  185 allow: ALLOW STRING ':' STRING readonly
+  186      | ALLOW '@' STRING readonly
+  187      | ALLOW PATH
+  188      | ALLOW CLEARTEXT PATH
+  189      | ALLOW MD5HASH PATH
+  190      | ALLOW CRYPT PATH
+
+  191 @1: /* empty */
+
+  192 allow: ALLOW PATH @1 allowuserlist
+
+  193 @2: /* empty */
+
+  194 allow: ALLOW CLEARTEXT PATH @2 allowuserlist
+
+  195 @3: /* empty */
+
+  196 allow: ALLOW MD5HASH PATH @3 allowuserlist
+
+  197 @4: /* empty */
+
+  198 allow: ALLOW CRYPT PATH @4 allowuserlist
+  199      | ALLOW STRING
+
+  200 allowuserlist: allowuser
+  201              | allowuserlist allowuser
+
+  202 allowuser: STRING
+
+  203 readonly: /* empty */
+  204         | READONLY
+
+  205 checkproc: CHECKPROC SERVICENAME PIDFILE PATH
+  206          | CHECKPROC SERVICENAME PATHTOK PATH
+
+  207 checkfile: CHECKFILE SERVICENAME PATHTOK PATH
+
+  208 checkfilesys: CHECKFILESYS SERVICENAME PATHTOK PATH
+
+  209 checkdir: CHECKDIR SERVICENAME PATHTOK PATH
+
+  210 checkhost: CHECKHOST SERVICENAME ADDRESS STRING
+
+  211 checksystem: CHECKSYSTEM SERVICENAME
+
+  212 checkfifo: CHECKFIFO SERVICENAME PATHTOK PATH
+
+  213 checkstatus: CHECKSTATUS SERVICENAME PATHTOK PATH
+
+  214 start: START argumentlist exectimeout
+  215      | START argumentlist useroptionlist exectimeout
+
+  216 stop: STOP argumentlist exectimeout
+  217     | STOP argumentlist useroptionlist exectimeout
+
+  218 argumentlist: argument
+  219             | argumentlist argument
+
+  220 useroptionlist: useroption
+  221               | useroptionlist useroption
+
+  222 argument: STRING
+  223         | PATH
+
+  224 useroption: UID STRING
+  225           | GID STRING
+  226           | UID NUMBER
+  227           | GID NUMBER
+
+  228 username: /* empty */
+  229         | USERNAME MAILADDR
+  230         | USERNAME STRING
+
+  231 password: /* empty */
+  232         | PASSWORD STRING
+
+  233 hostname: /* empty */
+  234         | HOSTNAME STRING
+
+  235 connection: IF FAILED host port type protocol nettimeout rate1 THEN action1 recovery
+  236           | IF FAILED URL URLOBJECT urloption nettimeout rate1 THEN action1 recovery
+
+  237 connectionunix: IF FAILED unixsocket type protocol nettimeout rate1 THEN action1 recovery
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount nettimeout rate1 THEN action1 recovery
+
+  239 host: /* empty */
+  240     | HOST STRING
+
+  241 port: PORT NUMBER
+
+  242 unixsocket: UNIXSOCKET PATH
+
+  243 type: /* empty */
+  244     | TYPE TCP
+  245     | TYPE TCPSSL sslversion certmd5
+  246     | TYPE UDP
+
+  247 certmd5: /* empty */
+  248        | CERTMD5 STRING
+
+  249 sslversion: /* empty */
+  250           | SSLV2
+  251           | SSLV3
+  252           | TLSV1
+  253           | SSLAUTO
+
+  254 protocol: /* empty */
+  255         | PROTOCOL APACHESTATUS apache_stat_list
+  256         | PROTOCOL DEFAULT
+  257         | PROTOCOL DNS
+  258         | PROTOCOL DWP
+  259         | PROTOCOL FTP
+  260         | PROTOCOL HTTP request
+  261         | PROTOCOL IMAP
+  262         | PROTOCOL CLAMAV
+  263         | PROTOCOL LDAP2
+  264         | PROTOCOL LDAP3
+  265         | PROTOCOL MYSQL
+  266         | PROTOCOL SIP target maxforward
+  267         | PROTOCOL NNTP
+  268         | PROTOCOL NTP3
+  269         | PROTOCOL POSTFIXPOLICY
+  270         | PROTOCOL POP
+  271         | PROTOCOL SMTP
+  272         | PROTOCOL SSH
+  273         | PROTOCOL RDATE
+  274         | PROTOCOL RSYNC
+  275         | PROTOCOL TNS
+  276         | PROTOCOL PGSQL
+  277         | PROTOCOL LMTP
+  278         | sendexpectlist
+
+  279 sendexpectlist: sendexpect
+  280               | sendexpectlist sendexpect
+
+  281 sendexpect: SEND STRING
+  282           | EXPECT STRING
+
+  283 target: /* empty */
+  284       | TARGET MAILADDR
+  285       | TARGET STRING
+
+  286 maxforward: /* empty */
+  287           | MAXFORWARD NUMBER
+
+  288 request: /* empty */
+  289        | REQUEST PATH
+  290        | REQUEST PATH CHECKSUM STRING
+
+  291 apache_stat_list: apache_stat
+  292                 | apache_stat_list OR apache_stat
+
+  293 apache_stat: LOGLIMIT operator NUMBER PERCENT
+  294            | CLOSELIMIT operator NUMBER PERCENT
+  295            | DNSLIMIT operator NUMBER PERCENT
+  296            | KEEPALIVELIMIT operator NUMBER PERCENT
+  297            | REPLYLIMIT operator NUMBER PERCENT
+  298            | REQUESTLIMIT operator NUMBER PERCENT
+  299            | STARTLIMIT operator NUMBER PERCENT
+  300            | WAITLIMIT operator NUMBER PERCENT
+  301            | GRACEFULLIMIT operator NUMBER PERCENT
+  302            | CLEANUPLIMIT operator NUMBER PERCENT
+
+  303 pid: IF CHANGED PID rate1 THEN action1
+
+  304 ppid: IF CHANGED PPID rate1 THEN action1
+
+  305 icmpcount: /* empty */
+  306          | COUNT NUMBER
+
+  307 exectimeout: /* empty */
+  308            | TIMEOUT NUMBER SECOND
+
+  309 nettimeout: /* empty */
+  310           | TIMEOUT NUMBER SECOND
+
+  311 timeout: IF NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+
+  312 urloption: /* empty */
+  313          | CONTENT urloperator STRING
+
+  314 urloperator: EQUAL
+  315            | NOTEQUAL
+
+  316 alert: alertmail '{' eventoptionlist '}' formatlist reminder
+  317      | alertmail formatlist reminder
+  318      | alertmail NOT '{' eventoptionlist '}' formatlist reminder
+  319      | noalertmail
+
+  320 alertmail: ALERT MAILADDR
+
+  321 noalertmail: NOALERT MAILADDR
+
+  322 eventoptionlist: eventoption
+  323                | eventoptionlist eventoption
+
+  324 eventoption: ACTION
+  325            | CHECKSUM
+  326            | CONNECTION
+  327            | CONTENT
+  328            | DATA
+  329            | EXEC
+  330            | FSFLAG
+  331            | GID
+  332            | ICMP
+  333            | INSTANCE
+  334            | INVALID
+  335            | NONEXIST
+  336            | PERMISSION
+  337            | PID
+  338            | PPID
+  339            | RESOURCE
+  340            | SIZE
+  341            | TIMEOUT
+  342            | TIMESTAMP
+  343            | UID
+
+  344 formatlist: /* empty */
+  345           | MAILFORMAT '{' formatoptionlist '}'
+
+  346 formatoptionlist: formatoption
+  347                 | formatoptionlist formatoption
+
+  348 formatoption: MAILFROM
+  349             | MAILSUBJECT
+  350             | MAILBODY
+
+  351 every: EVERY NUMBER CYCLE
+
+  352 mode: MODE ACTIVE
+  353     | MODE PASSIVE
+  354     | MODE MANUAL
+
+  355 group: GROUP STRINGNAME
+
+  356 depend: DEPENDS dependlist
+
+  357 dependlist: dependant
+  358           | dependlist dependant
+
+  359 dependant: SERVICENAME
+
+  360 resourceprocess: IF resourceprocesslist rate1 THEN action1 recovery
+
+  361 resourceprocesslist: resourceprocessopt
+  362                    | resourceprocesslist resourceprocessopt
+
+  363 resourceprocessopt: resourcecpuproc
+  364                   | resourcemem
+  365                   | resourcechild
+  366                   | resourceload
+
+  367 resourcesystem: IF resourcesystemlist rate1 THEN action1 recovery
+
+  368 resourcesystemlist: resourcesystemopt
+  369                   | resourcesystemlist resourcesystemopt
+
+  370 resourcesystemopt: resourceload
+  371                  | resourcemem
+  372                  | resourcecpu
+
+  373 resourcecpuproc: CPU operator NUMBER PERCENT
+  374                | TOTALCPU operator NUMBER PERCENT
+
+  375 resourcecpu: resourcecpuid operator NUMBER PERCENT
+
+  376 resourcecpuid: CPUUSER
+  377              | CPUSYSTEM
+  378              | CPUWAIT
+
+  379 resourcemem: MEMORY operator value unit
+  380            | MEMORY operator NUMBER PERCENT
+  381            | TOTALMEMORY operator value unit
+  382            | TOTALMEMORY operator NUMBER PERCENT
+
+  383 resourcechild: CHILDREN operator NUMBER
+
+  384 resourceload: resourceloadavg operator value
+
+  385 resourceloadavg: LOADAVG1
+  386                | LOADAVG5
+  387                | LOADAVG15
+
+  388 value: REAL
+  389      | NUMBER
+
+  390 timestamp: IF TIMESTAMP operator NUMBER time rate1 THEN action1 recovery
+  391          | IF CHANGED TIMESTAMP rate1 THEN action1
+
+  392 operator: /* empty */
+  393         | GREATER
+  394         | LESS
+  395         | EQUAL
+  396         | NOTEQUAL
+  397         | CHANGED
+
+  398 time: /* empty */
+  399     | SECOND
+  400     | MINUTE
+  401     | HOUR
+  402     | DAY
+
+  403 action: ALERT
+  404       | EXEC argumentlist
+  405       | EXEC argumentlist useroptionlist
+  406       | RESTART
+  407       | START
+  408       | STOP
+  409       | UNMONITOR
+
+  410 action1: action
+
+  411 action2: action
+
+  412 rate1: /* empty */
+  413      | NUMBER CYCLE
+  414      | NUMBER NUMBER CYCLE
+
+  415 rate2: /* empty */
+  416      | NUMBER CYCLE
+  417      | NUMBER NUMBER CYCLE
+
+  418 recovery: /* empty */
+  419         | ELSE IF RECOVERED rate2 THEN action2
+  420         | ELSE IF PASSED rate2 THEN action2
+  421         | ELSE IF SUCCEEDED rate2 THEN action2
+
+  422 checksum: IF FAILED hashtype CHECKSUM rate1 THEN action1 recovery
+  423         | IF FAILED hashtype CHECKSUM EXPECT STRING rate1 THEN action1 recovery
+  424         | IF CHANGED hashtype CHECKSUM rate1 THEN action1
+
+  425 hashtype: /* empty */
+  426         | MD5HASH
+  427         | SHA1HASH
+
+  428 inode: IF INODE operator NUMBER rate1 THEN action1 recovery
+  429      | IF INODE operator NUMBER PERCENT rate1 THEN action1 recovery
+
+  430 space: IF SPACE operator value unit rate1 THEN action1 recovery
+  431      | IF SPACE operator NUMBER PERCENT rate1 THEN action1 recovery
+
+  432 fsflag: IF CHANGED FSFLAG rate1 THEN action1
+
+  433 unit: /* empty */
+  434     | BYTE
+  435     | KILOBYTE
+  436     | MEGABYTE
+  437     | GIGABYTE
+
+  438 permission: IF FAILED PERMISSION NUMBER rate1 THEN action1 recovery
+
+  439 match: IF matchflagnot MATCH PATH rate1 THEN action1
+  440      | IF matchflagnot MATCH STRING rate1 THEN action1
+  441      | IGNORE matchflagnot MATCH PATH
+  442      | IGNORE matchflagnot MATCH STRING
+
+  443 matchflagnot: /* empty */
+  444             | NOT
+
+  445 size: IF SIZE operator NUMBER unit rate1 THEN action1 recovery
+  446     | IF CHANGED SIZE rate1 THEN action1
+
+  447 uid: IF FAILED UID STRING rate1 THEN action1 recovery
+  448    | IF FAILED UID NUMBER rate1 THEN action1 recovery
+
+  449 gid: IF FAILED GID STRING rate1 THEN action1 recovery
+  450    | IF FAILED GID NUMBER rate1 THEN action1 recovery
+
+  451 icmptype: TYPE ICMPECHO
+
+  452 reminder: /* empty */
+  453         | REMINDER NUMBER
+  454         | REMINDER NUMBER CYCLE
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+':' (58) 185
+'@' (64) 186
+'{' (123) 129 131 151 316 318 345
+'}' (125) 129 131 151 316 318 345
+error (256)
+IF (258) 235 236 237 238 303 304 311 360 367 390 391 419 420 421 422
+    423 424 428 429 430 431 432 438 439 440 445 446 447 448 449 450
+ELSE (259) 419 420 421
+THEN (260) 235 236 237 238 303 304 311 360 367 390 391 419 420 421
+    422 423 424 428 429 430 431 432 438 439 440 445 446 447 448 449
+    450
+OR (261) 292
+FAILED (262) 235 236 237 238 422 423 438 447 448 449 450
+SET (263) 129 130 131 132 135 136 137 138 139 140 141 142 143 144 145
+    146 150 151 152
+LOGFILE (264) 137 138 139
+FACILITY (265) 139
+DAEMON (266) 132
+SYSLOG (267) 138 139
+MAILSERVER (268) 150
+HTTPD (269) 152
+ALLOW (270) 185 186 187 188 189 190 192 194 196 198 199
+ADDRESS (271) 179 210
+INIT (272) 136
+READONLY (273) 204
+CLEARTEXT (274) 188 194
+MD5HASH (275) 189 196 426
+SHA1HASH (276) 427
+CRYPT (277) 190 198
+DELAY (278) 134
+PEMFILE (279) 170 180
+ENABLE (280) 166 167 175 176
+DISABLE (281) 168 169 177 178
+HTTPDSSL (282) 165 166 167 168 169
+CLIENTPEMFILE (283) 171 182
+ALLOWSELFCERTIFICATION (284) 172 184
+IDFILE (285) 143
+STATEFILE (286) 144
+SEND (287) 281
+EXPECT (288) 282 423
+EXPECTBUFFER (289) 135
+CYCLE (290) 311 351 413 414 416 417 454
+COUNT (291) 306
+REMINDER (292) 453 454
+PIDFILE (293) 145 205
+START (294) 134 214 215 407
+STOP (295) 216 217 408
+PATHTOK (296) 206 207 208 209 212 213
+HOST (297) 240
+HOSTNAME (298) 234
+PORT (299) 152 156 241
+TYPE (300) 244 245 246 451
+UDP (301) 246
+TCP (302) 244
+TCPSSL (303) 245
+PROTOCOL (304) 255 256 257 258 259 260 261 262 263 264 265 266 267
+    268 269 270 271 272 273 274 275 276 277
+CONNECTION (305) 326
+ALERT (306) 320 403
+NOALERT (307) 321
+MAILFORMAT (308) 151 345
+UNIXSOCKET (309) 242
+SIGNATURE (310) 175 176 177 178
+TIMEOUT (311) 308 310 311 341
+RESTART (312) 311 406
+CHECKSUM (313) 290 325 422 423 424
+EVERY (314) 351
+DEFAULT (315) 256
+HTTP (316) 260
+APACHESTATUS (317) 255
+FTP (318) 259
+SMTP (319) 271
+POP (320) 270
+IMAP (321) 261
+CLAMAV (322) 262
+NNTP (323) 267
+NTP3 (324) 268
+MYSQL (325) 265
+DNS (326) 257
+SSH (327) 272
+DWP (328) 258
+LDAP2 (329) 263
+LDAP3 (330) 264
+RDATE (331) 273
+RSYNC (332) 274
+TNS (333) 275
+PGSQL (334) 276
+POSTFIXPOLICY (335) 269
+SIP (336) 266
+LMTP (337) 277
+STRING (338) 139 155 156 179 185 186 199 202 210 222 224 225 230 232
+    234 240 248 281 282 285 290 313 423 440 442 447 449
+PATH (339) 137 140 141 143 144 145 170 171 180 182 187 188 189 190
+    192 194 196 198 205 206 207 208 209 212 213 223 242 289 290 439
+    441
+MAILADDR (340) 229 284 320 321
+MAILFROM (341) 348
+MAILSUBJECT (342) 349
+MAILBODY (343) 350
+SERVICENAME (344) 205 206 207 208 209 210 211 212 213 359
+STRINGNAME (345) 355
+NUMBER (346) 132 134 135 141 142 152 156 226 227 241 287 293 294 295
+    296 297 298 299 300 301 302 306 308 310 311 351 373 374 375 380
+    382 383 389 390 413 414 416 417 428 429 431 438 445 448 450 453
+    454
+PERCENT (347) 293 294 295 296 297 298 299 300 301 302 373 374 375 380
+    382 429 431
+LOGLIMIT (348) 293
+CLOSELIMIT (349) 294
+DNSLIMIT (350) 295
+KEEPALIVELIMIT (351) 296
+REPLYLIMIT (352) 297
+REQUESTLIMIT (353) 298
+STARTLIMIT (354) 299
+WAITLIMIT (355) 300
+GRACEFULLIMIT (356) 301
+CLEANUPLIMIT (357) 302
+REAL (358) 388
+CHECKPROC (359) 205 206
+CHECKFILESYS (360) 208
+CHECKFILE (361) 207
+CHECKDIR (362) 209
+CHECKHOST (363) 210
+CHECKSYSTEM (364) 211
+CHECKFIFO (365) 212
+CHECKSTATUS (366) 213
+CHILDREN (367) 383
+SYSTEM (368)
+RESOURCE (369) 339
+MEMORY (370) 379 380
+TOTALMEMORY (371) 381 382
+LOADAVG1 (372) 385
+LOADAVG5 (373) 386
+LOADAVG15 (374) 387
+MODE (375) 352 353 354
+ACTIVE (376) 352
+PASSIVE (377) 353
+MANUAL (378) 354
+CPU (379) 373
+TOTALCPU (380) 374
+CPUUSER (381) 376
+CPUSYSTEM (382) 377
+CPUWAIT (383) 378
+GROUP (384) 355
+REQUEST (385) 289 290
+DEPENDS (386) 356
+BASEDIR (387) 140 141
+SLOT (388) 141 142
+EVENTQUEUE (389) 140 141 142
+UID (390) 224 226 343 447 448
+GID (391) 225 227 331 449 450
+MMONIT (392) 146
+INSTANCE (393) 333
+USERNAME (394) 229 230
+PASSWORD (395) 232
+TIMESTAMP (396) 342 390 391
+CHANGED (397) 303 304 391 397 424 432 446
+SECOND (398) 308 310 399
+MINUTE (399) 400
+HOUR (400) 401
+DAY (401) 402
+SSLAUTO (402) 253
+SSLV2 (403) 250
+SSLV3 (404) 251
+TLSV1 (405) 252
+CERTMD5 (406) 248
+BYTE (407) 434
+KILOBYTE (408) 435
+MEGABYTE (409) 436
+GIGABYTE (410) 437
+INODE (411) 428 429
+SPACE (412) 430 431
+PERMISSION (413) 336 438
+SIZE (414) 340 445 446
+MATCH (415) 439 440 441 442
+NOT (416) 131 318 444
+IGNORE (417) 441 442
+ACTION (418) 324
+EXEC (419) 329 404 405
+UNMONITOR (420) 409
+ICMP (421) 238 332
+ICMPECHO (422) 451
+NONEXIST (423) 335
+INVALID (424) 334
+DATA (425) 328
+RECOVERED (426) 419
+PASSED (427) 420
+SUCCEEDED (428) 421
+URL (429) 236
+CONTENT (430) 313 327
+PID (431) 303 337
+PPID (432) 304 338
+FSFLAG (433) 330 432
+URLOBJECT (434) 149 236
+TARGET (435) 284 285
+MAXFORWARD (436) 287
+NOTEQUAL (437) 315 396
+EQUAL (438) 314 395
+LESS (439) 394
+GREATER (440) 393
+
+
+Nonterminals, with rules where they appear
+
+$accept (190)
+    on left: 0
+cfgfile (191)
+    on left: 1 2, on right: 0
+statement_list (192)
+    on left: 3 4, on right: 2 4
+statement (193)
+    on left: 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+    25, on right: 3 4
+optproclist (194)
+    on left: 26 27, on right: 18 27
+optproc (195)
+    on left: 28 29 30 31 32 33 34 35 36 37 38 39 40,
+    on right: 27
+optfilelist (196)
+    on left: 41 42, on right: 19 42
+optfile (197)
+    on left: 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57,
+    on right: 42
+optfilesyslist (198)
+    on left: 58 59, on right: 20 59
+optfilesys (199)
+    on left: 60 61 62 63 64 65 66 67 68 69 70 71 72 73,
+    on right: 59
+optdirlist (200)
+    on left: 74 75, on right: 21 75
+optdir (201)
+    on left: 76 77 78 79 80 81 82 83 84 85 86 87, on right: 75
+opthostlist (202)
+    on left: 88 89, on right: 22 89
+opthost (203)
+    on left: 90 91 92 93 94 95 96 97 98 99, on right: 88 89
+optsystemlist (204)
+    on left: 100 101, on right: 23 101
+optsystem (205)
+    on left: 102 103 104 105 106 107, on right: 101
+optfifolist (206)
+    on left: 108 109, on right: 24 109
+optfifo (207)
+    on left: 110 111 112 113 114 115 116 117 118 119 120 121,
+    on right: 109
+optstatuslist (208)
+    on left: 122 123, on right: 25 123
+optstatus (209)
+    on left: 124 125 126 127 128, on right: 123
+setalert (210)
+    on left: 129 130 131, on right: 5
+setdaemon (211)
+    on left: 132, on right: 6
+startdelay (212)
+    on left: 133 134, on right: 132
+setexpectbuffer (213)
+    on left: 135, on right: 16
+setinit (214)
+    on left: 136, on right: 17
+setlog (215)
+    on left: 137 138 139, on right: 7
+seteventqueue (216)
+    on left: 140 141 142, on right: 8
+setidfile (217)
+    on left: 143, on right: 14
+setstatefile (218)
+    on left: 144, on right: 15
+setpid (219)
+    on left: 145, on right: 13
+setmmonits (220)
+    on left: 146, on right: 9
+mmonitlist (221)
+    on left: 147 148, on right: 146 148
+mmonit (222)
+    on left: 149, on right: 147 148
+setmailservers (223)
+    on left: 150, on right: 10
+setmailformat (224)
+    on left: 151, on right: 11
+sethttpd (225)
+    on left: 152, on right: 12
+mailserverlist (226)
+    on left: 153 154, on right: 150 154
+mailserver (227)
+    on left: 155 156, on right: 153 154
+httpdlist (228)
+    on left: 157 158, on right: 152 158
+httpdoption (229)
+    on left: 159 160 161 162, on right: 158
+ssl (230)
+    on left: 163 164, on right: 159
+sslenable (231)
+    on left: 165 166 167, on right: 164
+ssldisable (232)
+    on left: 168 169 170 171 172, on right: 163 170 171 172
+signature (233)
+    on left: 173 174, on right: 160
+sigenable (234)
+    on left: 175 176, on right: 173
+sigdisable (235)
+    on left: 177 178, on right: 174
+bindaddress (236)
+    on left: 179, on right: 161
+pemfile (237)
+    on left: 180, on right: 164
+clientpemfile (238)
+    on left: 181 182, on right: 164
+allowselfcert (239)
+    on left: 183 184, on right: 164
+allow (240)
+    on left: 185 186 187 188 189 190 192 194 196 198 199,
+    on right: 162
+@1 (241)
+    on left: 191, on right: 192
+@2 (242)
+    on left: 193, on right: 194
+@3 (243)
+    on left: 195, on right: 196
+@4 (244)
+    on left: 197, on right: 198
+allowuserlist (245)
+    on left: 200 201, on right: 192 194 196 198 201
+allowuser (246)
+    on left: 202, on right: 200 201
+readonly (247)
+    on left: 203 204, on right: 185 186
+checkproc (248)
+    on left: 205 206, on right: 18
+checkfile (249)
+    on left: 207, on right: 19
+checkfilesys (250)
+    on left: 208, on right: 20
+checkdir (251)
+    on left: 209, on right: 21
+checkhost (252)
+    on left: 210, on right: 22
+checksystem (253)
+    on left: 211, on right: 23
+checkfifo (254)
+    on left: 212, on right: 24
+checkstatus (255)
+    on left: 213, on right: 25
+start (256)
+    on left: 214 215, on right: 28 43 60 76 90 110
+stop (257)
+    on left: 216 217, on right: 29 44 61 77 91 111
+argumentlist (258)
+    on left: 218 219, on right: 214 215 216 217 219 404 405
+useroptionlist (259)
+    on left: 220 221, on right: 215 217 221 405
+argument (260)
+    on left: 222 223, on right: 218 219
+useroption (261)
+    on left: 224 225 226 227, on right: 220 221
+username (262)
+    on left: 228 229 230, on right: 155 156
+password (263)
+    on left: 231 232, on right: 155 156
+hostname (264)
+    on left: 233 234, on right: 150
+connection (265)
+    on left: 235 236, on right: 32 92
+connectionunix (266)
+    on left: 237, on right: 33
+icmp (267)
+    on left: 238, on right: 93
+host (268)
+    on left: 239 240, on right: 235
+port (269)
+    on left: 241, on right: 235
+unixsocket (270)
+    on left: 242, on right: 237
+type (271)
+    on left: 243 244 245 246, on right: 235 237
+certmd5 (272)
+    on left: 247 248, on right: 149 155 156 245
+sslversion (273)
+    on left: 249 250 251 252 253, on right: 149 155 156 245
+protocol (274)
+    on left: 254 255 256 257 258 259 260 261 262 263 264 265 266 267
+    268 269 270 271 272 273 274 275 276 277 278, on right: 235 237
+sendexpectlist (275)
+    on left: 279 280, on right: 278 280
+sendexpect (276)
+    on left: 281 282, on right: 279 280
+target (277)
+    on left: 283 284 285, on right: 266
+maxforward (278)
+    on left: 286 287, on right: 266
+request (279)
+    on left: 288 289 290, on right: 260
+apache_stat_list (280)
+    on left: 291 292, on right: 255 292
+apache_stat (281)
+    on left: 293 294 295 296 297 298 299 300 301 302,
+    on right: 291 292
+pid (282)
+    on left: 303, on right: 30
+ppid (283)
+    on left: 304, on right: 31
+icmpcount (284)
+    on left: 305 306, on right: 238
+exectimeout (285)
+    on left: 307 308, on right: 214 215 216 217
+nettimeout (286)
+    on left: 309 310, on right: 149 150 235 236 237 238
+timeout (287)
+    on left: 311, on right: 34 46 62 79 94 102 113 124
+urloption (288)
+    on left: 312 313, on right: 236
+urloperator (289)
+    on left: 314 315, on right: 313
+alert (290)
+    on left: 316 317 318 319, on right: 35 48 64 81 95 103 115 125
+alertmail (291)
+    on left: 320, on right: 129 130 131 316 317 318
+noalertmail (292)
+    on left: 321, on right: 319
+eventoptionlist (293)
+    on left: 322 323, on right: 129 131 316 318 323
+eventoption (294)
+    on left: 324 325 326 327 328 329 330 331 332 333 334 335 336 337
+    338 339 340 341 342 343, on right: 322 323
+formatlist (295)
+    on left: 344 345, on right: 129 130 131 316 317 318
+formatoptionlist (296)
+    on left: 346 347, on right: 151 345 347
+formatoption (297)
+    on left: 348 349 350, on right: 346 347
+every (298)
+    on left: 351, on right: 36 47 63 80 96 104 114 126
+mode (299)
+    on left: 352 353 354, on right: 37 55 68 85 97 119
+group (300)
+    on left: 355, on right: 38 56 69 86 98 105 120 127
+depend (301)
+    on left: 356, on right: 39 57 70 87 99 106 121 128
+dependlist (302)
+    on left: 357 358, on right: 356 358
+dependant (303)
+    on left: 359, on right: 357 358
+resourceprocess (304)
+    on left: 360, on right: 40
+resourceprocesslist (305)
+    on left: 361 362, on right: 360 362
+resourceprocessopt (306)
+    on left: 363 364 365 366, on right: 361 362
+resourcesystem (307)
+    on left: 367, on right: 107
+resourcesystemlist (308)
+    on left: 368 369, on right: 367 369
+resourcesystemopt (309)
+    on left: 370 371 372, on right: 368 369
+resourcecpuproc (310)
+    on left: 373 374, on right: 363
+resourcecpu (311)
+    on left: 375, on right: 372
+resourcecpuid (312)
+    on left: 376 377 378, on right: 375
+resourcemem (313)
+    on left: 379 380 381 382, on right: 364 371
+resourcechild (314)
+    on left: 383, on right: 365
+resourceload (315)
+    on left: 384, on right: 366 370
+resourceloadavg (316)
+    on left: 385 386 387, on right: 384
+value (317)
+    on left: 388 389, on right: 379 381 384 430
+timestamp (318)
+    on left: 390 391, on right: 45 78 112
+operator (319)
+    on left: 392 393 394 395 396 397, on right: 293 294 295 296 297
+    298 299 300 301 302 373 374 375 379 380 381 382 383 384 390 428
+    429 430 431 445
+time (320)
+    on left: 398 399 400 401 402, on right: 390
+action (321)
+    on left: 403 404 405 406 407 408 409, on right: 410 411
+action1 (322)
+    on left: 410, on right: 235 236 237 238 303 304 360 367 390 391
+    422 423 424 428 429 430 431 432 438 439 440 445 446 447 448 449
+    450
+action2 (323)
+    on left: 411, on right: 419 420 421
+rate1 (324)
+    on left: 412 413 414, on right: 235 236 237 238 303 304 360 367
+    390 391 422 423 424 428 429 430 431 432 438 439 440 445 446 447
+    448 449 450
+rate2 (325)
+    on left: 415 416 417, on right: 419 420 421
+recovery (326)
+    on left: 418 419 420 421, on right: 235 236 237 238 360 367 390
+    422 423 428 429 430 431 438 445 447 448 449 450
+checksum (327)
+    on left: 422 423 424, on right: 52
+hashtype (328)
+    on left: 425 426 427, on right: 422 423 424
+inode (329)
+    on left: 428 429, on right: 71
+space (330)
+    on left: 430 431, on right: 72
+fsflag (331)
+    on left: 432, on right: 73
+unit (332)
+    on left: 433 434 435 436 437, on right: 135 379 381 430 445
+permission (333)
+    on left: 438, on right: 49 65 82 116
+match (334)
+    on left: 439 440 441 442, on right: 54
+matchflagnot (335)
+    on left: 443 444, on right: 439 440 441 442
+size (336)
+    on left: 445 446, on right: 53
+uid (337)
+    on left: 447 448, on right: 50 66 83 117
+gid (338)
+    on left: 449 450, on right: 51 67 84 118
+icmptype (339)
+    on left: 451, on right: 238
+reminder (340)
+    on left: 452 453 454, on right: 129 130 131 316 317 318
+
+
+state 0
+
+    0 $accept: . cfgfile $end
+
+    SET           shift, and go to state 1
+    CHECKPROC     shift, and go to state 2
+    CHECKFILESYS  shift, and go to state 3
+    CHECKFILE     shift, and go to state 4
+    CHECKDIR      shift, and go to state 5
+    CHECKHOST     shift, and go to state 6
+    CHECKSYSTEM   shift, and go to state 7
+    CHECKFIFO     shift, and go to state 8
+    CHECKSTATUS   shift, and go to state 9
+
+    $default  reduce using rule 1 (cfgfile)
+
+    cfgfile          go to state 10
+    statement_list   go to state 11
+    statement        go to state 12
+    setalert         go to state 13
+    setdaemon        go to state 14
+    setexpectbuffer  go to state 15
+    setinit          go to state 16
+    setlog           go to state 17
+    seteventqueue    go to state 18
+    setidfile        go to state 19
+    setstatefile     go to state 20
+    setpid           go to state 21
+    setmmonits       go to state 22
+    setmailservers   go to state 23
+    setmailformat    go to state 24
+    sethttpd         go to state 25
+    checkproc        go to state 26
+    checkfile        go to state 27
+    checkfilesys     go to state 28
+    checkdir         go to state 29
+    checkhost        go to state 30
+    checksystem      go to state 31
+    checkfifo        go to state 32
+    checkstatus      go to state 33
+
+
+state 1
+
+  129 setalert: SET . alertmail '{' eventoptionlist '}' formatlist reminder
+  130         | SET . alertmail formatlist reminder
+  131         | SET . alertmail NOT '{' eventoptionlist '}' formatlist reminder
+  132 setdaemon: SET . DAEMON NUMBER startdelay
+  135 setexpectbuffer: SET . EXPECTBUFFER NUMBER unit
+  136 setinit: SET . INIT
+  137 setlog: SET . LOGFILE PATH
+  138       | SET . LOGFILE SYSLOG
+  139       | SET . LOGFILE SYSLOG FACILITY STRING
+  140 seteventqueue: SET . EVENTQUEUE BASEDIR PATH
+  141              | SET . EVENTQUEUE BASEDIR PATH SLOT NUMBER
+  142              | SET . EVENTQUEUE SLOT NUMBER
+  143 setidfile: SET . IDFILE PATH
+  144 setstatefile: SET . STATEFILE PATH
+  145 setpid: SET . PIDFILE PATH
+  146 setmmonits: SET . MMONIT mmonitlist
+  150 setmailservers: SET . MAILSERVER mailserverlist nettimeout hostname
+  151 setmailformat: SET . MAILFORMAT '{' formatoptionlist '}'
+  152 sethttpd: SET . HTTPD PORT NUMBER httpdlist
+
+    LOGFILE       shift, and go to state 34
+    DAEMON        shift, and go to state 35
+    MAILSERVER    shift, and go to state 36
+    HTTPD         shift, and go to state 37
+    INIT          shift, and go to state 38
+    IDFILE        shift, and go to state 39
+    STATEFILE     shift, and go to state 40
+    EXPECTBUFFER  shift, and go to state 41
+    PIDFILE       shift, and go to state 42
+    ALERT         shift, and go to state 43
+    MAILFORMAT    shift, and go to state 44
+    EVENTQUEUE    shift, and go to state 45
+    MMONIT        shift, and go to state 46
+
+    alertmail  go to state 47
+
+
+state 2
+
+  205 checkproc: CHECKPROC . SERVICENAME PIDFILE PATH
+  206          | CHECKPROC . SERVICENAME PATHTOK PATH
+
+    SERVICENAME  shift, and go to state 48
+
+
+state 3
+
+  208 checkfilesys: CHECKFILESYS . SERVICENAME PATHTOK PATH
+
+    SERVICENAME  shift, and go to state 49
+
+
+state 4
+
+  207 checkfile: CHECKFILE . SERVICENAME PATHTOK PATH
+
+    SERVICENAME  shift, and go to state 50
+
+
+state 5
+
+  209 checkdir: CHECKDIR . SERVICENAME PATHTOK PATH
+
+    SERVICENAME  shift, and go to state 51
+
+
+state 6
+
+  210 checkhost: CHECKHOST . SERVICENAME ADDRESS STRING
+
+    SERVICENAME  shift, and go to state 52
+
+
+state 7
+
+  211 checksystem: CHECKSYSTEM . SERVICENAME
+
+    SERVICENAME  shift, and go to state 53
+
+
+state 8
+
+  212 checkfifo: CHECKFIFO . SERVICENAME PATHTOK PATH
+
+    SERVICENAME  shift, and go to state 54
+
+
+state 9
+
+  213 checkstatus: CHECKSTATUS . SERVICENAME PATHTOK PATH
+
+    SERVICENAME  shift, and go to state 55
+
+
+state 10
+
+    0 $accept: cfgfile . $end
+
+    $end  shift, and go to state 56
+
+
+state 11
+
+    2 cfgfile: statement_list .
+    4 statement_list: statement_list . statement
+
+    SET           shift, and go to state 1
+    CHECKPROC     shift, and go to state 2
+    CHECKFILESYS  shift, and go to state 3
+    CHECKFILE     shift, and go to state 4
+    CHECKDIR      shift, and go to state 5
+    CHECKHOST     shift, and go to state 6
+    CHECKSYSTEM   shift, and go to state 7
+    CHECKFIFO     shift, and go to state 8
+    CHECKSTATUS   shift, and go to state 9
+
+    $default  reduce using rule 2 (cfgfile)
+
+    statement        go to state 57
+    setalert         go to state 13
+    setdaemon        go to state 14
+    setexpectbuffer  go to state 15
+    setinit          go to state 16
+    setlog           go to state 17
+    seteventqueue    go to state 18
+    setidfile        go to state 19
+    setstatefile     go to state 20
+    setpid           go to state 21
+    setmmonits       go to state 22
+    setmailservers   go to state 23
+    setmailformat    go to state 24
+    sethttpd         go to state 25
+    checkproc        go to state 26
+    checkfile        go to state 27
+    checkfilesys     go to state 28
+    checkdir         go to state 29
+    checkhost        go to state 30
+    checksystem      go to state 31
+    checkfifo        go to state 32
+    checkstatus      go to state 33
+
+
+state 12
+
+    3 statement_list: statement .
+
+    $default  reduce using rule 3 (statement_list)
+
+
+state 13
+
+    5 statement: setalert .
+
+    $default  reduce using rule 5 (statement)
+
+
+state 14
+
+    6 statement: setdaemon .
+
+    $default  reduce using rule 6 (statement)
+
+
+state 15
+
+   16 statement: setexpectbuffer .
+
+    $default  reduce using rule 16 (statement)
+
+
+state 16
+
+   17 statement: setinit .
+
+    $default  reduce using rule 17 (statement)
+
+
+state 17
+
+    7 statement: setlog .
+
+    $default  reduce using rule 7 (statement)
+
+
+state 18
+
+    8 statement: seteventqueue .
+
+    $default  reduce using rule 8 (statement)
+
+
+state 19
+
+   14 statement: setidfile .
+
+    $default  reduce using rule 14 (statement)
+
+
+state 20
+
+   15 statement: setstatefile .
+
+    $default  reduce using rule 15 (statement)
+
+
+state 21
+
+   13 statement: setpid .
+
+    $default  reduce using rule 13 (statement)
+
+
+state 22
+
+    9 statement: setmmonits .
+
+    $default  reduce using rule 9 (statement)
+
+
+state 23
+
+   10 statement: setmailservers .
+
+    $default  reduce using rule 10 (statement)
+
+
+state 24
+
+   11 statement: setmailformat .
+
+    $default  reduce using rule 11 (statement)
+
+
+state 25
+
+   12 statement: sethttpd .
+
+    $default  reduce using rule 12 (statement)
+
+
+state 26
+
+   18 statement: checkproc . optproclist
+
+    $default  reduce using rule 26 (optproclist)
+
+    optproclist  go to state 58
+
+
+state 27
+
+   19 statement: checkfile . optfilelist
+
+    $default  reduce using rule 41 (optfilelist)
+
+    optfilelist  go to state 59
+
+
+state 28
+
+   20 statement: checkfilesys . optfilesyslist
+
+    $default  reduce using rule 58 (optfilesyslist)
+
+    optfilesyslist  go to state 60
+
+
+state 29
+
+   21 statement: checkdir . optdirlist
+
+    $default  reduce using rule 74 (optdirlist)
+
+    optdirlist  go to state 61
+
+
+state 30
+
+   22 statement: checkhost . opthostlist
+
+    IF       shift, and go to state 62
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    opthostlist  go to state 70
+    opthost      go to state 71
+    start        go to state 72
+    stop         go to state 73
+    connection   go to state 74
+    icmp         go to state 75
+    timeout      go to state 76
+    alert        go to state 77
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 80
+    mode         go to state 81
+    group        go to state 82
+    depend       go to state 83
+
+
+state 31
+
+   23 statement: checksystem . optsystemlist
+
+    $default  reduce using rule 100 (optsystemlist)
+
+    optsystemlist  go to state 84
+
+
+state 32
+
+   24 statement: checkfifo . optfifolist
+
+    $default  reduce using rule 108 (optfifolist)
+
+    optfifolist  go to state 85
+
+
+state 33
+
+   25 statement: checkstatus . optstatuslist
+
+    $default  reduce using rule 122 (optstatuslist)
+
+    optstatuslist  go to state 86
+
+
+state 34
+
+  137 setlog: SET LOGFILE . PATH
+  138       | SET LOGFILE . SYSLOG
+  139       | SET LOGFILE . SYSLOG FACILITY STRING
+
+    SYSLOG  shift, and go to state 87
+    PATH    shift, and go to state 88
+
+
+state 35
+
+  132 setdaemon: SET DAEMON . NUMBER startdelay
+
+    NUMBER  shift, and go to state 89
+
+
+state 36
+
+  150 setmailservers: SET MAILSERVER . mailserverlist nettimeout hostname
+
+    STRING  shift, and go to state 90
+
+    mailserverlist  go to state 91
+    mailserver      go to state 92
+
+
+state 37
+
+  152 sethttpd: SET HTTPD . PORT NUMBER httpdlist
+
+    PORT  shift, and go to state 93
+
+
+state 38
+
+  136 setinit: SET INIT .
+
+    $default  reduce using rule 136 (setinit)
+
+
+state 39
+
+  143 setidfile: SET IDFILE . PATH
+
+    PATH  shift, and go to state 94
+
+
+state 40
+
+  144 setstatefile: SET STATEFILE . PATH
+
+    PATH  shift, and go to state 95
+
+
+state 41
+
+  135 setexpectbuffer: SET EXPECTBUFFER . NUMBER unit
+
+    NUMBER  shift, and go to state 96
+
+
+state 42
+
+  145 setpid: SET PIDFILE . PATH
+
+    PATH  shift, and go to state 97
+
+
+state 43
+
+  320 alertmail: ALERT . MAILADDR
+
+    MAILADDR  shift, and go to state 98
+
+
+state 44
+
+  151 setmailformat: SET MAILFORMAT . '{' formatoptionlist '}'
+
+    '{'  shift, and go to state 99
+
+
+state 45
+
+  140 seteventqueue: SET EVENTQUEUE . BASEDIR PATH
+  141              | SET EVENTQUEUE . BASEDIR PATH SLOT NUMBER
+  142              | SET EVENTQUEUE . SLOT NUMBER
+
+    BASEDIR  shift, and go to state 100
+    SLOT     shift, and go to state 101
+
+
+state 46
+
+  146 setmmonits: SET MMONIT . mmonitlist
+
+    URLOBJECT  shift, and go to state 102
+
+    mmonitlist  go to state 103
+    mmonit      go to state 104
+
+
+state 47
+
+  129 setalert: SET alertmail . '{' eventoptionlist '}' formatlist reminder
+  130         | SET alertmail . formatlist reminder
+  131         | SET alertmail . NOT '{' eventoptionlist '}' formatlist reminder
+
+    MAILFORMAT  shift, and go to state 105
+    NOT         shift, and go to state 106
+    '{'         shift, and go to state 107
+
+    $default  reduce using rule 344 (formatlist)
+
+    formatlist  go to state 108
+
+
+state 48
+
+  205 checkproc: CHECKPROC SERVICENAME . PIDFILE PATH
+  206          | CHECKPROC SERVICENAME . PATHTOK PATH
+
+    PIDFILE  shift, and go to state 109
+    PATHTOK  shift, and go to state 110
+
+
+state 49
+
+  208 checkfilesys: CHECKFILESYS SERVICENAME . PATHTOK PATH
+
+    PATHTOK  shift, and go to state 111
+
+
+state 50
+
+  207 checkfile: CHECKFILE SERVICENAME . PATHTOK PATH
+
+    PATHTOK  shift, and go to state 112
+
+
+state 51
+
+  209 checkdir: CHECKDIR SERVICENAME . PATHTOK PATH
+
+    PATHTOK  shift, and go to state 113
+
+
+state 52
+
+  210 checkhost: CHECKHOST SERVICENAME . ADDRESS STRING
+
+    ADDRESS  shift, and go to state 114
+
+
+state 53
+
+  211 checksystem: CHECKSYSTEM SERVICENAME .
+
+    $default  reduce using rule 211 (checksystem)
+
+
+state 54
+
+  212 checkfifo: CHECKFIFO SERVICENAME . PATHTOK PATH
+
+    PATHTOK  shift, and go to state 115
+
+
+state 55
+
+  213 checkstatus: CHECKSTATUS SERVICENAME . PATHTOK PATH
+
+    PATHTOK  shift, and go to state 116
+
+
+state 56
+
+    0 $accept: cfgfile $end .
+
+    $default  accept
+
+
+state 57
+
+    4 statement_list: statement_list statement .
+
+    $default  reduce using rule 4 (statement_list)
+
+
+state 58
+
+   18 statement: checkproc optproclist .
+   27 optproclist: optproclist . optproc
+
+    IF       shift, and go to state 117
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 18 (statement)
+
+    optproc          go to state 118
+    start            go to state 119
+    stop             go to state 120
+    connection       go to state 121
+    connectionunix   go to state 122
+    pid              go to state 123
+    ppid             go to state 124
+    timeout          go to state 125
+    alert            go to state 126
+    alertmail        go to state 78
+    noalertmail      go to state 79
+    every            go to state 127
+    mode             go to state 128
+    group            go to state 129
+    depend           go to state 130
+    resourceprocess  go to state 131
+
+
+state 59
+
+   19 statement: checkfile optfilelist .
+   42 optfilelist: optfilelist . optfile
+
+    IF       shift, and go to state 132
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+    IGNORE   shift, and go to state 133
+
+    $default  reduce using rule 19 (statement)
+
+    optfile      go to state 134
+    start        go to state 135
+    stop         go to state 136
+    timeout      go to state 137
+    alert        go to state 138
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 139
+    mode         go to state 140
+    group        go to state 141
+    depend       go to state 142
+    timestamp    go to state 143
+    checksum     go to state 144
+    permission   go to state 145
+    match        go to state 146
+    size         go to state 147
+    uid          go to state 148
+    gid          go to state 149
+
+
+state 60
+
+   20 statement: checkfilesys optfilesyslist .
+   59 optfilesyslist: optfilesyslist . optfilesys
+
+    IF       shift, and go to state 150
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 20 (statement)
+
+    optfilesys   go to state 151
+    start        go to state 152
+    stop         go to state 153
+    timeout      go to state 154
+    alert        go to state 155
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 156
+    mode         go to state 157
+    group        go to state 158
+    depend       go to state 159
+    inode        go to state 160
+    space        go to state 161
+    fsflag       go to state 162
+    permission   go to state 163
+    uid          go to state 164
+    gid          go to state 165
+
+
+state 61
+
+   21 statement: checkdir optdirlist .
+   75 optdirlist: optdirlist . optdir
+
+    IF       shift, and go to state 166
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 21 (statement)
+
+    optdir       go to state 167
+    start        go to state 168
+    stop         go to state 169
+    timeout      go to state 170
+    alert        go to state 171
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 172
+    mode         go to state 173
+    group        go to state 174
+    depend       go to state 175
+    timestamp    go to state 176
+    permission   go to state 177
+    uid          go to state 178
+    gid          go to state 179
+
+
+state 62
+
+  235 connection: IF . FAILED host port type protocol nettimeout rate1 THEN action1 recovery
+  236           | IF . FAILED URL URLOBJECT urloption nettimeout rate1 THEN action1 recovery
+  238 icmp: IF . FAILED ICMP icmptype icmpcount nettimeout rate1 THEN action1 recovery
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+
+    FAILED  shift, and go to state 180
+    NUMBER  shift, and go to state 181
+
+
+state 63
+
+  214 start: START . argumentlist exectimeout
+  215      | START . argumentlist useroptionlist exectimeout
+
+    STRING  shift, and go to state 182
+    PATH    shift, and go to state 183
+
+    argumentlist  go to state 184
+    argument      go to state 185
+
+
+state 64
+
+  216 stop: STOP . argumentlist exectimeout
+  217     | STOP . argumentlist useroptionlist exectimeout
+
+    STRING  shift, and go to state 182
+    PATH    shift, and go to state 183
+
+    argumentlist  go to state 186
+    argument      go to state 185
+
+
+state 65
+
+  321 noalertmail: NOALERT . MAILADDR
+
+    MAILADDR  shift, and go to state 187
+
+
+state 66
+
+  351 every: EVERY . NUMBER CYCLE
+
+    NUMBER  shift, and go to state 188
+
+
+state 67
+
+  352 mode: MODE . ACTIVE
+  353     | MODE . PASSIVE
+  354     | MODE . MANUAL
+
+    ACTIVE   shift, and go to state 189
+    PASSIVE  shift, and go to state 190
+    MANUAL   shift, and go to state 191
+
+
+state 68
+
+  355 group: GROUP . STRINGNAME
+
+    STRINGNAME  shift, and go to state 192
+
+
+state 69
+
+  356 depend: DEPENDS . dependlist
+
+    SERVICENAME  shift, and go to state 193
+
+    dependlist  go to state 194
+    dependant   go to state 195
+
+
+state 70
+
+   22 statement: checkhost opthostlist .
+   89 opthostlist: opthostlist . opthost
+
+    IF       shift, and go to state 62
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 22 (statement)
+
+    opthost      go to state 196
+    start        go to state 72
+    stop         go to state 73
+    connection   go to state 74
+    icmp         go to state 75
+    timeout      go to state 76
+    alert        go to state 77
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 80
+    mode         go to state 81
+    group        go to state 82
+    depend       go to state 83
+
+
+state 71
+
+   88 opthostlist: opthost .
+
+    $default  reduce using rule 88 (opthostlist)
+
+
+state 72
+
+   90 opthost: start .
+
+    $default  reduce using rule 90 (opthost)
+
+
+state 73
+
+   91 opthost: stop .
+
+    $default  reduce using rule 91 (opthost)
+
+
+state 74
+
+   92 opthost: connection .
+
+    $default  reduce using rule 92 (opthost)
+
+
+state 75
+
+   93 opthost: icmp .
+
+    $default  reduce using rule 93 (opthost)
+
+
+state 76
+
+   94 opthost: timeout .
+
+    $default  reduce using rule 94 (opthost)
+
+
+state 77
+
+   95 opthost: alert .
+
+    $default  reduce using rule 95 (opthost)
+
+
+state 78
+
+  316 alert: alertmail . '{' eventoptionlist '}' formatlist reminder
+  317      | alertmail . formatlist reminder
+  318      | alertmail . NOT '{' eventoptionlist '}' formatlist reminder
+
+    MAILFORMAT  shift, and go to state 105
+    NOT         shift, and go to state 197
+    '{'         shift, and go to state 198
+
+    $default  reduce using rule 344 (formatlist)
+
+    formatlist  go to state 199
+
+
+state 79
+
+  319 alert: noalertmail .
+
+    $default  reduce using rule 319 (alert)
+
+
+state 80
+
+   96 opthost: every .
+
+    $default  reduce using rule 96 (opthost)
+
+
+state 81
+
+   97 opthost: mode .
+
+    $default  reduce using rule 97 (opthost)
+
+
+state 82
+
+   98 opthost: group .
+
+    $default  reduce using rule 98 (opthost)
+
+
+state 83
+
+   99 opthost: depend .
+
+    $default  reduce using rule 99 (opthost)
+
+
+state 84
+
+   23 statement: checksystem optsystemlist .
+  101 optsystemlist: optsystemlist . optsystem
+
+    IF       shift, and go to state 200
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 23 (statement)
+
+    optsystem       go to state 201
+    timeout         go to state 202
+    alert           go to state 203
+    alertmail       go to state 78
+    noalertmail     go to state 79
+    every           go to state 204
+    group           go to state 205
+    depend          go to state 206
+    resourcesystem  go to state 207
+
+
+state 85
+
+   24 statement: checkfifo optfifolist .
+  109 optfifolist: optfifolist . optfifo
+
+    IF       shift, and go to state 166
+    START    shift, and go to state 63
+    STOP     shift, and go to state 64
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    MODE     shift, and go to state 67
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 24 (statement)
+
+    optfifo      go to state 208
+    start        go to state 209
+    stop         go to state 210
+    timeout      go to state 211
+    alert        go to state 212
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 213
+    mode         go to state 214
+    group        go to state 215
+    depend       go to state 216
+    timestamp    go to state 217
+    permission   go to state 218
+    uid          go to state 219
+    gid          go to state 220
+
+
+state 86
+
+   25 statement: checkstatus optstatuslist .
+  123 optstatuslist: optstatuslist . optstatus
+
+    IF       shift, and go to state 221
+    ALERT    shift, and go to state 43
+    NOALERT  shift, and go to state 65
+    EVERY    shift, and go to state 66
+    GROUP    shift, and go to state 68
+    DEPENDS  shift, and go to state 69
+
+    $default  reduce using rule 25 (statement)
+
+    optstatus    go to state 222
+    timeout      go to state 223
+    alert        go to state 224
+    alertmail    go to state 78
+    noalertmail  go to state 79
+    every        go to state 225
+    group        go to state 226
+    depend       go to state 227
+
+
+state 87
+
+  138 setlog: SET LOGFILE SYSLOG .
+  139       | SET LOGFILE SYSLOG . FACILITY STRING
+
+    FACILITY  shift, and go to state 228
+
+    $default  reduce using rule 138 (setlog)
+
+
+state 88
+
+  137 setlog: SET LOGFILE PATH .
+
+    $default  reduce using rule 137 (setlog)
+
+
+state 89
+
+  132 setdaemon: SET DAEMON NUMBER . startdelay
+
+    START  shift, and go to state 229
+
+    $default  reduce using rule 133 (startdelay)
+
+    startdelay  go to state 230
+
+
+state 90
+
+  155 mailserver: STRING . username password sslversion certmd5
+  156           | STRING . PORT NUMBER username password sslversion certmd5
+
+    PORT      shift, and go to state 231
+    USERNAME  shift, and go to state 232
+
+    $default  reduce using rule 228 (username)
+
+    username  go to state 233
+
+
+state 91
+
+  150 setmailservers: SET MAILSERVER mailserverlist . nettimeout hostname
+  154 mailserverlist: mailserverlist . mailserver
+
+    TIMEOUT  shift, and go to state 234
+    STRING   shift, and go to state 90
+
+    $default  reduce using rule 309 (nettimeout)
+
+    mailserver  go to state 235
+    nettimeout  go to state 236
+
+
+state 92
+
+  153 mailserverlist: mailserver .
+
+    $default  reduce using rule 153 (mailserverlist)
+
+
+state 93
+
+  152 sethttpd: SET HTTPD PORT . NUMBER httpdlist
+
+    NUMBER  shift, and go to state 237
+
+
+state 94
+
+  143 setidfile: SET IDFILE PATH .
+
+    $default  reduce using rule 143 (setidfile)
+
+
+state 95
+
+  144 setstatefile: SET STATEFILE PATH .
+
+    $default  reduce using rule 144 (setstatefile)
+
+
+state 96
+
+  135 setexpectbuffer: SET EXPECTBUFFER NUMBER . unit
+
+    BYTE      shift, and go to state 238
+    KILOBYTE  shift, and go to state 239
+    MEGABYTE  shift, and go to state 240
+    GIGABYTE  shift, and go to state 241
+
+    $default  reduce using rule 433 (unit)
+
+    unit  go to state 242
+
+
+state 97
+
+  145 setpid: SET PIDFILE PATH .
+
+    $default  reduce using rule 145 (setpid)
+
+
+state 98
+
+  320 alertmail: ALERT MAILADDR .
+
+    $default  reduce using rule 320 (alertmail)
+
+
+state 99
+
+  151 setmailformat: SET MAILFORMAT '{' . formatoptionlist '}'
+
+    MAILFROM     shift, and go to state 243
+    MAILSUBJECT  shift, and go to state 244
+    MAILBODY     shift, and go to state 245
+
+    formatoptionlist  go to state 246
+    formatoption      go to state 247
+
+
+state 100
+
+  140 seteventqueue: SET EVENTQUEUE BASEDIR . PATH
+  141              | SET EVENTQUEUE BASEDIR . PATH SLOT NUMBER
+
+    PATH  shift, and go to state 248
+
+
+state 101
+
+  142 seteventqueue: SET EVENTQUEUE SLOT . NUMBER
+
+    NUMBER  shift, and go to state 249
+
+
+state 102
+
+  149 mmonit: URLOBJECT . nettimeout sslversion certmd5
+
+    TIMEOUT  shift, and go to state 234
+
+    $default  reduce using rule 309 (nettimeout)
+
+    nettimeout  go to state 250
+
+
+state 103
+
+  146 setmmonits: SET MMONIT mmonitlist .
+  148 mmonitlist: mmonitlist . mmonit
+
+    URLOBJECT  shift, and go to state 102
+
+    $default  reduce using rule 146 (setmmonits)
+
+    mmonit  go to state 251
+
+
+state 104
+
+  147 mmonitlist: mmonit .
+
+    $default  reduce using rule 147 (mmonitlist)
+
+
+state 105
+
+  345 formatlist: MAILFORMAT . '{' formatoptionlist '}'
+
+    '{'  shift, and go to state 252
+
+
+state 106
+
+  131 setalert: SET alertmail NOT . '{' eventoptionlist '}' formatlist reminder
+
+    '{'  shift, and go to state 253
+
+
+state 107
+
+  129 setalert: SET alertmail '{' . eventoptionlist '}' formatlist reminder
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+
+    eventoptionlist  go to state 274
+    eventoption      go to state 275
+
+
+state 108
+
+  130 setalert: SET alertmail formatlist . reminder
+
+    REMINDER  shift, and go to state 276
+
+    $default  reduce using rule 452 (reminder)
+
+    reminder  go to state 277
+
+
+state 109
+
+  205 checkproc: CHECKPROC SERVICENAME PIDFILE . PATH
+
+    PATH  shift, and go to state 278
+
+
+state 110
+
+  206 checkproc: CHECKPROC SERVICENAME PATHTOK . PATH
+
+    PATH  shift, and go to state 279
+
+
+state 111
+
+  208 checkfilesys: CHECKFILESYS SERVICENAME PATHTOK . PATH
+
+    PATH  shift, and go to state 280
+
+
+state 112
+
+  207 checkfile: CHECKFILE SERVICENAME PATHTOK . PATH
+
+    PATH  shift, and go to state 281
+
+
+state 113
+
+  209 checkdir: CHECKDIR SERVICENAME PATHTOK . PATH
+
+    PATH  shift, and go to state 282
+
+
+state 114
+
+  210 checkhost: CHECKHOST SERVICENAME ADDRESS . STRING
+
+    STRING  shift, and go to state 283
+
+
+state 115
+
+  212 checkfifo: CHECKFIFO SERVICENAME PATHTOK . PATH
+
+    PATH  shift, and go to state 284
+
+
+state 116
+
+  213 checkstatus: CHECKSTATUS SERVICENAME PATHTOK . PATH
+
+    PATH  shift, and go to state 285
+
+
+state 117
+
+  235 connection: IF . FAILED host port type protocol nettimeout rate1 THEN action1 recovery
+  236           | IF . FAILED URL URLOBJECT urloption nettimeout rate1 THEN action1 recovery
+  237 connectionunix: IF . FAILED unixsocket type protocol nettimeout rate1 THEN action1 recovery
+  303 pid: IF . CHANGED PID rate1 THEN action1
+  304 ppid: IF . CHANGED PPID rate1 THEN action1
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+  360 resourceprocess: IF . resourceprocesslist rate1 THEN action1 recovery
+
+    FAILED       shift, and go to state 286
+    NUMBER       shift, and go to state 181
+    CHILDREN     shift, and go to state 287
+    MEMORY       shift, and go to state 288
+    TOTALMEMORY  shift, and go to state 289
+    LOADAVG1     shift, and go to state 290
+    LOADAVG5     shift, and go to state 291
+    LOADAVG15    shift, and go to state 292
+    CPU          shift, and go to state 293
+    TOTALCPU     shift, and go to state 294
+    CHANGED      shift, and go to state 295
+
+    resourceprocesslist  go to state 296
+    resourceprocessopt   go to state 297
+    resourcecpuproc      go to state 298
+    resourcemem          go to state 299
+    resourcechild        go to state 300
+    resourceload         go to state 301
+    resourceloadavg      go to state 302
+
+
+state 118
+
+   27 optproclist: optproclist optproc .
+
+    $default  reduce using rule 27 (optproclist)
+
+
+state 119
+
+   28 optproc: start .
+
+    $default  reduce using rule 28 (optproc)
+
+
+state 120
+
+   29 optproc: stop .
+
+    $default  reduce using rule 29 (optproc)
+
+
+state 121
+
+   32 optproc: connection .
+
+    $default  reduce using rule 32 (optproc)
+
+
+state 122
+
+   33 optproc: connectionunix .
+
+    $default  reduce using rule 33 (optproc)
+
+
+state 123
+
+   30 optproc: pid .
+
+    $default  reduce using rule 30 (optproc)
+
+
+state 124
+
+   31 optproc: ppid .
+
+    $default  reduce using rule 31 (optproc)
+
+
+state 125
+
+   34 optproc: timeout .
+
+    $default  reduce using rule 34 (optproc)
+
+
+state 126
+
+   35 optproc: alert .
+
+    $default  reduce using rule 35 (optproc)
+
+
+state 127
+
+   36 optproc: every .
+
+    $default  reduce using rule 36 (optproc)
+
+
+state 128
+
+   37 optproc: mode .
+
+    $default  reduce using rule 37 (optproc)
+
+
+state 129
+
+   38 optproc: group .
+
+    $default  reduce using rule 38 (optproc)
+
+
+state 130
+
+   39 optproc: depend .
+
+    $default  reduce using rule 39 (optproc)
+
+
+state 131
+
+   40 optproc: resourceprocess .
+
+    $default  reduce using rule 40 (optproc)
+
+
+state 132
+
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+  390 timestamp: IF . TIMESTAMP operator NUMBER time rate1 THEN action1 recovery
+  391          | IF . CHANGED TIMESTAMP rate1 THEN action1
+  422 checksum: IF . FAILED hashtype CHECKSUM rate1 THEN action1 recovery
+  423         | IF . FAILED hashtype CHECKSUM EXPECT STRING rate1 THEN action1 recovery
+  424         | IF . CHANGED hashtype CHECKSUM rate1 THEN action1
+  438 permission: IF . FAILED PERMISSION NUMBER rate1 THEN action1 recovery
+  439 match: IF . matchflagnot MATCH PATH rate1 THEN action1
+  440      | IF . matchflagnot MATCH STRING rate1 THEN action1
+  445 size: IF . SIZE operator NUMBER unit rate1 THEN action1 recovery
+  446     | IF . CHANGED SIZE rate1 THEN action1
+  447 uid: IF . FAILED UID STRING rate1 THEN action1 recovery
+  448    | IF . FAILED UID NUMBER rate1 THEN action1 recovery
+  449 gid: IF . FAILED GID STRING rate1 THEN action1 recovery
+  450    | IF . FAILED GID NUMBER rate1 THEN action1 recovery
+
+    FAILED     shift, and go to state 303
+    NUMBER     shift, and go to state 181
+    TIMESTAMP  shift, and go to state 304
+    CHANGED    shift, and go to state 305
+    SIZE       shift, and go to state 306
+    NOT        shift, and go to state 307
+
+    $default  reduce using rule 443 (matchflagnot)
+
+    matchflagnot  go to state 308
+
+
+state 133
+
+  441 match: IGNORE . matchflagnot MATCH PATH
+  442      | IGNORE . matchflagnot MATCH STRING
+
+    NOT  shift, and go to state 307
+
+    $default  reduce using rule 443 (matchflagnot)
+
+    matchflagnot  go to state 309
+
+
+state 134
+
+   42 optfilelist: optfilelist optfile .
+
+    $default  reduce using rule 42 (optfilelist)
+
+
+state 135
+
+   43 optfile: start .
+
+    $default  reduce using rule 43 (optfile)
+
+
+state 136
+
+   44 optfile: stop .
+
+    $default  reduce using rule 44 (optfile)
+
+
+state 137
+
+   46 optfile: timeout .
+
+    $default  reduce using rule 46 (optfile)
+
+
+state 138
+
+   48 optfile: alert .
+
+    $default  reduce using rule 48 (optfile)
+
+
+state 139
+
+   47 optfile: every .
+
+    $default  reduce using rule 47 (optfile)
+
+
+state 140
+
+   55 optfile: mode .
+
+    $default  reduce using rule 55 (optfile)
+
+
+state 141
+
+   56 optfile: group .
+
+    $default  reduce using rule 56 (optfile)
+
+
+state 142
+
+   57 optfile: depend .
+
+    $default  reduce using rule 57 (optfile)
+
+
+state 143
+
+   45 optfile: timestamp .
+
+    $default  reduce using rule 45 (optfile)
+
+
+state 144
+
+   52 optfile: checksum .
+
+    $default  reduce using rule 52 (optfile)
+
+
+state 145
+
+   49 optfile: permission .
+
+    $default  reduce using rule 49 (optfile)
+
+
+state 146
+
+   54 optfile: match .
+
+    $default  reduce using rule 54 (optfile)
+
+
+state 147
+
+   53 optfile: size .
+
+    $default  reduce using rule 53 (optfile)
+
+
+state 148
+
+   50 optfile: uid .
+
+    $default  reduce using rule 50 (optfile)
+
+
+state 149
+
+   51 optfile: gid .
+
+    $default  reduce using rule 51 (optfile)
+
+
+state 150
+
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+  428 inode: IF . INODE operator NUMBER rate1 THEN action1 recovery
+  429      | IF . INODE operator NUMBER PERCENT rate1 THEN action1 recovery
+  430 space: IF . SPACE operator value unit rate1 THEN action1 recovery
+  431      | IF . SPACE operator NUMBER PERCENT rate1 THEN action1 recovery
+  432 fsflag: IF . CHANGED FSFLAG rate1 THEN action1
+  438 permission: IF . FAILED PERMISSION NUMBER rate1 THEN action1 recovery
+  447 uid: IF . FAILED UID STRING rate1 THEN action1 recovery
+  448    | IF . FAILED UID NUMBER rate1 THEN action1 recovery
+  449 gid: IF . FAILED GID STRING rate1 THEN action1 recovery
+  450    | IF . FAILED GID NUMBER rate1 THEN action1 recovery
+
+    FAILED   shift, and go to state 310
+    NUMBER   shift, and go to state 181
+    CHANGED  shift, and go to state 311
+    INODE    shift, and go to state 312
+    SPACE    shift, and go to state 313
+
+
+state 151
+
+   59 optfilesyslist: optfilesyslist optfilesys .
+
+    $default  reduce using rule 59 (optfilesyslist)
+
+
+state 152
+
+   60 optfilesys: start .
+
+    $default  reduce using rule 60 (optfilesys)
+
+
+state 153
+
+   61 optfilesys: stop .
+
+    $default  reduce using rule 61 (optfilesys)
+
+
+state 154
+
+   62 optfilesys: timeout .
+
+    $default  reduce using rule 62 (optfilesys)
+
+
+state 155
+
+   64 optfilesys: alert .
+
+    $default  reduce using rule 64 (optfilesys)
+
+
+state 156
+
+   63 optfilesys: every .
+
+    $default  reduce using rule 63 (optfilesys)
+
+
+state 157
+
+   68 optfilesys: mode .
+
+    $default  reduce using rule 68 (optfilesys)
+
+
+state 158
+
+   69 optfilesys: group .
+
+    $default  reduce using rule 69 (optfilesys)
+
+
+state 159
+
+   70 optfilesys: depend .
+
+    $default  reduce using rule 70 (optfilesys)
+
+
+state 160
+
+   71 optfilesys: inode .
+
+    $default  reduce using rule 71 (optfilesys)
+
+
+state 161
+
+   72 optfilesys: space .
+
+    $default  reduce using rule 72 (optfilesys)
+
+
+state 162
+
+   73 optfilesys: fsflag .
+
+    $default  reduce using rule 73 (optfilesys)
+
+
+state 163
+
+   65 optfilesys: permission .
+
+    $default  reduce using rule 65 (optfilesys)
+
+
+state 164
+
+   66 optfilesys: uid .
+
+    $default  reduce using rule 66 (optfilesys)
+
+
+state 165
+
+   67 optfilesys: gid .
+
+    $default  reduce using rule 67 (optfilesys)
+
+
+state 166
+
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+  390 timestamp: IF . TIMESTAMP operator NUMBER time rate1 THEN action1 recovery
+  391          | IF . CHANGED TIMESTAMP rate1 THEN action1
+  438 permission: IF . FAILED PERMISSION NUMBER rate1 THEN action1 recovery
+  447 uid: IF . FAILED UID STRING rate1 THEN action1 recovery
+  448    | IF . FAILED UID NUMBER rate1 THEN action1 recovery
+  449 gid: IF . FAILED GID STRING rate1 THEN action1 recovery
+  450    | IF . FAILED GID NUMBER rate1 THEN action1 recovery
+
+    FAILED     shift, and go to state 310
+    NUMBER     shift, and go to state 181
+    TIMESTAMP  shift, and go to state 304
+    CHANGED    shift, and go to state 314
+
+
+state 167
+
+   75 optdirlist: optdirlist optdir .
+
+    $default  reduce using rule 75 (optdirlist)
+
+
+state 168
+
+   76 optdir: start .
+
+    $default  reduce using rule 76 (optdir)
+
+
+state 169
+
+   77 optdir: stop .
+
+    $default  reduce using rule 77 (optdir)
+
+
+state 170
+
+   79 optdir: timeout .
+
+    $default  reduce using rule 79 (optdir)
+
+
+state 171
+
+   81 optdir: alert .
+
+    $default  reduce using rule 81 (optdir)
+
+
+state 172
+
+   80 optdir: every .
+
+    $default  reduce using rule 80 (optdir)
+
+
+state 173
+
+   85 optdir: mode .
+
+    $default  reduce using rule 85 (optdir)
+
+
+state 174
+
+   86 optdir: group .
+
+    $default  reduce using rule 86 (optdir)
+
+
+state 175
+
+   87 optdir: depend .
+
+    $default  reduce using rule 87 (optdir)
+
+
+state 176
+
+   78 optdir: timestamp .
+
+    $default  reduce using rule 78 (optdir)
+
+
+state 177
+
+   82 optdir: permission .
+
+    $default  reduce using rule 82 (optdir)
+
+
+state 178
+
+   83 optdir: uid .
+
+    $default  reduce using rule 83 (optdir)
+
+
+state 179
+
+   84 optdir: gid .
+
+    $default  reduce using rule 84 (optdir)
+
+
+state 180
+
+  235 connection: IF FAILED . host port type protocol nettimeout rate1 THEN action1 recovery
+  236           | IF FAILED . URL URLOBJECT urloption nettimeout rate1 THEN action1 recovery
+  238 icmp: IF FAILED . ICMP icmptype icmpcount nettimeout rate1 THEN action1 recovery
+
+    HOST  shift, and go to state 315
+    ICMP  shift, and go to state 316
+    URL   shift, and go to state 317
+
+    $default  reduce using rule 239 (host)
+
+    host  go to state 318
+
+
+state 181
+
+  311 timeout: IF NUMBER . RESTART NUMBER CYCLE THEN TIMEOUT
+
+    RESTART  shift, and go to state 319
+
+
+state 182
+
+  222 argument: STRING .
+
+    $default  reduce using rule 222 (argument)
+
+
+state 183
+
+  223 argument: PATH .
+
+    $default  reduce using rule 223 (argument)
+
+
+state 184
+
+  214 start: START argumentlist . exectimeout
+  215      | START argumentlist . useroptionlist exectimeout
+  219 argumentlist: argumentlist . argument
+
+    TIMEOUT  shift, and go to state 320
+    STRING   shift, and go to state 182
+    PATH     shift, and go to state 183
+    UID      shift, and go to state 321
+    GID      shift, and go to state 322
+
+    $default  reduce using rule 307 (exectimeout)
+
+    useroptionlist  go to state 323
+    argument        go to state 324
+    useroption      go to state 325
+    exectimeout     go to state 326
+
+
+state 185
+
+  218 argumentlist: argument .
+
+    $default  reduce using rule 218 (argumentlist)
+
+
+state 186
+
+  216 stop: STOP argumentlist . exectimeout
+  217     | STOP argumentlist . useroptionlist exectimeout
+  219 argumentlist: argumentlist . argument
+
+    TIMEOUT  shift, and go to state 320
+    STRING   shift, and go to state 182
+    PATH     shift, and go to state 183
+    UID      shift, and go to state 321
+    GID      shift, and go to state 322
+
+    $default  reduce using rule 307 (exectimeout)
+
+    useroptionlist  go to state 327
+    argument        go to state 324
+    useroption      go to state 325
+    exectimeout     go to state 328
+
+
+state 187
+
+  321 noalertmail: NOALERT MAILADDR .
+
+    $default  reduce using rule 321 (noalertmail)
+
+
+state 188
+
+  351 every: EVERY NUMBER . CYCLE
+
+    CYCLE  shift, and go to state 329
+
+
+state 189
+
+  352 mode: MODE ACTIVE .
+
+    $default  reduce using rule 352 (mode)
+
+
+state 190
+
+  353 mode: MODE PASSIVE .
+
+    $default  reduce using rule 353 (mode)
+
+
+state 191
+
+  354 mode: MODE MANUAL .
+
+    $default  reduce using rule 354 (mode)
+
+
+state 192
+
+  355 group: GROUP STRINGNAME .
+
+    $default  reduce using rule 355 (group)
+
+
+state 193
+
+  359 dependant: SERVICENAME .
+
+    $default  reduce using rule 359 (dependant)
+
+
+state 194
+
+  356 depend: DEPENDS dependlist .
+  358 dependlist: dependlist . dependant
+
+    SERVICENAME  shift, and go to state 193
+
+    $default  reduce using rule 356 (depend)
+
+    dependant  go to state 330
+
+
+state 195
+
+  357 dependlist: dependant .
+
+    $default  reduce using rule 357 (dependlist)
+
+
+state 196
+
+   89 opthostlist: opthostlist opthost .
+
+    $default  reduce using rule 89 (opthostlist)
+
+
+state 197
+
+  318 alert: alertmail NOT . '{' eventoptionlist '}' formatlist reminder
+
+    '{'  shift, and go to state 331
+
+
+state 198
+
+  316 alert: alertmail '{' . eventoptionlist '}' formatlist reminder
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+
+    eventoptionlist  go to state 332
+    eventoption      go to state 275
+
+
+state 199
+
+  317 alert: alertmail formatlist . reminder
+
+    REMINDER  shift, and go to state 276
+
+    $default  reduce using rule 452 (reminder)
+
+    reminder  go to state 333
+
+
+state 200
+
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+  367 resourcesystem: IF . resourcesystemlist rate1 THEN action1 recovery
+
+    NUMBER       shift, and go to state 181
+    MEMORY       shift, and go to state 288
+    TOTALMEMORY  shift, and go to state 289
+    LOADAVG1     shift, and go to state 290
+    LOADAVG5     shift, and go to state 291
+    LOADAVG15    shift, and go to state 292
+    CPUUSER      shift, and go to state 334
+    CPUSYSTEM    shift, and go to state 335
+    CPUWAIT      shift, and go to state 336
+
+    resourcesystemlist  go to state 337
+    resourcesystemopt   go to state 338
+    resourcecpu         go to state 339
+    resourcecpuid       go to state 340
+    resourcemem         go to state 341
+    resourceload        go to state 342
+    resourceloadavg     go to state 302
+
+
+state 201
+
+  101 optsystemlist: optsystemlist optsystem .
+
+    $default  reduce using rule 101 (optsystemlist)
+
+
+state 202
+
+  102 optsystem: timeout .
+
+    $default  reduce using rule 102 (optsystem)
+
+
+state 203
+
+  103 optsystem: alert .
+
+    $default  reduce using rule 103 (optsystem)
+
+
+state 204
+
+  104 optsystem: every .
+
+    $default  reduce using rule 104 (optsystem)
+
+
+state 205
+
+  105 optsystem: group .
+
+    $default  reduce using rule 105 (optsystem)
+
+
+state 206
+
+  106 optsystem: depend .
+
+    $default  reduce using rule 106 (optsystem)
+
+
+state 207
+
+  107 optsystem: resourcesystem .
+
+    $default  reduce using rule 107 (optsystem)
+
+
+state 208
+
+  109 optfifolist: optfifolist optfifo .
+
+    $default  reduce using rule 109 (optfifolist)
+
+
+state 209
+
+  110 optfifo: start .
+
+    $default  reduce using rule 110 (optfifo)
+
+
+state 210
+
+  111 optfifo: stop .
+
+    $default  reduce using rule 111 (optfifo)
+
+
+state 211
+
+  113 optfifo: timeout .
+
+    $default  reduce using rule 113 (optfifo)
+
+
+state 212
+
+  115 optfifo: alert .
+
+    $default  reduce using rule 115 (optfifo)
+
+
+state 213
+
+  114 optfifo: every .
+
+    $default  reduce using rule 114 (optfifo)
+
+
+state 214
+
+  119 optfifo: mode .
+
+    $default  reduce using rule 119 (optfifo)
+
+
+state 215
+
+  120 optfifo: group .
+
+    $default  reduce using rule 120 (optfifo)
+
+
+state 216
+
+  121 optfifo: depend .
+
+    $default  reduce using rule 121 (optfifo)
+
+
+state 217
+
+  112 optfifo: timestamp .
+
+    $default  reduce using rule 112 (optfifo)
+
+
+state 218
+
+  116 optfifo: permission .
+
+    $default  reduce using rule 116 (optfifo)
+
+
+state 219
+
+  117 optfifo: uid .
+
+    $default  reduce using rule 117 (optfifo)
+
+
+state 220
+
+  118 optfifo: gid .
+
+    $default  reduce using rule 118 (optfifo)
+
+
+state 221
+
+  311 timeout: IF . NUMBER RESTART NUMBER CYCLE THEN TIMEOUT
+
+    NUMBER  shift, and go to state 181
+
+
+state 222
+
+  123 optstatuslist: optstatuslist optstatus .
+
+    $default  reduce using rule 123 (optstatuslist)
+
+
+state 223
+
+  124 optstatus: timeout .
+
+    $default  reduce using rule 124 (optstatus)
+
+
+state 224
+
+  125 optstatus: alert .
+
+    $default  reduce using rule 125 (optstatus)
+
+
+state 225
+
+  126 optstatus: every .
+
+    $default  reduce using rule 126 (optstatus)
+
+
+state 226
+
+  127 optstatus: group .
+
+    $default  reduce using rule 127 (optstatus)
+
+
+state 227
+
+  128 optstatus: depend .
+
+    $default  reduce using rule 128 (optstatus)
+
+
+state 228
+
+  139 setlog: SET LOGFILE SYSLOG FACILITY . STRING
+
+    STRING  shift, and go to state 343
+
+
+state 229
+
+  134 startdelay: START . DELAY NUMBER
+
+    DELAY  shift, and go to state 344
+
+
+state 230
+
+  132 setdaemon: SET DAEMON NUMBER startdelay .
+
+    $default  reduce using rule 132 (setdaemon)
+
+
+state 231
+
+  156 mailserver: STRING PORT . NUMBER username password sslversion certmd5
+
+    NUMBER  shift, and go to state 345
+
+
+state 232
+
+  229 username: USERNAME . MAILADDR
+  230         | USERNAME . STRING
+
+    STRING    shift, and go to state 346
+    MAILADDR  shift, and go to state 347
+
+
+state 233
+
+  155 mailserver: STRING username . password sslversion certmd5
+
+    PASSWORD  shift, and go to state 348
+
+    $default  reduce using rule 231 (password)
+
+    password  go to state 349
+
+
+state 234
+
+  310 nettimeout: TIMEOUT . NUMBER SECOND
+
+    NUMBER  shift, and go to state 350
+
+
+state 235
+
+  154 mailserverlist: mailserverlist mailserver .
+
+    $default  reduce using rule 154 (mailserverlist)
+
+
+state 236
+
+  150 setmailservers: SET MAILSERVER mailserverlist nettimeout . hostname
+
+    HOSTNAME  shift, and go to state 351
+
+    $default  reduce using rule 233 (hostname)
+
+    hostname  go to state 352
+
+
+state 237
+
+  152 sethttpd: SET HTTPD PORT NUMBER . httpdlist
+
+    $default  reduce using rule 157 (httpdlist)
+
+    httpdlist  go to state 353
+
+
+state 238
+
+  434 unit: BYTE .
+
+    $default  reduce using rule 434 (unit)
+
+
+state 239
+
+  435 unit: KILOBYTE .
+
+    $default  reduce using rule 435 (unit)
+
+
+state 240
+
+  436 unit: MEGABYTE .
+
+    $default  reduce using rule 436 (unit)
+
+
+state 241
+
+  437 unit: GIGABYTE .
+
+    $default  reduce using rule 437 (unit)
+
+
+state 242
+
+  135 setexpectbuffer: SET EXPECTBUFFER NUMBER unit .
+
+    $default  reduce using rule 135 (setexpectbuffer)
+
+
+state 243
+
+  348 formatoption: MAILFROM .
+
+    $default  reduce using rule 348 (formatoption)
+
+
+state 244
+
+  349 formatoption: MAILSUBJECT .
+
+    $default  reduce using rule 349 (formatoption)
+
+
+state 245
+
+  350 formatoption: MAILBODY .
+
+    $default  reduce using rule 350 (formatoption)
+
+
+state 246
+
+  151 setmailformat: SET MAILFORMAT '{' formatoptionlist . '}'
+  347 formatoptionlist: formatoptionlist . formatoption
+
+    MAILFROM     shift, and go to state 243
+    MAILSUBJECT  shift, and go to state 244
+    MAILBODY     shift, and go to state 245
+    '}'          shift, and go to state 354
+
+    formatoption  go to state 355
+
+
+state 247
+
+  346 formatoptionlist: formatoption .
+
+    $default  reduce using rule 346 (formatoptionlist)
+
+
+state 248
+
+  140 seteventqueue: SET EVENTQUEUE BASEDIR PATH .
+  141              | SET EVENTQUEUE BASEDIR PATH . SLOT NUMBER
+
+    SLOT  shift, and go to state 356
+
+    $default  reduce using rule 140 (seteventqueue)
+
+
+state 249
+
+  142 seteventqueue: SET EVENTQUEUE SLOT NUMBER .
+
+    $default  reduce using rule 142 (seteventqueue)
+
+
+state 250
+
+  149 mmonit: URLOBJECT nettimeout . sslversion certmd5
+
+    SSLAUTO  shift, and go to state 357
+    SSLV2    shift, and go to state 358
+    SSLV3    shift, and go to state 359
+    TLSV1    shift, and go to state 360
+
+    $default  reduce using rule 249 (sslversion)
+
+    sslversion  go to state 361
+
+
+state 251
+
+  148 mmonitlist: mmonitlist mmonit .
+
+    $default  reduce using rule 148 (mmonitlist)
+
+
+state 252
+
+  345 formatlist: MAILFORMAT '{' . formatoptionlist '}'
+
+    MAILFROM     shift, and go to state 243
+    MAILSUBJECT  shift, and go to state 244
+    MAILBODY     shift, and go to state 245
+
+    formatoptionlist  go to state 362
+    formatoption      go to state 247
+
+
+state 253
+
+  131 setalert: SET alertmail NOT '{' . eventoptionlist '}' formatlist reminder
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+
+    eventoptionlist  go to state 363
+    eventoption      go to state 275
+
+
+state 254
+
+  326 eventoption: CONNECTION .
+
+    $default  reduce using rule 326 (eventoption)
+
+
+state 255
+
+  341 eventoption: TIMEOUT .
+
+    $default  reduce using rule 341 (eventoption)
+
+
+state 256
+
+  325 eventoption: CHECKSUM .
+
+    $default  reduce using rule 325 (eventoption)
+
+
+state 257
+
+  339 eventoption: RESOURCE .
+
+    $default  reduce using rule 339 (eventoption)
+
+
+state 258
+
+  343 eventoption: UID .
+
+    $default  reduce using rule 343 (eventoption)
+
+
+state 259
+
+  331 eventoption: GID .
+
+    $default  reduce using rule 331 (eventoption)
+
+
+state 260
+
+  333 eventoption: INSTANCE .
+
+    $default  reduce using rule 333 (eventoption)
+
+
+state 261
+
+  342 eventoption: TIMESTAMP .
+
+    $default  reduce using rule 342 (eventoption)
+
+
+state 262
+
+  336 eventoption: PERMISSION .
+
+    $default  reduce using rule 336 (eventoption)
+
+
+state 263
+
+  340 eventoption: SIZE .
+
+    $default  reduce using rule 340 (eventoption)
+
+
+state 264
+
+  324 eventoption: ACTION .
+
+    $default  reduce using rule 324 (eventoption)
+
+
+state 265
+
+  329 eventoption: EXEC .
+
+    $default  reduce using rule 329 (eventoption)
+
+
+state 266
+
+  332 eventoption: ICMP .
+
+    $default  reduce using rule 332 (eventoption)
+
+
+state 267
+
+  335 eventoption: NONEXIST .
+
+    $default  reduce using rule 335 (eventoption)
+
+
+state 268
+
+  334 eventoption: INVALID .
+
+    $default  reduce using rule 334 (eventoption)
+
+
+state 269
+
+  328 eventoption: DATA .
+
+    $default  reduce using rule 328 (eventoption)
+
+
+state 270
+
+  327 eventoption: CONTENT .
+
+    $default  reduce using rule 327 (eventoption)
+
+
+state 271
+
+  337 eventoption: PID .
+
+    $default  reduce using rule 337 (eventoption)
+
+
+state 272
+
+  338 eventoption: PPID .
+
+    $default  reduce using rule 338 (eventoption)
+
+
+state 273
+
+  330 eventoption: FSFLAG .
+
+    $default  reduce using rule 330 (eventoption)
+
+
+state 274
+
+  129 setalert: SET alertmail '{' eventoptionlist . '}' formatlist reminder
+  323 eventoptionlist: eventoptionlist . eventoption
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+    '}'         shift, and go to state 364
+
+    eventoption  go to state 365
+
+
+state 275
+
+  322 eventoptionlist: eventoption .
+
+    $default  reduce using rule 322 (eventoptionlist)
+
+
+state 276
+
+  453 reminder: REMINDER . NUMBER
+  454         | REMINDER . NUMBER CYCLE
+
+    NUMBER  shift, and go to state 366
+
+
+state 277
+
+  130 setalert: SET alertmail formatlist reminder .
+
+    $default  reduce using rule 130 (setalert)
+
+
+state 278
+
+  205 checkproc: CHECKPROC SERVICENAME PIDFILE PATH .
+
+    $default  reduce using rule 205 (checkproc)
+
+
+state 279
+
+  206 checkproc: CHECKPROC SERVICENAME PATHTOK PATH .
+
+    $default  reduce using rule 206 (checkproc)
+
+
+state 280
+
+  208 checkfilesys: CHECKFILESYS SERVICENAME PATHTOK PATH .
+
+    $default  reduce using rule 208 (checkfilesys)
+
+
+state 281
+
+  207 checkfile: CHECKFILE SERVICENAME PATHTOK PATH .
+
+    $default  reduce using rule 207 (checkfile)
+
+
+state 282
+
+  209 checkdir: CHECKDIR SERVICENAME PATHTOK PATH .
+
+    $default  reduce using rule 209 (checkdir)
+
+
+state 283
+
+  210 checkhost: CHECKHOST SERVICENAME ADDRESS STRING .
+
+    $default  reduce using rule 210 (checkhost)
+
+
+state 284
+
+  212 checkfifo: CHECKFIFO SERVICENAME PATHTOK PATH .
+
+    $default  reduce using rule 212 (checkfifo)
+
+
+state 285
+
+  213 checkstatus: CHECKSTATUS SERVICENAME PATHTOK PATH .
+
+    $default  reduce using rule 213 (checkstatus)
+
+
+state 286
+
+  235 connection: IF FAILED . host port type protocol nettimeout rate1 THEN action1 recovery
+  236           | IF FAILED . URL URLOBJECT urloption nettimeout rate1 THEN action1 recovery
+  237 connectionunix: IF FAILED . unixsocket type protocol nettimeout rate1 THEN action1 recovery
+
+    HOST        shift, and go to state 315
+    UNIXSOCKET  shift, and go to state 367
+    URL         shift, and go to state 317
+
+    $default  reduce using rule 239 (host)
+
+    host        go to state 318
+    unixsocket  go to state 368
+
+
+state 287
+
+  383 resourcechild: CHILDREN . operator NUMBER
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 374
+
+
+state 288
+
+  379 resourcemem: MEMORY . operator value unit
+  380            | MEMORY . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 375
+
+
+state 289
+
+  381 resourcemem: TOTALMEMORY . operator value unit
+  382            | TOTALMEMORY . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 376
+
+
+state 290
+
+  385 resourceloadavg: LOADAVG1 .
+
+    $default  reduce using rule 385 (resourceloadavg)
+
+
+state 291
+
+  386 resourceloadavg: LOADAVG5 .
+
+    $default  reduce using rule 386 (resourceloadavg)
+
+
+state 292
+
+  387 resourceloadavg: LOADAVG15 .
+
+    $default  reduce using rule 387 (resourceloadavg)
+
+
+state 293
+
+  373 resourcecpuproc: CPU . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 377
+
+
+state 294
+
+  374 resourcecpuproc: TOTALCPU . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 378
+
+
+state 295
+
+  303 pid: IF CHANGED . PID rate1 THEN action1
+  304 ppid: IF CHANGED . PPID rate1 THEN action1
+
+    PID   shift, and go to state 379
+    PPID  shift, and go to state 380
+
+
+state 296
+
+  360 resourceprocess: IF resourceprocesslist . rate1 THEN action1 recovery
+  362 resourceprocesslist: resourceprocesslist . resourceprocessopt
+
+    NUMBER       shift, and go to state 381
+    CHILDREN     shift, and go to state 287
+    MEMORY       shift, and go to state 288
+    TOTALMEMORY  shift, and go to state 289
+    LOADAVG1     shift, and go to state 290
+    LOADAVG5     shift, and go to state 291
+    LOADAVG15    shift, and go to state 292
+    CPU          shift, and go to state 293
+    TOTALCPU     shift, and go to state 294
+
+    $default  reduce using rule 412 (rate1)
+
+    resourceprocessopt  go to state 382
+    resourcecpuproc     go to state 298
+    resourcemem         go to state 299
+    resourcechild       go to state 300
+    resourceload        go to state 301
+    resourceloadavg     go to state 302
+    rate1               go to state 383
+
+
+state 297
+
+  361 resourceprocesslist: resourceprocessopt .
+
+    $default  reduce using rule 361 (resourceprocesslist)
+
+
+state 298
+
+  363 resourceprocessopt: resourcecpuproc .
+
+    $default  reduce using rule 363 (resourceprocessopt)
+
+
+state 299
+
+  364 resourceprocessopt: resourcemem .
+
+    $default  reduce using rule 364 (resourceprocessopt)
+
+
+state 300
+
+  365 resourceprocessopt: resourcechild .
+
+    $default  reduce using rule 365 (resourceprocessopt)
+
+
+state 301
+
+  366 resourceprocessopt: resourceload .
+
+    $default  reduce using rule 366 (resourceprocessopt)
+
+
+state 302
+
+  384 resourceload: resourceloadavg . operator value
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 384
+
+
+state 303
+
+  422 checksum: IF FAILED . hashtype CHECKSUM rate1 THEN action1 recovery
+  423         | IF FAILED . hashtype CHECKSUM EXPECT STRING rate1 THEN action1 recovery
+  438 permission: IF FAILED . PERMISSION NUMBER rate1 THEN action1 recovery
+  447 uid: IF FAILED . UID STRING rate1 THEN action1 recovery
+  448    | IF FAILED . UID NUMBER rate1 THEN action1 recovery
+  449 gid: IF FAILED . GID STRING rate1 THEN action1 recovery
+  450    | IF FAILED . GID NUMBER rate1 THEN action1 recovery
+
+    MD5HASH     shift, and go to state 385
+    SHA1HASH    shift, and go to state 386
+    UID         shift, and go to state 387
+    GID         shift, and go to state 388
+    PERMISSION  shift, and go to state 389
+
+    $default  reduce using rule 425 (hashtype)
+
+    hashtype  go to state 390
+
+
+state 304
+
+  390 timestamp: IF TIMESTAMP . operator NUMBER time rate1 THEN action1 recovery
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 391
+
+
+state 305
+
+  391 timestamp: IF CHANGED . TIMESTAMP rate1 THEN action1
+  424 checksum: IF CHANGED . hashtype CHECKSUM rate1 THEN action1
+  446 size: IF CHANGED . SIZE rate1 THEN action1
+
+    MD5HASH    shift, and go to state 385
+    SHA1HASH   shift, and go to state 386
+    TIMESTAMP  shift, and go to state 392
+    SIZE       shift, and go to state 393
+
+    $default  reduce using rule 425 (hashtype)
+
+    hashtype  go to state 394
+
+
+state 306
+
+  445 size: IF SIZE . operator NUMBER unit rate1 THEN action1 recovery
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 395
+
+
+state 307
+
+  444 matchflagnot: NOT .
+
+    $default  reduce using rule 444 (matchflagnot)
+
+
+state 308
+
+  439 match: IF matchflagnot . MATCH PATH rate1 THEN action1
+  440      | IF matchflagnot . MATCH STRING rate1 THEN action1
+
+    MATCH  shift, and go to state 396
+
+
+state 309
+
+  441 match: IGNORE matchflagnot . MATCH PATH
+  442      | IGNORE matchflagnot . MATCH STRING
+
+    MATCH  shift, and go to state 397
+
+
+state 310
+
+  438 permission: IF FAILED . PERMISSION NUMBER rate1 THEN action1 recovery
+  447 uid: IF FAILED . UID STRING rate1 THEN action1 recovery
+  448    | IF FAILED . UID NUMBER rate1 THEN action1 recovery
+  449 gid: IF FAILED . GID STRING rate1 THEN action1 recovery
+  450    | IF FAILED . GID NUMBER rate1 THEN action1 recovery
+
+    UID         shift, and go to state 387
+    GID         shift, and go to state 388
+    PERMISSION  shift, and go to state 389
+
+
+state 311
+
+  432 fsflag: IF CHANGED . FSFLAG rate1 THEN action1
+
+    FSFLAG  shift, and go to state 398
+
+
+state 312
+
+  428 inode: IF INODE . operator NUMBER rate1 THEN action1 recovery
+  429      | IF INODE . operator NUMBER PERCENT rate1 THEN action1 recovery
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 399
+
+
+state 313
+
+  430 space: IF SPACE . operator value unit rate1 THEN action1 recovery
+  431      | IF SPACE . operator NUMBER PERCENT rate1 THEN action1 recovery
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 400
+
+
+state 314
+
+  391 timestamp: IF CHANGED . TIMESTAMP rate1 THEN action1
+
+    TIMESTAMP  shift, and go to state 392
+
+
+state 315
+
+  240 host: HOST . STRING
+
+    STRING  shift, and go to state 401
+
+
+state 316
+
+  238 icmp: IF FAILED ICMP . icmptype icmpcount nettimeout rate1 THEN action1 recovery
+
+    TYPE  shift, and go to state 402
+
+    icmptype  go to state 403
+
+
+state 317
+
+  236 connection: IF FAILED URL . URLOBJECT urloption nettimeout rate1 THEN action1 recovery
+
+    URLOBJECT  shift, and go to state 404
+
+
+state 318
+
+  235 connection: IF FAILED host . port type protocol nettimeout rate1 THEN action1 recovery
+
+    PORT  shift, and go to state 405
+
+    port  go to state 406
+
+
+state 319
+
+  311 timeout: IF NUMBER RESTART . NUMBER CYCLE THEN TIMEOUT
+
+    NUMBER  shift, and go to state 407
+
+
+state 320
+
+  308 exectimeout: TIMEOUT . NUMBER SECOND
+
+    NUMBER  shift, and go to state 408
+
+
+state 321
+
+  224 useroption: UID . STRING
+  226           | UID . NUMBER
+
+    STRING  shift, and go to state 409
+    NUMBER  shift, and go to state 410
+
+
+state 322
+
+  225 useroption: GID . STRING
+  227           | GID . NUMBER
+
+    STRING  shift, and go to state 411
+    NUMBER  shift, and go to state 412
+
+
+state 323
+
+  215 start: START argumentlist useroptionlist . exectimeout
+  221 useroptionlist: useroptionlist . useroption
+
+    TIMEOUT  shift, and go to state 320
+    UID      shift, and go to state 321
+    GID      shift, and go to state 322
+
+    $default  reduce using rule 307 (exectimeout)
+
+    useroption   go to state 413
+    exectimeout  go to state 414
+
+
+state 324
+
+  219 argumentlist: argumentlist argument .
+
+    $default  reduce using rule 219 (argumentlist)
+
+
+state 325
+
+  220 useroptionlist: useroption .
+
+    $default  reduce using rule 220 (useroptionlist)
+
+
+state 326
+
+  214 start: START argumentlist exectimeout .
+
+    $default  reduce using rule 214 (start)
+
+
+state 327
+
+  217 stop: STOP argumentlist useroptionlist . exectimeout
+  221 useroptionlist: useroptionlist . useroption
+
+    TIMEOUT  shift, and go to state 320
+    UID      shift, and go to state 321
+    GID      shift, and go to state 322
+
+    $default  reduce using rule 307 (exectimeout)
+
+    useroption   go to state 413
+    exectimeout  go to state 415
+
+
+state 328
+
+  216 stop: STOP argumentlist exectimeout .
+
+    $default  reduce using rule 216 (stop)
+
+
+state 329
+
+  351 every: EVERY NUMBER CYCLE .
+
+    $default  reduce using rule 351 (every)
+
+
+state 330
+
+  358 dependlist: dependlist dependant .
+
+    $default  reduce using rule 358 (dependlist)
+
+
+state 331
+
+  318 alert: alertmail NOT '{' . eventoptionlist '}' formatlist reminder
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+
+    eventoptionlist  go to state 416
+    eventoption      go to state 275
+
+
+state 332
+
+  316 alert: alertmail '{' eventoptionlist . '}' formatlist reminder
+  323 eventoptionlist: eventoptionlist . eventoption
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+    '}'         shift, and go to state 417
+
+    eventoption  go to state 365
+
+
+state 333
+
+  317 alert: alertmail formatlist reminder .
+
+    $default  reduce using rule 317 (alert)
+
+
+state 334
+
+  376 resourcecpuid: CPUUSER .
+
+    $default  reduce using rule 376 (resourcecpuid)
+
+
+state 335
+
+  377 resourcecpuid: CPUSYSTEM .
+
+    $default  reduce using rule 377 (resourcecpuid)
+
+
+state 336
+
+  378 resourcecpuid: CPUWAIT .
+
+    $default  reduce using rule 378 (resourcecpuid)
+
+
+state 337
+
+  367 resourcesystem: IF resourcesystemlist . rate1 THEN action1 recovery
+  369 resourcesystemlist: resourcesystemlist . resourcesystemopt
+
+    NUMBER       shift, and go to state 381
+    MEMORY       shift, and go to state 288
+    TOTALMEMORY  shift, and go to state 289
+    LOADAVG1     shift, and go to state 290
+    LOADAVG5     shift, and go to state 291
+    LOADAVG15    shift, and go to state 292
+    CPUUSER      shift, and go to state 334
+    CPUSYSTEM    shift, and go to state 335
+    CPUWAIT      shift, and go to state 336
+
+    $default  reduce using rule 412 (rate1)
+
+    resourcesystemopt  go to state 418
+    resourcecpu        go to state 339
+    resourcecpuid      go to state 340
+    resourcemem        go to state 341
+    resourceload       go to state 342
+    resourceloadavg    go to state 302
+    rate1              go to state 419
+
+
+state 338
+
+  368 resourcesystemlist: resourcesystemopt .
+
+    $default  reduce using rule 368 (resourcesystemlist)
+
+
+state 339
+
+  372 resourcesystemopt: resourcecpu .
+
+    $default  reduce using rule 372 (resourcesystemopt)
+
+
+state 340
+
+  375 resourcecpu: resourcecpuid . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 420
+
+
+state 341
+
+  371 resourcesystemopt: resourcemem .
+
+    $default  reduce using rule 371 (resourcesystemopt)
+
+
+state 342
+
+  370 resourcesystemopt: resourceload .
+
+    $default  reduce using rule 370 (resourcesystemopt)
+
+
+state 343
+
+  139 setlog: SET LOGFILE SYSLOG FACILITY STRING .
+
+    $default  reduce using rule 139 (setlog)
+
+
+state 344
+
+  134 startdelay: START DELAY . NUMBER
+
+    NUMBER  shift, and go to state 421
+
+
+state 345
+
+  156 mailserver: STRING PORT NUMBER . username password sslversion certmd5
+
+    USERNAME  shift, and go to state 232
+
+    $default  reduce using rule 228 (username)
+
+    username  go to state 422
+
+
+state 346
+
+  230 username: USERNAME STRING .
+
+    $default  reduce using rule 230 (username)
+
+
+state 347
+
+  229 username: USERNAME MAILADDR .
+
+    $default  reduce using rule 229 (username)
+
+
+state 348
+
+  232 password: PASSWORD . STRING
+
+    STRING  shift, and go to state 423
+
+
+state 349
+
+  155 mailserver: STRING username password . sslversion certmd5
+
+    SSLAUTO  shift, and go to state 357
+    SSLV2    shift, and go to state 358
+    SSLV3    shift, and go to state 359
+    TLSV1    shift, and go to state 360
+
+    $default  reduce using rule 249 (sslversion)
+
+    sslversion  go to state 424
+
+
+state 350
+
+  310 nettimeout: TIMEOUT NUMBER . SECOND
+
+    SECOND  shift, and go to state 425
+
+
+state 351
+
+  234 hostname: HOSTNAME . STRING
+
+    STRING  shift, and go to state 426
+
+
+state 352
+
+  150 setmailservers: SET MAILSERVER mailserverlist nettimeout hostname .
+
+    $default  reduce using rule 150 (setmailservers)
+
+
+state 353
+
+  152 sethttpd: SET HTTPD PORT NUMBER httpdlist .
+  158 httpdlist: httpdlist . httpdoption
+
+    ALLOW      shift, and go to state 427
+    ADDRESS    shift, and go to state 428
+    ENABLE     shift, and go to state 429
+    DISABLE    shift, and go to state 430
+    HTTPDSSL   shift, and go to state 431
+    SIGNATURE  shift, and go to state 432
+
+    $default  reduce using rule 152 (sethttpd)
+
+    httpdoption  go to state 433
+    ssl          go to state 434
+    sslenable    go to state 435
+    ssldisable   go to state 436
+    signature    go to state 437
+    sigenable    go to state 438
+    sigdisable   go to state 439
+    bindaddress  go to state 440
+    allow        go to state 441
+
+
+state 354
+
+  151 setmailformat: SET MAILFORMAT '{' formatoptionlist '}' .
+
+    $default  reduce using rule 151 (setmailformat)
+
+
+state 355
+
+  347 formatoptionlist: formatoptionlist formatoption .
+
+    $default  reduce using rule 347 (formatoptionlist)
+
+
+state 356
+
+  141 seteventqueue: SET EVENTQUEUE BASEDIR PATH SLOT . NUMBER
+
+    NUMBER  shift, and go to state 442
+
+
+state 357
+
+  253 sslversion: SSLAUTO .
+
+    $default  reduce using rule 253 (sslversion)
+
+
+state 358
+
+  250 sslversion: SSLV2 .
+
+    $default  reduce using rule 250 (sslversion)
+
+
+state 359
+
+  251 sslversion: SSLV3 .
+
+    $default  reduce using rule 251 (sslversion)
+
+
+state 360
+
+  252 sslversion: TLSV1 .
+
+    $default  reduce using rule 252 (sslversion)
+
+
+state 361
+
+  149 mmonit: URLOBJECT nettimeout sslversion . certmd5
+
+    CERTMD5  shift, and go to state 443
+
+    $default  reduce using rule 247 (certmd5)
+
+    certmd5  go to state 444
+
+
+state 362
+
+  345 formatlist: MAILFORMAT '{' formatoptionlist . '}'
+  347 formatoptionlist: formatoptionlist . formatoption
+
+    MAILFROM     shift, and go to state 243
+    MAILSUBJECT  shift, and go to state 244
+    MAILBODY     shift, and go to state 245
+    '}'          shift, and go to state 445
+
+    formatoption  go to state 355
+
+
+state 363
+
+  131 setalert: SET alertmail NOT '{' eventoptionlist . '}' formatlist reminder
+  323 eventoptionlist: eventoptionlist . eventoption
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+    '}'         shift, and go to state 446
+
+    eventoption  go to state 365
+
+
+state 364
+
+  129 setalert: SET alertmail '{' eventoptionlist '}' . formatlist reminder
+
+    MAILFORMAT  shift, and go to state 105
+
+    $default  reduce using rule 344 (formatlist)
+
+    formatlist  go to state 447
+
+
+state 365
+
+  323 eventoptionlist: eventoptionlist eventoption .
+
+    $default  reduce using rule 323 (eventoptionlist)
+
+
+state 366
+
+  453 reminder: REMINDER NUMBER .
+  454         | REMINDER NUMBER . CYCLE
+
+    CYCLE  shift, and go to state 448
+
+    $default  reduce using rule 453 (reminder)
+
+
+state 367
+
+  242 unixsocket: UNIXSOCKET . PATH
+
+    PATH  shift, and go to state 449
+
+
+state 368
+
+  237 connectionunix: IF FAILED unixsocket . type protocol nettimeout rate1 THEN action1 recovery
+
+    TYPE  shift, and go to state 450
+
+    $default  reduce using rule 243 (type)
+
+    type  go to state 451
+
+
+state 369
+
+  397 operator: CHANGED .
+
+    $default  reduce using rule 397 (operator)
+
+
+state 370
+
+  396 operator: NOTEQUAL .
+
+    $default  reduce using rule 396 (operator)
+
+
+state 371
+
+  395 operator: EQUAL .
+
+    $default  reduce using rule 395 (operator)
+
+
+state 372
+
+  394 operator: LESS .
+
+    $default  reduce using rule 394 (operator)
+
+
+state 373
+
+  393 operator: GREATER .
+
+    $default  reduce using rule 393 (operator)
+
+
+state 374
+
+  383 resourcechild: CHILDREN operator . NUMBER
+
+    NUMBER  shift, and go to state 452
+
+
+state 375
+
+  379 resourcemem: MEMORY operator . value unit
+  380            | MEMORY operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 453
+    REAL    shift, and go to state 454
+
+    value  go to state 455
+
+
+state 376
+
+  381 resourcemem: TOTALMEMORY operator . value unit
+  382            | TOTALMEMORY operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 456
+    REAL    shift, and go to state 454
+
+    value  go to state 457
+
+
+state 377
+
+  373 resourcecpuproc: CPU operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 458
+
+
+state 378
+
+  374 resourcecpuproc: TOTALCPU operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 459
+
+
+state 379
+
+  303 pid: IF CHANGED PID . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 460
+
+
+state 380
+
+  304 ppid: IF CHANGED PPID . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 461
+
+
+state 381
+
+  413 rate1: NUMBER . CYCLE
+  414      | NUMBER . NUMBER CYCLE
+
+    CYCLE   shift, and go to state 462
+    NUMBER  shift, and go to state 463
+
+
+state 382
+
+  362 resourceprocesslist: resourceprocesslist resourceprocessopt .
+
+    $default  reduce using rule 362 (resourceprocesslist)
+
+
+state 383
+
+  360 resourceprocess: IF resourceprocesslist rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 464
+
+
+state 384
+
+  384 resourceload: resourceloadavg operator . value
+
+    NUMBER  shift, and go to state 465
+    REAL    shift, and go to state 454
+
+    value  go to state 466
+
+
+state 385
+
+  426 hashtype: MD5HASH .
+
+    $default  reduce using rule 426 (hashtype)
+
+
+state 386
+
+  427 hashtype: SHA1HASH .
+
+    $default  reduce using rule 427 (hashtype)
+
+
+state 387
+
+  447 uid: IF FAILED UID . STRING rate1 THEN action1 recovery
+  448    | IF FAILED UID . NUMBER rate1 THEN action1 recovery
+
+    STRING  shift, and go to state 467
+    NUMBER  shift, and go to state 468
+
+
+state 388
+
+  449 gid: IF FAILED GID . STRING rate1 THEN action1 recovery
+  450    | IF FAILED GID . NUMBER rate1 THEN action1 recovery
+
+    STRING  shift, and go to state 469
+    NUMBER  shift, and go to state 470
+
+
+state 389
+
+  438 permission: IF FAILED PERMISSION . NUMBER rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 471
+
+
+state 390
+
+  422 checksum: IF FAILED hashtype . CHECKSUM rate1 THEN action1 recovery
+  423         | IF FAILED hashtype . CHECKSUM EXPECT STRING rate1 THEN action1 recovery
+
+    CHECKSUM  shift, and go to state 472
+
+
+state 391
+
+  390 timestamp: IF TIMESTAMP operator . NUMBER time rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 473
+
+
+state 392
+
+  391 timestamp: IF CHANGED TIMESTAMP . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 474
+
+
+state 393
+
+  446 size: IF CHANGED SIZE . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 475
+
+
+state 394
+
+  424 checksum: IF CHANGED hashtype . CHECKSUM rate1 THEN action1
+
+    CHECKSUM  shift, and go to state 476
+
+
+state 395
+
+  445 size: IF SIZE operator . NUMBER unit rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 477
+
+
+state 396
+
+  439 match: IF matchflagnot MATCH . PATH rate1 THEN action1
+  440      | IF matchflagnot MATCH . STRING rate1 THEN action1
+
+    STRING  shift, and go to state 478
+    PATH    shift, and go to state 479
+
+
+state 397
+
+  441 match: IGNORE matchflagnot MATCH . PATH
+  442      | IGNORE matchflagnot MATCH . STRING
+
+    STRING  shift, and go to state 480
+    PATH    shift, and go to state 481
+
+
+state 398
+
+  432 fsflag: IF CHANGED FSFLAG . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 482
+
+
+state 399
+
+  428 inode: IF INODE operator . NUMBER rate1 THEN action1 recovery
+  429      | IF INODE operator . NUMBER PERCENT rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 483
+
+
+state 400
+
+  430 space: IF SPACE operator . value unit rate1 THEN action1 recovery
+  431      | IF SPACE operator . NUMBER PERCENT rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 484
+    REAL    shift, and go to state 454
+
+    value  go to state 485
+
+
+state 401
+
+  240 host: HOST STRING .
+
+    $default  reduce using rule 240 (host)
+
+
+state 402
+
+  451 icmptype: TYPE . ICMPECHO
+
+    ICMPECHO  shift, and go to state 486
+
+
+state 403
+
+  238 icmp: IF FAILED ICMP icmptype . icmpcount nettimeout rate1 THEN action1 recovery
+
+    COUNT  shift, and go to state 487
+
+    $default  reduce using rule 305 (icmpcount)
+
+    icmpcount  go to state 488
+
+
+state 404
+
+  236 connection: IF FAILED URL URLOBJECT . urloption nettimeout rate1 THEN action1 recovery
+
+    CONTENT  shift, and go to state 489
+
+    $default  reduce using rule 312 (urloption)
+
+    urloption  go to state 490
+
+
+state 405
+
+  241 port: PORT . NUMBER
+
+    NUMBER  shift, and go to state 491
+
+
+state 406
+
+  235 connection: IF FAILED host port . type protocol nettimeout rate1 THEN action1 recovery
+
+    TYPE  shift, and go to state 450
+
+    $default  reduce using rule 243 (type)
+
+    type  go to state 492
+
+
+state 407
+
+  311 timeout: IF NUMBER RESTART NUMBER . CYCLE THEN TIMEOUT
+
+    CYCLE  shift, and go to state 493
+
+
+state 408
+
+  308 exectimeout: TIMEOUT NUMBER . SECOND
+
+    SECOND  shift, and go to state 494
+
+
+state 409
+
+  224 useroption: UID STRING .
+
+    $default  reduce using rule 224 (useroption)
+
+
+state 410
+
+  226 useroption: UID NUMBER .
+
+    $default  reduce using rule 226 (useroption)
+
+
+state 411
+
+  225 useroption: GID STRING .
+
+    $default  reduce using rule 225 (useroption)
+
+
+state 412
+
+  227 useroption: GID NUMBER .
+
+    $default  reduce using rule 227 (useroption)
+
+
+state 413
+
+  221 useroptionlist: useroptionlist useroption .
+
+    $default  reduce using rule 221 (useroptionlist)
+
+
+state 414
+
+  215 start: START argumentlist useroptionlist exectimeout .
+
+    $default  reduce using rule 215 (start)
+
+
+state 415
+
+  217 stop: STOP argumentlist useroptionlist exectimeout .
+
+    $default  reduce using rule 217 (stop)
+
+
+state 416
+
+  318 alert: alertmail NOT '{' eventoptionlist . '}' formatlist reminder
+  323 eventoptionlist: eventoptionlist . eventoption
+
+    CONNECTION  shift, and go to state 254
+    TIMEOUT     shift, and go to state 255
+    CHECKSUM    shift, and go to state 256
+    RESOURCE    shift, and go to state 257
+    UID         shift, and go to state 258
+    GID         shift, and go to state 259
+    INSTANCE    shift, and go to state 260
+    TIMESTAMP   shift, and go to state 261
+    PERMISSION  shift, and go to state 262
+    SIZE        shift, and go to state 263
+    ACTION      shift, and go to state 264
+    EXEC        shift, and go to state 265
+    ICMP        shift, and go to state 266
+    NONEXIST    shift, and go to state 267
+    INVALID     shift, and go to state 268
+    DATA        shift, and go to state 269
+    CONTENT     shift, and go to state 270
+    PID         shift, and go to state 271
+    PPID        shift, and go to state 272
+    FSFLAG      shift, and go to state 273
+    '}'         shift, and go to state 495
+
+    eventoption  go to state 365
+
+
+state 417
+
+  316 alert: alertmail '{' eventoptionlist '}' . formatlist reminder
+
+    MAILFORMAT  shift, and go to state 105
+
+    $default  reduce using rule 344 (formatlist)
+
+    formatlist  go to state 496
+
+
+state 418
+
+  369 resourcesystemlist: resourcesystemlist resourcesystemopt .
+
+    $default  reduce using rule 369 (resourcesystemlist)
+
+
+state 419
+
+  367 resourcesystem: IF resourcesystemlist rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 497
+
+
+state 420
+
+  375 resourcecpu: resourcecpuid operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 498
+
+
+state 421
+
+  134 startdelay: START DELAY NUMBER .
+
+    $default  reduce using rule 134 (startdelay)
+
+
+state 422
+
+  156 mailserver: STRING PORT NUMBER username . password sslversion certmd5
+
+    PASSWORD  shift, and go to state 348
+
+    $default  reduce using rule 231 (password)
+
+    password  go to state 499
+
+
+state 423
+
+  232 password: PASSWORD STRING .
+
+    $default  reduce using rule 232 (password)
+
+
+state 424
+
+  155 mailserver: STRING username password sslversion . certmd5
+
+    CERTMD5  shift, and go to state 443
+
+    $default  reduce using rule 247 (certmd5)
+
+    certmd5  go to state 500
+
+
+state 425
+
+  310 nettimeout: TIMEOUT NUMBER SECOND .
+
+    $default  reduce using rule 310 (nettimeout)
+
+
+state 426
+
+  234 hostname: HOSTNAME STRING .
+
+    $default  reduce using rule 234 (hostname)
+
+
+state 427
+
+  185 allow: ALLOW . STRING ':' STRING readonly
+  186      | ALLOW . '@' STRING readonly
+  187      | ALLOW . PATH
+  188      | ALLOW . CLEARTEXT PATH
+  189      | ALLOW . MD5HASH PATH
+  190      | ALLOW . CRYPT PATH
+  192      | ALLOW . PATH @1 allowuserlist
+  194      | ALLOW . CLEARTEXT PATH @2 allowuserlist
+  196      | ALLOW . MD5HASH PATH @3 allowuserlist
+  198      | ALLOW . CRYPT PATH @4 allowuserlist
+  199      | ALLOW . STRING
+
+    CLEARTEXT  shift, and go to state 501
+    MD5HASH    shift, and go to state 502
+    CRYPT      shift, and go to state 503
+    STRING     shift, and go to state 504
+    PATH       shift, and go to state 505
+    '@'        shift, and go to state 506
+
+
+state 428
+
+  179 bindaddress: ADDRESS . STRING
+
+    STRING  shift, and go to state 507
+
+
+state 429
+
+  167 sslenable: ENABLE . HTTPDSSL
+  176 sigenable: ENABLE . SIGNATURE
+
+    HTTPDSSL   shift, and go to state 508
+    SIGNATURE  shift, and go to state 509
+
+
+state 430
+
+  169 ssldisable: DISABLE . HTTPDSSL
+  178 sigdisable: DISABLE . SIGNATURE
+
+    HTTPDSSL   shift, and go to state 510
+    SIGNATURE  shift, and go to state 511
+
+
+state 431
+
+  165 sslenable: HTTPDSSL .
+  166          | HTTPDSSL . ENABLE
+  168 ssldisable: HTTPDSSL . DISABLE
+
+    ENABLE   shift, and go to state 512
+    DISABLE  shift, and go to state 513
+
+    $default  reduce using rule 165 (sslenable)
+
+
+state 432
+
+  175 sigenable: SIGNATURE . ENABLE
+  177 sigdisable: SIGNATURE . DISABLE
+
+    ENABLE   shift, and go to state 514
+    DISABLE  shift, and go to state 515
+
+
+state 433
+
+  158 httpdlist: httpdlist httpdoption .
+
+    $default  reduce using rule 158 (httpdlist)
+
+
+state 434
+
+  159 httpdoption: ssl .
+
+    $default  reduce using rule 159 (httpdoption)
+
+
+state 435
+
+  164 ssl: sslenable . pemfile clientpemfile allowselfcert
+
+    PEMFILE  shift, and go to state 516
+
+    pemfile  go to state 517
+
+
+state 436
+
+  163 ssl: ssldisable .
+  170 ssldisable: ssldisable . PEMFILE PATH
+  171           | ssldisable . CLIENTPEMFILE PATH
+  172           | ssldisable . ALLOWSELFCERTIFICATION
+
+    PEMFILE                 shift, and go to state 518
+    CLIENTPEMFILE           shift, and go to state 519
+    ALLOWSELFCERTIFICATION  shift, and go to state 520
+
+    $default  reduce using rule 163 (ssl)
+
+
+state 437
+
+  160 httpdoption: signature .
+
+    $default  reduce using rule 160 (httpdoption)
+
+
+state 438
+
+  173 signature: sigenable .
+
+    $default  reduce using rule 173 (signature)
+
+
+state 439
+
+  174 signature: sigdisable .
+
+    $default  reduce using rule 174 (signature)
+
+
+state 440
+
+  161 httpdoption: bindaddress .
+
+    $default  reduce using rule 161 (httpdoption)
+
+
+state 441
+
+  162 httpdoption: allow .
+
+    $default  reduce using rule 162 (httpdoption)
+
+
+state 442
+
+  141 seteventqueue: SET EVENTQUEUE BASEDIR PATH SLOT NUMBER .
+
+    $default  reduce using rule 141 (seteventqueue)
+
+
+state 443
+
+  248 certmd5: CERTMD5 . STRING
+
+    STRING  shift, and go to state 521
+
+
+state 444
+
+  149 mmonit: URLOBJECT nettimeout sslversion certmd5 .
+
+    $default  reduce using rule 149 (mmonit)
+
+
+state 445
+
+  345 formatlist: MAILFORMAT '{' formatoptionlist '}' .
+
+    $default  reduce using rule 345 (formatlist)
+
+
+state 446
+
+  131 setalert: SET alertmail NOT '{' eventoptionlist '}' . formatlist reminder
+
+    MAILFORMAT  shift, and go to state 105
+
+    $default  reduce using rule 344 (formatlist)
+
+    formatlist  go to state 522
+
+
+state 447
+
+  129 setalert: SET alertmail '{' eventoptionlist '}' formatlist . reminder
+
+    REMINDER  shift, and go to state 276
+
+    $default  reduce using rule 452 (reminder)
+
+    reminder  go to state 523
+
+
+state 448
+
+  454 reminder: REMINDER NUMBER CYCLE .
+
+    $default  reduce using rule 454 (reminder)
+
+
+state 449
+
+  242 unixsocket: UNIXSOCKET PATH .
+
+    $default  reduce using rule 242 (unixsocket)
+
+
+state 450
+
+  244 type: TYPE . TCP
+  245     | TYPE . TCPSSL sslversion certmd5
+  246     | TYPE . UDP
+
+    UDP     shift, and go to state 524
+    TCP     shift, and go to state 525
+    TCPSSL  shift, and go to state 526
+
+
+state 451
+
+  237 connectionunix: IF FAILED unixsocket type . protocol nettimeout rate1 THEN action1 recovery
+
+    SEND      shift, and go to state 527
+    EXPECT    shift, and go to state 528
+    PROTOCOL  shift, and go to state 529
+
+    $default  reduce using rule 254 (protocol)
+
+    protocol        go to state 530
+    sendexpectlist  go to state 531
+    sendexpect      go to state 532
+
+
+state 452
+
+  383 resourcechild: CHILDREN operator NUMBER .
+
+    $default  reduce using rule 383 (resourcechild)
+
+
+state 453
+
+  380 resourcemem: MEMORY operator NUMBER . PERCENT
+  389 value: NUMBER .
+
+    PERCENT  shift, and go to state 533
+
+    $default  reduce using rule 389 (value)
+
+
+state 454
+
+  388 value: REAL .
+
+    $default  reduce using rule 388 (value)
+
+
+state 455
+
+  379 resourcemem: MEMORY operator value . unit
+
+    BYTE      shift, and go to state 238
+    KILOBYTE  shift, and go to state 239
+    MEGABYTE  shift, and go to state 240
+    GIGABYTE  shift, and go to state 241
+
+    $default  reduce using rule 433 (unit)
+
+    unit  go to state 534
+
+
+state 456
+
+  382 resourcemem: TOTALMEMORY operator NUMBER . PERCENT
+  389 value: NUMBER .
+
+    PERCENT  shift, and go to state 535
+
+    $default  reduce using rule 389 (value)
+
+
+state 457
+
+  381 resourcemem: TOTALMEMORY operator value . unit
+
+    BYTE      shift, and go to state 238
+    KILOBYTE  shift, and go to state 239
+    MEGABYTE  shift, and go to state 240
+    GIGABYTE  shift, and go to state 241
+
+    $default  reduce using rule 433 (unit)
+
+    unit  go to state 536
+
+
+state 458
+
+  373 resourcecpuproc: CPU operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 537
+
+
+state 459
+
+  374 resourcecpuproc: TOTALCPU operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 538
+
+
+state 460
+
+  303 pid: IF CHANGED PID rate1 . THEN action1
+
+    THEN  shift, and go to state 539
+
+
+state 461
+
+  304 ppid: IF CHANGED PPID rate1 . THEN action1
+
+    THEN  shift, and go to state 540
+
+
+state 462
+
+  413 rate1: NUMBER CYCLE .
+
+    $default  reduce using rule 413 (rate1)
+
+
+state 463
+
+  414 rate1: NUMBER NUMBER . CYCLE
+
+    CYCLE  shift, and go to state 541
+
+
+state 464
+
+  360 resourceprocess: IF resourceprocesslist rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 549
+
+
+state 465
+
+  389 value: NUMBER .
+
+    $default  reduce using rule 389 (value)
+
+
+state 466
+
+  384 resourceload: resourceloadavg operator value .
+
+    $default  reduce using rule 384 (resourceload)
+
+
+state 467
+
+  447 uid: IF FAILED UID STRING . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 550
+
+
+state 468
+
+  448 uid: IF FAILED UID NUMBER . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 551
+
+
+state 469
+
+  449 gid: IF FAILED GID STRING . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 552
+
+
+state 470
+
+  450 gid: IF FAILED GID NUMBER . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 553
+
+
+state 471
+
+  438 permission: IF FAILED PERMISSION NUMBER . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 554
+
+
+state 472
+
+  422 checksum: IF FAILED hashtype CHECKSUM . rate1 THEN action1 recovery
+  423         | IF FAILED hashtype CHECKSUM . EXPECT STRING rate1 THEN action1 recovery
+
+    EXPECT  shift, and go to state 555
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 556
+
+
+state 473
+
+  390 timestamp: IF TIMESTAMP operator NUMBER . time rate1 THEN action1 recovery
+
+    SECOND  shift, and go to state 557
+    MINUTE  shift, and go to state 558
+    HOUR    shift, and go to state 559
+    DAY     shift, and go to state 560
+
+    $default  reduce using rule 398 (time)
+
+    time  go to state 561
+
+
+state 474
+
+  391 timestamp: IF CHANGED TIMESTAMP rate1 . THEN action1
+
+    THEN  shift, and go to state 562
+
+
+state 475
+
+  446 size: IF CHANGED SIZE rate1 . THEN action1
+
+    THEN  shift, and go to state 563
+
+
+state 476
+
+  424 checksum: IF CHANGED hashtype CHECKSUM . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 564
+
+
+state 477
+
+  445 size: IF SIZE operator NUMBER . unit rate1 THEN action1 recovery
+
+    BYTE      shift, and go to state 238
+    KILOBYTE  shift, and go to state 239
+    MEGABYTE  shift, and go to state 240
+    GIGABYTE  shift, and go to state 241
+
+    $default  reduce using rule 433 (unit)
+
+    unit  go to state 565
+
+
+state 478
+
+  440 match: IF matchflagnot MATCH STRING . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 566
+
+
+state 479
+
+  439 match: IF matchflagnot MATCH PATH . rate1 THEN action1
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 567
+
+
+state 480
+
+  442 match: IGNORE matchflagnot MATCH STRING .
+
+    $default  reduce using rule 442 (match)
+
+
+state 481
+
+  441 match: IGNORE matchflagnot MATCH PATH .
+
+    $default  reduce using rule 441 (match)
+
+
+state 482
+
+  432 fsflag: IF CHANGED FSFLAG rate1 . THEN action1
+
+    THEN  shift, and go to state 568
+
+
+state 483
+
+  428 inode: IF INODE operator NUMBER . rate1 THEN action1 recovery
+  429      | IF INODE operator NUMBER . PERCENT rate1 THEN action1 recovery
+
+    NUMBER   shift, and go to state 381
+    PERCENT  shift, and go to state 569
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 570
+
+
+state 484
+
+  389 value: NUMBER .
+  431 space: IF SPACE operator NUMBER . PERCENT rate1 THEN action1 recovery
+
+    PERCENT  shift, and go to state 571
+
+    $default  reduce using rule 389 (value)
+
+
+state 485
+
+  430 space: IF SPACE operator value . unit rate1 THEN action1 recovery
+
+    BYTE      shift, and go to state 238
+    KILOBYTE  shift, and go to state 239
+    MEGABYTE  shift, and go to state 240
+    GIGABYTE  shift, and go to state 241
+
+    $default  reduce using rule 433 (unit)
+
+    unit  go to state 572
+
+
+state 486
+
+  451 icmptype: TYPE ICMPECHO .
+
+    $default  reduce using rule 451 (icmptype)
+
+
+state 487
+
+  306 icmpcount: COUNT . NUMBER
+
+    NUMBER  shift, and go to state 573
+
+
+state 488
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount . nettimeout rate1 THEN action1 recovery
+
+    TIMEOUT  shift, and go to state 234
+
+    $default  reduce using rule 309 (nettimeout)
+
+    nettimeout  go to state 574
+
+
+state 489
+
+  313 urloption: CONTENT . urloperator STRING
+
+    NOTEQUAL  shift, and go to state 575
+    EQUAL     shift, and go to state 576
+
+    urloperator  go to state 577
+
+
+state 490
+
+  236 connection: IF FAILED URL URLOBJECT urloption . nettimeout rate1 THEN action1 recovery
+
+    TIMEOUT  shift, and go to state 234
+
+    $default  reduce using rule 309 (nettimeout)
+
+    nettimeout  go to state 578
+
+
+state 491
+
+  241 port: PORT NUMBER .
+
+    $default  reduce using rule 241 (port)
+
+
+state 492
+
+  235 connection: IF FAILED host port type . protocol nettimeout rate1 THEN action1 recovery
+
+    SEND      shift, and go to state 527
+    EXPECT    shift, and go to state 528
+    PROTOCOL  shift, and go to state 529
+
+    $default  reduce using rule 254 (protocol)
+
+    protocol        go to state 579
+    sendexpectlist  go to state 531
+    sendexpect      go to state 532
+
+
+state 493
+
+  311 timeout: IF NUMBER RESTART NUMBER CYCLE . THEN TIMEOUT
+
+    THEN  shift, and go to state 580
+
+
+state 494
+
+  308 exectimeout: TIMEOUT NUMBER SECOND .
+
+    $default  reduce using rule 308 (exectimeout)
+
+
+state 495
+
+  318 alert: alertmail NOT '{' eventoptionlist '}' . formatlist reminder
+
+    MAILFORMAT  shift, and go to state 105
+
+    $default  reduce using rule 344 (formatlist)
+
+    formatlist  go to state 581
+
+
+state 496
+
+  316 alert: alertmail '{' eventoptionlist '}' formatlist . reminder
+
+    REMINDER  shift, and go to state 276
+
+    $default  reduce using rule 452 (reminder)
+
+    reminder  go to state 582
+
+
+state 497
+
+  367 resourcesystem: IF resourcesystemlist rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 583
+
+
+state 498
+
+  375 resourcecpu: resourcecpuid operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 584
+
+
+state 499
+
+  156 mailserver: STRING PORT NUMBER username password . sslversion certmd5
+
+    SSLAUTO  shift, and go to state 357
+    SSLV2    shift, and go to state 358
+    SSLV3    shift, and go to state 359
+    TLSV1    shift, and go to state 360
+
+    $default  reduce using rule 249 (sslversion)
+
+    sslversion  go to state 585
+
+
+state 500
+
+  155 mailserver: STRING username password sslversion certmd5 .
+
+    $default  reduce using rule 155 (mailserver)
+
+
+state 501
+
+  188 allow: ALLOW CLEARTEXT . PATH
+  194      | ALLOW CLEARTEXT . PATH @2 allowuserlist
+
+    PATH  shift, and go to state 586
+
+
+state 502
+
+  189 allow: ALLOW MD5HASH . PATH
+  196      | ALLOW MD5HASH . PATH @3 allowuserlist
+
+    PATH  shift, and go to state 587
+
+
+state 503
+
+  190 allow: ALLOW CRYPT . PATH
+  198      | ALLOW CRYPT . PATH @4 allowuserlist
+
+    PATH  shift, and go to state 588
+
+
+state 504
+
+  185 allow: ALLOW STRING . ':' STRING readonly
+  199      | ALLOW STRING .
+
+    ':'  shift, and go to state 589
+
+    $default  reduce using rule 199 (allow)
+
+
+state 505
+
+  187 allow: ALLOW PATH .
+  192      | ALLOW PATH . @1 allowuserlist
+
+    STRING    reduce using rule 191 (@1)
+    $default  reduce using rule 187 (allow)
+
+    @1  go to state 590
+
+
+state 506
+
+  186 allow: ALLOW '@' . STRING readonly
+
+    STRING  shift, and go to state 591
+
+
+state 507
+
+  179 bindaddress: ADDRESS STRING .
+
+    $default  reduce using rule 179 (bindaddress)
+
+
+state 508
+
+  167 sslenable: ENABLE HTTPDSSL .
+
+    $default  reduce using rule 167 (sslenable)
+
+
+state 509
+
+  176 sigenable: ENABLE SIGNATURE .
+
+    $default  reduce using rule 176 (sigenable)
+
+
+state 510
+
+  169 ssldisable: DISABLE HTTPDSSL .
+
+    $default  reduce using rule 169 (ssldisable)
+
+
+state 511
+
+  178 sigdisable: DISABLE SIGNATURE .
+
+    $default  reduce using rule 178 (sigdisable)
+
+
+state 512
+
+  166 sslenable: HTTPDSSL ENABLE .
+
+    $default  reduce using rule 166 (sslenable)
+
+
+state 513
+
+  168 ssldisable: HTTPDSSL DISABLE .
+
+    $default  reduce using rule 168 (ssldisable)
+
+
+state 514
+
+  175 sigenable: SIGNATURE ENABLE .
+
+    $default  reduce using rule 175 (sigenable)
+
+
+state 515
+
+  177 sigdisable: SIGNATURE DISABLE .
+
+    $default  reduce using rule 177 (sigdisable)
+
+
+state 516
+
+  180 pemfile: PEMFILE . PATH
+
+    PATH  shift, and go to state 592
+
+
+state 517
+
+  164 ssl: sslenable pemfile . clientpemfile allowselfcert
+
+    CLIENTPEMFILE  shift, and go to state 593
+
+    $default  reduce using rule 181 (clientpemfile)
+
+    clientpemfile  go to state 594
+
+
+state 518
+
+  170 ssldisable: ssldisable PEMFILE . PATH
+
+    PATH  shift, and go to state 595
+
+
+state 519
+
+  171 ssldisable: ssldisable CLIENTPEMFILE . PATH
+
+    PATH  shift, and go to state 596
+
+
+state 520
+
+  172 ssldisable: ssldisable ALLOWSELFCERTIFICATION .
+
+    $default  reduce using rule 172 (ssldisable)
+
+
+state 521
+
+  248 certmd5: CERTMD5 STRING .
+
+    $default  reduce using rule 248 (certmd5)
+
+
+state 522
+
+  131 setalert: SET alertmail NOT '{' eventoptionlist '}' formatlist . reminder
+
+    REMINDER  shift, and go to state 276
+
+    $default  reduce using rule 452 (reminder)
+
+    reminder  go to state 597
+
+
+state 523
+
+  129 setalert: SET alertmail '{' eventoptionlist '}' formatlist reminder .
+
+    $default  reduce using rule 129 (setalert)
+
+
+state 524
+
+  246 type: TYPE UDP .
+
+    $default  reduce using rule 246 (type)
+
+
+state 525
+
+  244 type: TYPE TCP .
+
+    $default  reduce using rule 244 (type)
+
+
+state 526
+
+  245 type: TYPE TCPSSL . sslversion certmd5
+
+    SSLAUTO  shift, and go to state 357
+    SSLV2    shift, and go to state 358
+    SSLV3    shift, and go to state 359
+    TLSV1    shift, and go to state 360
+
+    $default  reduce using rule 249 (sslversion)
+
+    sslversion  go to state 598
+
+
+state 527
+
+  281 sendexpect: SEND . STRING
+
+    STRING  shift, and go to state 599
+
+
+state 528
+
+  282 sendexpect: EXPECT . STRING
+
+    STRING  shift, and go to state 600
+
+
+state 529
+
+  255 protocol: PROTOCOL . APACHESTATUS apache_stat_list
+  256         | PROTOCOL . DEFAULT
+  257         | PROTOCOL . DNS
+  258         | PROTOCOL . DWP
+  259         | PROTOCOL . FTP
+  260         | PROTOCOL . HTTP request
+  261         | PROTOCOL . IMAP
+  262         | PROTOCOL . CLAMAV
+  263         | PROTOCOL . LDAP2
+  264         | PROTOCOL . LDAP3
+  265         | PROTOCOL . MYSQL
+  266         | PROTOCOL . SIP target maxforward
+  267         | PROTOCOL . NNTP
+  268         | PROTOCOL . NTP3
+  269         | PROTOCOL . POSTFIXPOLICY
+  270         | PROTOCOL . POP
+  271         | PROTOCOL . SMTP
+  272         | PROTOCOL . SSH
+  273         | PROTOCOL . RDATE
+  274         | PROTOCOL . RSYNC
+  275         | PROTOCOL . TNS
+  276         | PROTOCOL . PGSQL
+  277         | PROTOCOL . LMTP
+
+    DEFAULT        shift, and go to state 601
+    HTTP           shift, and go to state 602
+    APACHESTATUS   shift, and go to state 603
+    FTP            shift, and go to state 604
+    SMTP           shift, and go to state 605
+    POP            shift, and go to state 606
+    IMAP           shift, and go to state 607
+    CLAMAV         shift, and go to state 608
+    NNTP           shift, and go to state 609
+    NTP3           shift, and go to state 610
+    MYSQL          shift, and go to state 611
+    DNS            shift, and go to state 612
+    SSH            shift, and go to state 613
+    DWP            shift, and go to state 614
+    LDAP2          shift, and go to state 615
+    LDAP3          shift, and go to state 616
+    RDATE          shift, and go to state 617
+    RSYNC          shift, and go to state 618
+    TNS            shift, and go to state 619
+    PGSQL          shift, and go to state 620
+    POSTFIXPOLICY  shift, and go to state 621
+    SIP            shift, and go to state 622
+    LMTP           shift, and go to state 623
+
+
+state 530
+
+  237 connectionunix: IF FAILED unixsocket type protocol . nettimeout rate1 THEN action1 recovery
+
+    TIMEOUT  shift, and go to state 234
+
+    $default  reduce using rule 309 (nettimeout)
+
+    nettimeout  go to state 624
+
+
+state 531
+
+  278 protocol: sendexpectlist .
+  280 sendexpectlist: sendexpectlist . sendexpect
+
+    SEND    shift, and go to state 527
+    EXPECT  shift, and go to state 528
+
+    $default  reduce using rule 278 (protocol)
+
+    sendexpect  go to state 625
+
+
+state 532
+
+  279 sendexpectlist: sendexpect .
+
+    $default  reduce using rule 279 (sendexpectlist)
+
+
+state 533
+
+  380 resourcemem: MEMORY operator NUMBER PERCENT .
+
+    $default  reduce using rule 380 (resourcemem)
+
+
+state 534
+
+  379 resourcemem: MEMORY operator value unit .
+
+    $default  reduce using rule 379 (resourcemem)
+
+
+state 535
+
+  382 resourcemem: TOTALMEMORY operator NUMBER PERCENT .
+
+    $default  reduce using rule 382 (resourcemem)
+
+
+state 536
+
+  381 resourcemem: TOTALMEMORY operator value unit .
+
+    $default  reduce using rule 381 (resourcemem)
+
+
+state 537
+
+  373 resourcecpuproc: CPU operator NUMBER PERCENT .
+
+    $default  reduce using rule 373 (resourcecpuproc)
+
+
+state 538
+
+  374 resourcecpuproc: TOTALCPU operator NUMBER PERCENT .
+
+    $default  reduce using rule 374 (resourcecpuproc)
+
+
+state 539
+
+  303 pid: IF CHANGED PID rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 626
+
+
+state 540
+
+  304 ppid: IF CHANGED PPID rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 627
+
+
+state 541
+
+  414 rate1: NUMBER NUMBER CYCLE .
+
+    $default  reduce using rule 414 (rate1)
+
+
+state 542
+
+  407 action: START .
+
+    $default  reduce using rule 407 (action)
+
+
+state 543
+
+  408 action: STOP .
+
+    $default  reduce using rule 408 (action)
+
+
+state 544
+
+  403 action: ALERT .
+
+    $default  reduce using rule 403 (action)
+
+
+state 545
+
+  406 action: RESTART .
+
+    $default  reduce using rule 406 (action)
+
+
+state 546
+
+  404 action: EXEC . argumentlist
+  405       | EXEC . argumentlist useroptionlist
+
+    STRING  shift, and go to state 182
+    PATH    shift, and go to state 183
+
+    argumentlist  go to state 628
+    argument      go to state 185
+
+
+state 547
+
+  409 action: UNMONITOR .
+
+    $default  reduce using rule 409 (action)
+
+
+state 548
+
+  410 action1: action .
+
+    $default  reduce using rule 410 (action1)
+
+
+state 549
+
+  360 resourceprocess: IF resourceprocesslist rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 630
+
+
+state 550
+
+  447 uid: IF FAILED UID STRING rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 631
+
+
+state 551
+
+  448 uid: IF FAILED UID NUMBER rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 632
+
+
+state 552
+
+  449 gid: IF FAILED GID STRING rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 633
+
+
+state 553
+
+  450 gid: IF FAILED GID NUMBER rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 634
+
+
+state 554
+
+  438 permission: IF FAILED PERMISSION NUMBER rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 635
+
+
+state 555
+
+  423 checksum: IF FAILED hashtype CHECKSUM EXPECT . STRING rate1 THEN action1 recovery
+
+    STRING  shift, and go to state 636
+
+
+state 556
+
+  422 checksum: IF FAILED hashtype CHECKSUM rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 637
+
+
+state 557
+
+  399 time: SECOND .
+
+    $default  reduce using rule 399 (time)
+
+
+state 558
+
+  400 time: MINUTE .
+
+    $default  reduce using rule 400 (time)
+
+
+state 559
+
+  401 time: HOUR .
+
+    $default  reduce using rule 401 (time)
+
+
+state 560
+
+  402 time: DAY .
+
+    $default  reduce using rule 402 (time)
+
+
+state 561
+
+  390 timestamp: IF TIMESTAMP operator NUMBER time . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 638
+
+
+state 562
+
+  391 timestamp: IF CHANGED TIMESTAMP rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 639
+
+
+state 563
+
+  446 size: IF CHANGED SIZE rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 640
+
+
+state 564
+
+  424 checksum: IF CHANGED hashtype CHECKSUM rate1 . THEN action1
+
+    THEN  shift, and go to state 641
+
+
+state 565
+
+  445 size: IF SIZE operator NUMBER unit . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 642
+
+
+state 566
+
+  440 match: IF matchflagnot MATCH STRING rate1 . THEN action1
+
+    THEN  shift, and go to state 643
+
+
+state 567
+
+  439 match: IF matchflagnot MATCH PATH rate1 . THEN action1
+
+    THEN  shift, and go to state 644
+
+
+state 568
+
+  432 fsflag: IF CHANGED FSFLAG rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 645
+
+
+state 569
+
+  429 inode: IF INODE operator NUMBER PERCENT . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 646
+
+
+state 570
+
+  428 inode: IF INODE operator NUMBER rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 647
+
+
+state 571
+
+  431 space: IF SPACE operator NUMBER PERCENT . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 648
+
+
+state 572
+
+  430 space: IF SPACE operator value unit . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 649
+
+
+state 573
+
+  306 icmpcount: COUNT NUMBER .
+
+    $default  reduce using rule 306 (icmpcount)
+
+
+state 574
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount nettimeout . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 650
+
+
+state 575
+
+  315 urloperator: NOTEQUAL .
+
+    $default  reduce using rule 315 (urloperator)
+
+
+state 576
+
+  314 urloperator: EQUAL .
+
+    $default  reduce using rule 314 (urloperator)
+
+
+state 577
+
+  313 urloption: CONTENT urloperator . STRING
+
+    STRING  shift, and go to state 651
+
+
+state 578
+
+  236 connection: IF FAILED URL URLOBJECT urloption nettimeout . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 652
+
+
+state 579
+
+  235 connection: IF FAILED host port type protocol . nettimeout rate1 THEN action1 recovery
+
+    TIMEOUT  shift, and go to state 234
+
+    $default  reduce using rule 309 (nettimeout)
+
+    nettimeout  go to state 653
+
+
+state 580
+
+  311 timeout: IF NUMBER RESTART NUMBER CYCLE THEN . TIMEOUT
+
+    TIMEOUT  shift, and go to state 654
+
+
+state 581
+
+  318 alert: alertmail NOT '{' eventoptionlist '}' formatlist . reminder
+
+    REMINDER  shift, and go to state 276
+
+    $default  reduce using rule 452 (reminder)
+
+    reminder  go to state 655
+
+
+state 582
+
+  316 alert: alertmail '{' eventoptionlist '}' formatlist reminder .
+
+    $default  reduce using rule 316 (alert)
+
+
+state 583
+
+  367 resourcesystem: IF resourcesystemlist rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 656
+
+
+state 584
+
+  375 resourcecpu: resourcecpuid operator NUMBER PERCENT .
+
+    $default  reduce using rule 375 (resourcecpu)
+
+
+state 585
+
+  156 mailserver: STRING PORT NUMBER username password sslversion . certmd5
+
+    CERTMD5  shift, and go to state 443
+
+    $default  reduce using rule 247 (certmd5)
+
+    certmd5  go to state 657
+
+
+state 586
+
+  188 allow: ALLOW CLEARTEXT PATH .
+  194      | ALLOW CLEARTEXT PATH . @2 allowuserlist
+
+    STRING    reduce using rule 193 (@2)
+    $default  reduce using rule 188 (allow)
+
+    @2  go to state 658
+
+
+state 587
+
+  189 allow: ALLOW MD5HASH PATH .
+  196      | ALLOW MD5HASH PATH . @3 allowuserlist
+
+    STRING    reduce using rule 195 (@3)
+    $default  reduce using rule 189 (allow)
+
+    @3  go to state 659
+
+
+state 588
+
+  190 allow: ALLOW CRYPT PATH .
+  198      | ALLOW CRYPT PATH . @4 allowuserlist
+
+    STRING    reduce using rule 197 (@4)
+    $default  reduce using rule 190 (allow)
+
+    @4  go to state 660
+
+
+state 589
+
+  185 allow: ALLOW STRING ':' . STRING readonly
+
+    STRING  shift, and go to state 661
+
+
+state 590
+
+  192 allow: ALLOW PATH @1 . allowuserlist
+
+    STRING  shift, and go to state 662
+
+    allowuserlist  go to state 663
+    allowuser      go to state 664
+
+
+state 591
+
+  186 allow: ALLOW '@' STRING . readonly
+
+    READONLY  shift, and go to state 665
+
+    $default  reduce using rule 203 (readonly)
+
+    readonly  go to state 666
+
+
+state 592
+
+  180 pemfile: PEMFILE PATH .
+
+    $default  reduce using rule 180 (pemfile)
+
+
+state 593
+
+  182 clientpemfile: CLIENTPEMFILE . PATH
+
+    PATH  shift, and go to state 667
+
+
+state 594
+
+  164 ssl: sslenable pemfile clientpemfile . allowselfcert
+
+    ALLOWSELFCERTIFICATION  shift, and go to state 668
+
+    $default  reduce using rule 183 (allowselfcert)
+
+    allowselfcert  go to state 669
+
+
+state 595
+
+  170 ssldisable: ssldisable PEMFILE PATH .
+
+    $default  reduce using rule 170 (ssldisable)
+
+
+state 596
+
+  171 ssldisable: ssldisable CLIENTPEMFILE PATH .
+
+    $default  reduce using rule 171 (ssldisable)
+
+
+state 597
+
+  131 setalert: SET alertmail NOT '{' eventoptionlist '}' formatlist reminder .
+
+    $default  reduce using rule 131 (setalert)
+
+
+state 598
+
+  245 type: TYPE TCPSSL sslversion . certmd5
+
+    CERTMD5  shift, and go to state 443
+
+    $default  reduce using rule 247 (certmd5)
+
+    certmd5  go to state 670
+
+
+state 599
+
+  281 sendexpect: SEND STRING .
+
+    $default  reduce using rule 281 (sendexpect)
+
+
+state 600
+
+  282 sendexpect: EXPECT STRING .
+
+    $default  reduce using rule 282 (sendexpect)
+
+
+state 601
+
+  256 protocol: PROTOCOL DEFAULT .
+
+    $default  reduce using rule 256 (protocol)
+
+
+state 602
+
+  260 protocol: PROTOCOL HTTP . request
+
+    REQUEST  shift, and go to state 671
+
+    $default  reduce using rule 288 (request)
+
+    request  go to state 672
+
+
+state 603
+
+  255 protocol: PROTOCOL APACHESTATUS . apache_stat_list
+
+    LOGLIMIT        shift, and go to state 673
+    CLOSELIMIT      shift, and go to state 674
+    DNSLIMIT        shift, and go to state 675
+    KEEPALIVELIMIT  shift, and go to state 676
+    REPLYLIMIT      shift, and go to state 677
+    REQUESTLIMIT    shift, and go to state 678
+    STARTLIMIT      shift, and go to state 679
+    WAITLIMIT       shift, and go to state 680
+    GRACEFULLIMIT   shift, and go to state 681
+    CLEANUPLIMIT    shift, and go to state 682
+
+    apache_stat_list  go to state 683
+    apache_stat       go to state 684
+
+
+state 604
+
+  259 protocol: PROTOCOL FTP .
+
+    $default  reduce using rule 259 (protocol)
+
+
+state 605
+
+  271 protocol: PROTOCOL SMTP .
+
+    $default  reduce using rule 271 (protocol)
+
+
+state 606
+
+  270 protocol: PROTOCOL POP .
+
+    $default  reduce using rule 270 (protocol)
+
+
+state 607
+
+  261 protocol: PROTOCOL IMAP .
+
+    $default  reduce using rule 261 (protocol)
+
+
+state 608
+
+  262 protocol: PROTOCOL CLAMAV .
+
+    $default  reduce using rule 262 (protocol)
+
+
+state 609
+
+  267 protocol: PROTOCOL NNTP .
+
+    $default  reduce using rule 267 (protocol)
+
+
+state 610
+
+  268 protocol: PROTOCOL NTP3 .
+
+    $default  reduce using rule 268 (protocol)
+
+
+state 611
+
+  265 protocol: PROTOCOL MYSQL .
+
+    $default  reduce using rule 265 (protocol)
+
+
+state 612
+
+  257 protocol: PROTOCOL DNS .
+
+    $default  reduce using rule 257 (protocol)
+
+
+state 613
+
+  272 protocol: PROTOCOL SSH .
+
+    $default  reduce using rule 272 (protocol)
+
+
+state 614
+
+  258 protocol: PROTOCOL DWP .
+
+    $default  reduce using rule 258 (protocol)
+
+
+state 615
+
+  263 protocol: PROTOCOL LDAP2 .
+
+    $default  reduce using rule 263 (protocol)
+
+
+state 616
+
+  264 protocol: PROTOCOL LDAP3 .
+
+    $default  reduce using rule 264 (protocol)
+
+
+state 617
+
+  273 protocol: PROTOCOL RDATE .
+
+    $default  reduce using rule 273 (protocol)
+
+
+state 618
+
+  274 protocol: PROTOCOL RSYNC .
+
+    $default  reduce using rule 274 (protocol)
+
+
+state 619
+
+  275 protocol: PROTOCOL TNS .
+
+    $default  reduce using rule 275 (protocol)
+
+
+state 620
+
+  276 protocol: PROTOCOL PGSQL .
+
+    $default  reduce using rule 276 (protocol)
+
+
+state 621
+
+  269 protocol: PROTOCOL POSTFIXPOLICY .
+
+    $default  reduce using rule 269 (protocol)
+
+
+state 622
+
+  266 protocol: PROTOCOL SIP . target maxforward
+
+    TARGET  shift, and go to state 685
+
+    $default  reduce using rule 283 (target)
+
+    target  go to state 686
+
+
+state 623
+
+  277 protocol: PROTOCOL LMTP .
+
+    $default  reduce using rule 277 (protocol)
+
+
+state 624
+
+  237 connectionunix: IF FAILED unixsocket type protocol nettimeout . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 687
+
+
+state 625
+
+  280 sendexpectlist: sendexpectlist sendexpect .
+
+    $default  reduce using rule 280 (sendexpectlist)
+
+
+state 626
+
+  303 pid: IF CHANGED PID rate1 THEN action1 .
+
+    $default  reduce using rule 303 (pid)
+
+
+state 627
+
+  304 ppid: IF CHANGED PPID rate1 THEN action1 .
+
+    $default  reduce using rule 304 (ppid)
+
+
+state 628
+
+  219 argumentlist: argumentlist . argument
+  404 action: EXEC argumentlist .
+  405       | EXEC argumentlist . useroptionlist
+
+    STRING  shift, and go to state 182
+    PATH    shift, and go to state 183
+    UID     shift, and go to state 321
+    GID     shift, and go to state 322
+
+    $default  reduce using rule 404 (action)
+
+    useroptionlist  go to state 688
+    argument        go to state 324
+    useroption      go to state 325
+
+
+state 629
+
+  419 recovery: ELSE . IF RECOVERED rate2 THEN action2
+  420         | ELSE . IF PASSED rate2 THEN action2
+  421         | ELSE . IF SUCCEEDED rate2 THEN action2
+
+    IF  shift, and go to state 689
+
+
+state 630
+
+  360 resourceprocess: IF resourceprocesslist rate1 THEN action1 recovery .
+
+    $default  reduce using rule 360 (resourceprocess)
+
+
+state 631
+
+  447 uid: IF FAILED UID STRING rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 690
+
+
+state 632
+
+  448 uid: IF FAILED UID NUMBER rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 691
+
+
+state 633
+
+  449 gid: IF FAILED GID STRING rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 692
+
+
+state 634
+
+  450 gid: IF FAILED GID NUMBER rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 693
+
+
+state 635
+
+  438 permission: IF FAILED PERMISSION NUMBER rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 694
+
+
+state 636
+
+  423 checksum: IF FAILED hashtype CHECKSUM EXPECT STRING . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 695
+
+
+state 637
+
+  422 checksum: IF FAILED hashtype CHECKSUM rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 696
+
+
+state 638
+
+  390 timestamp: IF TIMESTAMP operator NUMBER time rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 697
+
+
+state 639
+
+  391 timestamp: IF CHANGED TIMESTAMP rate1 THEN action1 .
+
+    $default  reduce using rule 391 (timestamp)
+
+
+state 640
+
+  446 size: IF CHANGED SIZE rate1 THEN action1 .
+
+    $default  reduce using rule 446 (size)
+
+
+state 641
+
+  424 checksum: IF CHANGED hashtype CHECKSUM rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 698
+
+
+state 642
+
+  445 size: IF SIZE operator NUMBER unit rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 699
+
+
+state 643
+
+  440 match: IF matchflagnot MATCH STRING rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 700
+
+
+state 644
+
+  439 match: IF matchflagnot MATCH PATH rate1 THEN . action1
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 701
+
+
+state 645
+
+  432 fsflag: IF CHANGED FSFLAG rate1 THEN action1 .
+
+    $default  reduce using rule 432 (fsflag)
+
+
+state 646
+
+  429 inode: IF INODE operator NUMBER PERCENT rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 702
+
+
+state 647
+
+  428 inode: IF INODE operator NUMBER rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 703
+
+
+state 648
+
+  431 space: IF SPACE operator NUMBER PERCENT rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 704
+
+
+state 649
+
+  430 space: IF SPACE operator value unit rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 705
+
+
+state 650
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount nettimeout rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 706
+
+
+state 651
+
+  313 urloption: CONTENT urloperator STRING .
+
+    $default  reduce using rule 313 (urloption)
+
+
+state 652
+
+  236 connection: IF FAILED URL URLOBJECT urloption nettimeout rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 707
+
+
+state 653
+
+  235 connection: IF FAILED host port type protocol nettimeout . rate1 THEN action1 recovery
+
+    NUMBER  shift, and go to state 381
+
+    $default  reduce using rule 412 (rate1)
+
+    rate1  go to state 708
+
+
+state 654
+
+  311 timeout: IF NUMBER RESTART NUMBER CYCLE THEN TIMEOUT .
+
+    $default  reduce using rule 311 (timeout)
+
+
+state 655
+
+  318 alert: alertmail NOT '{' eventoptionlist '}' formatlist reminder .
+
+    $default  reduce using rule 318 (alert)
+
+
+state 656
+
+  367 resourcesystem: IF resourcesystemlist rate1 THEN action1 recovery .
+
+    $default  reduce using rule 367 (resourcesystem)
+
+
+state 657
+
+  156 mailserver: STRING PORT NUMBER username password sslversion certmd5 .
+
+    $default  reduce using rule 156 (mailserver)
+
+
+state 658
+
+  194 allow: ALLOW CLEARTEXT PATH @2 . allowuserlist
+
+    STRING  shift, and go to state 662
+
+    allowuserlist  go to state 709
+    allowuser      go to state 664
+
+
+state 659
+
+  196 allow: ALLOW MD5HASH PATH @3 . allowuserlist
+
+    STRING  shift, and go to state 662
+
+    allowuserlist  go to state 710
+    allowuser      go to state 664
+
+
+state 660
+
+  198 allow: ALLOW CRYPT PATH @4 . allowuserlist
+
+    STRING  shift, and go to state 662
+
+    allowuserlist  go to state 711
+    allowuser      go to state 664
+
+
+state 661
+
+  185 allow: ALLOW STRING ':' STRING . readonly
+
+    READONLY  shift, and go to state 665
+
+    $default  reduce using rule 203 (readonly)
+
+    readonly  go to state 712
+
+
+state 662
+
+  202 allowuser: STRING .
+
+    $default  reduce using rule 202 (allowuser)
+
+
+state 663
+
+  192 allow: ALLOW PATH @1 allowuserlist .
+  201 allowuserlist: allowuserlist . allowuser
+
+    STRING  shift, and go to state 662
+
+    $default  reduce using rule 192 (allow)
+
+    allowuser  go to state 713
+
+
+state 664
+
+  200 allowuserlist: allowuser .
+
+    $default  reduce using rule 200 (allowuserlist)
+
+
+state 665
+
+  204 readonly: READONLY .
+
+    $default  reduce using rule 204 (readonly)
+
+
+state 666
+
+  186 allow: ALLOW '@' STRING readonly .
+
+    $default  reduce using rule 186 (allow)
+
+
+state 667
+
+  182 clientpemfile: CLIENTPEMFILE PATH .
+
+    $default  reduce using rule 182 (clientpemfile)
+
+
+state 668
+
+  184 allowselfcert: ALLOWSELFCERTIFICATION .
+
+    $default  reduce using rule 184 (allowselfcert)
+
+
+state 669
+
+  164 ssl: sslenable pemfile clientpemfile allowselfcert .
+
+    $default  reduce using rule 164 (ssl)
+
+
+state 670
+
+  245 type: TYPE TCPSSL sslversion certmd5 .
+
+    $default  reduce using rule 245 (type)
+
+
+state 671
+
+  289 request: REQUEST . PATH
+  290        | REQUEST . PATH CHECKSUM STRING
+
+    PATH  shift, and go to state 714
+
+
+state 672
+
+  260 protocol: PROTOCOL HTTP request .
+
+    $default  reduce using rule 260 (protocol)
+
+
+state 673
+
+  293 apache_stat: LOGLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 715
+
+
+state 674
+
+  294 apache_stat: CLOSELIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 716
+
+
+state 675
+
+  295 apache_stat: DNSLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 717
+
+
+state 676
+
+  296 apache_stat: KEEPALIVELIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 718
+
+
+state 677
+
+  297 apache_stat: REPLYLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 719
+
+
+state 678
+
+  298 apache_stat: REQUESTLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 720
+
+
+state 679
+
+  299 apache_stat: STARTLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 721
+
+
+state 680
+
+  300 apache_stat: WAITLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 722
+
+
+state 681
+
+  301 apache_stat: GRACEFULLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 723
+
+
+state 682
+
+  302 apache_stat: CLEANUPLIMIT . operator NUMBER PERCENT
+
+    CHANGED   shift, and go to state 369
+    NOTEQUAL  shift, and go to state 370
+    EQUAL     shift, and go to state 371
+    LESS      shift, and go to state 372
+    GREATER   shift, and go to state 373
+
+    $default  reduce using rule 392 (operator)
+
+    operator  go to state 724
+
+
+state 683
+
+  255 protocol: PROTOCOL APACHESTATUS apache_stat_list .
+  292 apache_stat_list: apache_stat_list . OR apache_stat
+
+    OR  shift, and go to state 725
+
+    $default  reduce using rule 255 (protocol)
+
+
+state 684
+
+  291 apache_stat_list: apache_stat .
+
+    $default  reduce using rule 291 (apache_stat_list)
+
+
+state 685
+
+  284 target: TARGET . MAILADDR
+  285       | TARGET . STRING
+
+    STRING    shift, and go to state 726
+    MAILADDR  shift, and go to state 727
+
+
+state 686
+
+  266 protocol: PROTOCOL SIP target . maxforward
+
+    MAXFORWARD  shift, and go to state 728
+
+    $default  reduce using rule 286 (maxforward)
+
+    maxforward  go to state 729
+
+
+state 687
+
+  237 connectionunix: IF FAILED unixsocket type protocol nettimeout rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 730
+
+
+state 688
+
+  221 useroptionlist: useroptionlist . useroption
+  405 action: EXEC argumentlist useroptionlist .
+
+    UID  shift, and go to state 321
+    GID  shift, and go to state 322
+
+    $default  reduce using rule 405 (action)
+
+    useroption  go to state 413
+
+
+state 689
+
+  419 recovery: ELSE IF . RECOVERED rate2 THEN action2
+  420         | ELSE IF . PASSED rate2 THEN action2
+  421         | ELSE IF . SUCCEEDED rate2 THEN action2
+
+    RECOVERED  shift, and go to state 731
+    PASSED     shift, and go to state 732
+    SUCCEEDED  shift, and go to state 733
+
+
+state 690
+
+  447 uid: IF FAILED UID STRING rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 734
+
+
+state 691
+
+  448 uid: IF FAILED UID NUMBER rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 735
+
+
+state 692
+
+  449 gid: IF FAILED GID STRING rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 736
+
+
+state 693
+
+  450 gid: IF FAILED GID NUMBER rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 737
+
+
+state 694
+
+  438 permission: IF FAILED PERMISSION NUMBER rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 738
+
+
+state 695
+
+  423 checksum: IF FAILED hashtype CHECKSUM EXPECT STRING rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 739
+
+
+state 696
+
+  422 checksum: IF FAILED hashtype CHECKSUM rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 740
+
+
+state 697
+
+  390 timestamp: IF TIMESTAMP operator NUMBER time rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 741
+
+
+state 698
+
+  424 checksum: IF CHANGED hashtype CHECKSUM rate1 THEN action1 .
+
+    $default  reduce using rule 424 (checksum)
+
+
+state 699
+
+  445 size: IF SIZE operator NUMBER unit rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 742
+
+
+state 700
+
+  440 match: IF matchflagnot MATCH STRING rate1 THEN action1 .
+
+    $default  reduce using rule 440 (match)
+
+
+state 701
+
+  439 match: IF matchflagnot MATCH PATH rate1 THEN action1 .
+
+    $default  reduce using rule 439 (match)
+
+
+state 702
+
+  429 inode: IF INODE operator NUMBER PERCENT rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 743
+
+
+state 703
+
+  428 inode: IF INODE operator NUMBER rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 744
+
+
+state 704
+
+  431 space: IF SPACE operator NUMBER PERCENT rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 745
+
+
+state 705
+
+  430 space: IF SPACE operator value unit rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 746
+
+
+state 706
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount nettimeout rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 747
+
+
+state 707
+
+  236 connection: IF FAILED URL URLOBJECT urloption nettimeout rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 748
+
+
+state 708
+
+  235 connection: IF FAILED host port type protocol nettimeout rate1 . THEN action1 recovery
+
+    THEN  shift, and go to state 749
+
+
+state 709
+
+  194 allow: ALLOW CLEARTEXT PATH @2 allowuserlist .
+  201 allowuserlist: allowuserlist . allowuser
+
+    STRING  shift, and go to state 662
+
+    $default  reduce using rule 194 (allow)
+
+    allowuser  go to state 713
+
+
+state 710
+
+  196 allow: ALLOW MD5HASH PATH @3 allowuserlist .
+  201 allowuserlist: allowuserlist . allowuser
+
+    STRING  shift, and go to state 662
+
+    $default  reduce using rule 196 (allow)
+
+    allowuser  go to state 713
+
+
+state 711
+
+  198 allow: ALLOW CRYPT PATH @4 allowuserlist .
+  201 allowuserlist: allowuserlist . allowuser
+
+    STRING  shift, and go to state 662
+
+    $default  reduce using rule 198 (allow)
+
+    allowuser  go to state 713
+
+
+state 712
+
+  185 allow: ALLOW STRING ':' STRING readonly .
+
+    $default  reduce using rule 185 (allow)
+
+
+state 713
+
+  201 allowuserlist: allowuserlist allowuser .
+
+    $default  reduce using rule 201 (allowuserlist)
+
+
+state 714
+
+  289 request: REQUEST PATH .
+  290        | REQUEST PATH . CHECKSUM STRING
+
+    CHECKSUM  shift, and go to state 750
+
+    $default  reduce using rule 289 (request)
+
+
+state 715
+
+  293 apache_stat: LOGLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 751
+
+
+state 716
+
+  294 apache_stat: CLOSELIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 752
+
+
+state 717
+
+  295 apache_stat: DNSLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 753
+
+
+state 718
+
+  296 apache_stat: KEEPALIVELIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 754
+
+
+state 719
+
+  297 apache_stat: REPLYLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 755
+
+
+state 720
+
+  298 apache_stat: REQUESTLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 756
+
+
+state 721
+
+  299 apache_stat: STARTLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 757
+
+
+state 722
+
+  300 apache_stat: WAITLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 758
+
+
+state 723
+
+  301 apache_stat: GRACEFULLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 759
+
+
+state 724
+
+  302 apache_stat: CLEANUPLIMIT operator . NUMBER PERCENT
+
+    NUMBER  shift, and go to state 760
+
+
+state 725
+
+  292 apache_stat_list: apache_stat_list OR . apache_stat
+
+    LOGLIMIT        shift, and go to state 673
+    CLOSELIMIT      shift, and go to state 674
+    DNSLIMIT        shift, and go to state 675
+    KEEPALIVELIMIT  shift, and go to state 676
+    REPLYLIMIT      shift, and go to state 677
+    REQUESTLIMIT    shift, and go to state 678
+    STARTLIMIT      shift, and go to state 679
+    WAITLIMIT       shift, and go to state 680
+    GRACEFULLIMIT   shift, and go to state 681
+    CLEANUPLIMIT    shift, and go to state 682
+
+    apache_stat  go to state 761
+
+
+state 726
+
+  285 target: TARGET STRING .
+
+    $default  reduce using rule 285 (target)
+
+
+state 727
+
+  284 target: TARGET MAILADDR .
+
+    $default  reduce using rule 284 (target)
+
+
+state 728
+
+  287 maxforward: MAXFORWARD . NUMBER
+
+    NUMBER  shift, and go to state 762
+
+
+state 729
+
+  266 protocol: PROTOCOL SIP target maxforward .
+
+    $default  reduce using rule 266 (protocol)
+
+
+state 730
+
+  237 connectionunix: IF FAILED unixsocket type protocol nettimeout rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 763
+
+
+state 731
+
+  419 recovery: ELSE IF RECOVERED . rate2 THEN action2
+
+    NUMBER  shift, and go to state 764
+
+    $default  reduce using rule 415 (rate2)
+
+    rate2  go to state 765
+
+
+state 732
+
+  420 recovery: ELSE IF PASSED . rate2 THEN action2
+
+    NUMBER  shift, and go to state 764
+
+    $default  reduce using rule 415 (rate2)
+
+    rate2  go to state 766
+
+
+state 733
+
+  421 recovery: ELSE IF SUCCEEDED . rate2 THEN action2
+
+    NUMBER  shift, and go to state 764
+
+    $default  reduce using rule 415 (rate2)
+
+    rate2  go to state 767
+
+
+state 734
+
+  447 uid: IF FAILED UID STRING rate1 THEN action1 recovery .
+
+    $default  reduce using rule 447 (uid)
+
+
+state 735
+
+  448 uid: IF FAILED UID NUMBER rate1 THEN action1 recovery .
+
+    $default  reduce using rule 448 (uid)
+
+
+state 736
+
+  449 gid: IF FAILED GID STRING rate1 THEN action1 recovery .
+
+    $default  reduce using rule 449 (gid)
+
+
+state 737
+
+  450 gid: IF FAILED GID NUMBER rate1 THEN action1 recovery .
+
+    $default  reduce using rule 450 (gid)
+
+
+state 738
+
+  438 permission: IF FAILED PERMISSION NUMBER rate1 THEN action1 recovery .
+
+    $default  reduce using rule 438 (permission)
+
+
+state 739
+
+  423 checksum: IF FAILED hashtype CHECKSUM EXPECT STRING rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 768
+
+
+state 740
+
+  422 checksum: IF FAILED hashtype CHECKSUM rate1 THEN action1 recovery .
+
+    $default  reduce using rule 422 (checksum)
+
+
+state 741
+
+  390 timestamp: IF TIMESTAMP operator NUMBER time rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 769
+
+
+state 742
+
+  445 size: IF SIZE operator NUMBER unit rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 770
+
+
+state 743
+
+  429 inode: IF INODE operator NUMBER PERCENT rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 771
+
+
+state 744
+
+  428 inode: IF INODE operator NUMBER rate1 THEN action1 recovery .
+
+    $default  reduce using rule 428 (inode)
+
+
+state 745
+
+  431 space: IF SPACE operator NUMBER PERCENT rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 772
+
+
+state 746
+
+  430 space: IF SPACE operator value unit rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 773
+
+
+state 747
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount nettimeout rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 774
+
+
+state 748
+
+  236 connection: IF FAILED URL URLOBJECT urloption nettimeout rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 775
+
+
+state 749
+
+  235 connection: IF FAILED host port type protocol nettimeout rate1 THEN . action1 recovery
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 548
+    action1  go to state 776
+
+
+state 750
+
+  290 request: REQUEST PATH CHECKSUM . STRING
+
+    STRING  shift, and go to state 777
+
+
+state 751
+
+  293 apache_stat: LOGLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 778
+
+
+state 752
+
+  294 apache_stat: CLOSELIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 779
+
+
+state 753
+
+  295 apache_stat: DNSLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 780
+
+
+state 754
+
+  296 apache_stat: KEEPALIVELIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 781
+
+
+state 755
+
+  297 apache_stat: REPLYLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 782
+
+
+state 756
+
+  298 apache_stat: REQUESTLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 783
+
+
+state 757
+
+  299 apache_stat: STARTLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 784
+
+
+state 758
+
+  300 apache_stat: WAITLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 785
+
+
+state 759
+
+  301 apache_stat: GRACEFULLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 786
+
+
+state 760
+
+  302 apache_stat: CLEANUPLIMIT operator NUMBER . PERCENT
+
+    PERCENT  shift, and go to state 787
+
+
+state 761
+
+  292 apache_stat_list: apache_stat_list OR apache_stat .
+
+    $default  reduce using rule 292 (apache_stat_list)
+
+
+state 762
+
+  287 maxforward: MAXFORWARD NUMBER .
+
+    $default  reduce using rule 287 (maxforward)
+
+
+state 763
+
+  237 connectionunix: IF FAILED unixsocket type protocol nettimeout rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 788
+
+
+state 764
+
+  416 rate2: NUMBER . CYCLE
+  417      | NUMBER . NUMBER CYCLE
+
+    CYCLE   shift, and go to state 789
+    NUMBER  shift, and go to state 790
+
+
+state 765
+
+  419 recovery: ELSE IF RECOVERED rate2 . THEN action2
+
+    THEN  shift, and go to state 791
+
+
+state 766
+
+  420 recovery: ELSE IF PASSED rate2 . THEN action2
+
+    THEN  shift, and go to state 792
+
+
+state 767
+
+  421 recovery: ELSE IF SUCCEEDED rate2 . THEN action2
+
+    THEN  shift, and go to state 793
+
+
+state 768
+
+  423 checksum: IF FAILED hashtype CHECKSUM EXPECT STRING rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 794
+
+
+state 769
+
+  390 timestamp: IF TIMESTAMP operator NUMBER time rate1 THEN action1 recovery .
+
+    $default  reduce using rule 390 (timestamp)
+
+
+state 770
+
+  445 size: IF SIZE operator NUMBER unit rate1 THEN action1 recovery .
+
+    $default  reduce using rule 445 (size)
+
+
+state 771
+
+  429 inode: IF INODE operator NUMBER PERCENT rate1 THEN action1 recovery .
+
+    $default  reduce using rule 429 (inode)
+
+
+state 772
+
+  431 space: IF SPACE operator NUMBER PERCENT rate1 THEN action1 recovery .
+
+    $default  reduce using rule 431 (space)
+
+
+state 773
+
+  430 space: IF SPACE operator value unit rate1 THEN action1 recovery .
+
+    $default  reduce using rule 430 (space)
+
+
+state 774
+
+  238 icmp: IF FAILED ICMP icmptype icmpcount nettimeout rate1 THEN action1 recovery .
+
+    $default  reduce using rule 238 (icmp)
+
+
+state 775
+
+  236 connection: IF FAILED URL URLOBJECT urloption nettimeout rate1 THEN action1 recovery .
+
+    $default  reduce using rule 236 (connection)
+
+
+state 776
+
+  235 connection: IF FAILED host port type protocol nettimeout rate1 THEN action1 . recovery
+
+    ELSE  shift, and go to state 629
+
+    $default  reduce using rule 418 (recovery)
+
+    recovery  go to state 795
+
+
+state 777
+
+  290 request: REQUEST PATH CHECKSUM STRING .
+
+    $default  reduce using rule 290 (request)
+
+
+state 778
+
+  293 apache_stat: LOGLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 293 (apache_stat)
+
+
+state 779
+
+  294 apache_stat: CLOSELIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 294 (apache_stat)
+
+
+state 780
+
+  295 apache_stat: DNSLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 295 (apache_stat)
+
+
+state 781
+
+  296 apache_stat: KEEPALIVELIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 296 (apache_stat)
+
+
+state 782
+
+  297 apache_stat: REPLYLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 297 (apache_stat)
+
+
+state 783
+
+  298 apache_stat: REQUESTLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 298 (apache_stat)
+
+
+state 784
+
+  299 apache_stat: STARTLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 299 (apache_stat)
+
+
+state 785
+
+  300 apache_stat: WAITLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 300 (apache_stat)
+
+
+state 786
+
+  301 apache_stat: GRACEFULLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 301 (apache_stat)
+
+
+state 787
+
+  302 apache_stat: CLEANUPLIMIT operator NUMBER PERCENT .
+
+    $default  reduce using rule 302 (apache_stat)
+
+
+state 788
+
+  237 connectionunix: IF FAILED unixsocket type protocol nettimeout rate1 THEN action1 recovery .
+
+    $default  reduce using rule 237 (connectionunix)
+
+
+state 789
+
+  416 rate2: NUMBER CYCLE .
+
+    $default  reduce using rule 416 (rate2)
+
+
+state 790
+
+  417 rate2: NUMBER NUMBER . CYCLE
+
+    CYCLE  shift, and go to state 796
+
+
+state 791
+
+  419 recovery: ELSE IF RECOVERED rate2 THEN . action2
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 797
+    action2  go to state 798
+
+
+state 792
+
+  420 recovery: ELSE IF PASSED rate2 THEN . action2
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 797
+    action2  go to state 799
+
+
+state 793
+
+  421 recovery: ELSE IF SUCCEEDED rate2 THEN . action2
+
+    START      shift, and go to state 542
+    STOP       shift, and go to state 543
+    ALERT      shift, and go to state 544
+    RESTART    shift, and go to state 545
+    EXEC       shift, and go to state 546
+    UNMONITOR  shift, and go to state 547
+
+    action   go to state 797
+    action2  go to state 800
+
+
+state 794
+
+  423 checksum: IF FAILED hashtype CHECKSUM EXPECT STRING rate1 THEN action1 recovery .
+
+    $default  reduce using rule 423 (checksum)
+
+
+state 795
+
+  235 connection: IF FAILED host port type protocol nettimeout rate1 THEN action1 recovery .
+
+    $default  reduce using rule 235 (connection)
+
+
+state 796
+
+  417 rate2: NUMBER NUMBER CYCLE .
+
+    $default  reduce using rule 417 (rate2)
+
+
+state 797
+
+  411 action2: action .
+
+    $default  reduce using rule 411 (action2)
+
+
+state 798
+
+  419 recovery: ELSE IF RECOVERED rate2 THEN action2 .
+
+    $default  reduce using rule 419 (recovery)
+
+
+state 799
+
+  420 recovery: ELSE IF PASSED rate2 THEN action2 .
+
+    $default  reduce using rule 420 (recovery)
+
+
+state 800
+
+  421 recovery: ELSE IF SUCCEEDED rate2 THEN action2 .
+
+    $default  reduce using rule 421 (recovery)

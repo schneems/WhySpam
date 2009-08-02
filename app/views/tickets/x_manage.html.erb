@@ -1,0 +1,84 @@
+
+
+<%= javascript_include_tag 'jquery.dataTables' %>
+	<%= stylesheet_link_tag 'demo_table.css' %>
+
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$('#example').dataTable();
+	} );
+</script>
+
+
+<div id = "cryptmail">
+<h3>WhySpam.me Secure Email Addresses</h3><br />
+<hr />
+
+<br />
+<br />
+
+<span>Secure Email | </span>
+<span>Website | </span>
+<span>Used | </span>
+<span>Created | </span><br />
+
+<% @infos.each do |info| %>
+<span class="clickable"  onclick = "window.location.href = '<%= url_for :controller => 'info', :id => info.id, :action => 'show' %>' "   >
+	<span class = "manage_wrapper">
+    <span class = "man_cryptmail"><%= info.cryptmail %></span> |
+    <span class = "man_website"><%= info.website %></span> |
+	<span class = "man_used"><%= info.created_at.strftime("%m/%d/%Y") %></span> |
+	<span class = "man_created"><%= info.created_at.strftime("%m/%d/%Y") %></span> 
+    </span>
+    
+</span><!-- clickable -->
+
+<button href = "<%= report_spam_url(:info => info.id) %>"  rel = "prettyPop_No_close"  >Edit</button>
+
+<button href = "<%= spam_survey_url(:info => info.id) %>"  rel = "prettyPop_No_close"  >Delete</button>
+
+<!-- spam_survey_url(:info => info.id) -->
+                                                                                              
+<% end %>                                                                                     
+
+</div>
+
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+	<thead>
+		<tr>
+			<th>Secure Email Address</th>
+			<th>Website</th>
+			<th>Platform(s)</th>
+			<th>Last Used</th>
+			<th>Created</th>
+		</tr>
+
+	</thead>
+	<tbody>
+		<tr>
+			
+			<span class = "man_cryptmail"></span> |
+		    <span class = "man_website"></span> |
+			<span class = "man_used"></span> |
+			<span class = "man_created"></span>
+			
+			<td><%= info.cryptmail %></td>
+			<td><%= info.website %></td>
+			<td><%= info.created_at.strftime("%m/%d/%Y") %></td>
+			<td><%= info.created_at.strftime("%m/%d/%Y") %></td>
+		</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>Secure Email Address</th>
+				<th>Website</th>
+				<th>Platform(s)</th>
+				<th>Last Used</th>
+				<th>Created</th>
+			</tr>
+		</tfoot>
+	</table>
+		
+	
