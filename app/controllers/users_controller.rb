@@ -1,5 +1,12 @@
 
 class UsersController < ApplicationController
+  
+  ### FIX MAILER FETCHER DAEMON FOOL
+  
+  ### GET IT W
+  
+  
+  
   ## TODO complete the contact form
   ## TODO complete the about page
   ## TODO make sure the forms work
