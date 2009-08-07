@@ -1,0 +1,42 @@
+MailFactory
+======
+
+mailfactory is tool for generating a mail object that you can use to test your apps email parsing behavior. 
+
+install
+=======
+script/plugin install git://github.com/thinkbohemian/MailFactory.git
+
+
+Example
+=======
+
+mail = mail_factory(:from_email => from_email , :to_email => to_email , :subject => subject, :body => body)
+
+If you want to simulate receiving an email from "foobar@example.com", sent to "you@example.com" with a subject of "my cool subject" and a body of "this is only a test" you could create the object like this:
+
+mail_factory(:from_email => "foobar@example.com" , :to_email => "you@example.com" , :subject => "my cool subject", :body => "this is only a test")
+
+If you don't care about some fields, mail factory will auto generate them for you.
+
+mail = mail_factory
+
+
+TMail::Mail.parse(mail).to.to_s
+=> "foo@example.com"
+
+TMail::Mail.parse(mail).from.to_s
+=> "example@example.com"
+
+TMail::Mail.parse(mail).subject.to_s
+=>"testing testing"
+
+TMail::Mail.parse(mail).body.to_s
+=>"This is a test body. Pretty generic really, should make it past most filters\n"
+
+=======
+
+I created this to help test out my rails application http://www.WhySpam.Me its a new spin on sticking it to the man (the one spam-ing you all the time), if you want to fight back against spam, or just want to check out my site i would appreciate the visit. WhySpam is a creative commons licensed open source project, help out at:  http://github.com/thinkbohemian/WhySpam/tree/master
+
+
+Copyright (c) 2009 [Richard Schneeman || www.thinkbohemian.com ], released under the MIT license
