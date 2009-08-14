@@ -29,7 +29,57 @@
 	http://localhost:3000/stylesheets/why.css?1243627690
 	http://localhost:3000/stylesheets/cache/bundle.css?1244425265
 	http://localhost:3000/stylesheets/cache/bundle.css?1246814650
+	http://localhost:3000/stylesheets/why.css?1246815376
+	http://localhost:3000/stylesheets/why.css?1247446051
+	http://localhost:3000/stylesheets/why.css?1247446113
+	http://localhost:3000/stylesheets/why.css?1247447384
+	http://localhost:3000/stylesheets/why.css?1247447406
+	http://localhost:3000/stylesheets/why.css?1247448596
+	http://localhost:3000/stylesheets/why.css?1247448632
+	http://localhost:3000/stylesheets/why.css?1247448810
+	http://localhost:3000/stylesheets/why.css?1247536699
+	http://localhost:3000/stylesheets/why.css?1248316316
+	http://localhost:3000/stylesheets/why.css?1248394681
+	http://localhost:3000/stylesheets/why.css?1248725710
+	http://localhost:3000/stylesheets/why.css?1248734763
+	http://localhost:3000/stylesheets/why.css?1248735843
 */
+
+button.ticket_delete_button {
+	
+}
+
+#dataTable_forms tbody tr.clickable.odd td.comments {
+	
+}
+
+#survey_submit {
+	
+}
+
+#survey_opt_out_true {
+	
+}
+
+#survey_un_solicited_true {
+	
+}
+
+#survey_sell_true {
+	
+}
+
+#survey_vulgar_true {
+	
+}
+
+#survey_submit {
+	
+}
+
+#survey_submit_2 {
+	
+}
 
 h1, h2, h3 {
 	padding: 0;
@@ -42,9 +92,7 @@ h1, h2, h3 {
 	margin-left: 20px;
 }
 
-#footer a:hover{
-	color: white;
-}
+
 
 #login_explained{
 	margin-left: 20px;
@@ -81,7 +129,15 @@ height: 20px;
 }
 
 #flash {
-	padding: 10px;
+	margin-top: 20px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: blue;
+	color: white;
+	font-size: 16pt;
+	width: 60%;
+	border: 2px solid black;
 }
 
 
@@ -89,6 +145,10 @@ height: 20px;
 form#inline {
 	display: inline;
 	
+}
+
+button.form_edit_button {
+	z-index: 20;
 }
 
 div#flash.flash_error {
@@ -176,7 +236,6 @@ div.simple_captcha_image {display:inline;}
 
 .clickable {
 	cursor: pointer;
-	text-align: left;	
 	
 }
 
@@ -188,11 +247,7 @@ span.clickable {
 }
 
 
-span.clickable span:first-child {
-	margin-left: 7px;
-	width: 310px;
-	display: inline-block;
-}
+
 
 #optional_website {
 	width: 500px;
@@ -204,19 +259,45 @@ span.clickable span:first-child {
 	float: right;
 }
 
+span.manage_wrapper {
 
-
-span.clickable span:first-child + span{
-	width: 30px;
+	width: 670px;
 	display: inline-block;
 }
 
-
-
-tr.clickable td {
-	min-width: 200px;	
-	border-bottom: solid black 1px;
+span.man_cryptmail {
+display: inline-block;
+width: 270px;
+padding-left: 5px;	
+padding-right: 5px;
 }
+
+span.man_website {
+display: inline-block;
+width: 150px;
+
+
+}
+
+div#example_wrapper.dataTables_wrapper {
+	padding:  0 5px 30px 5px;
+	
+}
+
+#manage_mail {
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 30px;
+	
+}
+
+
+
+
+
+
+
+
 
 table.email tbody tr {
 	border-bottom: 1px solid #000;
@@ -228,12 +309,6 @@ td.date {
 	
 }
 
-table.email  {
-	padding: 0;
-	width: 100%;
-	border: 1px solid black;
-	border-collapse: collapse;
-}
 
 #privacy{
 	width: 700px;	
@@ -370,12 +445,23 @@ textarea#form_comments,
 input#ticket_to_email,
 input#login, input#password,
 input#email ,
-input#form_email
-
+input#form_email, 
+input#old_password,
+input#user_login,
+input#password_confirmation,
+input#user_password
 {
 	height: 40px;
 	font-size: 18pt;
 	width: 300px;
+}
+
+ {
+	
+}
+
+ {
+	
 }
 
 
@@ -501,7 +587,19 @@ div.right {
 
 
 
+#footer a:link, 
+#footer a:visited {
+	color: white;
+}
 
+#footer a:hover{
+	color: black;
+}
+
+td:hover {
+	color: black;
+	
+}
 
 a:link, a:visited {
 	color: blue;
@@ -526,6 +624,10 @@ a:hover{
 #main {
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+td.comments {
+	overflow: hidden;
 }
 
 #example_login {
@@ -584,7 +686,8 @@ body {
 }
 
 #main_input,
-#main_input_in_partial {
+#main_input_in_partial, 
+#main_input_websites {
 	float: left;
 	width: 475px;
 	margin: 0 auto 0 auto;
@@ -705,6 +808,11 @@ div#corner_wrapper {
 
 #main_title a:hover{
 	color: white;
+}
+
+#dataTable tbody td{
+	font-size: 14px;
+	
 }/* --------- /stylesheets/prettyPopin.css --------- */ 
 /* @override 
 	http://localhost:3000/stylesheets/prettyPopin.css?1238960860
@@ -771,4 +879,403 @@ div#corner_wrapper {
 				position: absolute;
 				top: 50%; left: 50%;
 				margin: -14px 0 0 -14px;
-			}
+			}/* --------- /stylesheets/demo_table.css --------- */ 
+/* @override 
+	http://localhost:3000/stylesheets/demo_table.css?1239039730
+	http://localhost:3000/stylesheets/demo_table.css?1247448847
+*/
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables features
+ */
+ 
+ td:hover {
+	color: black;
+}
+
+
+.dataTables_wrapper {
+	position: relative;
+	min-height: 302px;
+	_height: 302px;
+	clear: both;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 250px;
+	margin-left: -125px;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 11px;
+	padding: 2px 0;
+}
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+.dataTables_info {
+	width: 60%;
+	float: left;
+}
+
+.dataTables_paginate {
+	width: 44px;
+	* width: 50px;
+	float: right;
+	text-align: right;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+}
+
+.paginate_disabled_previous {
+	background-image: url(/images/back_disabled.jpg);
+}
+
+.paginate_enabled_previous {
+	background-image: url(/images/back_enabled.jpg);
+}
+
+.paginate_disabled_next {
+	background-image: url(/images/forward_disabled.jpg);
+}
+
+.paginate_enabled_next {
+	background-image: url(/images/forward_enabled.jpg);
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables display
+ */
+table.display {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+}
+
+table.display thead th {
+	padding: 3px 10px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+table.display tfoot th {
+	padding: 3px 10px;
+	border-top: 1px solid black;
+	font-weight: bold;
+}
+
+table.display tr.heading2 td {
+	border-bottom: 1px solid #aaa;
+}
+
+table.display td {
+	padding: 3px 10px;
+}
+
+table.display td.center {
+	text-align: center;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url(/images/sort_asc.jpg) no-repeat center right;
+}
+
+.sorting_desc {
+	background: url(/images/sort_desc.jpg) no-repeat center right;
+}
+
+.sorting {
+	background: url(/images/sort_both.jpg) no-repeat center right;
+}
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables row classes
+ */
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+
+
+
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+table.display tr.odd.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.even.gradeC {
+	background-color: #eeeeff;
+}
+
+table.display tr.odd.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.even.gradeX {
+	background-color: #ffeeee;
+}
+
+table.display tr.odd.gradeU {
+	background-color: #ddd;
+}
+
+table.display tr.even.gradeU {
+	background-color: #eee;
+}
+
+
+tr.odd {
+	background-color: #E2E4FF;
+}
+
+tr.even {
+	background-color: white;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+.top, .bottom {
+	padding: 15px;
+	background-color: #F5F5F5;
+	border: 1px solid #CCCCCC;
+}
+
+.top .dataTables_info {
+	float: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.dataTables_empty {
+	text-align: center;
+}
+
+tfoot input {
+	margin: 0.5em 0;
+	width: 100%;
+	color: #444;
+}
+
+tfoot input.search_init {
+	color: #999;
+}
+
+td.group {
+	background-color: #d1cfd0;
+	border-bottom: 2px solid #A19B9E;
+	border-top: 2px solid #A19B9E;
+}
+
+td.details {
+	background-color: #d1cfd0;
+	border: 2px solid #A19B9E;
+}
+
+
+.example_alt_pagination div.dataTables_info {
+	width: 40%;
+}
+
+.example_alt_pagination .dataTables_paginate {
+	width: 400px;
+	height: 22px;
+	line-height: 22px;
+}
+
+.example_alt_pagination div.dataTables_paginate span.paginate_button,
+ 	.example_alt_pagination div.dataTables_paginate span.paginate_active {
+	border: 1px solid #aaa;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 2px 5px;
+	margin: 0 3px;
+	cursor: pointer;
+	*cursor: hand;
+}
+
+.example_alt_pagination div.dataTables_paginate span.paginate_button {
+	background-color: #ddd;
+}
+
+.example_alt_pagination div.dataTables_paginate span.paginate_button:hover {
+	background-color: #ccc;
+}
+
+.example_alt_pagination div.dataTables_paginate span.paginate_active {
+	background-color: #99B3FF;
+}
+
+table.display tr.even.row_selected td {
+	background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+	background-color: #9FAFD1;
+}
+
+
+/*
+ * Sorting classes for columns
+ */
+/* For the standard odd/even */
+tr.odd td.sorting_1 {
+	background-color: #D3D6FF;
+}
+
+tr.odd td.sorting_2 {
+	background-color: #DADCFF;
+}
+
+tr.odd td.sorting_3 {
+	background-color: #E0E2FF;
+}
+
+tr.even td.sorting_1 {
+	background-color: #EAEBFF;
+}
+
+tr.even td.sorting_2 {
+	background-color: #F2F3FF;
+}
+
+tr.even td.sorting_3 {
+	background-color: #F9F9FF;
+}
+
+
+/* For the Conditional-CSS grading rows */
+/*
+ 	Colour calculations (based off the main row colours)
+  Level 1:
+		dd > c4
+		ee > d5
+	Level 2:
+	  dd > d1
+	  ee > e2
+ */
+tr.odd.gradeA td.sorting_1 {
+	background-color: #c4ffc4;
+}
+
+tr.odd.gradeA td.sorting_2 {
+	background-color: #d1ffd1;
+}
+
+tr.even.gradeA td.sorting_1 {
+	background-color: #d5ffd5;
+}
+
+tr.even.gradeA td.sorting_2 {
+	background-color: #e2ffe2;
+}
+
+tr.odd.gradeC td.sorting_1 {
+	background-color: #c4c4ff;
+}
+
+tr.odd.gradeC td.sorting_2 {
+	background-color: #d1d1ff;
+}
+
+tr.even.gradeC td.sorting_1 {
+	background-color: #d5d5ff;
+}
+
+tr.even.gradeC td.sorting_2 {
+	background-color: #e2e2ff;
+}
+
+tr.odd.gradeX td.sorting_1 {
+	background-color: #ffc4c4;
+}
+
+tr.odd.gradeX td.sorting_2 {
+	background-color: #ffd1d1;
+}
+
+tr.even.gradeX td.sorting_1 {
+	background-color: #ffd5d5;
+}
+
+tr.even.gradeX td.sorting_2 {
+	background-color: #ffe2e2;
+}
+
+tr.odd.gradeU td.sorting_1 {
+	background-color: #c4c4c4;
+}
+
+tr.odd.gradeU td.sorting_2 {
+	background-color: #d1d1d1;
+}
+
+tr.even.gradeU td.sorting_1 {
+	background-color: #d5d5d5;
+}
+
+tr.even.gradeU td.sorting_2 {
+	background-color: #e2e2e2;
+}
+
+
+/*
+ * Row highlighting example
+ */
+.ex_highlight #example tbody tr.even:hover, #example tbody tr.even td.highlighted {
+	background-color: #ECFFB3;
+}
+
+.ex_highlight #example tbody tr.odd:hover, #example tbody tr.odd td.highlighted {
+	background-color: #E6FF99;
+}
+
+

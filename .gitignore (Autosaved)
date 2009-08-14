@@ -1,7 +1,0 @@
-.DS_Store
-log/*.log
-tmp/**/*
-db/*.sqlite3
-config/mailer_daemon.yml
-config/environments/development.rb
-config/environments/production.rb

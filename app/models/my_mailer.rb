@@ -49,7 +49,6 @@ class MyMailer < ActionMailer::Base
       
         elsif ticket == nil
           puts "this happens if only ticket == nil"
-          
           Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => subject)
         end
 

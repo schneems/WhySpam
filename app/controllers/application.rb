@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   include SimpleCaptcha::ControllerHelpers
   include AuthenticatedSystem
+  
+  
 #  filter_parameter_logging :password
 
   def send_welcome_email
