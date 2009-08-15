@@ -22,8 +22,9 @@
 	<tr class="clickable" 
 	href="<%= url_for ticket_path(ticket.id) %>" rel="prettyPopin">
 			<td><%= ticket.from_email||"Error Retrieving Email Address" %> </td>
-			<td ><%= ticket.subject||"(No Subject)" %></td>
-			<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td></tr>
+			<td><%= ticket.subject||"(No Subject)" %></td>
+			<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td>
+			</tr>
 	<% end %>
 
 
@@ -32,7 +33,7 @@
 		<tr>
 			<th>From</th>
 			<th>Subject</th>
-			<th class="center" >Recieved</th>
+			<th class="center" >Recieved</th>			
 		</tr>
 	</tfoot>
 </table>
