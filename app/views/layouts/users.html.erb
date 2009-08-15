@@ -18,7 +18,7 @@
 
 		<% @am_i_testing = true if main_url != "localhost" %>
 		
-		<% bundle do %>
+		<%# bundle do %>
 	  
 			<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 
 								'liquid-canvas', 'liquid-canvas-plugins', 'prettyComments', 
@@ -27,7 +27,7 @@
 			<%= stylesheet_link_tag 'why.css', 'prettyPopin.css', 'demo_table.css' %>	
 		    <!--[if IE]><%= javascript_include_tag 'excanvas.js' %><![endif]-->
 	
-			<% end %> 
+			<%# end %> 
 	
 		
 		<script type="text/javascript">
@@ -173,7 +173,7 @@
 	<div id = "footer">
 		©<a href = "http://www.thinkbohemian.com">Think Bohemian</a>
 		 | <%= link_to " Privacy Policy ", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
-		 | <%= link_to " About Us", {:action => "optional", :controller => "about"}, {:rel => "prettyPopin" } %>
+		 | <%= link_to " About Us", {:action => "about", :controller => "users"}, {:rel => "prettyPopin" } %>
 		 | <%= link_to " Contact Us ", {:action => "contact", :controller => "users"} %>
 
 		

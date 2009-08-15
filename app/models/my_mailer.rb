@@ -6,7 +6,7 @@ class MyMailer < ActionMailer::Base
     to_email = form.email
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})        
     if ticket == nil
-      ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :forms_id => form_id)
+      ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :form_id => form_id)
       if to_email != nil        
         @recipients   = to_email
         @from         = from_email 

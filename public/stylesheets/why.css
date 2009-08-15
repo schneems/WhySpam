@@ -42,9 +42,15 @@
 	http://localhost:3000/stylesheets/why.css?1248725710
 	http://localhost:3000/stylesheets/why.css?1248734763
 	http://localhost:3000/stylesheets/why.css?1248735843
+	http://localhost:3000/stylesheets/why.css?1249071266
 */
 
 button.ticket_delete_button {
+	
+}
+
+#about {
+	width: 600px;
 	
 }
 

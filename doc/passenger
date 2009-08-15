@@ -1,0 +1,9 @@
+
+
+sudo nano /etc/apache2/apache2.conf ## passenger 
+
+
+sudo passenger-memory-stats
+sudo  passenger-status 
+
+touch /tmp/restart.txt

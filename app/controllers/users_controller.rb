@@ -32,7 +32,11 @@ class UsersController < ApplicationController
   layout "users", :except => [:test, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional]
 
 
-
+  def about
+    respond_to do |format|
+      format.html {render :partial => "about"}        
+    end
+  end
   
   def change_password
     if logged_in? 

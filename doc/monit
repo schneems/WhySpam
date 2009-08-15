@@ -1,0 +1,3 @@
+sudo nano /etc/monit/monitrc
+
+sudo /etc/init.d/monit start
