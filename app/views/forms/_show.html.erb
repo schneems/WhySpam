@@ -1,0 +1,93 @@
+
+
+<div id = "externspamwrap">
+<style type='text/css'>
+	input#user_email, 
+	input#user_website,
+	input#captcha,
+	textarea#form_comments,
+	input#ticket_to_email,
+	input#login, input#password,
+	input#email ,
+	input#form_email, 
+	input#old_password,
+	input#user_login,
+	input#password_confirmation,
+	input#user_password
+	{
+		height: 40px;
+		font-size: 18pt;
+		width: 300px;
+	}
+	
+	span.simple_captcha_image img {
+		float: right;
+		padding-left: 3px;
+		border: 1px solid black;
+		height: 40px;
+		width: 140px;
+		padding-bottom: 10px;
+		background-color: #fff;
+
+	}
+	
+	input#captcha,
+ 	input#captcha
+	{
+		width: 150px;
+	}
+	
+	#externspamwrap 
+	{
+		width: 400px;
+	}
+
+	.float_right {
+		float:right;
+	}
+	
+</style>
+
+<% if @form_data.nil? %>
+<p>No form exists with this ID either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", contact_us_path %>.
+	<br />
+	<br />
+If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", forms_path  %> link above, its the quickest way to make an anonymous form on the web.
+<% else %>
+
+		<b> This form was created: <%= @form_data.created_at.strftime("%m/%d/%Y")%> </b>
+		<br />
+		<br />
+		<b> User comments for this form:</b>
+		<br />
+		<br />
+		<%= @form_data.comments.nil? || @form_data.comments.empty? ? "This user left no comments for this form" : @form_data.comments %>
+	
+		<br />
+		<br />
+		  <% form_for :form, :url => {:action => "send_secure_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
+	<table>
+	<tr><td>Your Email:<span class = "optional">(Optional)</span></td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
+	<tr><td>Message:</td><td colspan = 2><%=  f.text_area :comments, :rows => 2 %></td></tr>
+
+	<%= show_simple_captcha %>
+	</table>
+	<center>
+		<br />
+
+	<%= f.hidden_field :form_id, :value => @form_data.id %>
+	<%= f.submit "Send Your Message" %>
+	</center>
+			<br />
+	<span class = "float_right">
+	<a href = "http://www.whyspam.me">WhySpam.me Secure forms</a> 
+		
+	</span>
+
+	<% end %>
+
+
+
+				<%= error_messages_for :user %>
+</div>
+<% end %>

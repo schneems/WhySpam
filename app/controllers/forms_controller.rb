@@ -1,15 +1,22 @@
 class FormsController < ApplicationController
-  layout "users", :except => [:spam_survey, :report_spam, :test, :ie, :ie2, :test2, :HEY, :optional]
-  
-  
-  def test
-    
-  end
+  layout "users", :except => [:spam_survey, :report_spam, :test, :ie, :ie2, :test2, :HEY, :optional, :foreign_show]
   
   # Be sure to include AuthenticationSystem in Application Controller instead
-  
   ## sudo god -c ./config/fetcher-daemon.god -D
   ## check for logged in and user before viewing mail and deleting !!
+
+
+  
+  def foreign_show
+      crypt = params[:id]
+      form = Forms.find_by_crypt(crypt)
+      @form_data = form.first      
+    respond_to do |format|
+       format.html {render :partial => 'show'}
+    end    
+  end
+  
+
   
   def delete_form
       form_id = params[:id]
@@ -29,13 +36,10 @@ class FormsController < ApplicationController
   
   def send_secure_form
     flash[:error] = ""
-     
     form_id = params[:form][:form_id]
     from_email = params[:form][:email]||" "
     message = params[:form][:comments]
    
-    
-
     if simple_captcha_valid?
     #  render :text => "workz foo"
       session[:count] = 0
@@ -68,12 +72,19 @@ class FormsController < ApplicationController
    
     
   end
+
   
   def show
     # zq
       @crypt = params[:id]
       form = Forms.find_by_crypt(@crypt)
       @form_data = form.first
+      # localhost:3000/forms/show/ZQ
+      respond_to do |format|
+         format.html 
+         format.js {render :partial => "test" }
+      end
+      
   end
   
 

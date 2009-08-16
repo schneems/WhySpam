@@ -1,0 +1,17 @@
+input#user_email, 
+input#user_website,
+input#captcha,
+textarea#form_comments,
+input#ticket_to_email,
+input#login, input#password,
+input#email ,
+input#form_email, 
+input#old_password,
+input#user_login,
+input#password_confirmation,
+input#user_password
+{
+	height: 40px;
+	font-size: 18pt;
+	width: 300px;
+}

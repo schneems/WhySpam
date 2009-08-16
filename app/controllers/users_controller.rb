@@ -32,6 +32,10 @@ class UsersController < ApplicationController
   layout "users", :except => [:test, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional]
 
 
+  def test
+    
+  end
+
   def about
     respond_to do |format|
       format.html {render :partial => "about"}        

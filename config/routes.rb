@@ -2,6 +2,8 @@ ActionController::Routing::Routes.draw do |map|
 # rake routes | mate
   map.resources :users
   map.root :controller => 'users'
+  map.foreign_show '/foreign_show/:id', :controller => 'forms', :action => 'foreign_show'
+  map.test '/test', :controller => 'users', :action => 'test'
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -28,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
   map.read_spam '/read_spam', :controller => 'users', :action => 'read_spam'
   map.contact_us '/contact_us', :controller => 'users', :action => 'contact_us'
   
-  map.home '/', :controller => 'users', :action => 'test'
+  map.home '/', :controller => 'users', :action => 'index'
   
   map.resources :tickets
   

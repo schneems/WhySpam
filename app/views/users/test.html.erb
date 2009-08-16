@@ -1,1 +1,45 @@
-<h1>Coming Soon...</h1>
+<style type='text/css'>
+	html, body, #wrap {height: 100%;}
+
+	body > #wrap {height: auto; min-height: 100%;}
+
+	#main {padding-bottom: 150px;}  /* must be same height as the footer */
+
+	#footer {position: relative;
+		margin-top: -150px; /* negative value of footer height */
+		height: 150px;
+		clear:both;} 
+	
+		.clearfix:after {content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;}
+		.clearfix {display: inline-block;}
+		/* Hides from IE-mac \*/
+		* html .clearfix { height: 1%;}
+		.clearfix {display: block;}
+		/* End hide from IE-mac */
+	
+	
+</style>
+
+
+
+<div id="wrap">
+
+	<div id="main" class="clearfix">
+		<div id = "WhySpamForm">
+			<script type="text/javascript">
+				form_id = "zq";
+			</script>
+			<script type="text/javascript" src="http://localhost:3000/javascripts/whyspamextern.js">		
+			</script>
+		</div>
+	</div>
+
+</div>
+
+<div id="footer">
+hey
+</div>
