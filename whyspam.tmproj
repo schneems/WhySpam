@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/users/contact.html.erb</string>
+	<string>app/views/users/test.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,51 +18,9 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>301</integer>
+	<integer>262</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/controllers/users_controller.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>77</integer>
-				<key>line</key>
-				<integer>31</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>31</integer>
-		</dict>
-		<key>app/views/layouts/contacts.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>30</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>14</integer>
-		</dict>
-		<key>app/views/layouts/users.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>32</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>23</integer>
-		</dict>
 		<key>app/views/simple_captcha/_simple_captcha.erb</key>
 		<dict>
 			<key>caret</key>
@@ -140,9 +98,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>213</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>3</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
@@ -153,16 +111,16 @@
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>186</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>12</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>213</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>1</integer>
+				<integer>3</integer>
 			</dict>
 		</dict>
 		<key>app/views/users/edit.html.erb</key>
@@ -195,6 +153,20 @@
 				<integer>5</integer>
 			</dict>
 		</dict>
+		<key>app/views/users/test.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>8</integer>
+				<key>line</key>
+				<integer>89</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>60</integer>
+			<key>firstVisibleLine</key>
+			<integer>81</integer>
+		</dict>
 		<key>cucumber.yml</key>
 		<dict>
 			<key>caret</key>
@@ -222,20 +194,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>features/plain/manage_spam.feature</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>122</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>110</integer>
 		</dict>
 		<key>features/plain/websites.feature</key>
 		<dict>
@@ -267,19 +225,49 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
-		<key>features/step_definitions/manage_spam_steps.rb</key>
+		<key>public/javascripts/jrails.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>44</integer>
 				<key>line</key>
-				<integer>117</integer>
+				<integer>191</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>107</integer>
+			<integer>181</integer>
+		</dict>
+		<key>public/javascripts/slide.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>17</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
 		</dict>
 		<key>public/stylesheets/base_packaged.css</key>
 		<dict>
@@ -295,19 +283,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>script/mailer_daemon_fetcher</key>
+		<key>public/stylesheets/slide.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>49</integer>
+				<integer>26</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>82</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>2</integer>
+			<integer>72</integer>
 		</dict>
 		<key>test/unit/info_test.rb</key>
 		<dict>
@@ -339,6 +327,34 @@
 				<integer>17</integer>
 			</dict>
 		</dict>
+		<key>vendor/plugins/jrails/CHANGELOG</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>vendor/plugins/jrails/README</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>vendor/plugins/simple_captcha/assets/views/simple_captcha/_simple_captcha.erb</key>
 		<dict>
 			<key>caret</key>
@@ -356,18 +372,17 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>features/plain/websites.feature</string>
-		<string>app/controllers/users_controller.rb</string>
-		<string>app/views/users/_about.html.erb</string>
-		<string>app/views/layouts/contacts.html.erb</string>
 		<string>app/views/users/contact.html.erb</string>
-		<string>script/mailer_daemon_fetcher</string>
-		<string>doc/monit</string>
-		<string>app/views/layouts/users.html.erb</string>
+		<string>app/views/users/test.html.erb</string>
+		<string>public/stylesheets/slide.css</string>
+		<string>public/javascripts/slide.js</string>
+		<string>public/javascripts/jrails.js</string>
+		<string>vendor/plugins/jrails/README</string>
+		<string>vendor/plugins/jrails/CHANGELOG</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{492, 22}, {920, 331}}</string>
+	<string>{{315, 9}, {1080, 527}}</string>
 </dict>
 </plist>

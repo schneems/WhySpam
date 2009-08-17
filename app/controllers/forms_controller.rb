@@ -11,6 +11,7 @@ class FormsController < ApplicationController
       crypt = params[:id]
       form = Forms.find_by_crypt(crypt)
       @form_data = form.first      
+      
     respond_to do |format|
        format.html {render :partial => 'show'}
     end    
@@ -111,7 +112,7 @@ class FormsController < ApplicationController
         
           if the_form == nil && the_user.valid?
             the_form = the_user.forms.create_with_cryptform(email, comments)
-            @no_spam = the_form.crypt_form
+            
           else
             @extra_message = "You already have an email on 
                               file for this comments/email combo, btw" if the_form != nil 
@@ -123,12 +124,12 @@ class FormsController < ApplicationController
                              please fill in the form" if email.strip == ""
 
         @no_spam = "www.whyspam.me/forms/" + the_form.crypt_form if the_form != nil
+        @crypt_form = the_form.crypt_form if the_form != nil
     else
       @extra_message = "Please Try Copying the Text from the Image Again" 
-    end
-    
-    
+    end    
     render :partial => "form_partial" 
+    
    # render :text => "blob"
   end
   

@@ -3,4 +3,4 @@
 
 <br />
 <hr />
-<p>You're getting this email forwarded from WhySpam.ME servers, if you would like to block all emails forwarded through <%= @email %> then login to <%= link_to "manage your secure email", { :action => "manage", :controller => "users"} %></a></p>
+<p>You're getting this email forwarded from WhySpam.ME servers, if you would like to block all emails forwarded through <%= @email %> then login to <%= link_to "manage your secure email", { :action => "manage", :controller => "users"},  :only_path => false %></a></p>

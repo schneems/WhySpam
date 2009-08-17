@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'users'
   map.foreign_show '/foreign_show/:id', :controller => 'forms', :action => 'foreign_show'
   map.test '/test', :controller => 'users', :action => 'test'
+  map.test '/localtest', :controller => 'users', :action => 'localtest'
+  
   
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'

@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   
   
   
-  layout "users", :except => [:test, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional]
+  layout "users", :except => [:test, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional, :localtest]
 
 
   def test

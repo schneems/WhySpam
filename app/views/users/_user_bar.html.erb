@@ -1,10 +1,65 @@
-<div id = "user-bar">
-<% if logged_in? -%>
-  <span id="user-bar-greeting">You are Logged in,
-<%= link_to_current_user :content_method => :login %></span>
-  <span id="user-bar-action"  >(<%= link_to "Log out", logout_path, { :title => "Log out" }    %>)</span>
-<% else -%>
-  <span id="user-bar-action"  ><%= link_to "Log In",  login_path,  { :title => "Log in" } %> </span>
-<% end -%>
-</div>
 
+<div id="toppanel">
+	<div id="panel">
+		<div class="content slideclearfix">
+			<div class="left">
+				<h1>Login To Manage your Spam!</h1>
+			</div>
+			<div class="left">
+				<!-- Register Form -->
+				<form action="#" method="post">
+					<h1>Not a member yet? Sign Up!</h1>	
+							
+					<p>The only way to sign up is to use a <%= link_to "Secure Email", home_path, {
+									 :host => "whyspam.me", :only_path => 
+									true } %> or <%= link_to "Secure Forms", 	forms_path , 
+													{ } %>.</p><br />
+					<p>Already have a Secure Email or Secure Form? <br /> Log in using your Email address as your password, but please change your password after your first login</p>	
+				</form>
+			</div>
+			<div class="left right">			
+					<!-- Login Form -->
+					<% form_tag session_path do -%>
+						<h1>Member Login</h1>
+						<label class="grey" for="log">Your Email:</label>
+						<%= text_field_tag 'email', @login , :class => "field", :type=>"text", :value=>"", :size=>"23"  %>								
+						<label class="grey" for="pwd">Password:</label>
+						<%= password_field_tag 'password', nil, :class=>"field", :size=>"23" %>
+						
+		            	<label><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" />&nbsp;Remember me</label>
+		
+	        			<div class="clear"></div>
+						<%= submit_tag 'Log in', :name => "submit",  :class => "bt_login" %> 
+						<a class="lost-pwd" href="#"></a>
+														
+					<% end %>
+					
+				
+					
+				
+			</div>
+		</div>
+
+	</div> <!-- /login -->	
+
+    <!-- The tab on top -->	
+	<div class="tab">
+		<ul class="login">
+	    	<li class="left">&nbsp;</li>
+	        <li><% if logged_in? -%><%= link_to "Hello "+ current_user.login.to_s, current_user, :content_method => :login %><% else -%>Hello Guest!<% end -%></li>
+	
+
+			<li class="sep">|</li>
+			<li id="toggle">
+
+				<% if logged_in? %>
+					<%= link_to "Log out", logout_path, { :title => "Log out" }%>
+				<% else %>
+					<a id="open" class="open" href="#">Log In</a>
+				<% end %>
+				<a id="close" style="display: none;" class="close" href="#">Close Panel</a>			
+			</li>
+	    	<li class="right">&nbsp;</li>
+		</ul> 
+	</div> <!-- / top -->
+</div> <!--panel -->

@@ -1,14 +1,8 @@
-
 <div id = "update_this_partial">
 	<% if @rendered != false %>
 	<script type="text/javascript">
-
 	$(document).ready(function(){ 
-
-
 	  $("#main_input").liquidCanvas("[border{width:2;color:#c8c8c8} fill{color:#f9ffb2}] => roundedRect{radius:35}");
-
-
 	});
 	</script>
 	<% end %>
@@ -34,13 +28,7 @@
 </span>
 
 <% end %>
-
-
-
 			<%= error_messages_for :user %>
-
-
-
 </div>
 
 <div class = "float_space"></div>
@@ -59,20 +47,44 @@
 
 	<% if @no_spam != nil %>
 		<div id = "no_spam_label">Your Form Link:</div><br />
-		<div id = "no_spam">
-			<%= @no_spam %>
-		</div>
+			<textarea id = "no_spam" class = "center" cols="50" rows="1" readonly onclick="this.focus(); this.select();" style = "overflow:hidden;border:0"><%= @no_spam %></textarea>
 		<p> Give This Link to anyone you want to contact you </p>
 	<% end %>
-	<center>
+	<div onclick="this.focus(); this.select();" class = "center">
 		
 	<%= @extra_message %>
-	</center>
+	</div>
 	</div>
 	<br />
 	<br />
 	<hr />
+	<br />
+	<% if !@no_spam.nil? %>
+	
+	In addition to using the above link, you can also put this secure form directly on your website !! To use copy the code below and put it in the html of your website. Then anyone can send you a safe and secure message. 
 
+	<% end %>
+	
+	<div class = "center">
+	<br />
+	<code>
+	<textarea id="code" cols="65" rows="10" readonly onclick="this.focus(); this.select();" style = "overflow:hidden">
+&lt;div id = &quot;WhySpamJavaScript&quot; class = &quot;center&quot;&gt;	
+  &lt;script type=&quot;text/javascript&quot;&gt;
+	request_state = &quot;a19dk17djcn37z&quot;;
+	form_id = &quot;<%= @crypt_form %>&quot;;
+    slot = &quot;65973256140537&quot;;
+  &lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;src=&quot;http://whyspam.me/javascripts/WhySpamExtern1a72jd6x1z.js&quot;&gt;
+  &lt;/script&gt;
+&lt;/div&gt;
+	</textarea>
+	</code>
+	<br />
+	<br />
+	<hr />
+	</div>
 <% end %>
+
 
 </div>

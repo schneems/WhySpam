@@ -1,50 +1,64 @@
 /* @override 
-	http://localhost:3000/stylesheets/why.css?1239592857
-	http://localhost:3000/stylesheets/why.css?1239594532
-	http://localhost:3000/stylesheets/why.css?1239596030
-	http://localhost:3000/stylesheets/why.css?1239600583
-	http://localhost:3000/stylesheets/why.css?1239760682
-	http://localhost:3000/stylesheets/why.css?1239763006
-	http://localhost:3000/stylesheets/why.css?1240715282
-	http://localhost:3000/stylesheets/why.css?1240715711
-	http://localhost:3000/stylesheets/why.css?1240715854
-	http://localhost:3000/stylesheets/why.css?1240716833
-	http://localhost:3000/stylesheets/why.css?1240717061
-	http://localhost:3000/stylesheets/why.css?1240717663
-	http://localhost:3000/stylesheets/why.css?1240718247
-	http://localhost:3000/stylesheets/why.css?1240719050
-	http://localhost:3000/stylesheets/why.css?1240719113
-	http://localhost:3000/stylesheets/why.css?1240719854
-	http://localhost:3000/stylesheets/why.css?1240720584
-	http://localhost:3000/stylesheets/why.css?1240799284
-	http://localhost:3000/stylesheets/why.css?1240812541
-	http://localhost:3000/stylesheets/why.css?1240873639
-	http://localhost:3000/stylesheets/why.css?1240878773
-	http://localhost:3000/stylesheets/why.css?1243111382
-	http://localhost:3000/stylesheets/why.css?1243454538
-	http://localhost:3000/stylesheets/why.css?1243538881
-	http://localhost:3000/stylesheets/why.css?1243541202
-	http://localhost:3000/stylesheets/why.css?1243627528
-	http://localhost:3000/stylesheets/why.css?1243627690
-	http://localhost:3000/stylesheets/cache/bundle.css?1244425265
-	http://localhost:3000/stylesheets/cache/bundle.css?1246814650
-	http://localhost:3000/stylesheets/why.css?1246815376
-	http://localhost:3000/stylesheets/why.css?1247446051
-	http://localhost:3000/stylesheets/why.css?1247446113
-	http://localhost:3000/stylesheets/why.css?1247447384
-	http://localhost:3000/stylesheets/why.css?1247447406
-	http://localhost:3000/stylesheets/why.css?1247448596
-	http://localhost:3000/stylesheets/why.css?1247448632
-	http://localhost:3000/stylesheets/why.css?1247448810
-	http://localhost:3000/stylesheets/why.css?1247536699
 	http://localhost:3000/stylesheets/why.css?1248316316
 	http://localhost:3000/stylesheets/why.css?1248394681
 	http://localhost:3000/stylesheets/why.css?1248725710
 	http://localhost:3000/stylesheets/why.css?1248734763
 	http://localhost:3000/stylesheets/why.css?1248735843
 	http://localhost:3000/stylesheets/why.css?1249071266
+	http://localhost:3000/stylesheets/why.css?1250361034
+	http://localhost:3000/stylesheets/why.css?1250452822
+	http://localhost:3000/stylesheets/why.css?1250453539
+	http://localhost:3000/stylesheets/why.css?1250454273
+	http://localhost:3000/stylesheets/why.css?1250454574
+	http://localhost:3000/stylesheets/why.css?1250454881
+	http://localhost:3000/stylesheets/why.css?1250454995
+	http://localhost:3000/stylesheets/why.css?1250455283
+	http://localhost:3000/stylesheets/why.css?1250455322
+	http://localhost:3000/stylesheets/why.css?1250455620
+	http://localhost:3000/stylesheets/why.css?1250456979
+	http://localhost:3000/stylesheets/why.css?1250463348
+	http://localhost:3000/stylesheets/why.css?1250478969
 */
 
+/*  
+		Sticky Footer Solution
+		by Steve Hatcher 
+		http://stever.ca
+		http://www.cssstickyfooter.com
+		*/
+		html, body, #wrap {height: 100%;}
+
+		body > #wrap {height: auto; min-height: 100%;}
+
+		#main-template {padding-bottom: 80px;}  
+
+		#footer {position: relative;
+			margin-top: -40px; 
+			padding-top: 5px;
+			height: 40px;
+			background-color: #272727;
+			border-top: 1px solid white;
+			clear:both;} 
+
+		.clearfix:after {content: ".";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;}
+		.clearfix {display: inline-block;}
+		/* Hides from IE-mac \*/
+		* html .clearfix { height: 1%;}
+		.clearfix {display: block;}
+		/* End hide from IE-mac */
+		
+
+
+
+* {margin:0;padding:0;} 
+/*
+
+
+	*/
 button.ticket_delete_button {
 	
 }
@@ -93,9 +107,6 @@ h1, h2, h3 {
 	
 }
 
-#footer {
-	margin-left: 20px;
-}
 
 
 
@@ -117,9 +128,9 @@ h1, h2, h3 {
 form#main-inline {
 display: inline;
 float: right;	
+margin-right: 10px;
 margin-top: -30px;
 height: 20px;
-
 }
 
 
@@ -448,8 +459,9 @@ input#user_website,
 input#captcha,
 textarea#form_comments,
 input#ticket_to_email,
-input#login, input#password,
-input#email ,
+input#login,
+td input#password,
+td input#email ,
 input#form_email, 
 input#old_password,
 input#user_login,
@@ -618,7 +630,6 @@ a:hover{
 
 #user-bar {
 	float: right;
-	margin-right: -20px;
 }
 
 
@@ -651,7 +662,7 @@ td.comments {
 	position: relative;
 	margin-top: 5px;
 	text-align: left;
-	padding: 0 -10px 10px -10px;
+	padding: 0 -10px 20px -10px;
 }
 
 span.small_text {
@@ -685,7 +696,6 @@ div#login {
 }
 
 body {
-	height: 100%;
 	background: #22c900 url(../images/background_repeat.jpg) 	repeat-x scroll;
 	background-color: #fff;
 }
@@ -738,12 +748,6 @@ span.optional {
 	padding-bottom: 0px;
 	
 	
-}
-
-
-div {
-	margin: 0;
-	padding: 0;
 }
 
 

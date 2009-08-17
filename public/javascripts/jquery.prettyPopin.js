@@ -35,8 +35,10 @@ var _readyBound = false;
 			var $c;
 		
 			$(this).click(function(){
-				
+							//	$('#wrap').append('<div id="spacer"> </div>');
+							//	$('#spacer').height(300);
 				buildoverlay();
+				$.scrollTo(0,0,  {duration:500});
 				buildpopin();
 				$("div.prettyPopin").liquidCanvas("[border{color:black} fill{color:#fff}] => roundedRect");				
 				
@@ -49,13 +51,13 @@ var _readyBound = false;
 					$('.prettyPopin').width(popinWidth);
 					popinHeight = settings.height || $('.prettyPopin .prettyContent .prettyContent-container').height() + parseFloat($('.prettyPopin .prettyContent .prettyContent-container').css('padding-top')) + parseFloat($('.prettyPopin .prettyContent .prettyContent-container').css('padding-bottom'));
 					$('.prettyPopin').height(popinHeight);
-				
 					// Now reset the width/height
 					$('.prettyPopin').height(45).width(45);
 			//	 	$('#thisPopin').css("background-color","#fff");
 			//	$('.prettyPopin').css("background-color","#fff");
 				//	Nifty("#thisPopin","transparent");
 
+				 
 					displayPopin();
 				});
 				return false;
@@ -79,6 +81,8 @@ var _readyBound = false;
 					'width' : popinWidth,
 					'height' : popinHeight
 				},settings.animationSpeed, function(){
+					
+	
 					
 					displayContent();
 				});
@@ -109,6 +113,7 @@ var _readyBound = false;
 			
 				// Set the proper height
 				$('#overlay').css('height',$(document).height());
+				
 			
 				// Fade it in
 				$('#overlay').css('opacity',0).fadeTo(settings.animationSpeed,settings.opacity);

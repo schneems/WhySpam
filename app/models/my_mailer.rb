@@ -4,10 +4,11 @@ class MyMailer < ActionMailer::Base
   def forward_form(form_id, from_email, message) 
     form =  Forms.find(form_id)
     to_email = form.email
+    from_email = from_email.strip.empty? ? 'noEmailWasGiven@whyspam.me' : from_email
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})        
     if ticket == nil
       ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :forms_id => form_id)
-      if to_email != nil        
+      if to_email != nil  
         @recipients   = to_email
         @from         = from_email 
         headers         "Reply-to" => from_email

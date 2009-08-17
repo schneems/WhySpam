@@ -12,23 +12,21 @@
 	http://localhost:3000/stylesheets/prettyPopin.css?1239571929
 	http://localhost:3000/stylesheets/prettyPopin.css?1239572535
 	http://localhost:3000/stylesheets/prettyPopin.css?1239594866
+	http://localhost:3000/stylesheets/prettyPopin.css?1247328693
 */
 
 /* ------------------------------------------------------------------------
 	Popin
 ------------------------------------------------------------------------- */
 
-#containPop {
-	height: 110%;
-	width: 100%;
-}
 
 	#overlay {
 		background: #000;
 		position: absolute; top: 0; left: 0;
 		z-index: 10000;
 		width: 100%;
-	}
+	overflow: hidden;
+}
 
 	.prettyPopin {
 		margin-top: 50px;
