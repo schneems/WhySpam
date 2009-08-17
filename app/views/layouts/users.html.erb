@@ -11,14 +11,14 @@
 		  <% main_url = entry if entry != "www" && entry.size != 2 && entry != "com" && entry != "local" %>
 		<% end %>
 
-		<%# bundle do %>	  
+		<% bundle do %>	  
 			<%= javascript_include_tag 'jquery', 'jquery-ui', 'slide', 'jrails', 
 								'liquid-canvas', 'liquid-canvas-plugins', 'prettyComments', 
 								'jquery.prettyPopin', 'highlight-active-input', 'jquery.dataTables',  'jquery.scrollTo-1.4.2-min', 
 								:cache => true %>
 			<%= stylesheet_link_tag 'why.css', 'prettyPopin.css', 'demo_table.css', 'slide.css' %>	
 			
-		<%# end %> 
+		<% end %> 
 		
 	    <!--[if IE]><%= javascript_include_tag 'excanvas.js' %><![endif]-->
 	
@@ -52,25 +52,11 @@
 			// Expand Panel
 
 			});
-		</script>
-	
-	
-
-		
+		</script>	
 </head>
-
-
 <body>
-
-
-
-
-
-
-
 	<div id="wrap">
-		<%= render :partial => "/users/user_bar"%>	
-		
+		<%= render :partial => "/users/user_bar"%>		
 		<br />
 		<div id = "center_main">
 		<div id = "main_title">
