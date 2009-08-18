@@ -4,6 +4,11 @@
 		<meta name="author" content="Richard Schneeman">
 		<meta name="verify-v1" content="WtrvU8zUP+Stu6up8RqDNNZ5zXNvWCQZFUe4RjxEpyI=">
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<title>Why Spam Me? - Expose Spammers and Free your Inbox</title>
+		<META name = "description" content = "An online collection of spam fighting tools designed to free your inbox and track the people who sell your email address" />
+		<META name = "keywords" content = "secure email, secure form, stop, spam, spamming, spammer, sanonymous" />
+		
+		
 		<% the_request = request.host %>
 		<% domain_array = the_request.scan(/([^.||^\d||^\:]+)/) %>
 		<% for entry in domain_array%>
@@ -11,14 +16,13 @@
 		  <% main_url = entry if entry != "www" && entry.size != 2 && entry != "com" && entry != "local" %>
 		<% end %>
 
-		<% bundle do %>	  
-			<%= javascript_include_tag 'jquery', 'jquery-ui', 'slide', 'jrails', 
+		<%# bundle do %>	  
+			<%= javascript_include_tag 'jquery', 'jquery-ui', 'jrails', 
 								'liquid-canvas', 'liquid-canvas-plugins', 'prettyComments', 
-								'jquery.prettyPopin', 'highlight-active-input', 'jquery.dataTables',  'jquery.scrollTo-1.4.2-min', 
-								:cache => true %>
+								'jquery.prettyPopin', 'highlight-active-input', 'jquery.dataTables',  'jquery.scrollTo-1.4.2-min' %>
 			<%= stylesheet_link_tag 'why.css', 'prettyPopin.css', 'demo_table.css', 'slide.css' %>	
 			
-		<% end %> 
+		<%# end %> 
 		
 	    <!--[if IE]><%= javascript_include_tag 'excanvas.js' %><![endif]-->
 	
@@ -44,13 +48,27 @@
 				$('#nav_1_hover a,#nav_2_hover a, #nav_3_hover a , #nav_4_hover a,  #nav_5_hover a ').liquidCanvas('[TopShadow gradient{from:#3f3cff;to:#c2c2ff} ] => roundedRect');	
 		      $("#main_input").liquidCanvas("[border{width:2;color:#c8c8c8} fill{color:#f9ffb2}] => roundedRect{radius:35}");
 		      $("#main_input_websites").liquidCanvas("[shadow border{color:#fff} fill{color:#FFFFFF}] => roundedRect{radius:30}");
-			  $('#dataTable_infos').dataTable();
-			  $('#dataTable_forms').dataTable();
-			  $('#dataTable').dataTable();
-		    
 		
+			  $("#dataTable_infos").dataTable();
+			  $("#dataTable_forms").dataTable();
+			  $("#dataTable").dataTable();
+		    
+			  
 			// Expand Panel
+			$("#open").click(function(){
+				$("div#panel").slideDown("slow");
+			});	
 
+			// Collapse Panel
+			$("#close").click(function(){
+				$("div#panel").slideUp("slow");	
+			});		
+
+			// Switch buttons from "Log In | Register" to "Close Panel" on click
+			$("#toggle a").click(function () {
+				$("#toggle a").toggle();
+			});
+			// Expand Panel
 			});
 		</script>	
 </head>

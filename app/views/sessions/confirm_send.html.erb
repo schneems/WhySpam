@@ -1,0 +1,16 @@
+<% form_tag url_for :action => 'send_lost_password', :controller => 'sessions' do -%>
+<table>
+	<tr>
+		<td><b><%= label_tag 'Your Email:' %></b></td>
+		<td><%= text_field_tag 'email', @login||"" %></td>
+	</tr>
+	
+<%= show_simple_captcha %>
+<tr>
+	<td></td>
+	<td><%= submit_tag 'Reset Password', :id => "login_button" %> </td>
+</tr>
+</table>
+
+<% end %>
+

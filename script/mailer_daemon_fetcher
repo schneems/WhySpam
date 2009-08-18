@@ -6,6 +6,7 @@ require File.dirname(__FILE__) + '/../config/environment.rb'
 
 class MailerDaemonFetcherDaemon < Daemon::Base
   
+#  @config = YAML.load_file("#{RAILS_ROOT}/config/mailer_daemon.yml")
   @config = YAML.load_file("#{RAILS_ROOT}/config/mailer_daemon.yml")
   @config = @config[RAILS_ENV].to_options
   @sleep_time = @config.delete(:sleep_time) || 30

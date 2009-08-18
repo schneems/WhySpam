@@ -18,6 +18,9 @@
 	http://localhost:3000/stylesheets/why.css?1250456979
 	http://localhost:3000/stylesheets/why.css?1250463348
 	http://localhost:3000/stylesheets/why.css?1250478969
+	http://localhost:3000/stylesheets/why.css?1250479755
+	http://localhost:3000/stylesheets/why.css?1250553355
+	http://localhost:3000/stylesheets/why.css?1250553385
 */
 
 /*  
@@ -606,11 +609,11 @@ div.right {
 
 #footer a:link, 
 #footer a:visited {
-	color: white;
+	color: #15ADFF;
 }
 
 #footer a:hover{
-	color: black;
+	color: white;
 }
 
 td:hover {
@@ -797,8 +800,7 @@ div#corner_wrapper {
 	text-align: center;
 	width: 450px;
 	padding: 10px;
-	font-size: 16pt;
-	
+
 }
 
 #no_spam_label {

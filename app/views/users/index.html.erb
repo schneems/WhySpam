@@ -1,6 +1,5 @@
 
 <% @user = User.new %>
-
   <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').hide().appear();",
 			:url =>  { :action => "no_spam"}, 
 			:html => { } do |f| %>			
@@ -32,12 +31,7 @@
 
 <% end %>
 
-
-
 			<%= error_messages_for :user %>
-
-
-
 </div>
 
 <div id = "ads">

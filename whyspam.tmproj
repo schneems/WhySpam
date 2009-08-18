@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>app/views/users/test.html.erb</string>
+	<string>app/views/sessions/confirm_send_lost_pwd.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -21,6 +21,64 @@
 	<integer>262</integer>
 	<key>metaData</key>
 	<dict>
+		<key>app/controllers/sessions_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>42</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>37</integer>
+		</dict>
+		<key>app/views/sessions/confirm_send_lost_pwd.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>58</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+		</dict>
+		<key>app/views/sessions/new.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>1</integer>
+		</dict>
 		<key>app/views/simple_captcha/_simple_captcha.erb</key>
 		<dict>
 			<key>caret</key>
@@ -93,6 +151,36 @@
 			<key>firstVisibleLine</key>
 			<integer>8</integer>
 		</dict>
+		<key>app/views/users/_user_bar.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>87</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>21</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>76</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>97</integer>
+				<key>line</key>
+				<integer>32</integer>
+			</dict>
+		</dict>
 		<key>app/views/users/contact.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -153,20 +241,6 @@
 				<integer>5</integer>
 			</dict>
 		</dict>
-		<key>app/views/users/test.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>89</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>60</integer>
-			<key>firstVisibleLine</key>
-			<integer>81</integer>
-		</dict>
 		<key>cucumber.yml</key>
 		<dict>
 			<key>caret</key>
@@ -225,50 +299,6 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
-		<key>public/javascripts/jrails.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>44</integer>
-				<key>line</key>
-				<integer>191</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>181</integer>
-		</dict>
-		<key>public/javascripts/slide.js</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>24</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>4</integer>
-			</dict>
-		</dict>
 		<key>public/stylesheets/base_packaged.css</key>
 		<dict>
 			<key>caret</key>
@@ -282,20 +312,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>public/stylesheets/slide.css</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>82</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>72</integer>
 		</dict>
 		<key>test/unit/info_test.rb</key>
 		<dict>
@@ -327,34 +343,6 @@
 				<integer>17</integer>
 			</dict>
 		</dict>
-		<key>vendor/plugins/jrails/CHANGELOG</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>vendor/plugins/jrails/README</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>27</integer>
-				<key>line</key>
-				<integer>2</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>vendor/plugins/simple_captcha/assets/views/simple_captcha/_simple_captcha.erb</key>
 		<dict>
 			<key>caret</key>
@@ -373,16 +361,14 @@
 	<key>openDocuments</key>
 	<array>
 		<string>app/views/users/contact.html.erb</string>
-		<string>app/views/users/test.html.erb</string>
-		<string>public/stylesheets/slide.css</string>
-		<string>public/javascripts/slide.js</string>
-		<string>public/javascripts/jrails.js</string>
-		<string>vendor/plugins/jrails/README</string>
-		<string>vendor/plugins/jrails/CHANGELOG</string>
+		<string>app/views/users/_user_bar.html.erb</string>
+		<string>app/controllers/sessions_controller.rb</string>
+		<string>app/views/sessions/confirm_send_lost_pwd.html.erb</string>
+		<string>app/views/sessions/new.html.erb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{315, 9}, {1080, 527}}</string>
+	<string>{{353, 64}, {1088, 351}}</string>
 </dict>
 </plist>

@@ -22,16 +22,15 @@
 					<% form_tag session_path do -%>
 						<h1>Member Login</h1>
 						<label class="grey" for="log">Your Email:</label>
-						<%= text_field_tag 'email', @login , :class => "field", :type=>"text", :value=>"", :size=>"23"  %>								
+						<%= text_field_tag 'email', @login , :class => "field", :size=>"23"  %>								
 						<label class="grey" for="pwd">Password:</label>
 						<%= password_field_tag 'password', nil, :class=>"field", :size=>"23" %>
 						
 		            	<label><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" />&nbsp;Remember me</label>
 		
 	        			<div class="clear"></div>
-						<%= submit_tag 'Log in', :name => "submit",  :class => "bt_login" %> 
-						<a class="lost-pwd" href="#"></a>
-														
+						<%= submit_tag 'Log in', :name => "submit", :value=>"Login",  :class => "bt_login" -%><br />
+						<%= link_to "Forgot Password?", :controller => 'sessions', :action => 'confirm_send', :class => "lost-pwd"  %>														
 					<% end %>
 					
 				

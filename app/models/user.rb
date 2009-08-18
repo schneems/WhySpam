@@ -105,7 +105,13 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-
+  
+  def new_random_password
+    self.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}")[0,8]
+    self.password_confirmation = self.password
+  end
+  
+  
   protected
     
 

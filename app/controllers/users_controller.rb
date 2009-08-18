@@ -32,9 +32,31 @@ class UsersController < ApplicationController
   layout "users", :except => [:test, :spam_survey, :report_spam, :ie, :ie2, :test2, :HEY, :optional, :localtest]
 
 
-  def test
-    
+      def reset_password
+          @title = "Reset Password"
+          @user = User.find_by_password_reset_code(params[:password_reset_code])  unless params[:password_reset_code].nil?
+          #raise if @user.nil?
+
+          return if @user unless params[:user]
+
+          #if ((params[:user][:password] == params[:user][:password_confirmation]) && !params[:user][:password_confirmation].blank?)
+          if (params[:user][:password] ==  params[:user][:password_confirmation])
+              self.current_user = @user #for the next two lines to work
+              current_user.password_confirmation = params[:user][:password_confirmation]
+              current_user.password = params[:user][:password]
+              @user.reset_password
+              flash[:notice] = current_user.save ? "Done, Your is Password reset" : "Password not reset. Hint, make your Password atleast 8 characters long."
+              redirect_back_or_default('/')
+          else
+
+              flash[:notice] = "Password mismatch.. please try again"
+          end
+          rescue
+      logger.error "Invalid Reset Code entered"
+      flash[:notice] = "That is an invalid password reset action. Please check your email and try again."
+      redirect_back_or_default('/')
   end
+  
 
   def about
     respond_to do |format|
@@ -337,7 +359,7 @@ class UsersController < ApplicationController
      @user = User.new(params[:user])
      success = @user && @user.save
      if success && @user.errors.empty?
-             # Protects against session fixation attacks, causes request forgery
+      # Protects against session fixation attacks, causes request forgery
        # protection if visitor resubmits an earlier form using back
        # button. Uncomment if you understand the tradeoffs.
        # reset session

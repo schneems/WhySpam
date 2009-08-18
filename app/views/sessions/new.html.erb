@@ -7,7 +7,7 @@
 <table>
 	<tr>
 		<td><b><%= label_tag 'Your Email:' %></b></td>
-		<td><%= text_field_tag 'email', @login %></td>
+		<td><%= text_field_tag 'email', @login||"" %></td>
 	</tr>
 
 	<tr>

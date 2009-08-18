@@ -72,15 +72,25 @@ class MyMailer < ActionMailer::Base
  #   MyMailer.deliver(my_mail)
 
  end
+ 
+ def forgot_password(user) ## will use this
+   @recipients   = user.email
+   body[:password] = user.new_random_password
+   user.save
+   @from         = "postmaster@whyspam.me" 
+   headers        "Reply-to" => "DoNotReply@whyspam.me"
+   @subject      = 'You have requested to change your password'
+   @content_type = "text/html"
+ end
+ 
   
   def forward(to_email, from_email, cryptmail, subject, message)
     @recipients   = to_email
     @from         = from_email 
-    headers         "Reply-to" => from_email
+    headers        "Reply-to" => from_email
     @subject      = subject
     @sent_on      = Time.now
     @content_type = "text/html"
-    
     body[:email] = cryptmail
     body[:message] = message
     #body[:name]  = name
@@ -138,11 +148,7 @@ class MyMailer < ActionMailer::Base
    #  @body[:url]  = "http://localhost:3000/"
    #end
    
-   def forgot_password(user) ## will use this
-     setup_email(user)
-     @subject    += 'You have requested to change your password'
-     @body[:url]  = "http://localhost:3000/reset_password/#{user.password_reset_code}"
-   end
+
   
    def reset_password(user) ## want to notify of password reset
      setup_email(user)

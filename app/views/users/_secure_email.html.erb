@@ -10,9 +10,7 @@
 
 <% if @no_spam != nil %>
 	<div id = "no_spam_label">	Your Secure Email:</div><br />
-	<div id = "no_spam">
-		<%= @no_spam %>
-	</div>
+			<textarea id = "no_spam" class = "center" cols="50" rows="1" readonly onclick="this.focus(); this.select();" style = "overflow:hidden;border:0;"><%= @no_spam %></textarea>
 <% end%>
 <center>
 <%= @extra_message %>

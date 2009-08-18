@@ -39,8 +39,44 @@ class SessionsController < ApplicationController
     flash[:notice] = "You have been logged out."
     redirect_back_or_default('/')
   end
+  
+  def confirm_send_lost_pwd
+    
+  end
+  
+  
+  def send_lost_password
+    if simple_captcha_valid?
+      flash[:notice] = "A confirmation email has been sent to the address you provided,"
+      
+      send_change_password_email
+    else 
+      flash[:error] = "Please copy the text from the image and try again"
+    end
+    redirect_to :back
+  end
+
+
 
 protected
+def random_string(size = 16)
+  s = ""
+  size.times{s<< (i=Kernel.rand(62); i += ((i<10) ? 48 : ((i<36) ? 55 : 61 ))).chr }
+  s
+end  
+
+  
+
+  def send_change_password_email
+      email = params[:email]
+      puts "================================="
+      puts email
+      user = User.find_by_email(email).first
+      if !user.nil? && user.valid?
+        MyMailer.deliver_forgot_password(user)
+      end
+  end
+
   # Track failed login attempts
   def note_failed_signin
     flash[:error] = "Couldn't log you in as '#{params[:login]}'"
