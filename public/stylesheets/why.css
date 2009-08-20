@@ -21,6 +21,9 @@
 	http://localhost:3000/stylesheets/why.css?1250479755
 	http://localhost:3000/stylesheets/why.css?1250553355
 	http://localhost:3000/stylesheets/why.css?1250553385
+	http://localhost:3000/stylesheets/why.css?1250562781
+	http://localhost:3000/stylesheets/why.css?1250567411
+	http://localhost:3000/stylesheets/why.css?1250567686
 */
 
 /*  
@@ -464,7 +467,7 @@ textarea#form_comments,
 input#ticket_to_email,
 input#login,
 td input#password,
-td input#email ,
+td input#email,
 input#form_email, 
 input#old_password,
 input#user_login,
@@ -476,18 +479,27 @@ input#user_password
 	width: 300px;
 }
 
- {
-	
+#retrieve_forgotten_password h2 {
+	display: inline-block;
+	margin-bottom: 20px;
+	margin-left: 40px;;
+
+}
+#retrieve_forgotten_password {
+	width: 500px;
+	margin: 20px auto 0 auto;
+	text-align: center;
 }
 
- {
+float-left {
 	
 }
 
 
 
 #main_input input#captcha,
-#main_input_in_partial input#captcha
+#main_input_in_partial input#captcha,
+#retrieve_forgotten_password input#captcha
 {
 	width: 150px;
 }
@@ -665,7 +677,7 @@ td.comments {
 	position: relative;
 	margin-top: 5px;
 	text-align: left;
-	padding: 0 -10px 20px -10px;
+	padding: 0 0 20px 0;
 }
 
 span.small_text {
@@ -766,7 +778,7 @@ span.optional {
 	padding-top: 15px;;
 	width: 30px;
 	height: 30px;
-	opacity: 100;
+	opacity: 1;
 	background: black url(../images/background_repeat.png) repeat-x;
 }
 
@@ -798,9 +810,9 @@ div#corner_wrapper {
 
 #no_spam {
 	text-align: center;
-	width: 450px;
+	width: 480px;
 	padding: 10px;
-
+	font-size: 17pt;
 }
 
 #no_spam_label {

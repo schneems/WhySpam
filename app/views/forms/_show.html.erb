@@ -70,8 +70,9 @@
 
 <div id = "externspamwrap">
 	
-	<% if flash[:notice] & !@localrequest  %><div id="flash"><%= flash[:notice] %></div><% end %>
-	<% if flash[:error] & !@localrequest%><div id="flash" class = "flash_error" ><%= flash[:error] %></div><% end %>
+	<% if flash[:notice] && !@localrequest  %><div id="flash"><%= flash[:notice] %></div><% end %>	
+	<% if flash[:error] && !@localrequest%><div id="flash" class = "flash_error" ><%= flash[:error] %></div><% end %>
+	
 	
 <% if @form_data.nil? %>
 <p>No form exists with this ID either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", contact_us_path %>.

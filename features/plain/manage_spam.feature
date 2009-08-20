@@ -78,21 +78,16 @@ Feature: Manage
 				Scenario: I log into manage my account and delete an form for my account
 					Given I go to manage users
 					And I successfully login
-					
 					When I have a secure form that has received an email
 					And I go to manage users		
 					Then I get ticket count
-					
-					
 					Then I press "css=#dataTable_forms tbody tr.clickable" 
 					And I wait for the page to load
 					Then I press "css=tr.clickable"
 					And I wait for jquery to load
-					Then I press "link=Delete"
-					
+					Then I press "link=Delete"					
 					And I see a confirmation
 					And I assert ticket difference -1
-					
 					Then I should see "Form to http://localhost:3000/forms/abcd has been deleted"					
 		   # 	Then I press "css=button.ticket_delete_button"
 		   # 	And I wait for jquery to load
@@ -112,7 +107,6 @@ Feature: Manage
 					And I wait for the page to load
 					Then I press "link=Change Password"
 					And I wait for the page to load
-					
 					And I change my password to "somethingnew"
 					And I wait for the page to load
 					Then I should see "Password successfully updated"					
@@ -122,10 +116,15 @@ Feature: Manage
 					And I wait for the page to load		
 					Then I should see "somethingelse"					
 					
-					And debugger
 
 					#old_password
 
 					#password
 
 					#password_confirmation
+			@manage_5
+				Scenario: I log in using the top drop down menu
+					Given I go to the homepage
+					And press "Log In"
+					
+					
