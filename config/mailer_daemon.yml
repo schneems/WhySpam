@@ -2,7 +2,7 @@ development:
   type: pop                             
   server: mail.whyspam.me
   username: postmaster@whyspam.me 
-  password: H3lloj3d 
+  password: mailphr3ak 
   receiver: MyMailer 
   port: 110
   
@@ -14,9 +14,9 @@ test:
   password: password
   
 production: 
-  type: pop                             
+  type: IMAP                             
   server: mail.whyspam.me
   username: postmaster@whyspam.me 
-  password: H3lloj3d 
+  password: mailphr3ak 
   receiver: MyMailer 
-  port: 110
+ # port: 110
