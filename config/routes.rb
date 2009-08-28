@@ -35,6 +35,8 @@ ActionController::Routing::Routes.draw do |map|
   map.home '/', :controller => 'users', :action => 'index'
   
   map.resources :tickets
+  map.resources :grade_widget
+  
   
   map.slop_box '/slop_box', :controller => 'tickets', :action => 'slop_box'
   map.resources :info

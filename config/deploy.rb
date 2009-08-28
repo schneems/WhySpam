@@ -46,6 +46,8 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/mailer_daemon.yml #{release_path}/config/mailer_daemon.yml"
     run "ln -nfs #{shared_path}/config/environments/development.rb #{release_path}/config/environments/development.rb"
     run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/production.rb"
+    run "ln -nfs #{shared_path}/config/initalizers/site_keys.rb #{release_path}/config/initalizers/site_keys.rb"
+    
     sudo "/etc/init.d/monit restart all"
   end
 end
