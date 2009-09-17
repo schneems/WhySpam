@@ -184,7 +184,7 @@ class UsersController < ApplicationController
        user_info = the_user.info.find(:first, :conditions => ["website = ?", site])
      
          if user_info == nil && the_user.valid?
-           digest = create_digest(email, site)   
+           digest = User.create_digest(email, site)   
            user_info = the_user.info.create(:website => site, :cryptmail => digest.upcase + "@whyspam.me")
          else
             @extra_message = "You already have an email on 
@@ -303,28 +303,28 @@ class UsersController < ApplicationController
     
     end
   
- 
-  
-   def create_digest(email, site)   
-     cryptmail = Digest::SHA1.hexdigest(email+site)    
-     guess = cryptmail[0,20]
-    if Info.cryptmail(guess) == []
-      # return guess
-    else
-      guess = cryptmail[20,20]
-         
-      if Info.cryptmail(guess) == []
-        # return guess
-      else
-        count = 0
-        while Info.cryptmail(guess) != []
-          count = count+1
-          guess = Digest::SHA1.hexdigest(guess+count.to_s)[0,20]
-        end # while 
-      end # second if
-    end ## first if
-       return guess
-   end # def
+ #
+ # 
+ #  def create_digest(email, site)   
+ #    cryptmail = Digest::SHA1.hexdigest(email+site)    
+ #    guess = cryptmail[0,20]
+ #   if Info.cryptmail(guess) == []
+ #     # return guess
+ #   else
+ #     guess = cryptmail[20,20]
+ #        
+ #     if Info.cryptmail(guess) == []
+ #       # return guess
+ #     else
+ #       count = 0
+ #       while Info.cryptmail(guess) != []
+ #         count = count+1
+ #         guess = Digest::SHA1.hexdigest(guess+count.to_s)[0,20]
+ #       end # while 
+ #     end # second if
+ #   end ## first if
+ #      return guess
+ #  end # def
  
  
    def no_spam_2

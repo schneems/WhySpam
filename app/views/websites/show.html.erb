@@ -1,3 +1,9 @@
+<% if @website.nil? %>
+No one has reported anything about <h2><%= @myurl %></h2> good or bad. So grab a <%= link_to "Secure Email", home_path, {
+				 :host => "whyspam.me", :only_path => 
+				true } %> address and find out if <h2><%= @myurl %></h2> is reputable or not.
+
+<% else %>
 <p>
 	<center> Survey Results for: <b><%= @website.url %></b></center>
 
@@ -65,3 +71,4 @@ Comments:<br />
 <% end %>
 
 </p>
+<% end %>

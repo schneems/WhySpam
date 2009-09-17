@@ -1,0 +1,32 @@
+<%= stylesheet_link_tag 'spamfire.css' %>	
+
+<style type="text/css">
+
+</style>
+
+<div id = "new_spamfire_wrapper">
+  <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').hide().appear();",
+			:url =>  { :action => "create"}, 
+			:html => { } do |f| %>			
+			
+<%= label_tag 'email', 'Email: ' %> <%= f.text_field :email , :rows => 2 %>
+<%= label_tag 'website', 'Website: ' %> <%= f.text_field :website %>
+<%= f.submit "Go" %>
+
+
+<% end %>
+
+			<%= error_messages_for :user %>
+</div>
+
+
+
+<center>
+	<%= image_tag("loading.gif",
+				   :id => "indicator",
+				   :style  =>  'display:none') %>
+</center>
+
+	
+
+</div>

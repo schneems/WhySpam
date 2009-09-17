@@ -24,6 +24,15 @@
 	http://localhost:3000/stylesheets/why.css?1250562781
 	http://localhost:3000/stylesheets/why.css?1250567411
 	http://localhost:3000/stylesheets/why.css?1250567686
+	http://localhost:3000/stylesheets/why.css?1250735522
+	http://localhost:3000/stylesheets/why.css?1251752734
+	http://localhost:3000/stylesheets/why.css?1251752914
+	http://localhost:3000/stylesheets/why.css?1251753262
+	http://localhost:3000/stylesheets/why.css?1251753879
+	http://localhost:3000/stylesheets/why.css?1251775455
+	http://localhost:3000/stylesheets/why.css?1252031678
+	http://localhost:3000/stylesheets/why.css?1252034875
+	http://localhost:3000/stylesheets/why.css?1252874830
 */
 
 /*  
@@ -32,6 +41,63 @@
 		http://stever.ca
 		http://www.cssstickyfooter.com
 		*/
+
+#contribute {
+	margin: 30px;
+	
+}
+
+#getawidget, #getaplugin   {
+	text-align: center;
+	margin: 10px 0 0 0;
+	padding: 20px;
+	color: black;
+	width: 130px;
+	display: inline-block;
+}
+
+#validcheckedpic {
+	background-image: url(../images/whyratingchecked.png);
+	width: 100px;
+   height: 100px;
+   padding: 0 5px 0 0;
+   display: block;
+}
+
+#checkedvalidated {
+	width: 500px;
+	height: 350px;	
+}
+
+
+#grade_widget_select form label img {
+	cursor:  pointer;
+}
+
+
+
+
+
+
+#getawidget a:link,
+#getawidget a:visited,
+#getaplugin a:link,
+#getaplugin a:visited
+
+{
+	color: black;
+}
+
+#getawidget a:hover,
+#getaplugin a:hover {
+	
+	color: blue;
+} 
+
+
+
+
+
 		html, body, #wrap {height: 100%;}
 
 		body > #wrap {height: auto; min-height: 100%;}
@@ -472,7 +538,8 @@ input#form_email,
 input#old_password,
 input#user_login,
 input#password_confirmation,
-input#user_password
+input#user_password, 
+input#website
 {
 	height: 40px;
 	font-size: 18pt;
@@ -492,7 +559,7 @@ input#user_password
 }
 
 float-left {
-	
+	float: left;
 }
 
 
@@ -506,11 +573,16 @@ float-left {
 
 
 #main_input td,
-#main_input_in_partial td
+#main_input_in_partial td, 
+#grade_widget_select form label
 {
 	font-size: 22pt;
 	min-width: 140px;
 	font-weight: bold;
+}
+
+ {
+	
 }
 
 td.line {
@@ -608,7 +680,6 @@ ul.postnav a:hover{background: #A8E52F;color:#FFF}
 div.left {
 	float: left;
 	width: 50%;
-	
 }
 
 div.right {

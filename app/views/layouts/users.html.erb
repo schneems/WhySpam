@@ -9,7 +9,7 @@
 		<META name = "keywords" content = "secure email, secure form, stop, spam, spamming, spammer, sanonymous" />
 		
 		
-		<% the_request = request.host %>
+		<% the_request = request.path %>
 		<% domain_array = the_request.scan(/([^.||^\d||^\:]+)/) %>
 		<% for entry in domain_array%>
 		  <% entry = entry.to_s%>
@@ -48,7 +48,9 @@
 				$('#nav_1_hover a,#nav_2_hover a, #nav_3_hover a , #nav_4_hover a,  #nav_5_hover a ').liquidCanvas('[TopShadow gradient{from:#3f3cff;to:#c2c2ff} ] => roundedRect');	
 		      $("#main_input").liquidCanvas("[border{width:2;color:#c8c8c8} fill{color:#f9ffb2}] => roundedRect{radius:35}");
 		      $("#main_input_websites").liquidCanvas("[shadow border{color:#fff} fill{color:#FFFFFF}] => roundedRect{radius:30}");
-		
+			  $("#getawidget, #getaplugin").liquidCanvas("[shadow border{color:#fff} fill{color:#FFFFFF}] => roundedRect{radius:30}");
+			
+				
 			  $("#dataTable_infos").dataTable();
 			  $("#dataTable_forms").dataTable();
 			  $("#dataTable").dataTable();
@@ -165,18 +167,61 @@
 				<%= yield %>
 				</div>
 				</div>
+			</div><!-- corner_wrapper-->
+			<div class = "float-left">
+				<div id = "getaplugin" class = "float-left">
+					<div id="fixed">
+					<%= link_to "<h2>Use Firefox?</h2><br />
+					 #{image_tag("spamfire.jpg")}<br />
+					<h3>Get SpamFire!</h3>" %>
+					</div>
+				</div>
+				&nbsp
+				<div id = "getawidget" class = "float-left" >
+					<div id = "fixed">
+					<%= link_to "<h2>Got A Website?</h2><br />
+					 #{image_tag("whyratingAplus.png")}<br />
+					<h3>Get Validated!</h3>", grade_widget_index_path %>
+					</div>
+				
+				</div>
+				&nbsp
+				<div id = "getawidget" class = "float-left" >
+					<div id = "fixed">
+					<%= link_to "<h2>Want To Help?</h2><br />
+					 #{image_tag("creativecommons.jpg")}<br />
+					<h3>Get Started!</h3>", url_for( :controller => "users", :action => "contribute") %>
+					</div>
+				
+				</div>
 			</div>
-		</div>
+			
+		</div><!-- main-template -->
 
 	</div>
+	
+	
 	</div>
 
 	<div id = "footer">
 			<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" />
 		<a href = "http://www.thinkbohemian.com">©Think Bohemian</a>
-		 | <%= link_to " Privacy Policy ", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+		 | <%= link_to " Privacy Policy", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
 		 | <%= link_to " About Us", {:action => "about", :controller => "users"}, {:rel => "prettyPopin" } %>
 		 | <%= link_to " Contact Us ", {:action => "contact", :controller => "users"} %>
+		
+		<div class = "float_right">
+			<%  current_page = url_escape(request.url) %>
+			<%= link_to image_tag("digg_32.png"),  "http://digg.com/submit?phase=2&url="+ current_page %>
+			<%= link_to image_tag("reddit_32.png"), "http://www.reddit.com/submit?url="+ current_page %> 
+			<%= link_to image_tag("twitter_32.png"), "http://twitter.com/home?status=" + current_page %>
+			<%= link_to image_tag("stumbleupon_32.png"), "http://www.stumbleupon.com/submit?url=" +  current_page %> 
+			<%= link_to image_tag("yahoobuzz_32.png"), "http://buzz.yahoo.com/buzz?targetUrl=" +  current_page%> 
+			<%= link_to image_tag("delicious_32.png"), "	http://del.icio.us/post?url=" +  current_page %> 			
+			<%= link_to image_tag("facebook_32.png"), "http://www.facebook.com/sharer.php?u=" +  current_page %> 
+			<% link_to image_tag("rss_32.png"), "www.digg.com" +  current_page %> 
+			&nbsp
+		</div>
 	</div>
 
 

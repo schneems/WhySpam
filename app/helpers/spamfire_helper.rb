@@ -1,0 +1,2 @@
+module SpamfireHelper
+end

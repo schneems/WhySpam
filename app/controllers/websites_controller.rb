@@ -5,18 +5,22 @@ class WebsitesController < ApplicationController
    layout "users"
    
    def show
+     
+    @myurl = params[:url]
     website_id = params[:id]
-    @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])
-    @opt_out_count = @website.opt_out_count
-    @un_solicited_count = @website.un_solicited_count
-    @sell_count = @website.sell_count
-    @vulgar_count = @website.vulgar_count
-    @give_out_count = @website.give_out_count 
-    
-    if !@website.surveys.nil?
-      @surveys_count = @website.surveys.count 
-      @surveys_count -= @give_out_count
-    else      
+    @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])||Website.find(:first, :include => [{:surveys => :user}], :conditions => ["url = ?", @myurl])
+    if !@website.nil?
+      @opt_out_count = @website.opt_out_count || 0
+      @un_solicited_count = @website.un_solicited_count || 0
+      @sell_count = @website.sell_count || 0
+      @vulgar_count = @website.vulgar_count || 0 
+      @give_out_count = @website.give_out_count || 0
+      if !@website.surveys.nil? && !@website.surveys.empty?
+        @surveys_count = @website.surveys.count 
+        @surveys_count -= @give_out_count
+      else  
+        @surveys_count = 0  
+      end
     end
     ## @surveys_count - @opt_out_count
     #@surveys_count - @opt_out_count

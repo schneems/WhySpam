@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :website
 
 
 
@@ -109,6 +109,27 @@ class User < ActiveRecord::Base
   def new_random_password
     self.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}")[0,8]
     self.password_confirmation = self.password
+  end
+  
+  def self.create_digest(email, site)   
+      cryptmail = Digest::SHA1.hexdigest(email+site)    
+       guess = cryptmail[0,20]
+      if Info.cryptmail(guess) == []
+        # return guess
+      else
+        guess = cryptmail[20,20]
+
+        if Info.cryptmail(guess) == []
+          # return guess
+        else
+          count = 0
+          while Info.cryptmail(guess) != []
+            count = count+1
+            guess = Digest::SHA1.hexdigest(guess+count.to_s)[0,20]
+          end # while 
+        end # second if
+      end ## first if
+         return guess
   end
   
   

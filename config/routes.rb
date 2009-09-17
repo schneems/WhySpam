@@ -34,13 +34,20 @@ ActionController::Routing::Routes.draw do |map|
   
   map.home '/', :controller => 'users', :action => 'index'
   
+  
+  map.resources :spamfire
+  
+  map.widget '/widget/show/:url', :controller => "grade_widget", :action => "show"
+  map.show_website 'website/:url', :controller => 'websites', :action => 'show'
+  
+  
   map.resources :tickets
   map.resources :grade_widget
   
-  
   map.slop_box '/slop_box', :controller => 'tickets', :action => 'slop_box'
   map.resources :info
-  map.resources :websites, :collection => {:auto_complete_for_customer_url => :get }
+  map.resources :websites
+ ## map.resources :websites, :collection => {:auto_complete_for_customer_url => :get }
   
   
   

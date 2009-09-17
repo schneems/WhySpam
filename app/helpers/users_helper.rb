@@ -90,4 +90,8 @@ module UsersHelper
     end
   end
 
+  def url_escape(string)
+      URI.escape(CGI.escape(string),'.')
+  end
+
 end

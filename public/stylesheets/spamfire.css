@@ -1,0 +1,53 @@
+/* @override 
+	http://localhost:3000/stylesheets/spamfire.css?1252951302
+	http://localhost:3000/stylesheets/spamfire.css?1252952738
+	http://localhost:3000/stylesheets/spamfire.css?1252952842
+	http://localhost:3000/stylesheets/spamfire.css?1252952893
+	http://localhost:3000/stylesheets/spamfire.css?1253207703
+	http://localhost:3000/stylesheets/spamfire.css?1253209704
+*/
+
+#user_email,
+#user_website
+ {
+	
+	max-width: 120px;
+	padding:0;
+	margin: 0;
+}
+
+
+
+
+
+html, body {
+	background-color: #ececec;
+	height: 20px;
+}
+
+#user_submit, 
+#spamfire_button {
+margin-top: 2px;
+height: 27px;
+font-size: 13px;
+
+}
+
+#new_user label {
+	font-size: 13px;
+	
+	height: 17px;
+}
+
+#no_spam {
+	display: inline-block;
+	float:left;
+	overflow:hidden;
+	font-size: 13px;
+	line-height: 17px;
+	text-align: center;
+}
+
+form.button-to {
+	display: inline-block;
+}
