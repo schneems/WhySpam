@@ -7,7 +7,7 @@ end
 def new
   #http://localhost:3000/spamfire/new?website=http://blah.com&email=asdlfkj
   website = params[:website]||"Website"
-  email = params[:email]||cookies[:email]
+  email = params[:email]||cookies[:email]||""
   email = "Your Email" if email.strip.empty?
   @checked = cookies[:checked]
   @user = User.new(:email => email, :website => website) 
