@@ -15,6 +15,6 @@ Make Button Remote
 			<textarea id = "no_spam" class = "center" cols="32" rows="1" 
 			readonly onclick="this.focus(); this.select();" style = ""><%= @no_spam -%><%= @extra_message %></textarea>
 
-		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website } , {:id => "spamfire_button"}-%>
+		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website, :email => @email } , {:id => "spamfire_button"}-%>
 		
 </div>

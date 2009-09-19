@@ -7,16 +7,31 @@ end
 def new
   #http://localhost:3000/spamfire/new?website=http://blah.com&email=asdlfkj
   website = params[:website]||"Website"
-  email = params[:email]||"Your Email"
-    @user = User.new(:email => email, :website => website) 
+  email = params[:email]||cookies[:email]
+  email = "Your Email" if email.strip.empty?
+  @checked = cookies[:checked]
+  @user = User.new(:email => email, :website => website) 
 end
 
 def create
-  
   session[:count] = session[:count]||0
-   email = params[:user][:email]
+  @email = email = params[:user][:email]
+   
+   if params[:save][:checked] == "1"
+     cookies[:email] = email 
+     cookies[:checked] = "true"
+     #"save"=>{"checked"=>"1"}
+   else
+     cookies[:checked] = "false"
+     cookies[:email] = ""
+   end
+  
   @website = site = params[:user][:website]||" "
-session[:count] = 0
+  
+  if ENV['RAILS_ENV'] === 'development'
+    session[:count] = 0
+  end
+
     @extra_message  = nil
     @no_spam = nil
      session[:count] = session[:count] + 1 

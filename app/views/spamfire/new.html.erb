@@ -11,7 +11,8 @@
 			
 <%= label_tag 'email', 'Email: ' %> <%= f.text_field :email , :rows => 2 %>
 <%= label_tag 'website', 'Website: ' %> <%= f.text_field :website %>
-<%= f.submit "Go" %>
+<%= f.submit "Go" %><br />
+<%= label_tag 'save', 'Remember Email? ' %> <%= check_box :save , 'checked', (@checked == "true" ? {:checked => 'checked'} : {:checked => 'unchecked'}) %>
 
 
 <% end %>
