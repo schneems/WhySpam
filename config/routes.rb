@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :spamfire
   
   map.widget '/widget/show/:url', :controller => "grade_widget", :action => "show"
-  map.widget_create '/widget/create/:website', :controller => "grade_widget", :action => "create"
+  map.widget_create '/widget/create', :controller => "grade_widget", :action => "create"
   
   
   map.show_website 'website/:url', :controller => 'websites', :action => 'show'
