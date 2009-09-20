@@ -54,7 +54,7 @@ class GradeWidgetController < ApplicationController
   
   def create
     @website = params[:website]
-    displaytype = params[:displaytype]
+    displaytype = params[:displaytype]||"true"
     @boolean = "false"
     @boolean = "true" if displaytype.downcase == "checked"
   end
