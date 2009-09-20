@@ -49,8 +49,7 @@ class GradeWidgetController < ApplicationController
         @image = "whyratingchecked.png"
       end
     end ## if 
-    
-    
+    render :partial => "show"
   end
   
   def create
@@ -58,7 +57,6 @@ class GradeWidgetController < ApplicationController
     displaytype = params[:displaytype]
     @boolean = "false"
     @boolean = "true" if displaytype.downcase == "checked"
-    
   end
   
   

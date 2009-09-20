@@ -1,45 +1,35 @@
 Copy the code below, and paste it in your website: <br /><br />
 
 <div class = "center">
-<code>
-<textarea id="code" cols="85" rows="7" readonly onclick="this.focus(); this.select();" style = "overflow:hidden">
-&lt;script type=&quot;text/javascript&quot;&gt;
-	website_url = &quot;<%= @website %>&quot;;
-	only_checked = &quot;<%= @boolean %>&quot;; //change to true if you don't want website grade to show up after site is ranked
-&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;http://whyspam.me/javascripts/whyspamwidget3fi19ue7zjaoQxpi.js&quot;&gt;
-&lt;/script&gt;
-	</textarea>
+	<code>
+	<textarea id="code" cols="85" rows="8" readonly onclick="this.focus(); this.select();" style = "overflow:hidden">
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		website_url = &quot;<%= @website %>&quot;;
+		only_checked = &quot;<%= @boolean %>&quot;; //change to true if you don't want website grade to show up after site is ranked
+	&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;http://whyspam.me/javascripts/whyspamwidget3fi19ue7zjaoQxpi.js&quot;&gt;
+	&lt;/script&gt;
+		</textarea>
 	</code>
-	
-	<br />
-	<br />
-	<% if @boolean == "true" %>
-		<p>Now when a user vists your site they are given a piece of mind and a direct link to check on your trustworthiness</p>
-		
-		<script type="text/javascript">
-		website_url = "<%= @website %>";
-		only_checked = "<%= @boolean %>"; //change to true if you don't want website grade to show up after site is ranked
-		</script>
-		<script type="text/javascript" src="http://localhost:3000/javascripts/testwhyspamwidget3fi19ue7zjaoQxpi.js">		
-		</script>
 
-		
-		
-		
-	<% else %>
-			<p>Now when a user vists your site they know exactly how good you have been and have a direct link to check on your trustworthiness</p>
-			<script type="text/javascript">
-				website_url = "<%= @website %>";
-				only_checked = "<%= @boolean %>"; //change to true if you don't want website grade to show up after site is ranked
-			</script>
-			<script type="text/javascript" src="http://localhost:3000/javascripts/testwhyspamwidget3fi19ue7zjaoQxpi.js">		
-			</script>
-		
-		<p>As soon as someone ranks, your site, your logo will change from "checked", to "validated" like the image below</p>
-		<br /><br />
-		<%= image_tag("whyratingaplus.png") %>
-	<% end %>
-	
-</div>
+		<br />
+		<br />
+		<% if @boolean == "true" %>
+			<p>Now when a user vists your site they are given a piece of mind and a direct link to check on your trustworthiness</p>
+
+			<%= link_to image_tag("whyratingchecked.png", :border => 0), show_website_path(:url => @website), {:target => "_blank"} %>
+
+		<% else %>
+				<p>Now when a user vists your site they know exactly how good you have been and have a direct link to check on your trustworthiness</p>
+
+			<%= link_to image_tag("whyratingchecked.png", :border => 0), show_website_path(:url => @website), {:target => "_blank"} %>
+				
+				
+			<p>As soon as someone ranks, your site, your logo will change from "checked", to "validated" like the image below</p>
+			<br /><br />
+			<%= link_to image_tag("whyratingaplus.png", :border => 0), show_website_path(:url => @website), {:target => "_blank"} %>
+			
+		<% end %>
+
+	</div>
 

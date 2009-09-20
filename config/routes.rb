@@ -40,7 +40,6 @@ ActionController::Routing::Routes.draw do |map|
   map.widget '/widget/show/:url', :controller => "grade_widget", :action => "show"
   map.show_website 'website/:url', :controller => 'websites', :action => 'show'
   
-  
   map.resources :tickets
   map.resources :grade_widget
   
