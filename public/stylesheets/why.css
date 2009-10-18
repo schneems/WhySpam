@@ -50,10 +50,16 @@ a {
 	padding: 2px 5px 2px 5px;
 	font-size: 17px;
 	text-decoration: none;
+	border: 1px solid #a0a2a2;
+	
 }
 
 
-
+#login_links a,
+#header #site-title a{
+	color: white;
+	
+}
 
 
 input[type="text"],
@@ -143,7 +149,7 @@ span.ui-icon {
 #header #site-tag { font-size: 1em; 
 	margin-top: -15px;
 	padding-bottom: 20px;
-	}
+}
 
 
 #login_links p {

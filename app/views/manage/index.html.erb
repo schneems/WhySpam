@@ -109,7 +109,7 @@
 	</thead>
 	<tbody>
 <% @forms.each do |form| %>
-<tr class="clickable" onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "form", :action => 'show' %>' " >
+<tr class="clickable" onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => form.id, :type => "form", :action => 'show' %>' " >
 	<td><a href = "<%= forms_url + '/'+ form.address %>"
 		 ><%=h forms_url + '/'+ form.address %></a></td>
 		

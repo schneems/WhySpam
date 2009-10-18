@@ -5,6 +5,14 @@ class FormsController < ApplicationController
   ## sudo god -c ./config/fetcher-daemon.god -D
   ## check for logged in and user before viewing mail and deleting !!
   
+  def foreign_show
+      crypt = params[:id]
+      form = Forms.find_by_crypt(crypt)
+      @form_data = form.first      
+    respond_to do |format|
+       format.html {render :partial => 'show'}
+    end    
+  end
   
   def send_form
     flash[:error] = ""
