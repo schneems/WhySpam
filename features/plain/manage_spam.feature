@@ -9,9 +9,11 @@ Feature: Manage
 	Scenario: Not logged in attempting to manage an account
 		Given I am not logged in
 		When I go to manage users
+	#	And debugger
 		Then I should be redirected to login
 		And Please Login First flashes before my eyes		
-		
+	
+@focus
 	Scenario: I log into manage my account and delete an email by viewing it then pressing delete
 		Given I go to manage users
 		And I successfully login
@@ -36,9 +38,9 @@ Feature: Manage
 		Then I press "css=button.ticket_delete_button"
 		And I wait for jquery to load
 		And I should see "This is the last step before you block all spam"
-		Then I get info count
+		Then I get whymail count
 		Then I press "css=#survey_submit" 
-		And I assert info difference -1
+		And I assert whymail difference -1
 		
 		#Delete
 @manage_1
@@ -83,6 +85,7 @@ Feature: Manage
 					Then I get ticket count
 					Then I press "css=#dataTable_forms tbody tr.clickable" 
 					And I wait for the page to load
+					And debugger
 					Then I press "css=tr.clickable"
 					And I wait for jquery to load
 					Then I press "link=Delete"					

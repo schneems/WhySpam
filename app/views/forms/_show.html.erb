@@ -69,16 +69,13 @@
 </style>
 
 <div id = "externspamwrap">
-	
 	<% if flash[:notice] && !@localrequest  %><div id="flash"><%= flash[:notice] %></div><% end %>	
 	<% if flash[:error] && !@localrequest%><div id="flash" class = "flash_error" ><%= flash[:error] %></div><% end %>
-	
-	
 <% if @form_data.nil? %>
 <p>No form exists with this ID either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", contact_us_path %>.
 	<br />
 	<br />
-If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", forms_path  %> link above, its the quickest way to make an anonymous form on the web.
+If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", new_form_path  %> link above, its the quickest way to make an anonymous form on the web.
 <% else %>
 
 		<b> This form was created: <%= @form_data.created_at.strftime("%m/%d/%Y")%> </b>
@@ -91,10 +88,10 @@ If you wish to create your own contact form, you can do it by clicking on the <%
 	
 		<br />
 		<br />
-		  <% form_for :form, :url => {:action => "send_secure_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
+		  <% form_for :form, :url => {:action => "send_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
 	<table>
-	<tr><td>Your Email:<span class = "optional">(Optional)</span></td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
-	<tr><td>Message:</td><td colspan = 2><%=  f.text_area :comments, :rows => 2 %></td></tr>
+	<tr><td class = "optional_td"><%= f.label "Your Email:" %><br /><span class = "optional">(Optional)</span></td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
+	<tr><td><%= f.label "Message:" %></td><td colspan = 2><%=  f.text_area :comments, :rows => 2 %></td></tr>
 
 	<%= show_simple_captcha %>
 	</table>

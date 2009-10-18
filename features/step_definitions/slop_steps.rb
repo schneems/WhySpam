@@ -1,7 +1,9 @@
 
 When /^I submit "([^\"]*)" to slopbox$/ do |email|
+  debugger
   @browser.type("ticket_to_email", email)
   @browser.click "ticket_submit"
+  
   @browser.wait_for_page_to_load
   @browser.wait_for_condition('selenium.browserbot.getCurrentWindow().jQuery.active == 0', 10000)
   

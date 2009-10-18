@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: ActionView::Helpers::PrototypeHelper</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">ActionView::Helpers::PrototypeHelper</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/jrails/lib/jrails_rb.html">
+                vendor/plugins/jrails/lib/jrails.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000011">build_callbacks</a>&nbsp;&nbsp;
+      <a href="#M000009">build_insertion</a>&nbsp;&nbsp;
+      <a href="#M000010">build_observer</a>&nbsp;&nbsp;
+      <a href="#M000008">build_update_for_error</a>&nbsp;&nbsp;
+      <a href="#M000007">build_update_for_success</a>&nbsp;&nbsp;
+      <a href="#M000006">options_for_ajax</a>&nbsp;&nbsp;
+      <a href="#M000004">periodically_call_remote</a>&nbsp;&nbsp;
+      <a href="#M000005">remote_function</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="PrototypeHelper/JavaScriptGenerator.html" class="link">ActionView::Helpers::PrototypeHelper::JavaScriptGenerator</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">JQUERY_VAR</td>
+          <td>=</td>
+          <td class="context-item-value">'$'</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">JQCALLBACKS</td>
+          <td>=</td>
+          <td class="context-item-value">Set.new([ :beforeSend, :complete, :error, :success ] + (100..599).to_a)</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">AJAX_OPTIONS</td>
+          <td>=</td>
+          <td class="context-item-value">Set.new([ :before, :after, :condition, :url,                                                                                                  :asynchronous, :method, :insertion, :position,                                                                                                  :form, :with, :update, :script ]).merge(JQCALLBACKS)</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">periodically_call_remote</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 44</span>
+44:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">periodically_call_remote</span>(<span class="ruby-identifier">options</span> = {})
+45:                                 <span class="ruby-identifier">frequency</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:frequency</span>] <span class="ruby-operator">||</span> <span class="ruby-value">10</span> <span class="ruby-comment cmt"># every ten seconds by default</span>
+46:                                 <span class="ruby-identifier">code</span> = <span class="ruby-node">&quot;setInterval(function() {#{remote_function(options)}}, #{frequency} * 1000)&quot;</span>
+47:                                 <span class="ruby-identifier">javascript_tag</span>(<span class="ruby-identifier">code</span>)
+48:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000005" class="method-detail">
+        <a name="M000005"></a>
+
+        <div class="method-heading">
+          <a href="#M000005" class="method-signature">
+          <span class="method-name">remote_function</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000005-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 50</span>
+50:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remote_function</span>(<span class="ruby-identifier">options</span>)
+51:                                 <span class="ruby-identifier">javascript_options</span> = <span class="ruby-identifier">options_for_ajax</span>(<span class="ruby-identifier">options</span>)
+52: 
+53:                                 <span class="ruby-identifier">update</span> = <span class="ruby-value str">''</span>
+54:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+55:                                         <span class="ruby-identifier">update</span>  = []
+56:                                         <span class="ruby-identifier">update</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;success:'#{options[:update][:success]}'&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:success</span>]
+57:                                         <span class="ruby-identifier">update</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;failure:'#{options[:update][:failure]}'&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:failure</span>]
+58:                                         <span class="ruby-identifier">update</span>  = <span class="ruby-value str">'{'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">update</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">','</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">'}'</span>
+59:                                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>]
+60:                                         <span class="ruby-identifier">update</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;'#{options[:update]}'&quot;</span>
+61:                                 <span class="ruby-keyword kw">end</span>
+62: 
+63:                                 <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;#{JQUERY_VAR}.ajax(#{javascript_options})&quot;</span>
+64: 
+65:                                 <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;#{options[:before]}; #{function}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:before</span>]
+66:                                 <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;#{function}; #{options[:after]}&quot;</span>  <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:after</span>]
+67:                                 <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;if (#{options[:condition]}) { #{function}; }&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:condition</span>]
+68:                                 <span class="ruby-identifier">function</span> = <span class="ruby-node">&quot;if (confirm('#{escape_javascript(options[:confirm])}')) { #{function}; }&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:confirm</span>]
+69:                                 <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">function</span>
+70:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000011" class="method-detail">
+        <a name="M000011"></a>
+
+        <div class="method-heading">
+          <a href="#M000011" class="method-signature">
+          <span class="method-name">build_callbacks</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000011-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 195</span>
+195:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_callbacks</span>(<span class="ruby-identifier">options</span>)
+196:                                 <span class="ruby-identifier">callbacks</span> = {}
+197:                                 <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:beforeSend</span>] = <span class="ruby-value str">''</span>;
+198:                                 [<span class="ruby-identifier">:uninitialized</span>,<span class="ruby-identifier">:loading</span>,<span class="ruby-identifier">:loaded</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+199:                                         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:beforeSend</span>] <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">last</span> <span class="ruby-operator">==</span> <span class="ruby-value str">';'</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">';'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>]
+200:                                 <span class="ruby-keyword kw">end</span>
+201:                                 <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:beforeSend</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:beforeSend</span>].<span class="ruby-identifier">blank?</span>
+202:                                 <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:error</span>] = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:failure</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:failure</span>]
+203:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>]
+204:                                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+205:                                                 <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:error</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>].<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:failure</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:failure</span>]
+206:                                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:success</span>]
+207:                                                         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:success</span>] = <span class="ruby-identifier">build_update_for_success</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:success</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>]) <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:success</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:success</span>] <span class="ruby-operator">:</span> <span class="ruby-value str">''</span>)
+208:                                                 <span class="ruby-keyword kw">end</span>
+209:                                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:error</span>]
+210:                                                         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:error</span>] = <span class="ruby-identifier">build_update_for_error</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>][<span class="ruby-identifier">:error</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>]) <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:error</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:error</span>] <span class="ruby-operator">:</span> <span class="ruby-value str">''</span>)
+211:                                                 <span class="ruby-keyword kw">end</span>
+212:                                         <span class="ruby-keyword kw">else</span>
+213:                                                 <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:success</span>] = <span class="ruby-identifier">build_update_for_success</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>]) <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:success</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:success</span>] <span class="ruby-operator">:</span> <span class="ruby-value str">''</span>)
+214:                                         <span class="ruby-keyword kw">end</span>
+215:                                 <span class="ruby-keyword kw">end</span>
+216:                                 <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">callback</span>, <span class="ruby-identifier">code</span><span class="ruby-operator">|</span>
+217:                                         <span class="ruby-keyword kw">if</span> <span class="ruby-constant">JQCALLBACKS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">callback</span>)
+218:                                                 <span class="ruby-identifier">callbacks</span>[<span class="ruby-identifier">callback</span>] = <span class="ruby-node">&quot;function(request){#{code}}&quot;</span>
+219:                                         <span class="ruby-keyword kw">end</span>
+220:                                 <span class="ruby-keyword kw">end</span>
+221:                                 <span class="ruby-identifier">callbacks</span>
+222:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">build_insertion</span><span class="method-args">(insertion)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 171</span>
+171:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_insertion</span>(<span class="ruby-identifier">insertion</span>)
+172:                                 <span class="ruby-identifier">insertion</span> = <span class="ruby-identifier">insertion</span> <span class="ruby-value">? </span><span class="ruby-identifier">insertion</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'html'</span>
+173:                                 <span class="ruby-identifier">insertion</span> = <span class="ruby-value str">'append'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">insertion</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'bottom'</span>
+174:                                 <span class="ruby-identifier">insertion</span> = <span class="ruby-value str">'prepend'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">insertion</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'top'</span>
+175:                                 <span class="ruby-identifier">insertion</span>
+176:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
+
+        <div class="method-heading">
+          <a href="#M000010" class="method-signature">
+          <span class="method-name">build_observer</span><span class="method-args">(klass, name, options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 178</span>
+178:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_observer</span>(<span class="ruby-identifier">klass</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span> = {})
+179:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with</span>] <span class="ruby-operator">!~</span> <span class="ruby-regexp re">/[\{=(.]/</span>)
+180:                                         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with</span>] = <span class="ruby-node">&quot;'#{options[:with]}=' + value&quot;</span>
+181:                                 <span class="ruby-keyword kw">else</span>
+182:                                         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">'value'</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:function</span>]
+183:                                 <span class="ruby-keyword kw">end</span>
+184: 
+185:                                 <span class="ruby-identifier">callback</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:function</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">remote_function</span>(<span class="ruby-identifier">options</span>)
+186:                                 <span class="ruby-identifier">javascript</span>  = <span class="ruby-node">&quot;#{JQUERY_VAR}('#{jquery_id(name)}').delayedObserver(&quot;</span>
+187:                                 <span class="ruby-identifier">javascript</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{options[:frequency] || 0}, &quot;</span>
+188:                                 <span class="ruby-identifier">javascript</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;function(element, value) {&quot;</span>
+189:                                 <span class="ruby-identifier">javascript</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{callback}}&quot;</span>
+190:                                 <span class="ruby-comment cmt">#javascript &lt;&lt; &quot;, '#{options[:on]}'&quot; if options[:on]</span>
+191:                                 <span class="ruby-identifier">javascript</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;)&quot;</span>
+192:                                 <span class="ruby-identifier">javascript_tag</span>(<span class="ruby-identifier">javascript</span>)
+193:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">build_update_for_error</span><span class="method-args">(html_id, insertion=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 166</span>
+166:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_update_for_error</span>(<span class="ruby-identifier">html_id</span>, <span class="ruby-identifier">insertion</span>=<span class="ruby-keyword kw">nil</span>)
+167:                                 <span class="ruby-identifier">insertion</span> = <span class="ruby-identifier">build_insertion</span>(<span class="ruby-identifier">insertion</span>)
+168:                                 <span class="ruby-node">&quot;#{JQUERY_VAR}('#{jquery_id(html_id)}').#{insertion}(request.responseText);&quot;</span>
+169:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000007" class="method-detail">
+        <a name="M000007"></a>
+
+        <div class="method-heading">
+          <a href="#M000007" class="method-signature">
+          <span class="method-name">build_update_for_success</span><span class="method-args">(html_id, insertion=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000007-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 161</span>
+161:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_update_for_success</span>(<span class="ruby-identifier">html_id</span>, <span class="ruby-identifier">insertion</span>=<span class="ruby-keyword kw">nil</span>)
+162:                                 <span class="ruby-identifier">insertion</span> = <span class="ruby-identifier">build_insertion</span>(<span class="ruby-identifier">insertion</span>)
+163:                                 <span class="ruby-node">&quot;#{JQUERY_VAR}('#{jquery_id(html_id)}').#{insertion}(request);&quot;</span>
+164:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000006" class="method-detail">
+        <a name="M000006"></a>
+
+        <div class="method-heading">
+          <a href="#M000006" class="method-signature">
+          <span class="method-name">options_for_ajax</span><span class="method-args">(options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000006-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/jrails/lib/jrails.rb, line 118</span>
+118:                         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">options_for_ajax</span>(<span class="ruby-identifier">options</span>)
+119:                                 <span class="ruby-identifier">js_options</span> = <span class="ruby-identifier">build_callbacks</span>(<span class="ruby-identifier">options</span>)
+120:                                 
+121:                                 <span class="ruby-identifier">url_options</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:url</span>]
+122:                                 <span class="ruby-identifier">url_options</span> = <span class="ruby-identifier">url_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:escape</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">url_options</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+123:                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'url'</span>] = <span class="ruby-node">&quot;'#{url_for(url_options)}'&quot;</span>
+124:                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'async'</span>] = <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:type</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">:synchronous</span>
+125:                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'type'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">method_option_to_s</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>]) <span class="ruby-operator">:</span> ( <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:form</span>] <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;'post'&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">nil</span> )
+126:                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'dataType'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:datatype</span>] <span class="ruby-operator">?</span> <span class="ruby-node">&quot;'#{options[:datatype]}'&quot;</span> <span class="ruby-operator">:</span> (<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:update</span>] <span class="ruby-operator">?</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;'script'&quot;</span>)
+127:                                 
+128:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:form</span>]
+129:                                         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] = <span class="ruby-node">&quot;#{JQUERY_VAR}.param(#{JQUERY_VAR}(this).serializeArray())&quot;</span>
+130:                                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:submit</span>]
+131:                                         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] = <span class="ruby-node">&quot;#{JQUERY_VAR}(\&quot;##{options[:submit]} :input\&quot;).serialize()&quot;</span>
+132:                                 <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with</span>]
+133:                                         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:with</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;Form.serialize(this.form)&quot;</span>,<span class="ruby-node">&quot;#{JQUERY_VAR}.param(#{JQUERY_VAR}(this.form).serializeArray())&quot;</span>)
+134:                                 <span class="ruby-keyword kw">end</span>
+135:                                 
+136:                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'type'</span>] <span class="ruby-operator">||=</span> <span class="ruby-value str">&quot;'post'&quot;</span>
+137:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>]
+138:                                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">method_option_to_s</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>]) <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;'put'&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">method_option_to_s</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:method</span>]) <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;'delete'&quot;</span>
+139:                                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'type'</span>] = <span class="ruby-value str">&quot;'post'&quot;</span>
+140:                                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>]
+141:                                                         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; + '&amp;&quot;</span>
+142:                                                 <span class="ruby-keyword kw">else</span>
+143:                                                         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] = <span class="ruby-value str">&quot;'&quot;</span>
+144:                                                 <span class="ruby-keyword kw">end</span>
+145:                                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;_method=#{options[:method]}'&quot;</span>
+146:                                         <span class="ruby-keyword kw">end</span>
+147:                                 <span class="ruby-keyword kw">end</span>
+148:                                 
+149:                                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-value str">'protect_against_forgery?'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">protect_against_forgery?</span>
+150:                                         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>]
+151:                                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot; + '&amp;&quot;</span>
+152:                                         <span class="ruby-keyword kw">else</span>
+153:                                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] = <span class="ruby-value str">&quot;'&quot;</span>
+154:                                         <span class="ruby-keyword kw">end</span>
+155:                                         <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{request_forgery_protection_token}=' + encodeURIComponent('#{escape_javascript form_authenticity_token}')&quot;</span>
+156:                                 <span class="ruby-keyword kw">end</span>
+157:                                 <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>] = <span class="ruby-value str">&quot;''&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'type'</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;'post'&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">js_options</span>[<span class="ruby-value str">'data'</span>].<span class="ruby-identifier">nil?</span>
+158:                                 <span class="ruby-identifier">options_for_javascript</span>(<span class="ruby-identifier">js_options</span>.<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>})
+159:                         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

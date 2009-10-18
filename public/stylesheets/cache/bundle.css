@@ -282,7 +282,7 @@ span.manage_wrapper {
 	display: inline-block;
 }
 
-span.man_cryptmail {
+span.man_email {
 display: inline-block;
 width: 270px;
 padding-left: 5px;	
@@ -933,7 +933,7 @@ div#corner_wrapper {
 	text-align: right;
 }
 
-.dataTables_info {
+.dataTables_whymail {
 	width: 60%;
 	float: left;
 }
@@ -1095,7 +1095,7 @@ tr.even {
 	border: 1px solid #CCCCCC;
 }
 
-.top .dataTables_info {
+.top .dataTables_whymail {
 	float: none;
 }
 
@@ -1129,7 +1129,7 @@ td.details {
 }
 
 
-.example_alt_pagination div.dataTables_info {
+.example_alt_pagination div.dataTables_whymail {
 	width: 40%;
 }
 

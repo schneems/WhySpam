@@ -19,7 +19,7 @@ module NavigationHelpers
       '/index'
       
     when /forms/
-      forms_path
+      new_form_path
       
     when /websites/
         websites_path

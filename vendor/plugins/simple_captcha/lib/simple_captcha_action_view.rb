@@ -94,7 +94,7 @@ module SimpleCaptcha #:nodoc
       options[:object] ?
       text_field(options[:object], :captcha, :value => '') +
       hidden_field(options[:object], :captcha_key, {:value => options[:field_value]}) :
-      text_field_tag(:captcha)
+      default_text_field_tag(:captcha, configatron.captcha_directions) || text_field_tag(:captcha)
     end
 
     def set_simple_captcha_data(code_type)

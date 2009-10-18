@@ -31,7 +31,7 @@
 // that are used internally follow after them.
 //
 //
-// TODO(mesch): add jsdoc comments. Use more coherent naming.
+// THEIRTODO(mesch): add jsdoc comments. Use more coherent naming.
 //
 //
 // Author: Steffen Meschkat <mesch@google.com>
@@ -1094,7 +1094,7 @@ FunctionCallExpr.prototype.xpathfunctions = {
     return new NumberValue(Math.round(num));
   },
 
-  // TODO(mesch): The following functions are custom. There is a
+  // THEIRTODO(mesch): The following functions are custom. There is a
   // standard that defines how to add functions, which should be
   // applied here.
 
@@ -1679,7 +1679,7 @@ var xpathAxesRe = [
 // The tokens of the language. The label property is just used for
 // generating debug output. The prec property is the precedence used
 // for shift/reduce resolution. Default precedence is 0 as a lookahead
-// token and 2 on the stack. TODO(mesch): this is certainly not
+// token and 2 on the stack. THEIRTODO(mesch): this is certainly not
 // necessary and too complicated. Simplify this!
 
 // NOTE: tabular formatting is the big exception, but here it should
@@ -1853,7 +1853,7 @@ var ASSOC_LEFT = true;
 // comparing the precendence of the rule that is candidate for
 // reducing with the precedence of the look ahead token. Precedence of
 // -1 means that the precedence of the tokens in the pattern is used
-// instead. TODO: It shouldn't be necessary to explicitly assign
+// instead. THEIRTODO: It shouldn't be necessary to explicitly assign
 // precedences to rules.
 
 var xpathGrammarRules =
@@ -2043,7 +2043,7 @@ function xpathParseInit() {
   // the match against the stack to the subest of rules that match the
   // top of the stack.
   //
-  // TODO(mesch): What we actually want is to compute states as in
+  // THEIRTODO(mesch): What we actually want is to compute states as in
   // bison, so that we don't have to do any explicit and iterated
   // match against the stack.
 

@@ -232,7 +232,7 @@ objectExtend(CommandHandlerFactory.prototype, {
                     // Treat exceptions as meaning the condition is not yet met.
                     // Useful, for example, for waitForValue when the element has
                     // not even been created yet.
-                    // TODO: possibly should rethrow some types of exception.
+                    // THEIRTODO: possibly should rethrow some types of exception.
                     return false;
                 }
             };
@@ -251,7 +251,7 @@ objectExtend(CommandHandlerFactory.prototype, {
         
         this.registerAction("waitFor" + baseName, waitForActionBlock, false, true);
         this.registerAction("waitFor" + this._invertPredicateName(baseName), waitForNotActionBlock, false, true);
-        //TODO decide remove "waitForNot.*Present" action name or not
+        //THEIRTODO decide remove "waitForNot.*Present" action name or not
         //for the back compatiblity issues we still make waitForNot.*Present availble
         this.registerAction("waitForNot" + baseName, waitForNotActionBlock, false, true);
     },
@@ -301,7 +301,7 @@ function ActionHandler(actionBlock, wait, dontCheckAlerts) {
 ActionHandler.prototype = new CommandHandler;
 ActionHandler.prototype.execute = function(seleniumApi, command) {
     if (this.checkAlerts && (null == /(Alert|Confirmation)(Not)?Present/.exec(command.command))) {
-        // todo: this conditional logic is ugly
+        // THEIRTODO: this conditional logic is ugly
         seleniumApi.ensureNoUnhandledPopups();
     }
     var terminationCondition = this.actionBlock(command.target, command.value);

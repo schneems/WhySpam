@@ -1,0 +1,130 @@
+<% content_for :html_head do %>
+	<%= stylesheet_link_tag 'demo_page.css' %> 
+	<%= stylesheet_link_tag 'demo_table_jui.css' %> 
+	<%= javascript_include_tag 'jquery.dataTables.min.js' %>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			oTable = $('#dataTable').dataTable({
+				"bJQueryUI": true,
+				"sPaginationType": "full_numbers"
+			});
+		} );
+	</script>
+
+
+<% end %>
+
+
+<div class = "center">
+<b>Manage:</b>
+<%= link_to "Account Settings", user_path(current_user) %> 
+</div>
+
+<hr />
+<br />
+
+
+
+
+<% if @type == "whymail" %>
+	<h3>Email Sent To: <%= current_user.email %></h3><br /><br />
+	<p>Secure Email Address: (<%= @whymail.email %>)</p><br /><br />
+
+
+
+
+
+	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
+		<thead>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th class="center">Recieved</th>
+			</tr>
+
+		</thead>
+		<tbody>
+
+		<% @tickets.each do |ticket| %>
+		<!-- should render in dialog -->
+		<%= link_to "tix1", ticket_path(ticket.id) %>
+		<%= link_to_remote "tix", :url => ticket_path(2) , :method => 'get', :update => "partial_update", :loading => "$('#indicator').show();$('#partial_update').hide();", 
+		:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');" %>
+		
+		<tr class="clickable" onclick = "$.ajax(
+				{beforeSend:function(request){$('#indicator').show();$('#partial_update').hide();},
+		 		complete:function(request){$('#indicator').hide();$('#partial_update').show();
+				$('#dialog').dialog('open');}, success:function(request){$('#partial_update').html(request);},
+				 type:'get', url:'<%= ticket_path(ticket.id) %>'}); return false;" >
+				<td><%= ticket.from_email||"Error Retrieving Email Address" %> </td>
+				<td><%= ticket.subject||"(No Subject)" %></td>
+				<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td>
+				</tr>
+		<% end %>
+
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th class="center" >Recieved</th>			
+			</tr>
+		</tfoot>
+	</table>
+
+
+	Delete This Secure Email Address: <%= @whymail.email %>? <button class = "ticket_delete_button" href = "<%= spam_survey_url(:whymail => @whymail.id) %>" 
+		rel = "index"  >Delete</button>
+
+<% else %>
+
+	<h3>Email Sent To: <%= current_user.email %></h3><br /><br />
+	<p>Secure form: www.whyspam.me/forms/<%= @whymail.address %></p><br /><br />
+
+	<script type="text/javascript">
+			$("tr[rel^='prettyPopin']").prettyPopin();
+	</script>
+
+
+	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
+		<thead>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th class="center">Recieved</th>
+			</tr>
+
+		</thead>
+		<tbody>
+
+		<% @tickets.each do |ticket| %>
+		<!-- should render in dialog -->
+		
+		<tr class="clickable" onclick = "$.ajax(
+				{beforeSend:function(request){$('#indicator').show();$('#partial_update').hide();},
+		 		complete:function(request){$('#indicator').hide();$('#partial_update').show();
+				$('#dialog').dialog('open');}, success:function(request){$('#partial_update').html(request);},
+				 type:'get', url:'<%= ticket_path(ticket.id) %>'}); return false;" >
+				<td><%= ticket.from_email||"None Given" %> </td>
+				<td><%= ticket.subject||"(No Subject)" %></td>
+				<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td>
+				</tr>
+		<% end %>
+
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th class="center" >Recieved</th>			
+			</tr>
+		</tfoot>
+	</table>
+
+	Delete This Secure Form? <%= button_to "Delete",form_path(@whymail.id,:method => "delete")  , :confirm => "Deleting this form will prevent anyone from sending you email from the form located at #{'http://www.whyspam.me/'+ @whymail.address }. Are you sure you wish to continue?" , :method => :delete, :class => "delete_button"  %>
+
+
+<% end %>

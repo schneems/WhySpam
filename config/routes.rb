@@ -1,17 +1,27 @@
 ActionController::Routing::Routes.draw do |map|
 # rake routes | mate
   map.resources :users
-  map.root :controller => 'users'
   map.foreign_show '/foreign_show/:id', :controller => 'forms', :action => 'foreign_show'
   map.test '/test', :controller => 'users', :action => 'test'
   map.test '/localtest', :controller => 'users', :action => 'localtest'
   
   
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.manage '/manage', :controller => 'info', :action => 'index'
+  
+   map.login '/login', :controller => 'user_sessions', :action => 'new'
+   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+   map.signup '/signup', :controller => 'users', :action => 'new'
+   map.registration '/registration', :controller => 'users', :action => 'create'
+   map.admin '/admin', :controller => 'admin'
+   map.create_link 'links/create/*url', :controller => 'links', :action => 'create'
+   map.show_link 'links/show/*url', :controller => 'links', :action => 'show'
+
+   map.resource :account, :controller => 'users'
+   map.resource :password_reset
+   map.resources :users
+   map.resource :user_session
+
+
+
 
   map.form_delete '/form_delete', :controller => 'forms', :action => 'delete'
   
@@ -21,37 +31,33 @@ ActionController::Routing::Routes.draw do |map|
   
   map.form_create '/form_create', :controller => 'forms', :action => 'create'
   
-  map.report_spam '/report_spam', :controller => 'users', :action => 'report_spam'  
+  
   map.spam_survey '/spam_survey', :controller => 'surveys', :action => 'new'
-  map.search '/search', :controller => 'websites', :action => 'index'
-  map.delete_spam '/delete_spam', :controller => 'users', :action => 'delete_spam'
-  map.view_all_spam '/view_all_spam', :controller => 'info', :action => ''
+ # map.search '/search', :controller => 'websites', :action => 'index'
+  map.view_all_spam '/view_all_spam', :controller => 'whymail', :action => ''
   
   
+  map.root :controller => 'whymail'
   
-  map.read_spam '/read_spam', :controller => 'users', :action => 'read_spam'
-  map.contact_us '/contact_us', :controller => 'users', :action => 'contact_us'
-  
-  map.home '/', :controller => 'users', :action => 'index'
+  map.home '/', :controller => 'whymail', :action => 'index'
   
   
-  map.resources :spamfire
+  map.resources :spamfire, :manage, :slopbox
   
-  map.widget '/widget/show/:url', :controller => "grade_widget", :action => "show"
+  map.widget '/widget/show/*url', :controller => "grade_widget", :action => "show"
   map.widget_create '/widget/create', :controller => "grade_widget", :action => "create"
   
+#  map.show_website_fancy 'website/:url', :controller => 'websites', :action => 'show'
   
-  map.show_website 'website/:url', :controller => 'websites', :action => 'show'
+  map.show_website 'website/*url', :controller => 'websites', :action => 'show'
+  
   
   map.resources :tickets
   map.resources :grade_widget
   
-  map.slop_box '/slop_box', :controller => 'tickets', :action => 'slop_box'
-  map.resources :info
+  map.resources :whymail
   map.resources :websites
  ## map.resources :websites, :collection => {:auto_complete_for_customer_url => :get }
-  
-  
   
   map.resources :surveys
   map.resources :forms
@@ -63,7 +69,7 @@ ActionController::Routing::Routes.draw do |map|
 
   
   
-  map.connect '/:action', :controller => 'users'
+ # map.connect '/:action', :controller => 'users'
   
   
   map.connect ':controller/:action'
@@ -71,7 +77,13 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   
+  map.namespace(:admin) do |admin|
+    admin.with_options(:active_scaffold => true) do |admin_scaffold|
+      admin_scaffold.resources :users
+    end
+  end
   
+  map.static '/:action', :controller => 'static'
   
   
 end

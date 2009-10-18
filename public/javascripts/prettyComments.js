@@ -6,7 +6,7 @@
 	Version: 1.4
 	
 	Copyright: Feel free to redistribute the script/modify it, as
-			   long as you leave my infos at the top.
+			   long as you leave my whymails at the top.
 ------------------------------------------------------------------------- */
 
 	$.fn.prettyComments = function(settings) {

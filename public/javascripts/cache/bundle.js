@@ -714,7 +714,7 @@ return null;}];$.fn.dataTableExt._oExternConfig={"iNextUnique":0};$.fn.dataTable
 {this.fnRecordsTotal=function()
 {if(this.oFeatures.bServerSide){return this._iRecordsTotal;}else{return this.aiDisplayMaster.length;}};this.fnRecordsDisplay=function()
 {if(this.oFeatures.bServerSide){return this._iRecordsDisplay;}else{return this.aiDisplay.length;}};this.fnDisplayEnd=function()
-{if(this.oFeatures.bServerSide){return this._iDisplayStart+this.aiDisplay.length;}else{return this._iDisplayEnd;}};this.sInstance=null;this.oFeatures={"bPaginate":true,"bLengthChange":true,"bFilter":true,"bSort":true,"bInfo":true,"bAutoWidth":true,"bProcessing":false,"bSortClasses":true,"bStateSave":false,"bServerSide":false};this.oLanguage={"sProcessing":"Processing...","sLengthMenu":"Show _MENU_ entries","sZeroRecords":"No matching records found","sInfo":"Showing _START_ to _END_ of _TOTAL_ entries","sInfoEmpty":"Showing 0 to 0 of 0 entries","sInfoFiltered":"(filtered from _MAX_ total entries)","sInfoPostFix":"","sSearch":"Search:","sUrl":"","oPaginate":{"sFirst":"First","sPrevious":"Previous","sNext":"Next","sLast":"Last"}};this.aoData=[];this.aiDisplay=[];this.aiDisplayMaster=[];this.aoColumns=[];this.iNextId=0;this.asDataSearch=[];this.oPreviousSearch={"sSearch":"","bEscapeRegex":true};this.aoPreSearchCols=[];this.nInfo=null;this.nProcessing=null;this.aaSorting=[[0,'asc']];this.aaSortingFixed=null;this.asStripClasses=['odd','even'];this.fnRowCallback=null;this.fnHeaderCallback=null;this.fnFooterCallback=null;this.fnDrawCallback=null;this.fnInitComplete=null;this.sTableId="";this.nTable=null;this.iDefaultSortIndex=0;this.bInitialised=false;this.aoOpenRows=[];this.nPaginate=null;this.nPrevious=null;this.nNext=null;this.sDomPositioning='lfrtip';this.sPaginationType="two_button";this.iCookieDuration=60*60*2;this.sAjaxSource=null;this.bAjaxDataGet=true;this.fnServerData=$.getJSON;this._iDisplayLength=10;this._iDisplayStart=0;this._iDisplayEnd=10;this._iRecordsTotal=0;this._iRecordsDisplay=0;}
+{if(this.oFeatures.bServerSide){return this._iDisplayStart+this.aiDisplay.length;}else{return this._iDisplayEnd;}};this.sInstance=null;this.oFeatures={"bPaginate":true,"bLengthChange":true,"bFilter":true,"bSort":true,"bWhymail":true,"bAutoWidth":true,"bProcessing":false,"bSortClasses":true,"bStateSave":false,"bServerSide":false};this.oLanguage={"sProcessing":"Processing...","sLengthMenu":"Show _MENU_ entries","sZeroRecords":"No matching records found","sWhymail":"Showing _START_ to _END_ of _TOTAL_ entries","sWhymailEmpty":"Showing 0 to 0 of 0 entries","sWhymailFiltered":"(filtered from _MAX_ total entries)","sWhymailPostFix":"","sSearch":"Search:","sUrl":"","oPaginate":{"sFirst":"First","sPrevious":"Previous","sNext":"Next","sLast":"Last"}};this.aoData=[];this.aiDisplay=[];this.aiDisplayMaster=[];this.aoColumns=[];this.iNextId=0;this.asDataSearch=[];this.oPreviousSearch={"sSearch":"","bEscapeRegex":true};this.aoPreSearchCols=[];this.nWhymail=null;this.nProcessing=null;this.aaSorting=[[0,'asc']];this.aaSortingFixed=null;this.asStripClasses=['odd','even'];this.fnRowCallback=null;this.fnHeaderCallback=null;this.fnFooterCallback=null;this.fnDrawCallback=null;this.fnInitComplete=null;this.sTableId="";this.nTable=null;this.iDefaultSortIndex=0;this.bInitialised=false;this.aoOpenRows=[];this.nPaginate=null;this.nPrevious=null;this.nNext=null;this.sDomPositioning='lfrtip';this.sPaginationType="two_button";this.iCookieDuration=60*60*2;this.sAjaxSource=null;this.bAjaxDataGet=true;this.fnServerData=$.getJSON;this._iDisplayLength=10;this._iDisplayStart=0;this._iDisplayEnd=10;this._iRecordsTotal=0;this._iRecordsDisplay=0;}
 this.oApi={};this.fnDraw=function()
 {_fnReDraw(_fnSettingsFromNode(this[0]));};this.fnFilter=function(sInput,iColumn,bEscapeRegex)
 {var oSettings=_fnSettingsFromNode(this[0]);if(typeof bEscapeRegex=='undefined')
@@ -851,7 +851,7 @@ _fnProcessingDisplay(oSettings,false);if(typeof oSettings.fnInitComplete=='funct
 if(typeof oSettings.fnInitComplete=='function')
 {oSettings.fnInitComplete(oSettings);}}
 function _fnLanguageProcess(oSettings,oLanguage,bInit)
-{_fnMap(oSettings.oLanguage,oLanguage,'sProcessing');_fnMap(oSettings.oLanguage,oLanguage,'sLengthMenu');_fnMap(oSettings.oLanguage,oLanguage,'sZeroRecords');_fnMap(oSettings.oLanguage,oLanguage,'sInfo');_fnMap(oSettings.oLanguage,oLanguage,'sInfoEmpty');_fnMap(oSettings.oLanguage,oLanguage,'sInfoFiltered');_fnMap(oSettings.oLanguage,oLanguage,'sInfoPostFix');_fnMap(oSettings.oLanguage,oLanguage,'sSearch');if(typeof oLanguage.oPaginate!='undefined')
+{_fnMap(oSettings.oLanguage,oLanguage,'sProcessing');_fnMap(oSettings.oLanguage,oLanguage,'sLengthMenu');_fnMap(oSettings.oLanguage,oLanguage,'sZeroRecords');_fnMap(oSettings.oLanguage,oLanguage,'sWhymail');_fnMap(oSettings.oLanguage,oLanguage,'sWhymailEmpty');_fnMap(oSettings.oLanguage,oLanguage,'sWhymailFiltered');_fnMap(oSettings.oLanguage,oLanguage,'sWhymailPostFix');_fnMap(oSettings.oLanguage,oLanguage,'sSearch');if(typeof oLanguage.oPaginate!='undefined')
 {_fnMap(oSettings.oLanguage.oPaginate,oLanguage.oPaginate,'sFirst');_fnMap(oSettings.oLanguage.oPaginate,oLanguage.oPaginate,'sPrevious');_fnMap(oSettings.oLanguage.oPaginate,oLanguage.oPaginate,'sNext');_fnMap(oSettings.oLanguage.oPaginate,oLanguage.oPaginate,'sLast');}
 if(bInit)
 {_fnInitalise(oSettings);}}
@@ -983,19 +983,19 @@ var nBody=$('tbody:eq(0)',oSettings.nTable);for(i=0;i<anRows.length;i++)
 {nBody[0].appendChild(anRows[i]);}
 if(oSettings.oFeatures.bPaginate)
 {$.fn.dataTableExt.oPagination[oSettings.sPaginationType].fnUpdate(oSettings,function(oSettings){_fnCalculateEnd(oSettings);_fnDraw(oSettings);});}
-if(oSettings.oFeatures.bInfo)
+if(oSettings.oFeatures.bWhymail)
 {if(oSettings.fnRecordsDisplay()===0&&oSettings.fnRecordsDisplay()==oSettings.fnRecordsTotal())
-{oSettings.nInfo.innerHTML=oSettings.oLanguage.sInfoEmpty+oSettings.oLanguage.sInfoPostFix;}
+{oSettings.nWhymail.innerHTML=oSettings.oLanguage.sWhymailEmpty+oSettings.oLanguage.sWhymailPostFix;}
 else if(oSettings.fnRecordsDisplay()===0)
-{oSettings.nInfo.innerHTML=oSettings.oLanguage.sInfoEmpty+' '+
-oSettings.oLanguage.sInfoFiltered.replace('_MAX_',oSettings.fnRecordsTotal())+oSettings.oLanguage.sInfoPostFix;}
+{oSettings.nWhymail.innerHTML=oSettings.oLanguage.sWhymailEmpty+' '+
+oSettings.oLanguage.sWhymailFiltered.replace('_MAX_',oSettings.fnRecordsTotal())+oSettings.oLanguage.sWhymailPostFix;}
 else if(oSettings.fnRecordsDisplay()==oSettings.fnRecordsTotal())
-{oSettings.nInfo.innerHTML=oSettings.oLanguage.sInfo.replace('_START_',oSettings._iDisplayStart+1).replace('_END_',oSettings.fnDisplayEnd()).replace('_TOTAL_',oSettings.fnRecordsDisplay())+
-oSettings.oLanguage.sInfoPostFix;}
+{oSettings.nWhymail.innerHTML=oSettings.oLanguage.sWhymail.replace('_START_',oSettings._iDisplayStart+1).replace('_END_',oSettings.fnDisplayEnd()).replace('_TOTAL_',oSettings.fnRecordsDisplay())+
+oSettings.oLanguage.sWhymailPostFix;}
 else
-{oSettings.nInfo.innerHTML=oSettings.oLanguage.sInfo.replace('_START_',oSettings._iDisplayStart+1).replace('_END_',oSettings.fnDisplayEnd()).replace('_TOTAL_',oSettings.fnRecordsDisplay())+' '+
-oSettings.oLanguage.sInfoFiltered.replace('_MAX_',oSettings.fnRecordsTotal())+
-oSettings.oLanguage.sInfoPostFix;}}
+{oSettings.nWhymail.innerHTML=oSettings.oLanguage.sWhymail.replace('_START_',oSettings._iDisplayStart+1).replace('_END_',oSettings.fnDisplayEnd()).replace('_TOTAL_',oSettings.fnRecordsDisplay())+' '+
+oSettings.oLanguage.sWhymailFiltered.replace('_MAX_',oSettings.fnRecordsTotal())+
+oSettings.oLanguage.sWhymailPostFix;}}
 if(oSettings.oFeatures.bServerSide&&oSettings.oFeatures.bSort)
 {_fnSortingClasses(oSettings);}
 _fnSaveState(oSettings);if(typeof oSettings.fnDrawCallback=='function')
@@ -1049,8 +1049,8 @@ else if(cOption=='r'&&oSettings.oFeatures.bProcessing)
 {nInsertNode.appendChild(_fnFeatureHtmlProcessing(oSettings));}
 else if(cOption=='t')
 {nInsertNode.appendChild(oSettings.nTable);}
-else if(cOption=='i'&&oSettings.oFeatures.bInfo)
-{nInsertNode.appendChild(_fnFeatureHtmlInfo(oSettings));}
+else if(cOption=='i'&&oSettings.oFeatures.bWhymail)
+{nInsertNode.appendChild(_fnFeatureHtmlWhymail(oSettings));}
 else if(cOption=='p'&&oSettings.oFeatures.bPaginate)
 {nInsertNode.appendChild(_fnFeatureHtmlPaginate(oSettings));}}
 nHolding.parentNode.replaceChild(nWrapper,nHolding);}
@@ -1059,10 +1059,10 @@ function _fnFeatureHtmlFilter(oSettings)
 {nFilter.setAttribute('id',oSettings.sTableId+'_filter');}
 nFilter.className="dataTables_filter";nFilter.innerHTML=oSettings.oLanguage.sSearch+' <input type="text" value="'+
 oSettings.oPreviousSearch.sSearch.replace('"','&quot;')+'" />';$("input",nFilter).keyup(function(e){_fnFilterComplete(oSettings,{"sSearch":this.value,"bEscapeRegex":oSettings.oPreviousSearch.bEscapeRegex});});return nFilter;}
-function _fnFeatureHtmlInfo(oSettings)
-{var nInfo=document.createElement('div');oSettings.nInfo=nInfo;if(oSettings.sTableId!=='')
-{oSettings.nInfo.setAttribute('id',oSettings.sTableId+'_info');}
-oSettings.nInfo.className="dataTables_info";return nInfo;}
+function _fnFeatureHtmlWhymail(oSettings)
+{var nWhymail=document.createElement('div');oSettings.nWhymail=nWhymail;if(oSettings.sTableId!=='')
+{oSettings.nWhymail.setAttribute('id',oSettings.sTableId+'_whymail');}
+oSettings.nWhymail.className="dataTables_whymail";return nWhymail;}
 function _fnFeatureHtmlPaginate(oSettings)
 {var nPaginate=document.createElement('div');nPaginate.className="dataTables_paginate";oSettings.nPaginate=nPaginate;$.fn.dataTableExt.oPagination[oSettings.sPaginationType].fnInit(oSettings,function(oSettings){_fnCalculateEnd(oSettings);_fnDraw(oSettings);});return nPaginate;}
 function _fnFeatureHtmlLength(oSettings)
@@ -1336,14 +1336,14 @@ function _fnMap(oRet,oSrc,sName,sMappedName)
 if(typeof oSrc[sName]!='undefined')
 {oRet[sMappedName]=oSrc[sName];}}
 if(bApi)
-{this.oApi._fnInitalise=_fnInitalise;this.oApi._fnLanguageProcess=_fnLanguageProcess;this.oApi._fnAddColumn=_fnAddColumn;this.oApi._fnAddData=_fnAddData;this.oApi._fnGatherData=_fnGatherData;this.oApi._fnDrawHead=_fnDrawHead;this.oApi._fnDraw=_fnDraw;this.oApi._fnAjaxUpdate=_fnAjaxUpdate;this.oApi._fnAddOptionsHtml=_fnAddOptionsHtml;this.oApi._fnFeatureHtmlFilter=_fnFeatureHtmlFilter;this.oApi._fnFeatureHtmlInfo=_fnFeatureHtmlInfo;this.oApi._fnFeatureHtmlPaginate=_fnFeatureHtmlPaginate;this.oApi._fnFeatureHtmlLength=_fnFeatureHtmlLength;this.oApi._fnFeatureHtmlProcessing=_fnFeatureHtmlProcessing;this.oApi._fnProcessingDisplay=_fnProcessingDisplay;this.oApi._fnFilterComplete=_fnFilterComplete;this.oApi._fnFilterColumn=_fnFilterColumn;this.oApi._fnFilter=_fnFilter;this.oApi._fnSortingClasses=_fnSortingClasses;this.oApi._fnVisibleToColumnIndex=_fnVisibleToColumnIndex;this.oApi._fnColumnIndexToVisible=_fnColumnIndexToVisible;this.oApi._fnVisbleColumns=_fnVisbleColumns;this.oApi._fnBuildSearchArray=_fnBuildSearchArray;this.oApi._fnDataToSearch=_fnDataToSearch;this.oApi._fnCalculateEnd=_fnCalculateEnd;this.oApi._fnConvertToWidth=_fnConvertToWidth;this.oApi._fnCalculateColumnWidths=_fnCalculateColumnWidths;this.oApi._fnArrayCmp=_fnArrayCmp;this.oApi._fnDetectType=_fnDetectType;this.oApi._fnGetDataMaster=_fnGetDataMaster;this.oApi._fnGetTrNodes=_fnGetTrNodes;this.oApi._fnEscapeRegex=_fnEscapeRegex;this.oApi._fnReOrderIndex=_fnReOrderIndex;this.oApi._fnColumnOrdering=_fnColumnOrdering;this.oApi._fnClearTable=_fnClearTable;this.oApi._fnSaveState=_fnSaveState;this.oApi._fnLoadState=_fnLoadState;this.oApi._fnCreateCookie=_fnCreateCookie;this.oApi._fnReadCookie=_fnReadCookie;this.oApi._fnGetUniqueThs=_fnGetUniqueThs;}
+{this.oApi._fnInitalise=_fnInitalise;this.oApi._fnLanguageProcess=_fnLanguageProcess;this.oApi._fnAddColumn=_fnAddColumn;this.oApi._fnAddData=_fnAddData;this.oApi._fnGatherData=_fnGatherData;this.oApi._fnDrawHead=_fnDrawHead;this.oApi._fnDraw=_fnDraw;this.oApi._fnAjaxUpdate=_fnAjaxUpdate;this.oApi._fnAddOptionsHtml=_fnAddOptionsHtml;this.oApi._fnFeatureHtmlFilter=_fnFeatureHtmlFilter;this.oApi._fnFeatureHtmlWhymail=_fnFeatureHtmlWhymail;this.oApi._fnFeatureHtmlPaginate=_fnFeatureHtmlPaginate;this.oApi._fnFeatureHtmlLength=_fnFeatureHtmlLength;this.oApi._fnFeatureHtmlProcessing=_fnFeatureHtmlProcessing;this.oApi._fnProcessingDisplay=_fnProcessingDisplay;this.oApi._fnFilterComplete=_fnFilterComplete;this.oApi._fnFilterColumn=_fnFilterColumn;this.oApi._fnFilter=_fnFilter;this.oApi._fnSortingClasses=_fnSortingClasses;this.oApi._fnVisibleToColumnIndex=_fnVisibleToColumnIndex;this.oApi._fnColumnIndexToVisible=_fnColumnIndexToVisible;this.oApi._fnVisbleColumns=_fnVisbleColumns;this.oApi._fnBuildSearchArray=_fnBuildSearchArray;this.oApi._fnDataToSearch=_fnDataToSearch;this.oApi._fnCalculateEnd=_fnCalculateEnd;this.oApi._fnConvertToWidth=_fnConvertToWidth;this.oApi._fnCalculateColumnWidths=_fnCalculateColumnWidths;this.oApi._fnArrayCmp=_fnArrayCmp;this.oApi._fnDetectType=_fnDetectType;this.oApi._fnGetDataMaster=_fnGetDataMaster;this.oApi._fnGetTrNodes=_fnGetTrNodes;this.oApi._fnEscapeRegex=_fnEscapeRegex;this.oApi._fnReOrderIndex=_fnReOrderIndex;this.oApi._fnColumnOrdering=_fnColumnOrdering;this.oApi._fnClearTable=_fnClearTable;this.oApi._fnSaveState=_fnSaveState;this.oApi._fnLoadState=_fnLoadState;this.oApi._fnCreateCookie=_fnCreateCookie;this.oApi._fnReadCookie=_fnReadCookie;this.oApi._fnGetUniqueThs=_fnGetUniqueThs;}
 return this.each(function()
 {var oSettings=new classSettings();_aoSettings.push(oSettings);var i=0,iLen;var bInitHandedOff=false;var bUsePassedData=false;var sId=this.getAttribute('id');if(sId!==null)
 {oSettings.sTableId=sId;oSettings.sInstance=sId;}
 else
 {oSettings.sInstance=$.fn.dataTableExt._oExternConfig.iNextUnique++;}
 oSettings.nTable=this;if(typeof oInit!='undefined'&&oInit!==null)
-{_fnMap(oSettings.oFeatures,oInit,"bPaginate");_fnMap(oSettings.oFeatures,oInit,"bLengthChange");_fnMap(oSettings.oFeatures,oInit,"bFilter");_fnMap(oSettings.oFeatures,oInit,"bSort");_fnMap(oSettings.oFeatures,oInit,"bInfo");_fnMap(oSettings.oFeatures,oInit,"bProcessing");_fnMap(oSettings.oFeatures,oInit,"bAutoWidth");_fnMap(oSettings.oFeatures,oInit,"bSortClasses");_fnMap(oSettings.oFeatures,oInit,"bServerSide");_fnMap(oSettings,oInit,"asStripClasses");_fnMap(oSettings,oInit,"fnRowCallback");_fnMap(oSettings,oInit,"fnHeaderCallback");_fnMap(oSettings,oInit,"fnFooterCallback");_fnMap(oSettings,oInit,"fnDrawCallback");_fnMap(oSettings,oInit,"fnInitComplete");_fnMap(oSettings,oInit,"fnServerData");_fnMap(oSettings,oInit,"aaSorting");_fnMap(oSettings,oInit,"aaSortingFixed");_fnMap(oSettings,oInit,"sPaginationType");_fnMap(oSettings,oInit,"sAjaxSource");_fnMap(oSettings,oInit,"sDom","sDomPositioning");_fnMap(oSettings,oInit,"oSearch","oPreviousSearch");_fnMap(oSettings,oInit,"aoSearchCols","aoPreSearchCols");_fnMap(oSettings,oInit,"iDisplayLength","_iDisplayLength");if(typeof oInit.iDisplayStart!='undefined'&&typeof oSettings.iInitDisplayStart=='undefined'){oSettings.iInitDisplayStart=oInit.iDisplayStart;oSettings._iDisplayStart=oInit.iDisplayStart;}
+{_fnMap(oSettings.oFeatures,oInit,"bPaginate");_fnMap(oSettings.oFeatures,oInit,"bLengthChange");_fnMap(oSettings.oFeatures,oInit,"bFilter");_fnMap(oSettings.oFeatures,oInit,"bSort");_fnMap(oSettings.oFeatures,oInit,"bWhymail");_fnMap(oSettings.oFeatures,oInit,"bProcessing");_fnMap(oSettings.oFeatures,oInit,"bAutoWidth");_fnMap(oSettings.oFeatures,oInit,"bSortClasses");_fnMap(oSettings.oFeatures,oInit,"bServerSide");_fnMap(oSettings,oInit,"asStripClasses");_fnMap(oSettings,oInit,"fnRowCallback");_fnMap(oSettings,oInit,"fnHeaderCallback");_fnMap(oSettings,oInit,"fnFooterCallback");_fnMap(oSettings,oInit,"fnDrawCallback");_fnMap(oSettings,oInit,"fnInitComplete");_fnMap(oSettings,oInit,"fnServerData");_fnMap(oSettings,oInit,"aaSorting");_fnMap(oSettings,oInit,"aaSortingFixed");_fnMap(oSettings,oInit,"sPaginationType");_fnMap(oSettings,oInit,"sAjaxSource");_fnMap(oSettings,oInit,"sDom","sDomPositioning");_fnMap(oSettings,oInit,"oSearch","oPreviousSearch");_fnMap(oSettings,oInit,"aoSearchCols","aoPreSearchCols");_fnMap(oSettings,oInit,"iDisplayLength","_iDisplayLength");if(typeof oInit.iDisplayStart!='undefined'&&typeof oSettings.iInitDisplayStart=='undefined'){oSettings.iInitDisplayStart=oInit.iDisplayStart;oSettings._iDisplayStart=oInit.iDisplayStart;}
 if(typeof oInit.aaData!='undefined'){bUsePassedData=true;}
 if(typeof oInit.bStateSave!='undefined')
 {oSettings.oFeatures.bStateSave=oInit.bStateSave;_fnLoadState(oSettings);}

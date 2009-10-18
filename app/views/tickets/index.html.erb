@@ -1,5 +1,4 @@
-<h3>Email Sent To: <%= @to_email %></h3><br /><br />
-
+<h3>Email Sent To: <%= @tickets.first.whymail.user.email %></h3><br /><br />
 
 
 <script type="text/javascript">
@@ -19,12 +18,15 @@
 	<tbody>
 
 	<% @tickets.each do |ticket| %>
-	<tr class="clickable" 
-	href="<%= url_for ticket_path(ticket.id) %>" rel="prettyPopin">
+	<!-- should render in dialog -->
+	<tr class="clickable" onclick = "$.ajax(
+			{beforeSend:function(request){$('#indicator').show();$('#partial_update').hide();},
+	 		complete:function(request){$('#indicator').hide();$('#partial_update').show();
+			$('#dialog').dialog('open');}, success:function(request){$('#partial_update').html(request);},
+			 type:'get', url:'<%= ticket_path(ticket.id) %>'}); return false;" >
 			<td><%= ticket.from_email||"Error Retrieving Email Address" %> </td>
-			<td><%= ticket.subject||"(No Subject)" %></td>
-			<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td>
-			</tr>
+			<td ><%= ticket.subject||"(No Subject)" %></td>
+			<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td></tr>
 	<% end %>
 
 
@@ -33,7 +35,7 @@
 		<tr>
 			<th>From</th>
 			<th>Subject</th>
-			<th class="center" >Recieved</th>			
+			<th class="center" >Recieved</th>
 		</tr>
 	</tfoot>
 </table>

@@ -159,7 +159,7 @@ extensions in Selenium Core's <tt>user-extensions.js.sample</tt>
 To get these examples running, simply remove the .example and .sample extensions 
 from the files and restart your server.
 
-== Todo
+== THEIRTODO
 
 === Standalone mode
 
@@ -174,7 +174,7 @@ Currently there is only support to load fixtures and to wipe the session in
 === More documentation
 
 
-== Not todo
+== Not THEIRTODO
 
 === Editor
 

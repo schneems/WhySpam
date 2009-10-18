@@ -3,6 +3,7 @@ log/*.log
 tmp/**/*
 config/database.yml
 db/*.sqlite3
+db/seed.rb
 config/mailer_daemon.yml
 config/environments/development.rb
 config/environments/production.rb

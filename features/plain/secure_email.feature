@@ -11,7 +11,7 @@ Feature: Generate Email
     	And I submit my unique user email address
 		Then I should see "@WHYSPAM.ME"
 		And I make sure the secure email shows up
-		Then I receive a cryptmail message
+		Then I receive a email message
 		
 		When I submit a duplicate user email address
 		Then I should see "You already have an email on file for this website/email combo, btw"

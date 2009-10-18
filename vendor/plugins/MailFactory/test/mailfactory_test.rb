@@ -26,6 +26,8 @@ class MailFactoryTest <  Test::Unit::TestCase
       assert_equal subject, TMail::Mail.parse(mail).subject.to_s
       assert_equal body+"\n", TMail::Mail.parse(mail).body.to_s
    end                       
+   
+   
  # def test_default_mail_factory
  #   mail = mail_factory("","","","")
  #   assert_equal "foo@example.com", TMail::Mail.parse(mail).to.to_s

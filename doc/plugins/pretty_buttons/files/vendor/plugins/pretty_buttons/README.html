@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>README</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>vendor/plugins/pretty_buttons/README
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Fri Sep 18 16:48:05 -0500 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../../../classes/PrettyButtons.html">PrettyButtons</a>
+</p>
+<h6>=======</h6>
+<pre>
+ Based on the methods by Kevin Hale to create nice cross browser buttons.
+ (see http://particletree.com/features/rediscovering-the-button-element)
+</pre>
+<p>
+&lt;button type=&quot;submit&quot; class=&quot;button positive&quot;&gt;
+</p>
+<pre>
+  &lt;img src=&quot;css/blueprint/plugins/buttons/icons/tick.png&quot; alt=&quot;&quot;/&gt; Save
+</pre>
+<p>
+&lt;/button&gt;
+</p>
+<p>
+&lt;a class=&quot;button&quot; href=&quot;/password/reset/&quot;&gt;
+</p>
+<pre>
+  &lt;img src=&quot;css/blueprint/plugins/buttons/icons/key.png&quot; alt=&quot;&quot;/&gt; Change Password
+</pre>
+<p>
+&lt;/a&gt;
+</p>
+<p>
+&lt;a href=&quot;#&quot; class=&quot;button negative&quot;&gt;
+</p>
+<pre>
+  &lt;img src=&quot;css/blueprint/plugins/buttons/icons/cross.png&quot; alt=&quot;&quot;/&gt; Cancel
+</pre>
+<p>
+&lt;/a&gt;
+</p>
+<p>
+Example
+</p>
+<h6>=</h6>
+<p>
+&lt;p class=&quot;buttons&quot;&gt;
+</p>
+<pre>
+  &lt;%= pretty_positive_button &quot;Create&quot; %&gt;
+  &lt;%= pretty_negative_button_link 'Cancel', posts_path %&gt;
+</pre>
+<p>
+&lt;/p&gt;
+</p>
+<p>
+&lt;p class=&quot;buttons&quot;&gt;
+</p>
+<pre>
+  &lt;%= pretty_button &quot;Add Comment&quot;, &quot;icons/comment.gif&quot; %&gt;
+</pre>
+<p>
+&lt;/p&gt;
+</p>
+<p>
+&lt;p class=&quot;buttons&quot;&gt;
+</p>
+<pre>
+  &lt;%= pretty_button_link &quot;Contact Us&quot;, contact_path, {:icon_path =&gt; &quot;icons/contact.gif&quot;} %&gt;
+</pre>
+<p>
+&lt;/p&gt;
+</p>
+<p>
+Silk Icons from <a
+href="http://famfamfam.com/lab/icons/silk">famfamfam.com/lab/icons/silk</a>/,
+released under the Creative Commons Attribution 2.5 License Copyright (c)
+2008 Relevance, Inc., released under the MIT license
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

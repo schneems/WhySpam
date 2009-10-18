@@ -4,14 +4,13 @@ class TicketObserver < ActiveRecord::Observer
     
 
     
-#    puts "===============i can haz ticket ================"
 #    
-#    cryptmail = ticket.to_email.scan(/^[\w]+/)[0].to_s.downcase ## ass7s3j4028234723482918181 ...
-#    # cryptmail = ticket.to_email[0,40].downcase
+#    email = ticket.to_email.scan(/^[\w]+/)[0].to_s.downcase ## ass7s3j4028234723482918181 ...
+#    # email = ticket.to_email[0,40].downcase
 #    address = ticket.to_email.scan(/[\w.]+$/)[0].to_s.downcase ## @whyspam.me
-#    info = Info.find(:first, :include => :user, :conditions => ["cryptmail = ?", cryptmail ])  
+#    info = Whymail.find(:first, :include => :user, :conditions => ["email = ?", email ])  
 #    to_email = info.user.email
-#    #cryptmail = "E23E13E76744A188860ABA7AC83DDA08B0D920AA"
+#    #email = "E23E13E76744A188860ABA7AC83DDA08B0D920AA"
 #    # E23E13E76744A188860ABA7AC83DDA08B0D920AA@whyspam.me
 #    #address = "whyspam.me"
 #    
@@ -21,7 +20,7 @@ class TicketObserver < ActiveRecord::Observer
 #    subject = ticket.subject
 #    message = ticket.body.to_s
 #    
-#    MyMailer.deliver_forward(to_email, from_email, cryptmail.to_s.upcase+"@"+ address.to_s, subject, message)
+#    MyMailer.deliver_forward(to_email, from_email, email.to_s.upcase+"@"+ address.to_s, subject, message)
 #    
     ## Hmm, So if i Send:
     # MyMailer.deliver_forward("xxx@gmail.com", "yousuck@mail.com", "E23E13E76744A188860ABA7AC83DDA08B0D920AA@address.com", "subject", "message")

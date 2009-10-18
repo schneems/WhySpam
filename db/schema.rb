@@ -9,28 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090730034054) do
+ActiveRecord::Schema.define(:version => 20090923003235) do
 
   create_table "forms", :force => true do |t|
     t.text     "comments"
     t.string   "email"
     t.integer  "days"
-    t.string   "crypt_form"
+    t.string   "address"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "info", :force => true do |t|
-    t.string   "website"
-    t.string   "cryptmail"
-    t.string   "main_url"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "mailmen", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20090730034054) do
     t.string   "sell"
     t.string   "vulgar"
     t.string   "give_out"
-    t.string   "cryptmail"
+    t.string   "email"
     t.text     "comments"
     t.integer  "website_id"
     t.integer  "user_id"
@@ -63,26 +49,35 @@ ActiveRecord::Schema.define(:version => 20090730034054) do
     t.text     "body"
     t.string   "subject"
     t.string   "status"
-    t.integer  "info_id"
+    t.integer  "whymail_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "forms_id"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",                     :limit => 40
-    t.string   "name",                      :limit => 100, :default => ""
-    t.string   "email",                     :limit => 100
-    t.string   "crypted_password",          :limit => 40
-    t.string   "salt",                      :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token",            :limit => 40
-    t.datetime "remember_token_expires_at"
-    t.string   "website",                   :limit => 100
+    t.string   "login",                                :null => false
+    t.string   "email",                                :null => false
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token",                    :null => false
+    t.string   "perishable_token",                     :null => false
+    t.integer  "login_count",       :default => 0,     :null => false
+    t.datetime "last_request_at"
+    t.datetime "last_login_at"
+    t.datetime "current_login_at"
+    t.string   "last_login_ip"
+    t.string   "current_login_ip"
+    t.boolean  "admin",             :default => false
   end
 
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
   create_table "websites", :force => true do |t|
     t.string   "url"
@@ -95,6 +90,15 @@ ActiveRecord::Schema.define(:version => 20090730034054) do
     t.integer  "sell_count"
     t.integer  "vulgar_count"
     t.integer  "give_out_count"
+  end
+
+  create_table "whymail", :force => true do |t|
+    t.string   "website"
+    t.string   "email"
+    t.string   "main_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -1,0 +1,31 @@
+<%= page_title 'Log in' %>
+
+<% form_for @user_session, :url => user_session_path do |f| %>
+  <%= f.error_messages %>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div>
+    <%= f.label :password, "Password: <br />(Default is your email)" %>
+    <%= f.password_field :password %>
+  </div>
+  
+  <div>
+    <%= f.label :remember_me %>
+    <%= f.check_box :remember_me %>
+  </div>
+  
+  <div class='buttons clearfix'>
+    <%= pretty_positive_button 'Log in' %>
+    <%= pretty_negative_button_link 'Cancel', root_path %>
+  </div>
+<% end %>
+
+<p>
+  Need an account? <%= link_to 'Sign up now.', signup_path %><br/>
+
+  Forgot your password? <%= link_to 'Reset your password.', password_reset_path %>
+</p>

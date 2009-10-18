@@ -1809,7 +1809,7 @@ var Expr = Sizzle.selectors = {
 				match[3] = test[3] - 0;
 			}
 
-			// TODO: Move to normal caching system
+			// THEIRTODO: Move to normal caching system
 			match[0] = done++;
 
 			return match;
@@ -5086,7 +5086,7 @@ var original={height:el.height(),width:el.width()};el.from=o.options.from||(mode
 	Version: 1.4
 	
 	Copyright: Feel free to redistribute the script/modify it, as
-			   long as you leave my infos at the top.
+			   long as you leave my whymails at the top.
 ------------------------------------------------------------------------- */
 
 	$.fn.prettyComments = function(settings) {

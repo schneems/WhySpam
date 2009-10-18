@@ -39,7 +39,6 @@ class SessionsControllerTest < ActionController::TestCase
   def test_should_not_remember_me
     @request.cookies["auth_token"] = nil
     post :create, :login => 'quentin', :password => 'monkey', :remember_me => "0"
-    puts @response.cookies["auth_token"]
     assert @response.cookies["auth_token"].blank?
   end
   
@@ -53,7 +52,7 @@ class SessionsControllerTest < ActionController::TestCase
     users(:quentin).remember_me
     @request.cookies["auth_token"] = cookie_for(:quentin)
     get :new
-    assert @controller.send(:logged_in?)
+    assert @controller.send(:current_user)
   end
 
   def test_should_fail_expired_cookie_login
@@ -61,14 +60,14 @@ class SessionsControllerTest < ActionController::TestCase
     users(:quentin).update_attribute :remember_token_expires_at, 5.minutes.ago
     @request.cookies["auth_token"] = cookie_for(:quentin)
     get :new
-    assert !@controller.send(:logged_in?)
+    assert !@controller.send(:current_user)
   end
 
   def test_should_fail_cookie_login
     users(:quentin).remember_me
     @request.cookies["auth_token"] = auth_token('invalid_auth_token')
     get :new
-    assert !@controller.send(:logged_in?)
+    assert !@controller.send(:current_user)
   end
 
   protected

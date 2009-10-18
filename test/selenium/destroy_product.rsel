@@ -1,5 +1,5 @@
 # It's often a good idea to start the test with 'setup'.
-# See /selenium/setup for more info.
+# See /selenium/setup for more whymail.
 
 setup
 open '/'

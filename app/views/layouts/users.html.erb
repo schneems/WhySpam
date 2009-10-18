@@ -8,7 +8,6 @@
 		<META name = "description" content = "An online collection of spam fighting tools designed to free your inbox and track the people who sell your email address" />
 		<META name = "keywords" content = "secure email, secure form, stop, spam, spamming, spammer, sanonymous" />
 		
-		
 		<% the_request = request.path %>
 		<% domain_array = the_request.scan(/([^.||^\d||^\:]+)/) %>
 		<% for entry in domain_array%>
@@ -51,7 +50,7 @@
 			  $("#getawidget, #getaplugin").liquidCanvas("[shadow border{color:#fff} fill{color:#FFFFFF}] => roundedRect{radius:30}");
 			
 				
-			  $("#dataTable_infos").dataTable();
+			  $("#dataTable_whymails").dataTable();
 			  $("#dataTable_forms").dataTable();
 			  $("#dataTable").dataTable();
 		    
@@ -80,10 +79,10 @@
 		<br />
 		<div id = "center_main">
 		<div id = "main_title">
-			<h1><%= link_to "Why Spam Me", home_path ,  :only_path => false %></h1>
-			<%= link_to image_tag("QuestionEnvelope.png"), home_path %><h3><%= link_to "(Beta)", home_path %></h3>
+			<h1><%= link_to "Why Spam Me", root_path ,  :only_path => false %></h1>
+			<%= link_to image_tag("QuestionEnvelope.png"), root_path %><h3><%= link_to "(Beta)", root_path %></h3>
 			<br />
-			<h5><%= link_to "Don't Just Block Spam, Fight Back!", home_path %></h5>
+			<h5><%= link_to "Don't Just Block Spam, Fight Back!", root_path %></h5>
 			<div id = "beta">
 			</div>		
 			<% form_tag(search_path, :method => "get", :id => 'main-inline') do %> 
@@ -92,70 +91,31 @@
 			<% end %>
 		</div>
 
-
 		<div id="main-template" class="clearfix">
 
 			<div id = "corner_wrapper">
 				<div id = "content-main">
 						<div id = "nav" >
-						<span id = "nav_1_wrap" 
-						 			>
 						<span id = "nav_1"  >
-						   <%= link_to "Secure Email", home_path, {
-										 :host => "whyspam.me", :only_path => 
-										true } %>
+						   <%= link_to "Secure Email", root_path, {
+										 :host => "whyspam.me", :only_path => true } %>
 						</span>
-						<span id = "nav_1_hover" class = "nav_hover" style ="display:none" >
-						   <%= link_to "Secure Email", home_path , 
-										:host => "whyspam.me", :only_path => 
-										false %>
-						</span>
-						</span>
-
-						<span id = "nav_2_wrap" >
 							<span id = "nav_2"  >
-							   <%= link_to "Secure Forms", 	forms_path , 
-											{ } %>
+							   <%= link_to "Secure Forms", 	new_form_path %>
 							</span>
-							<span id = "nav_2_hover" class = "nav_hover"  style ="display:none" >
-							   <%= link_to "Secure Forms", 	{:action => "secure_forms", :controller => "users"} , 
-											{ } %>
-							</span>
-						</span><!-- nav_2_wrap -->
-
-
-						<span id = "nav_3_wrap" >
+							
 							<span id = "nav_3"  >
-							   <%= link_to "Slop <br /> Box", 	{:action => "slop_box", :controller => "users"} , 
-											{ } %>
+							   <%= link_to "Slop <br /> Box", slopbox_index_path  %>
 							</span>
-							<span id = "nav_3_hover" class = "nav_hover"  style ="display:none" >
-							   <%= link_to "Slop <br /> Box", 	{:action => "slop_box", :controller => "users"} , 
-											{ } %>
-							</span>
-						</span>
-
-						<span id = "nav_4_wrap" >
+						
 							<span id = "nav_4"  >
 							   <%= link_to "Website Rankings", 	websites_path , 
 											{:style => "width:125px;" } %>
 							</span>
-							<span id = "nav_4_hover" class = "nav_hover"  style ="display:none" >
-							   <%= link_to "Website Rankings", 	websites_path , 
-											{ :style => "width:125px;" } %>
-							</span>
-						</span>
-
-						<span id = "nav_5_wrap" >
 							<span id = "nav_5"  >
 							   <%= link_to "Manage Your Spam", { :action => "manage", :controller => "users"} , 
 											{ :style => "width:150px"} %>
 							</span>
-							<span id = "nav_5_hover" class = "nav_hover"  style ="display:none" >
-							   <%= link_to "Manage Your Spam", { :action => "manage", :controller => "users"} , 
-											{:style => "width:150px;" } %>
-							</span>
-						</span>
 						</div>
 						<hr />
 					<% if flash[:notice] %><div id="flash"><%= flash[:notice] %></div><% end %>
@@ -180,7 +140,7 @@
 				<div id = "getawidget" class = "float-left" >
 					<div id = "fixed">
 					<%= link_to "<h2>Got A Website?</h2><br />
-					 #{image_tag("whyratingAplus.png")}<br />
+					 #{image_tag("widgets/aplusvalid.png")}<br />
 					<h3>Get Validated!</h3>", grade_widget_index_path %>
 					</div>
 				
@@ -190,7 +150,7 @@
 					<div id = "fixed">
 					<%= link_to "<h2>Want To Help?</h2><br />
 					 #{image_tag("creativecommons.jpg")}<br />
-					<h3>Get Started!</h3>", url_for( :controller => "users", :action => "contribute") %>
+					<h3>Get Started!</h3>", url_for( :controller => "static", :action => "contribute") %>
 					</div>
 				
 				</div>
@@ -206,9 +166,9 @@
 	<div id = "footer">
 			<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png" />
 		<a href = "http://www.thinkbohemian.com">©Think Bohemian</a>
-		 | <%= link_to " Privacy Policy", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
-		 | <%= link_to " About Us", {:action => "about", :controller => "users"}, {:rel => "prettyPopin" } %>
-		 | <%= link_to " Contact Us ", {:action => "contact", :controller => "users"} %>
+		 | <%= link_to " Privacy Policy", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %>
+		 | <%= link_to " About Us", {:action => "about", :controller => "static"}, {:rel => "prettyPopin" } %>
+		 | <%= link_to " Contact Us ", {:action => "contact", :controller => "static"} %>
 		
 		<div class = "float_right">
 			<%  current_page = url_escape(request.url) %>

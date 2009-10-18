@@ -5,7 +5,7 @@
 </style>
 
 <div id = "new_spamfire_wrapper">
-  <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').hide().appear();",
+  <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
 			:url =>  { :action => "create"}, 
 			:html => { } do |f| %>			
 			

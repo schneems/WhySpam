@@ -5,7 +5,7 @@ class Website < ActiveRecord::Base
   validates_presence_of     :rank
   
   
-  
+   attr_accessible :url, :grade, :rank
   
 #  define_index do
 #    # indexes ##column in content

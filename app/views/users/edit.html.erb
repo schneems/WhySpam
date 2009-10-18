@@ -1,21 +1,12 @@
-<h1>Edit user information for <%= @user.login %></h1>
+<%= page_title 'Edit My Account' %>
 
-<% @user.password = @user.password_confirmation = nil %>
+<% form_for @user, :url => account_path do |f| %>
+  <%= f.error_messages %>
+  
+  <%= render :partial => "form", :object => f %>
 
-<%= error_messages_for :user %>
-<% form_for :user, :url => {:action => 'update_me', :controller => 'users', :id => @user} do |f| -%>
-<table>
-<tr>
-<td><%= label_tag 'login' %></td>
-<td><%= f.text_field :login %></td>
-</tr>
-
-
-<tr>
-	<td>Password:</td>
-	<td><%= f.password_field :password %></td>
-</tr>
-</table>
-
-<p><%= f.submit 'change' %></p>
-<% end -%>
+  <div class='buttons clearfix'>
+    <%= pretty_positive_button 'Update' %>
+    <%= pretty_negative_button_link 'Cancel', account_path %>
+  </div>
+<% end %>

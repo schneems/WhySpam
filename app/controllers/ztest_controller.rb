@@ -1,0 +1,2 @@
+class ZtestController < ApplicationController
+end

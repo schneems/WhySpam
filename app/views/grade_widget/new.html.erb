@@ -1,0 +1,64 @@
+<script type="text/javascript">
+		$(function() {
+			$("#tabs").tabs();
+			$('#user_submit, #form_submit, #ticket_submit, #foo_submit').hover(
+				function() { $(this).addClass('ui-state-hover'); }, 
+				function() { $(this).removeClass('ui-state-hover'); }
+			);
+		});	
+</script>
+
+<h2>Does your Website Spam?</h2>
+<p>That's the question every one of your visitors asks themselves before giving away their email. Even if you've got a great privacy policy, there is no way of knowing if you're selling off email addresses under the table. Give your users a piece of mind and uphold your good name with a WhySpam Verification Widget for your website! It's quick and easy, just fill out the form below and we'll verify your good intentions and give your users a piece of mind.</p>
+<br />
+<p>
+	<div id = "grade_widget_select" class = "span-24 last">
+		<% form_tag  grade_widget_index_path, :method => "post" do %> 
+		<div class = "span-5">
+			 <%= label_tag(:website, "Your Website URL:") %>
+		</div>
+		<div class = "span-19 last">  
+			<%= default_text_field_tag(:website, "example.com") %>
+		</div>
+		<hr />
+		<div class = "span-5" >
+			<label >
+				Pick A Widget:
+			</label>
+		</div>	
+		<div class = "span-19 last" >
+		<label>
+			<img  src = "/images/widgets/aplusvalid.png" /><input type="radio" checked="checked" class="styled" name = "displaytype" value = "validated" />
+		</label>							
+			<%= link_to_remote "What Is Validated ?", :url => url_for(:action => "validated", :controller => "grade_widget") , 
+							:update => "partial_update", :loading => "$('#indicator').show();$('#partial_update').hide();", 
+							:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');" %>
+		</div>
+				
+		<div class = "prepend-5 span-19">
+			<label>
+				
+				<img  src = "/images/widgets/checked.png" />
+				<input type="radio" class="styled" name = "displaytype" value = "checked"  />
+			</label> 
+			
+			<%= link_to_remote "What Is Checked ?", :url => url_for(:action => "checked", :controller => "grade_widget") ,
+			 				:update => "partial_update", :loading => "$('#indicator').show();$('#partial_update').hide();", 
+							:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');" %>
+			</div>
+			<br />
+			<br />
+			<br />
+		   
+			</div>
+
+				<div class='buttons clearfix center prepend-6'>
+					<%= button_with_icon  "Build My Widget", "gear" %>
+					</div>
+
+			
+		<% end %> 
+	
+</p>
+<br />
+<br />

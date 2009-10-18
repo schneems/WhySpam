@@ -11,7 +11,6 @@ class UserTest < ActiveSupport::TestCase
  # def test_find_by_email_scope
  #
  #   u = User.find_by_email("aaron@example.com")
- #   puts u.class
  #   assert_equal(u.email, "aaron@example.com")
  #   
  # end

@@ -1,0 +1,102 @@
+<% content_for :html_head do %>
+<script type="text/javascript">
+		$(function() {
+			$("#tabs").tabs();
+			
+			$('#user_submit, #form_submit').hover(
+				function() { $(this).addClass('ui-state-hover'); }, 
+				function() { $(this).removeClass('ui-state-hover'); }
+			);
+			
+		});	
+
+</script>
+
+<% end %>
+
+
+<div id = "update_this_partial">
+	
+
+<div id = "float_wrapper">
+
+	<!-- create -->
+	  <% remote_form_for :form, :url => forms_path, :update => 'update_this_partial', :loading => "$('#indicator').show();$('#update_this_partial').hide();", :complete => "$('#indicator').hide();$('#update_this_partial').show();" do |f| %>
+	<div id = "main_input" >
+<table  class = "prepend-1 last">
+<tr><td><%= f.label "Your Email:" %></td>
+	<td colspan = 2><%= f.default_text_field :email, configatron.default_email %></td>
+</tr>
+<tr>
+	<td class = "optional_td"> <%= f.label "Description:" %>
+		<br /><span class = "optional">(Optional)</span></td>
+	<td><%= f.default_text_area :comments , configatron.default_form_comment %></td>
+</tr>
+
+<%= show_simple_captcha %>
+
+</table>
+
+
+	<br />
+<div class='buttons clearfix center'>
+			<%=  f.button_with_icon("Generate Secure Form", "document") %>			
+</div>
+	
+<span class = "float_right">
+	<%= link_to "We Don't Spam", url_for(:action => "privacy", :controller => "static")  %>
+</span>
+
+<% end %>
+			<%= error_messages_for :user %>
+</div>
+
+<div class = "float_space"></div>
+</div><!-- wrapper -->
+
+<% if @rendered == true %>
+
+	<hr /><br />
+
+	<div id = "no_spam_container" class = "center">
+
+	<% if @secure_form != nil %>
+		<div id = "no_spam_label">Your Form Link:</div><br />
+			<textarea id = "no_spam" class = "center" cols="50" rows="1" readonly onclick="this.focus(); this.select();" style = "overflow:hidden;border:0"><%= @secure_form %></textarea>
+		<p> Give This Link to anyone you want to contact you </p>
+	<% end %>
+	<div onclick="this.focus(); this.select();" class = "center">
+	<%= @extra_message %>
+	</div>
+	</div>
+	<hr />
+	<br />
+	<% if !@secure_form.nil? %>
+	
+	In addition to using the above link, you can also put this secure form directly on your website !! To use copy the code below and put it in the html of your website. Then anyone can send you a safe and secure message. 
+
+	<% end %>
+	
+	<div class = "center">
+	<br />
+	<code>
+	<textarea id="code" cols="65" rows="10" readonly onclick="this.focus(); this.select();" style = "overflow:hidden">
+&lt;div id = &quot;WhySpamJavaScript&quot; class = &quot;center&quot;&gt;	
+  &lt;script type=&quot;text/javascript&quot;&gt;
+	request_state = &quot;a19dk17djcn37z&quot;;
+	form_id = &quot;<%= @address %>&quot;;
+    slot = &quot;65973256140537&quot;;
+  &lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;src=&quot;http://whyspam.me/javascripts/WhySpamExtern1a72jd6x1z.js&quot;&gt;
+  &lt;/script&gt;
+&lt;/div&gt;
+	</textarea>
+	</code>
+	<br />
+	<br />
+	<hr />
+	</div>
+<% end %>
+
+
+</div>

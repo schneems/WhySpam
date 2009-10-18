@@ -9,7 +9,7 @@ def c_b(var, default = nil) SeleniumOnRailsConfig.get(var, default) { yield } en
 
 BROWSERS =              c :browsers, {}
 REUSE_EXISTING_SERVER = c :reuse_existing_server, true
-START_SERVER =          c :start_server, false  #TODO can't get it to work reliably on Windows, perhaps it's just on my computer, but I leave it off by default for now
+START_SERVER =          c :start_server, false  #THEIRTODO can't get it to work reliably on Windows, perhaps it's just on my computer, but I leave it off by default for now
 HOST =                  c :host, 'localhost'
 PORTS =                 c(:port_start, 3000)..c(:port_end, 3005)
 BASE_URL_PATH =         c :base_url_path, '/'

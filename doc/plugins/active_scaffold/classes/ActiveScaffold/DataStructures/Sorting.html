@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: ActiveScaffold::DataStructures::Sorting</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">ActiveScaffold::DataStructures::Sorting</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting_rb.html">
+                vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../../Object.html">
+                Object
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+encapsulates the column sorting configuration for the List view
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000536">&lt;&lt;</a>&nbsp;&nbsp;
+      <a href="#M000535">add</a>&nbsp;&nbsp;
+      <a href="#M000538">clear</a>&nbsp;&nbsp;
+      <a href="#M000540">direction_of</a>&nbsp;&nbsp;
+      <a href="#M000543">each</a>&nbsp;&nbsp;
+      <a href="#M000549">extract_column_name_in_order_criterion</a>&nbsp;&nbsp;
+      <a href="#M000550">extract_direction_in_order_criterion</a>&nbsp;&nbsp;
+      <a href="#M000544">first</a>&nbsp;&nbsp;
+      <a href="#M000545">get_clause</a>&nbsp;&nbsp;
+      <a href="#M000546">get_column</a>&nbsp;&nbsp;
+      <a href="#M000547">mixed_sorting?</a>&nbsp;&nbsp;
+      <a href="#M000533">new</a>&nbsp;&nbsp;
+      <a href="#M000537">set</a>&nbsp;&nbsp;
+      <a href="#M000534">set_default_sorting</a>&nbsp;&nbsp;
+      <a href="#M000548">set_sorting_from_order_clause</a>&nbsp;&nbsp;
+      <a href="#M000541">sorts_by_method?</a>&nbsp;&nbsp;
+      <a href="#M000542">sorts_by_sql?</a>&nbsp;&nbsp;
+      <a href="#M000539">sorts_on?</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name">Enumerable</span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000533" class="method-detail">
+        <a name="M000533"></a>
+
+        <div class="method-heading">
+          <a href="#M000533" class="method-signature">
+          <span class="method-name">new</span><span class="method-args">(columns)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000533-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000533-source">
+<pre>
+   <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 6</span>
+6:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">columns</span>)
+7:       <span class="ruby-ivar">@columns</span> = <span class="ruby-identifier">columns</span>
+8:       <span class="ruby-ivar">@clauses</span> = []
+9:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000536" class="method-detail">
+        <a name="M000536"></a>
+
+        <div class="method-heading">
+          <a href="#M000536" class="method-signature">
+          <span class="method-name">&lt;&lt;</span><span class="method-args">(arg)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+an alias for <tt><a href="Sorting.html#M000535">add</a></tt>. must accept
+its arguments in a slightly different form, though.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000536-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000536-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 31</span>
+31:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">arg</span>)
+32:       <span class="ruby-identifier">add</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">arg</span>)
+33:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000535" class="method-detail">
+        <a name="M000535"></a>
+
+        <div class="method-heading">
+          <a href="#M000535" class="method-signature">
+          <span class="method-name">add</span><span class="method-args">(column_name, direction = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+<a href="Sorting.html#M000535">add</a> a clause to the sorting, assuming
+the column is sortable
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000535-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000535-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 20</span>
+20:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add</span>(<span class="ruby-identifier">column_name</span>, <span class="ruby-identifier">direction</span> = <span class="ruby-keyword kw">nil</span>)
+21:       <span class="ruby-identifier">direction</span> <span class="ruby-operator">||=</span> <span class="ruby-value str">'ASC'</span>
+22:       <span class="ruby-identifier">direction</span> = <span class="ruby-identifier">direction</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
+23:       <span class="ruby-identifier">column</span> = <span class="ruby-identifier">get_column</span>(<span class="ruby-identifier">column_name</span>)
+24:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;Could not find column #{column_name}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column</span>.<span class="ruby-identifier">nil?</span>
+25:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Sorting direction unknown&quot;</span> <span class="ruby-keyword kw">unless</span> [<span class="ruby-identifier">:ASC</span>, <span class="ruby-identifier">:DESC</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">direction</span>.<span class="ruby-identifier">to_sym</span>
+26:       <span class="ruby-ivar">@clauses</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">column</span>, <span class="ruby-identifier">direction</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column</span>.<span class="ruby-identifier">sortable?</span>
+27:       <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Can't mix :method- and :sql-based sorting&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mixed_sorting?</span>
+28:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000538" class="method-detail">
+        <a name="M000538"></a>
+
+        <div class="method-heading">
+          <a href="#M000538" class="method-signature">
+          <span class="method-name">clear</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+clears the sorting
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000538-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000538-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 42</span>
+42:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+43:       <span class="ruby-ivar">@clauses</span> = []
+44:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000540" class="method-detail">
+        <a name="M000540"></a>
+
+        <div class="method-heading">
+          <a href="#M000540" class="method-signature">
+          <span class="method-name">direction_of</span><span class="method-args">(column)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000540-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000540-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">direction_of</span>(<span class="ruby-identifier">column</span>)
+52:       <span class="ruby-identifier">clause</span> = <span class="ruby-identifier">get_clause</span>(<span class="ruby-identifier">column</span>)
+53:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">clause</span>.<span class="ruby-identifier">nil?</span>
+54:       <span class="ruby-identifier">clause</span>[<span class="ruby-value">1</span>]
+55:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000543" class="method-detail">
+        <a name="M000543"></a>
+
+        <div class="method-heading">
+          <a href="#M000543" class="method-signature">
+          <span class="method-name">each</span><span class="method-args">() {|clause| ...}</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+iterate over the clauses
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000543-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000543-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 67</span>
+67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+68:       <span class="ruby-ivar">@clauses</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">clause</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">clause</span> }
+69:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000544" class="method-detail">
+        <a name="M000544"></a>
+
+        <div class="method-heading">
+          <a href="#M000544" class="method-signature">
+          <span class="method-name">first</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+provides quick access to the <a href="Sorting.html#M000544">first</a> (and
+sometimes only) clause
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000544-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000544-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">first</span>
+73:       <span class="ruby-ivar">@clauses</span>.<span class="ruby-identifier">first</span>
+74:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000537" class="method-detail">
+        <a name="M000537"></a>
+
+        <div class="method-heading">
+          <a href="#M000537" class="method-signature">
+          <span class="method-name">set</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+clears the sorting before setting to the given column/direction
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000537-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000537-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 36</span>
+36:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+37:       <span class="ruby-identifier">clear</span>
+38:       <span class="ruby-identifier">add</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+39:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000534" class="method-detail">
+        <a name="M000534"></a>
+
+        <div class="method-heading">
+          <a href="#M000534" class="method-signature">
+          <span class="method-name">set_default_sorting</span><span class="method-args">(model)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000534-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000534-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 11</span>
+11:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_default_sorting</span>(<span class="ruby-identifier">model</span>)
+12:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">default_scoping</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">nil?</span>  <span class="ruby-operator">||</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">default_scoping</span>.<span class="ruby-identifier">last</span>[<span class="ruby-identifier">:find</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">default_scoping</span>.<span class="ruby-identifier">last</span>[<span class="ruby-identifier">:find</span>][<span class="ruby-identifier">:order</span>].<span class="ruby-identifier">nil?</span>
+13:         <span class="ruby-identifier">set</span> <span class="ruby-identifier">model</span>.<span class="ruby-identifier">primary_key</span>, <span class="ruby-value str">'ASC'</span>
+14:       <span class="ruby-keyword kw">else</span>
+15:         <span class="ruby-identifier">set_sorting_from_order_clause</span>(<span class="ruby-identifier">model</span>.<span class="ruby-identifier">default_scoping</span>.<span class="ruby-identifier">last</span>[<span class="ruby-identifier">:find</span>][<span class="ruby-identifier">:order</span>])
+16:       <span class="ruby-keyword kw">end</span>
+17:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000541" class="method-detail">
+        <a name="M000541"></a>
+
+        <div class="method-heading">
+          <a href="#M000541" class="method-signature">
+          <span class="method-name">sorts_by_method?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+checks whether any column is configured to sort by method (using a proc)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000541-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000541-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sorts_by_method?</span>
+59:       <span class="ruby-ivar">@clauses</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sorting</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sorting</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">sorting</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">:method</span> }
+60:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000542" class="method-detail">
+        <a name="M000542"></a>
+
+        <div class="method-heading">
+          <a href="#M000542" class="method-signature">
+          <span class="method-name">sorts_by_sql?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000542-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000542-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 62</span>
+62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sorts_by_sql?</span>
+63:       <span class="ruby-ivar">@clauses</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sorting</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sorting</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">sorting</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">:sql</span> }
+64:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000539" class="method-detail">
+        <a name="M000539"></a>
+
+        <div class="method-heading">
+          <a href="#M000539" class="method-signature">
+          <span class="method-name">sorts_on?</span><span class="method-args">(column)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+checks whether the given column (a <a href="Column.html">Column</a> object
+or a column name) is in the sorting
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000539-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000539-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sorts_on?</span>(<span class="ruby-identifier">column</span>)
+48:       <span class="ruby-operator">!</span><span class="ruby-identifier">get_clause</span>(<span class="ruby-identifier">column</span>).<span class="ruby-identifier">nil?</span>
+49:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Protected Instance methods</h3>
+
+      <div id="method-M000549" class="method-detail">
+        <a name="M000549"></a>
+
+        <div class="method-heading">
+          <a href="#M000549" class="method-signature">
+          <span class="method-name">extract_column_name_in_order_criterion</span><span class="method-args">(criterion_parts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000549-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000549-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 105</span>
+105:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_column_name_in_order_criterion</span>(<span class="ruby-identifier">criterion_parts</span>)
+106:       <span class="ruby-identifier">column_name</span> = <span class="ruby-identifier">criterion_parts</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>).<span class="ruby-identifier">last</span>
+107:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">column_name</span>.<span class="ruby-identifier">starts_with?</span>(<span class="ruby-value str">'&quot;'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">column_name</span>.<span class="ruby-identifier">starts_with?</span>(<span class="ruby-value str">'`'</span>)
+108:         <span class="ruby-identifier">column_name</span>[<span class="ruby-value">1</span>, (<span class="ruby-identifier">column_name</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span>)]
+109:       <span class="ruby-keyword kw">else</span>
+110:         <span class="ruby-identifier">column_name</span>
+111:       <span class="ruby-keyword kw">end</span>
+112:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000550" class="method-detail">
+        <a name="M000550"></a>
+
+        <div class="method-heading">
+          <a href="#M000550" class="method-signature">
+          <span class="method-name">extract_direction_in_order_criterion</span><span class="method-args">(criterion_parts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000550-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000550-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 114</span>
+114:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_direction_in_order_criterion</span>(<span class="ruby-identifier">criterion_parts</span>)
+115:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">criterion_parts</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'DESC'</span>
+116:         <span class="ruby-value str">'DESC'</span>
+117:       <span class="ruby-keyword kw">else</span>
+118:         <span class="ruby-value str">'ASC'</span>
+119:       <span class="ruby-keyword kw">end</span>
+120:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000545" class="method-detail">
+        <a name="M000545"></a>
+
+        <div class="method-heading">
+          <a href="#M000545" class="method-signature">
+          <span class="method-name">get_clause</span><span class="method-args">(column)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+retrieves the sorting clause for the given column
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000545-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000545-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 79</span>
+79:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_clause</span>(<span class="ruby-identifier">column</span>)
+80:       <span class="ruby-identifier">column</span> = <span class="ruby-identifier">get_column</span>(<span class="ruby-identifier">column</span>)
+81:       <span class="ruby-ivar">@clauses</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">clause</span><span class="ruby-operator">|</span> <span class="ruby-identifier">clause</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">column</span>}
+82:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000546" class="method-detail">
+        <a name="M000546"></a>
+
+        <div class="method-heading">
+          <a href="#M000546" class="method-signature">
+          <span class="method-name">get_column</span><span class="method-args">(name_or_column)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+possibly converts the given argument into a column object from @columns (if
+it&#8216;s not already)
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000546-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000546-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 85</span>
+85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_column</span>(<span class="ruby-identifier">name_or_column</span>)
+86:       <span class="ruby-comment cmt"># it's a column</span>
+87:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">name_or_column</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name_or_column</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">ActiveScaffold</span><span class="ruby-operator">::</span><span class="ruby-constant">DataStructures</span><span class="ruby-operator">::</span><span class="ruby-constant">Column</span>
+88:       <span class="ruby-comment cmt"># it's a name</span>
+89:       <span class="ruby-identifier">name_or_column</span> = <span class="ruby-identifier">name_or_column</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>).<span class="ruby-identifier">last</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">name_or_column</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">include?</span> <span class="ruby-value str">'.'</span>
+90:       <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@columns</span>[<span class="ruby-identifier">name_or_column</span>]
+91:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000547" class="method-detail">
+        <a name="M000547"></a>
+
+        <div class="method-heading">
+          <a href="#M000547" class="method-signature">
+          <span class="method-name">mixed_sorting?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000547-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000547-source">
+<pre>
+    <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 93</span>
+93:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">mixed_sorting?</span>
+94:       <span class="ruby-identifier">sorts_by_method?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">sorts_by_sql?</span>
+95:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000548" class="method-detail">
+        <a name="M000548"></a>
+
+        <div class="method-heading">
+          <a href="#M000548" class="method-signature">
+          <span class="method-name">set_sorting_from_order_clause</span><span class="method-args">(order_clause)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000548-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000548-source">
+<pre>
+     <span class="ruby-comment cmt"># File vendor/plugins/active_scaffold/lib/active_scaffold/data_structures/sorting.rb, line 97</span>
+ 97:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_sorting_from_order_clause</span>(<span class="ruby-identifier">order_clause</span>)
+ 98:       <span class="ruby-identifier">clear</span>
+ 99:       <span class="ruby-identifier">order_clause</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">','</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">criterion</span><span class="ruby-operator">|</span>
+100:         <span class="ruby-identifier">order_parts</span> = <span class="ruby-identifier">criterion</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">' '</span>)
+101:         <span class="ruby-identifier">add</span>(<span class="ruby-identifier">extract_column_name_in_order_criterion</span>(<span class="ruby-identifier">order_parts</span>), <span class="ruby-identifier">extract_direction_in_order_criterion</span>(<span class="ruby-identifier">order_parts</span>)) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">order_parts</span>.<span class="ruby-identifier">empty?</span>
+102:       <span class="ruby-keyword kw">end</span>
+103:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

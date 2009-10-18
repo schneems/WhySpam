@@ -1,0 +1,20 @@
+<div>
+  <%= form.label :login, "Displayed Name" %>
+  <%= form.text_field :login %>
+</div>
+
+
+<div>
+  <%= form.label :email, "Email (not editable)" %>
+  <%= form.text_field :email, :disabled => true  %>
+</div>
+
+<div>
+  <%= form.label :password, (form.object.new_record? ? "Password" : "Change password")  %>
+  <%= form.password_field :password %>
+</div>
+
+<div>
+  <%= form.label :password_confirmation %>
+  <%= form.password_field :password_confirmation %>
+</div>

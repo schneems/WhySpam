@@ -41,6 +41,7 @@ module Daemon
       end
     end
     
+    
     def self.start(daemon)
       fork do
         Process.setsid

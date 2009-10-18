@@ -18,7 +18,7 @@
 /*
 * This script provides the Javascript API to drive the test application contained within
 * a Browser Window.
-* TODO:
+* THEIRTODO:
 *    Add support for more events (keyboard and mouse)
 *    Allow to switch "user-entry" mode from mouse-based to keyboard-based, firing different
 *          events in different modes.
@@ -130,7 +130,7 @@ BrowserBot.createForWindow = function(window, proxyInjectionMode) {
     return browserbot;
 };
 
-// todo: rename?  This doesn't actually "do" anything.
+// THEIRTODO: rename?  This doesn't actually "do" anything.
 BrowserBot.prototype.doModalDialogTest = function(test) {
     this.modalDialogTest = test;
 };
@@ -219,7 +219,7 @@ BrowserBot.prototype.triggerMouseEvent = function(element, eventType, canBubble,
             catch(e) {
                 // getting an "Object does not support this action or property" error.  Save the event away
                 // for future reference.
-                // TODO: is there a way to update window.event?
+                // THEIRTODO: is there a way to update window.event?
 
                 // work around for http://jira.openqa.org/browse/SEL-280 -- make the event available somewhere:
                 selenium.browserbot.getCurrentWindow().selenium_event = evt;
@@ -849,7 +849,7 @@ BrowserBot.prototype.setShouldHighlightElement = function (shouldHighlight) {
 
 
 BrowserBot.prototype._registerAllLocatorFunctions = function() {
-    // TODO - don't do this in the constructor - only needed once ever
+    // THEIRTODO - don't do this in the constructor - only needed once ever
     this.locationStrategies = {};
     for (var functionName in this) {
         var result = /^locateElementBy([A-Z].+)$/.exec(functionName);
@@ -1331,7 +1331,7 @@ BrowserBot.prototype._getFrameFromGlobal = function(target) {
     } else if (target == "_parent") {
         return this.getCurrentWindow().parent;
     } else if (target == "_blank") {
-        // TODO should this set cleverer window defaults?
+        // THEIRTODO should this set cleverer window defaults?
         return this.getCurrentWindow().open('', '_blank');
     }
     var frameElement = this.findElementBy("implicit", target, this.topFrame.document, this.topFrame);
@@ -1874,7 +1874,7 @@ SafariBrowserBot.prototype._fireEventOnElement = function(eventType, element, cl
     // For links and other elements, event emulation is required.
     else {
         var targetWindow = this.browserbot._getTargetWindow(element);
-        // todo: deal with anchors?
+        // THEIRTODO: deal with anchors?
         this.browserbot.triggerMouseEvent(element, eventType, true, clientX, clientY);
 
     }

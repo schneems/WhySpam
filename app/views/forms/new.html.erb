@@ -1,0 +1,55 @@
+
+
+
+<h2>WhySpam™ Secure Forms  </h2>
+
+
+<%= render :partial => "create"  %>
+
+<center>
+	<%= image_tag("loading.gif",
+				   :id => "indicator",
+				   :style  =>  'display:none') %>
+</center>
+
+
+<br />
+<br />
+
+	<div>
+		<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">Demo</a></li>
+			<li><a href="#tabs-2">What is a WhySpam™ Secure Form?</a></li>
+			<li><a href="#tabs-3">How Do I Use WhySpam™ Secure Forms?</a></li>
+		</ul>
+		<div id="tabs-1">
+			<p><strong>WhySpam™ Secure Form Demo</strong></p>
+			<p>Insert YouTube Demo Here</p>
+		</div>
+		<div id="tabs-2">
+			<p><strong>What is a WhySpam™ Secure Form?</strong></p>
+			<p>A WhySpam™ Secure Form lets you keep your email away from all those nasty spam-bots while giving everyone else a way to keep in-touch. Instead of posting your email address out there on the web for anyone to see, we'll give you a link that you can give out instead.
+			When someone clicks on the link, they'll get a form they can fill out to send you an email. This way you get your email, without ever having to give out your email address. When your done with the link, you can cancel your form any time. <br /><br />
+				<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "static"} %></p>
+
+		</div>
+		<div id="tabs-3">
+			<p><strong>How Do I Use WhySpam™ Secure Forms?</strong></p>
+			<p> 
+				Fill out the form and we'll give you a Link you can post wherever you like. When your done with the link, 
+				you can cancel your form any time. 
+				Anyone who clicks the link will go to a form where they can send you a message.
+				We forward the message to you personal email, so you get all your messages right in your inbox,
+				without worrying about spam-bots. <br /><br />
+				Just another way WhySpam™ works to help save your inbox!
+				
+				 <br /><br />	
+				<%= link_to "We do not give out your email or personal information. Period.", 
+								url_for(:action => "privacy", :controller => "static")  %>
+				</p>
+		</div>
+	</div>
+
+	</div><!-- End demo -->
+	

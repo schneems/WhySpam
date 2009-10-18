@@ -20,8 +20,8 @@ Then /^I submit a duplicate form email address$/ do
 end
 
 Then /^I visit my secure form$/ do
-  crypt_form = Forms.last.crypt_form
-  @browser.open "http://localhost:3000/forms/#{crypt_form}"
+  address = Forms.last.address
+  @browser.open "http://localhost:3000/forms/#{address}"
 end
 
 

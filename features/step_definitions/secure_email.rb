@@ -9,8 +9,8 @@ Then /^I submit my unique user email address$/ do
   @browser.click "#{model}_submit"
   @browser.wait_for_condition('selenium.browserbot.getCurrentWindow().jQuery.active == 0', 10000)
   
-  user = User.find(:first, :include => [:info => :tickets], :conditions => {:email => "unique_email@example.com"})
-  @cryptmail = user.info.last.cryptmail
+  user = User.find(:first, :include => [:whymail => :tickets], :conditions => {:email => "unique_email@example.com"})
+  @email = user.whymail.last.email
   
 end
 
@@ -23,8 +23,8 @@ Then /^I submit a duplicate user email address$/ do
   @browser.type("#{model}_email", "non_unique_email@example.com")
   @browser.click "#{model}_submit"
   @browser.wait_for_condition('selenium.browserbot.getCurrentWindow().jQuery.active == 0', 10000)
-  user = User.find(:first, :include => [:info => :tickets], :conditions => {:email => "non_unique_email@example.com"})
-  @cryptmail = user.info.last.cryptmail
+  user = User.find(:first, :include => [:whymail => :tickets], :conditions => {:email => "non_unique_email@example.com"})
+  @email = user.whymail.last.email
   
 end
 
@@ -35,26 +35,24 @@ Then /^I submit an incorrect (.*) email address$/ do |model|
 end
 
 Then /^I make sure the secure email shows up$/ do  
-  assert_equal true , @browser.is_text_present(@cryptmail.upcase)
+  assert_equal true , @browser.is_text_present(@email.upcase)
   
-  #user = User.last(:include => [:info => :tickets])
+  #user = User.last(:include => [:whymail => :tickets])
   #assert_is_equal u.email, "unique_email@example.com"
-  #puts user
-  #puts user.info
-  #@cryptmail = user.info.cryptmail
+  #@email = user.whymail.email
   #@browser
   
   
 end
 
-Given /^I receive a cryptmail message$/ do 
-  to_email = @cryptmail
+Given /^I receive a email message$/ do 
+  to_email = @email
   mail = gen_mail("", to_email,"","")
   TMail::Mail.parse(mail).to.to_s
-  info = Info.find(:first, :include => [:user, :tickets], :conditions => {:cryptmail => @cryptmail})
-  info.tickets.count
+  whymail = Whymail.find(:first, :include => [:user, :tickets], :conditions => {:email => @email})
+  whymail.tickets.count
   
-  assert_difference 'info.tickets.count', 1 do   
+  assert_difference 'whymail.tickets.count', 1 do   
     MyMailer.receive(mail)
   end
   

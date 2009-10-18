@@ -4,7 +4,7 @@ class CreateForms < ActiveRecord::Migration
       t.text :comments
       t.string :email
       t.integer :days
-      t.string :crypt_form
+      t.string :address
       t.integer :user_id
       t.timestamps
     end

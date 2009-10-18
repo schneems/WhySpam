@@ -1,0 +1,646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <title>
+      C0 code coverage information
+    </title>
+    <style type='text/css'>
+      body { background-color: rgb(240, 240, 245); }
+    </style>
+    <style type='text/css'>
+      span.cross-ref-title { font-size: 140%; } span.cross-ref a {
+      text-decoration: none; } span.cross-ref { background-color:#f3f7fa;
+      border: 1px dashed #333; margin: 1em; padding: 0.5em; overflow: hidden; }
+      a.crossref-toggle { text-decoration: none; } span.marked0 {
+      background-color: rgb(185, 210, 200); display: block; } span.marked1 {
+      background-color: rgb(190, 215, 205); display: block; } span.inferred0 {
+      background-color: rgb(175, 200, 200); display: block; } span.inferred1 {
+      background-color: rgb(180, 205, 205); display: block; } span.uncovered0 {
+      background-color: rgb(225, 110, 110); display: block; } span.uncovered1 {
+      background-color: rgb(235, 120, 120); display: block; } span.overview {
+      border-bottom: 8px solid black; } div.overview { border-bottom: 8px solid
+      black; } body { font-family: verdana, arial, helvetica; } div.footer {
+      font-size: 68%; margin-top: 1.5em; } h1, h2, h3, h4, h5, h6 {
+      margin-bottom: 0.5em; } h5 { margin-top: 0.5em; } .hidden { display: none;
+      } div.separator { height: 10px; } /* Commented out for better readability,
+      esp. on IE */ /* table tr td, table tr th { font-size: 68%; } td.value
+      table tr td { font-size: 11px; } */ table.percent_graph { height: 12px;
+      border: #808080 1px solid; empty-cells: show; } table.percent_graph
+      td.covered { height: 10px; background: #00f000; } table.percent_graph
+      td.uncovered { height: 10px; background: #e00000; } table.percent_graph
+      td.NA { height: 10px; background: #eaeaea; } table.report {
+      border-collapse: collapse; width: 100%; } table.report td.heading {
+      background: #dcecff; border: #d0d0d0 1px solid; font-weight: bold;
+      text-align: center; } table.report td.heading:hover { background: #c0ffc0;
+      } table.report td.text { border: #d0d0d0 1px solid; } table.report
+      td.value, table.report td.lines_total, table.report td.lines_code {
+      text-align: right; border: #d0d0d0 1px solid; } table.report tr.light {
+      background-color: rgb(240, 240, 245); } table.report tr.dark {
+      background-color: rgb(230, 230, 235); } 
+    </style>
+    <script type='text/javascript'>
+       // <![CDATA[ function toggleCode( id ) { if ( document.getElementById )
+      elem = document.getElementById( id ); else if ( document.all ) elem =
+      eval( "document.all." + id ); else return false; elemStyle = elem.style;
+      if ( elemStyle.display != "block" ) { elemStyle.display = "block" } else {
+      elemStyle.display = "none" } return true; } // Make cross-references
+      hidden by default document.writeln( "<style
+      type=\"text/css\">span.cross-ref { display: none }</style>" ) // ]]> 
+    </script>
+  </head>
+  <body>
+    <h3>
+      C0 code coverage information
+    </h3>
+    <p>
+      Generated on Sun Oct 04 12:38:37 -0500 2009 with 
+      <a href='http://eigenclass.org/hiki/rcov'>
+        rcov 0.8.1.2
+      </a>
+    </p>
+    <hr />
+    <table class='report'> <thead> <tr> <td class='heading'> Name </td> <td
+    class='heading'> Total lines </td> <td class='heading'> Lines of code </td>
+    <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
+    </td> </tr> </thead> <tbody> <tr class='light'> <td> TOTAL </td> <td
+    class='lines_total'> <tt> 1743 </tt> </td> <td class='lines_code'> <tt> 1052
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 74.6% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='75' /> <td class='uncovered' width='25' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 67.3%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='67' /> <td
+    class='uncovered' width='33' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-admin-users_controller_rb.html'>
+    app/controllers/admin/users_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 22 </tt> </td> <td class='lines_code'> <tt> 19
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 86.4% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='86' /> <td class='uncovered' width='14' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 84.2%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='84' /> <td
+    class='uncovered' width='16' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-admin_controller_rb.html'>
+    app/controllers/admin_controller.rb </a> </td> <td class='lines_total'> <tt>
+    10 </tt> </td> <td class='lines_code'> <tt> 7 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 50.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='50' /> <td class='uncovered' width='50' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 57.1%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='57' /> <td
+    class='uncovered' width='43' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-application_controller_rb.html'>
+    app/controllers/application_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 58 </tt> </td> <td class='lines_code'> <tt> 23
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 65.5% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='66' /> <td class='uncovered' width='34' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 56.5%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='57' /> <td
+    class='uncovered' width='43' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-comments_controller_rb.html'>
+    app/controllers/comments_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 2 </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-forms_controller_rb.html'>
+    app/controllers/forms_controller.rb </a> </td> <td class='lines_total'> <tt>
+    131 </tt> </td> <td class='lines_code'> <tt> 82 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 95.4% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='95' /> <td class='uncovered' width='5' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 92.7%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='93' /> <td
+    class='uncovered' width='7' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-grade_widget_controller_rb.html'>
+    app/controllers/grade_widget_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 55 </tt> </td> <td class='lines_code'> <tt> 43
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-whymail_controller_rb.html'>
+    app/controllers/whymail_controller.rb </a> </td> <td class='lines_total'> <tt>
+    15 </tt> </td> <td class='lines_code'> <tt> 3 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-manage_controller_rb.html'>
+    app/controllers/manage_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 33 </tt> </td> <td class='lines_code'> <tt> 28 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-password_resets_controller_rb.html'>
+    app/controllers/password_resets_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 46 </tt> </td> <td class='lines_code'> <tt> 41
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-secure_email_controller_rb.html'>
+    app/controllers/secure_email_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 45 </tt> </td> <td class='lines_code'> <tt> 34
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-slopbox_controller_rb.html'>
+    app/controllers/slopbox_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 35 </tt> </td> <td class='lines_code'> <tt> 26 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 14.3% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='14' /> <td class='uncovered' width='86' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 11.5%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='12' /> <td
+    class='uncovered' width='88' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-spamfire_controller_rb.html'>
+    app/controllers/spamfire_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 54 </tt> </td> <td class='lines_code'> <tt> 44 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-static_controller_rb.html'>
+    app/controllers/static_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 26 </tt> </td> <td class='lines_code'> <tt> 16 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 53.8% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='54' /> <td class='uncovered' width='46' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 43.8%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='44' /> <td
+    class='uncovered' width='56' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-surveys_controller_rb.html'>
+    app/controllers/surveys_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 40 </tt> </td> <td class='lines_code'> <tt> 30 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-tickets_controller_rb.html'>
+    app/controllers/tickets_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 92 </tt> </td> <td class='lines_code'> <tt> 44 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 44.6% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='45' /> <td class='uncovered' width='55' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 15.9%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='16' /> <td
+    class='uncovered' width='84' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-user_sessions_controller_rb.html'>
+    app/controllers/user_sessions_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 29 </tt> </td> <td class='lines_code'> <tt> 21
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 89.7% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='90' /> <td class='uncovered' width='10' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 85.7%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='86' /> <td
+    class='uncovered' width='14' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-users_controller_rb.html'>
+    app/controllers/users_controller.rb </a> </td> <td class='lines_total'> <tt>
+    46 </tt> </td> <td class='lines_code'> <tt> 37 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 78.3% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='78' /> <td class='uncovered' width='22' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 73.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='73' /> <td
+    class='uncovered' width='27' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-controllers-websites_controller_rb.html'>
+    app/controllers/websites_controller.rb </a> </td> <td class='lines_total'>
+    <tt> 81 </tt> </td> <td class='lines_code'> <tt> 56 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 19.8% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='20' /> <td class='uncovered' width='80' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 12.5%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='13' /> <td
+    class='uncovered' width='87' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a
+    href='app-controllers-ztest_controller_rb.html'>
+    app/controllers/ztest_controller.rb </a> </td> <td class='lines_total'> <tt>
+    2 </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-helpers-application_helper_rb.html'>
+    app/helpers/application_helper.rb </a> </td> <td class='lines_total'> <tt>
+    16 </tt> </td> <td class='lines_code'> <tt> 9 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 31.2% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='31' /> <td class='uncovered' width='69' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 22.2%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='22' /> <td
+    class='uncovered' width='78' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-helpers-comments_helper_rb.html'>
+    app/helpers/comments_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-helpers-grade_widget_helper_rb.html'>
+    app/helpers/grade_widget_helper.rb </a> </td> <td class='lines_total'> <tt>
+    2 </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-helpers-manage_helper_rb.html'>
+    app/helpers/manage_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a
+    href='app-helpers-secure_email_helper_rb.html'>
+    app/helpers/secure_email_helper.rb </a> </td> <td class='lines_total'> <tt>
+    2 </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-helpers-selenium_helper_rb.html'>
+    app/helpers/selenium_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a href='app-helpers-sessions_helper_rb.html'>
+    app/helpers/sessions_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-helpers-slopbox_helper_rb.html'>
+    app/helpers/slopbox_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a href='app-helpers-spamfire_helper_rb.html'>
+    app/helpers/spamfire_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-helpers-static_helper_rb.html'>
+    app/helpers/static_helper.rb </a> </td> <td class='lines_total'> <tt> 2
+    </tt> </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a href='app-helpers-users_helper_rb.html'>
+    app/helpers/users_helper.rb </a> </td> <td class='lines_total'> <tt> 97
+    </tt> </td> <td class='lines_code'> <tt> 37 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 66.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='66' /> <td class='uncovered' width='34' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 16.2%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='16' /> <td
+    class='uncovered' width='84' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-helpers-ztest_helper_rb.html'>
+    app/helpers/ztest_helper.rb </a> </td> <td class='lines_total'> <tt> 2 </tt>
+    </td> <td class='lines_code'> <tt> 2 </tt> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> <tr class='light'> <td> <a
+    href='app-models-forms_rb.html'> app/models/forms.rb </a> </td> <td
+    class='lines_total'> <tt> 30 </tt> </td> <td class='lines_code'> <tt> 20
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-models-whymail_rb.html'>
+    app/models/whymail.rb </a> </td> <td class='lines_total'> <tt> 27 </tt> </td>
+    <td class='lines_code'> <tt> 19 </tt> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> <tr class='light'> <td> <a
+    href='app-models-my_mailer_rb.html'> app/models/my_mailer.rb </a> </td> <td
+    class='lines_total'> <tt> 153 </tt> </td> <td class='lines_code'> <tt> 72
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 53.6% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='54' /> <td class='uncovered' width='46' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 38.9%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='39' /> <td
+    class='uncovered' width='61' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-models-notifier_rb.html'>
+    app/models/notifier.rb </a> </td> <td class='lines_total'> <tt> 18 </tt>
+    </td> <td class='lines_code'> <tt> 11 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a href='app-models-survey_rb.html'>
+    app/models/survey.rb </a> </td> <td class='lines_total'> <tt> 53 </tt> </td>
+    <td class='lines_code'> <tt> 37 </tt> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 90.6%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='91' /> <td
+    class='uncovered' width='9' /> </tr> </table> </td> </tr> </table> </td>
+    <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 86.5% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='86' /> <td class='uncovered' width='14' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> <tr class='dark'> <td> <a
+    href='app-models-ticket_rb.html'> app/models/ticket.rb </a> </td> <td
+    class='lines_total'> <tt> 28 </tt> </td> <td class='lines_code'> <tt> 20
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 71.4% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='71' /> <td class='uncovered' width='29' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 70.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='70' /> <td
+    class='uncovered' width='30' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a href='app-models-ticket_observer_rb.html'>
+    app/models/ticket_observer.rb </a> </td> <td class='lines_total'> <tt> 39
+    </tt> </td> <td class='lines_code'> <tt> 4 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='app-models-user_rb.html'>
+    app/models/user.rb </a> </td> <td class='lines_total'> <tt> 98 </tt> </td>
+    <td class='lines_code'> <tt> 62 </tt> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 81.6%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='82' /> <td
+    class='uncovered' width='18' /> </tr> </table> </td> </tr> </table> </td>
+    <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 75.8% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='76' /> <td class='uncovered' width='24' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> <tr class='light'> <td> <a
+    href='app-models-user_observer_rb.html'> app/models/user_observer.rb </a>
+    </td> <td class='lines_total'> <tt> 13 </tt> </td> <td class='lines_code'>
+    <tt> 6 </tt> </td> <td> <table cellspacing='0' align='right'
+    cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0% </tt> &nbsp;
+    </td> <td> <table class='percent_graph' cellspacing='0' cellpadding='0'
+    width='100'> <tr> <td class='covered' width='100' /> <td class='uncovered'
+    width='0' /> </tr> </table> </td> </tr> </table> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> <tr class='dark'> <td> <a
+    href='app-models-user_session_rb.html'> app/models/user_session.rb </a>
+    </td> <td class='lines_total'> <tt> 14 </tt> </td> <td class='lines_code'>
+    <tt> 2 </tt> </td> <td> <table cellspacing='0' align='right'
+    cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0% </tt> &nbsp;
+    </td> <td> <table class='percent_graph' cellspacing='0' cellpadding='0'
+    width='100'> <tr> <td class='covered' width='100' /> <td class='uncovered'
+    width='0' /> </tr> </table> </td> </tr> </table> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> <tr class='light'> <td> <a
+    href='app-models-website_rb.html'> app/models/website.rb </a> </td> <td
+    class='lines_total'> <tt> 55 </tt> </td> <td class='lines_code'> <tt> 32
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 80.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='80' /> <td class='uncovered' width='20' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 71.9%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='72' /> <td
+    class='uncovered' width='28' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='lib-authenticated_system_rb.html'>
+    lib/authenticated_system.rb </a> </td> <td class='lines_total'> <tt> 195
+    </tt> </td> <td class='lines_code'> <tt> 91 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 61.5% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='62' /> <td class='uncovered' width='38' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 25.3%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='25' /> <td
+    class='uncovered' width='75' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='light'> <td> <a href='lib-authlogic_system_rb.html'>
+    lib/authlogic_system.rb </a> </td> <td class='lines_total'> <tt> 52 </tt>
+    </td> <td class='lines_code'> <tt> 43 </tt> </td> <td> <table
+    cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_total'> 88.5% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='88' /> <td class='uncovered' width='12' /> </tr>
+    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 86.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='86' /> <td
+    class='uncovered' width='14' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> <tr class='dark'> <td> <a href='lib-cleanurl_rb.html'> lib/cleanurl.rb
+    </a> </td> <td class='lines_total'> <tt> 13 </tt> </td> <td
+    class='lines_code'> <tt> 9 </tt> </td> <td> <table cellspacing='0'
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0%
+    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
+    cellpadding='0' width='100'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 100.0% </tt> &nbsp; </td> <td> <table
+    class='percent_graph' cellspacing='0' cellpadding='0' width='100'> <tr> <td
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> </tbody> </table>
+    <hr />
+    <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
+    code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>
+    <p>
+      <a href='http://validator.w3.org/check/referer'>
+        <img src='http://www.w3.org/Icons/valid-xhtml11' height='31' alt='Valid XHTML 1.1!' width='88' />
+      </a>
+      <a href='http://jigsaw.w3.org/css-validator/check/referer'>
+        <img src='http://jigsaw.w3.org/css-validator/images/vcss' alt='Valid CSS!' style='border:0;width:88px;height:31px' />
+      </a>
+    </p>
+  </body>
+</html>

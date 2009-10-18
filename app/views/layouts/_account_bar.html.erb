@@ -1,0 +1,23 @@
+
+	
+<div class = "span-24 last">
+	<div class = "top_bar prepend-12">
+		<div class = "span-5 " id = "login_links">
+			<p>
+		      <% unless current_user %>
+		      <%= link_to 'Log in', login_path %>
+		      <% else %>
+			  <%= link_to "Manage Spam", manage_index_path %> |
+		      <%= link_to 'Account', account_path %> |
+		      <%= link_to 'Log out', logout_path %>
+			  <%= link_to 'Admin', admin_path if current_user && current_user.admin?  %>
+		      <% end %>
+			</p>
+		</div>
+		<div class = " span-7 last">
+			<% form_tag(websites_path, :method => "get", :id => 'main-inline') do %> 
+				<%= default_text_field_tag :query, "Search" %> 
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -25,6 +25,8 @@ class TicketTest < ActiveSupport::TestCase
     assert !ticket.valid?
     assert ticket.errors.on(:to_email)
   end  
+  
+
 
 
 end

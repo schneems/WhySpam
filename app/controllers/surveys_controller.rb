@@ -1,67 +1,45 @@
 class SurveysController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  layout "users" , :except => [:new ]
-  
+  layout "application" , :except => [:new ]
 
   def new
-    info_id = params[:info]
-    @info = Info.find(:first, :include => [:tickets, :user] , :conditions => ["id = ?", info_id] )
-    @website = @info.website
+    whymail_id = params[:id]
+    @whymail = Whymail.find(:first, :include => [:tickets, :user] , :conditions => ["id = ?", whymail_id] )
+    @website = @whymail.website
     site = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
-    
-    if site != nil && site.save
+    if !site.nil? && site.save
       @survey = site.surveys.create(:opt_out => "false", :un_solicited=> "false", :sell=> "false", :vulgar=> "false", :give_out=> "false")
+    else
+      flash[:error] = configatron.bad_website
     end
-    @user = @info.user
-  end
-  
-
-  def a_z
-    puts params[:id]
-    value = params[:id]||'A'
+    @user = @whymail.user
     
-    unless read_fragment({:page => params[:page]||1, :ltr => value||"All"})    
-           site_pagination = Website.find(:all, 
-             :conditions => [ 'LOWER(url) LIKE ?',
-              '%' + value.downcase + '%'], 
-               :order => 'url ASC') 
-
-         @websites = site_pagination.paginate :page => params[:page], :order => 'word ASC', :per_page => 90
-    end # unless
-        
-  end
-  
-  def search
-    value = params[:query]
-    @websites = Website.find(:all, :conditions => [ 'LOWER(url) LIKE ?',
-        '%' + value.downcase + '%'], 
-         :order => 'url ASC')
-         
-         
+    respond_to do |format|
+      format.html # new.html.erb
+  #    format.xml  { render :xml => @portfolio }
+      format.js {render :partial => 'new'}
+    end
+    
+    
   end
 
 
-
-  def index
-   # websites = Websites.find(:all, :limit => 100, :include => :surveys)
-   #  @surveys = Surveys.find(:all, :limit => 100, :order => "")
-   @websites = Website.find(:all, :include => :surveys, :conditions => [], :limit => 20, :order => "created_at ASC" )
-  end
-
-  
 
   def create
-    info_id = params[:info]
-    if logged_in?
-      info = Info.find(:first, :include => :user, :conditions => ["id = ?", info_id])
-      website = Website.create(:url => info.website, :grade => 'NA', :rank => 100)
-
+    whymail_id = params[:whymail]
+    if current_user
+      whymail = Whymail.find(:first, :include => :user, :conditions => ["id = ?", whymail_id])
+      @website = whymail.website
+      website = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
+      #Website.create(:url => whymail.website, :grade => 'NA', :rank => 100)
       if params[:survey] != nil
         website.surveys.create(params[:survey])
       end
-     # info.cryptmail = nil
-      info.destroy if info.user == current_user
-      redirect_to :back
+     # whymail.email = nil
+      whymail.destroy if whymail.user == current_user
+      render :text => "Thank you for using WhySpam.me You may now close this popup. <br />"
+    else
+    render :text => "Wrong User"
     end
   end
   

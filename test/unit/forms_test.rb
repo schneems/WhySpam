@@ -2,9 +2,7 @@ require 'test_helper'
 
 class FormsTest < ActiveSupport::TestCase
   # Replace this with your real tests.
-  
-  
-  
+    
   def test_create_with_cryptform
       f = Forms.create_with_cryptform("bobs@bob.com", "hey you guys")
       assert_equal(f.email, "bobs@bob.com")

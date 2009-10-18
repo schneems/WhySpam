@@ -1,10 +1,8 @@
 <% if !@websites.nil? && !@websites.empty? %>
 	<% for website in @websites %>
-	
 	<%= link_to website.url, website_path(website.id) %>
 	<br />	
 	<% end %>
-	
 	<div class= "flickr_pagination"> <%= will_paginate @websites %><br/></div>
 	
 <% else %>

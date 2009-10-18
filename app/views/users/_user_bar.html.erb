@@ -10,9 +10,9 @@
 				<form action="#" method="post">
 					<h1>Not a member yet? Sign Up!</h1>	
 							
-					<p>The only way to sign up is to use a <%= link_to "Secure Email", home_path, {
+					<p>The only way to sign up is to use a <%= link_to "Secure Email", root_path, {
 									 :host => "whyspam.me", :only_path => 
-									true } %> or <%= link_to "Secure Forms", 	forms_path , 
+									true } %> or <%= link_to "Secure Forms", 	new_form_path , 
 													{ } %>.</p><br />
 					<p>Already have a Secure Email or Secure Form? <br /> Log in using your Email address as your password, but please change your password after your first login</p>	
 				</form>
@@ -22,9 +22,9 @@
 					<% form_tag session_path do -%>
 						<h1>Member Login</h1>
 						<label class="grey" for="log">Your Email:</label>
-						<%= text_field_tag 'email', @login , :class => "field", :size=>"23"  %>								
+						<%= text_field_tag 'email', @login , :class => "field", :size=>"23",  :id => "user_bar_email" %>								
 						<label class="grey" for="pwd">Password:</label>
-						<%= password_field_tag 'password', nil, :class=>"field", :size=>"23" %>
+						<%= password_field_tag 'password', nil, :class=>"field", :size=>"23", :id => "user_bar_password" %>
 						
 		            	<label><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" />&nbsp;Remember me</label>
 		
@@ -45,13 +45,13 @@
 	<div class="tab">
 		<ul class="login">
 	    	<li class="left">&nbsp;</li>
-	        <li><% if logged_in? -%><%= link_to "Hello "+ current_user.login.to_s, current_user, :content_method => :login %><% else -%>Hello Guest!<% end -%></li>
+	        <li><% if current_user -%><%= link_to "Hello "+ current_user.login.to_s, current_user, :content_method => :login %><% else -%>Hello Guest!<% end -%></li>
 	
 
 			<li class="sep">|</li>
 			<li id="toggle">
 
-				<% if logged_in? %>
+				<% if current_user %>
 					<%= link_to "Log out", logout_path, { :title => "Log out" }%>
 				<% else %>
 					<a id="open" class="open" href="#">Log In</a>

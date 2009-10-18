@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'spamfire.css' %>	
+
+<style type="text/css">
+
+
+
+</style>
+
+
+<!-- THEIRTODO 
+Make Button Remote
+
+-->
+<div id = "new_spamfire_wrapper">
+			<textarea id = "no_spam" class = "center" cols="32" rows="1" 
+			readonly onclick="this.focus(); this.select();" style = ""><%= @secure_email -%><%= @extra_message.to_s %></textarea>
+
+		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website, :email => @email } , {:id => "spamfire_button"}-%>
+		
+</div>

@@ -3,12 +3,15 @@ class Survey < ActiveRecord::Base
   belongs_to :website
   
   
+  attr_accessible :opt_out, :un_solicited, :sell, :vulgar, :give_out, :email
+  
+  
   validates_presence_of     :opt_out
   validates_presence_of     :un_solicited
   validates_presence_of     :sell
   validates_presence_of     :vulgar
   validates_presence_of     :give_out
-  validates_presence_of     :cryptmail
+  validates_presence_of     :email
   validates_presence_of     :website_id
   
   

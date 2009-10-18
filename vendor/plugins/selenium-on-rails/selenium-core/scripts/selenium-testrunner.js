@@ -16,7 +16,7 @@
 */
 
 // An object representing the current test, used external
-var currentTest = null; // TODO: get rid of this global, which mirrors the htmlTestRunner.currentTest
+var currentTest = null; // THEIRTODO: get rid of this global, which mirrors the htmlTestRunner.currentTest
 var selenium = null;
 
 var htmlTestRunner;
@@ -93,7 +93,7 @@ objectExtend(HtmlTestRunner.prototype, {
         if (this.controlPanel.isAutomatedRun()) {
             this.startTestSuite();
         } else if (this.controlPanel.getAutoUrl()) {
-            //todo what is the autourl doing, left to check it out
+            //THEIRTODO what is the autourl doing, left to check it out
             addLoadListener(this._getApplicationWindow(), fnBind(this._startSingleTest, this));
             this._getApplicationWindow().src = this.controlPanel.getAutoUrl();
         } else {
@@ -131,7 +131,7 @@ objectExtend(HtmlTestRunner.prototype, {
     startTest: function () {
         this.controlPanel.reset();
         testFrame.scrollToTop();
-        //todo: move testFailed and storedVars to TestCase
+        //THEIRTODO: move testFailed and storedVars to TestCase
         this.testFailed = false;
         storedVars = new Object();
         this.currentTest = new HtmlRunnerTestLoop(testFrame.getCurrentTestCase(), this.metrics, this.commandFactory);
@@ -204,7 +204,7 @@ objectExtend(SeleniumFrame.prototype, {
     _setLocation: function(location) {
         var isChrome = browserVersion.isChrome || false;
         var isHTA = browserVersion.isHTA || false;
-        // DGF TODO multiWindow
+        // DGF THEIRTODO multiWindow
         location += "?thisIsChrome=" + isChrome + "&thisIsHTA=" + isHTA;
         if (browserVersion.isSafari) {
             // safari doesn't reload the page when the location equals to current location.
@@ -537,7 +537,7 @@ objectExtend(HtmlTestSuiteRow.prototype, {
         // If the row has a stored results table, use that
         var resultsFromPreviousRun = this.trElement.cells[1];
         if (resultsFromPreviousRun) {
-            // todo: delegate to TestFrame, e.g.
+            // THEIRTODO: delegate to TestFrame, e.g.
             //   this.testFrame.restoreTestCase(resultsFromPreviousRun.innerHTML);
             var testBody = this.testFrame.getDocument().body;
             testBody.innerHTML = resultsFromPreviousRun.innerHTML;
@@ -551,11 +551,11 @@ objectExtend(HtmlTestSuiteRow.prototype, {
     },
 
     saveTestResults: function() {
-        // todo: GLOBAL ACCESS!
+        // THEIRTODO: GLOBAL ACCESS!
         var resultHTML = this.testFrame.getDocument().body.innerHTML;
         if (!resultHTML) return;
 
-        // todo: why create this div?
+        // THEIRTODO: why create this div?
         var divElement = this.trElement.ownerDocument.createElement("div");
         divElement.innerHTML = resultHTML;
 
@@ -919,7 +919,7 @@ objectExtend(HtmlTestCase.prototype, {
 });
 
 
-// TODO: split out an JavascriptTestCase class to handle the "sejs" stuff
+// THEIRTODO: split out an JavascriptTestCase class to handle the "sejs" stuff
 
 var get_new_rows = function() {
     var row_array = new Array();
@@ -999,7 +999,7 @@ objectExtend(HtmlRunnerCommandFactory.prototype, {
         this.seleniumCommandFactory = seleniumCommandFactory;
         this.testLoop = testLoop;
         this.handlers = {};
-        //todo: register commands
+        //THEIRTODO: register commands
     },
 
     getCommandHandler: function(command) {
@@ -1193,7 +1193,7 @@ Selenium.prototype.doPause = function(waitTime) {
     /** Wait for the specified amount of time (in milliseconds)
      * @param waitTime the amount of time to sleep (in milliseconds)
      */
-    // todo: should not refer to currentTest directly
+    // THEIRTODO: should not refer to currentTest directly
     currentTest.pauseInterval = waitTime;
 };
 
@@ -1202,7 +1202,7 @@ Selenium.prototype.doBreak = function() {
      * This command is useful for debugging, but be careful when using it, because it will
      * force automated tests to hang until a user intervenes manually.
      */
-    // todo: should not refer to controlPanel directly
+    // THEIRTODO: should not refer to controlPanel directly
     htmlTestRunner.controlPanel.setToPauseAtNextCommand();
 };
 
@@ -1218,7 +1218,7 @@ Selenium.prototype.doStore = function(expression, variableName) {
  * Click on the located element, and attach a callback to notify
  * when the page is reloaded.
  */
-// DGF TODO this code has been broken for some time... what is it trying to accomplish?
+// DGF THEIRTODO this code has been broken for some time... what is it trying to accomplish?
 Selenium.prototype.XXXdoModalDialogTest = function(returnValue) {
     this.browserbot.doModalDialogTest(returnValue);
 };

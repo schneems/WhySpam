@@ -1,0 +1,19 @@
+<div id='header'>
+	<div class = "span-8" id='site-title'><%= link_to configatron.site_title, root_path %>
+		<%= link_to image_tag("QuestionEnvelopesmall.png"), root_path %>
+	</div>
+		
+		<div class = "span-15 nav last">
+			 <ul class = "">
+				<li><%=section_link 'Secure Email',home_path %></li>
+				<li><%=section_link 'Secure Forms', new_form_path %></li>
+				<li><%=section_link "Slop Box", slopbox_index_path %></li>
+				<li class = "last push-1"><%=section_link "Spam Report", websites_path %></li>
+			</ul>
+		</div>
+		
+		<div id='site-tag' class = "prepend-1 span-6"><%= configatron.site_tag %></div>
+</div>
+<br />
+
+

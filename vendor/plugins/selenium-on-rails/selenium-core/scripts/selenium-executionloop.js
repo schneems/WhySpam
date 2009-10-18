@@ -42,7 +42,7 @@ TestLoop.prototype = {
     continueTestAtCurrentCommand : function() {
         LOG.debug("currentTest.continueTestAtCurrentCommand()");
         if (this.currentCommand) {
-            // TODO: rename commandStarted to commandSelected, OR roll it into nextCommand
+            // THEIRTODO: rename commandStarted to commandSelected, OR roll it into nextCommand
             this.commandStarted(this.currentCommand);
             this._resumeAfterDelay();
         } else {

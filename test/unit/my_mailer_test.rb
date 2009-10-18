@@ -7,13 +7,25 @@ class MyMailerTest < ActionMailer::TestCase
   test "the truth" do
     assert true
   end
-  
    include MailFixture
+   
+   def test_recieve_mail_pass_with_users
+     whymail = Factory.create(:whymail)
+     mail = mail_factory(:to_email => whymail.email)
+     assert_difference 'Ticket.count', 1 do 
+       MyMailer.receive(mail)
+     end
+     ticket = Ticket.last
+     assert_equal TMail::Mail.parse(mail).subject, ticket.subject
+     assert_equal whymail, ticket.whymail
+   end
+   
+   
+   
   
     def test_recieve_mail_pass
-      my_mail = read_fixture('email_has_user_has_info') 
-
-      Factory.create(:info, :cryptmail => TMail::Mail.parse(my_mail).to.to_s)
+      my_mail = read_fixture('email_has_user_has_whymail') 
+      Factory.create(:whymail, :email => TMail::Mail.parse(my_mail).to.to_s)
       assert_difference 'Ticket.count', 1 do 
         MyMailer.receive(my_mail)
       end 
@@ -24,9 +36,9 @@ class MyMailerTest < ActionMailer::TestCase
     
     
 #    def test_recieve_mail_fail
-#    my_mail = read_fixture('email_has_user_no_info') 
+#    my_mail = read_fixture('email_has_user_no_whymail') 
 #           
-#    Factory.build(:info, :cryptmail => "should_not_exist@example.com")
+#    Factory.build(:whymail, :email => "should_not_exist@example.com")
 #      assert_no_difference 'Ticket.count' do 
 #        MyMailer.receive(my_mail)
 #      end 

@@ -15,7 +15,7 @@
  *
  */
 
-// TODO: stop navigating this.browserbot.document() ... it breaks encapsulation
+// THEIRTODO: stop navigating this.browserbot.document() ... it breaks encapsulation
 
 var storedVars = new Object();
 
@@ -192,7 +192,7 @@ Selenium.createForWindow = function(window, proxyInjectionMode) {
 
 Selenium.prototype.reset = function() {
     this.defaultTimeout = Selenium.DEFAULT_TIMEOUT;
-    // todo: this.browserbot.reset()
+    // THEIRTODO: this.browserbot.reset()
     this.browserbot.selectWindow("null");
     this.browserbot.resetPopups();
 };
@@ -513,7 +513,7 @@ Selenium.prototype.doType = function(locator, value) {
    if (this.browserbot.controlKeyDown || this.browserbot.altKeyDown || this.browserbot.metaKeyDown) {
         throw new SeleniumError("type not supported immediately after call to controlKeyDown() or altKeyDown() or metaKeyDown()");
     }
-        // TODO fail if it can't be typed into.
+        // THEIRTODO fail if it can't be typed into.
     var element = this.browserbot.findElement(locator);
     if (this.browserbot.shiftKeyDown) {
         value = new String(value).toUpperCase();
@@ -1485,7 +1485,7 @@ Selenium.prototype.findEffectiveStyle = function(element) {
     if (element.currentStyle) {
         // non-standard IE alternative
         return element.currentStyle;
-        // TODO: this won't really work in a general sense, as
+        // THEIRTODO: this won't really work in a general sense, as
         //   currentStyle is not identical to getComputedStyle()
         //   ... but it's good enough for "visibility"
     }
@@ -2231,7 +2231,7 @@ OptionLocatorFactory.prototype.fromLocatorString = function(locatorString) {
  * To allow for easy extension, all of the option locators are found by
  * searching for all methods of OptionLocatorFactory.prototype that start
  * with "OptionLocatorBy".
- * TODO: Consider using the term "Option Specifier" instead of "Option Locator".
+ * THEIRTODO: Consider using the term "Option Specifier" instead of "Option Locator".
  */
 OptionLocatorFactory.prototype.registerOptionLocators = function() {
     this.optionLocators={};

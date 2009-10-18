@@ -161,7 +161,7 @@ function getTextContent(element, preformatted) {
         //     "P | %heading; | %list; | %preformatted; | DL | DIV | NOSCRIPT |
         //      BLOCKQUOTE | F:wORM | HR | TABLE | FIELDSET | ADDRESS">
         //
-        // TODO: should potentially introduce multiple newlines to separate blocks
+        // THEIRTODO: should potentially introduce multiple newlines to separate blocks
         if (element.tagName == "P" || element.tagName == "BR" || element.tagName == "HR" || element.tagName == "DIV") {
             text += "\n";
         }
@@ -190,7 +190,7 @@ function normalizeSpaces(text)
     }
 
     // Replace multiple spaces with a single space
-    // TODO - this shouldn't occur inside PRE elements
+    // THEIRTODO - this shouldn't occur inside PRE elements
     text = text.replace(/\ +/g, " ");
 
     // Replace &nbsp; with a space
@@ -837,6 +837,6 @@ function safeScrollIntoView(element) {
         element.scrollIntoView(false);
         return;
     }
-    // TODO: work out how to scroll browsers that don't support
+    // THEIRTODO: work out how to scroll browsers that don't support
     // scrollIntoView (like Konqueror)
 }

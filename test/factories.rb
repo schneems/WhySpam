@@ -20,14 +20,14 @@ Factory.define :survey do |f|
   f.sell "false"
   f.vulgar "false"
   f.give_out "false"
-  f.association :cryptmail, :factory => :info
+  f.association :email, :factory => :whymail
   f.association :website, :factory => :website
   f.association :user, :factory => :user
   
 end
 
 Factory.define :bad_survey, :parent => :survey do |f|
-  f.association :cryptmail, :factory => :info
+  f.association :email, :factory => :whymail
   f.association :website, :factory => :website
   f.opt_out "true"
   f.un_solicited "true"
@@ -46,7 +46,7 @@ end
 
 
 Factory.define :user do |f|
-  f.sequence(:login) {|n| "foo#{n}"}
+  f.sequence(:login) {|n| "foo_users#{n}"}
   f.email {|u| u.login + "@example.com"}
   f.password {|u| u.email }
   f.password_confirmation {|u| u.password}
@@ -59,12 +59,12 @@ end
 
 Factory.define :forms do |f|
   f.sequence(:email) {|n| 'foo#' + n.to_s + '@example.com'}
-  f.sequence(:crypt_form) {|n| 'abcd'+n.to_s}
+  f.sequence(:address) {|n| 'abcd'+n.to_s}
 end
 
 
 
-Factory.define :info do |f|
-  f.sequence(:cryptmail) {|n| '41CCA8EB1369A18DCDf'+n.to_s+'@WHYSPAM.ME'}
+Factory.define :whymail do |f|
+  f.sequence(:email) {|n| '41CCA8EB1369A18DCDf'+n.to_s+'@WHYSPAM.ME'}
   f.association :user
 end

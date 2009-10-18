@@ -1,7 +1,7 @@
 class CreateSurveys < ActiveRecord::Migration
   def self.up
     create_table :surveys do |t|
-      t.string :opt_out, :un_solicited, :sell, :vulgar, :give_out, :cryptmail
+      t.string :opt_out, :un_solicited, :sell, :vulgar, :give_out, :email
       t.text :comments
       t.integer :website_id, :user_id
       t.timestamps

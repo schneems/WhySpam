@@ -3,7 +3,6 @@
 
 <h2>WhySpam™ Secure Forms  </h2>
 
-
 <div id = "ads">
 	<script type="text/javascript"><!--
 	google_ad_client = "pub-9419044821517786";
@@ -21,10 +20,8 @@
 <!-- form partial -->
 
 <% if @form_data != nil %>
-	
 		<div id = "update_this_partial">
 			<% if @rendered != false %>
-
 			<% end %>
 
 		<div id = "float_wrapper">
@@ -43,8 +40,8 @@
 				<br />
 				  <% form_for :form, :url => {:action => "send_secure_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
 			<table>
-			<tr><td>Your Email:<span class = "optional">(Optional)</span></td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
-			<tr><td>Message:</td><td colspan = 2><%=  f.text_area :comments, :rows => 2 %></td></tr>
+			<tr><td class = "optional_td"><%= f.label "Your Email:" %><br /><span class = "optional">(Optional)</span></td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
+			<tr><td><%= f.label "Message:" %></td><td colspan = 5><%=  f.text_area :comments, :rows => 5 %></td></tr>
 
 			<%= show_simple_captcha %>
 			</table>
@@ -56,7 +53,7 @@
 			</center>
 					<br />
 			<span class = "float_right">
-				<%= link_to "We Don't Spam", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>				
+				<%= link_to "We Don't Spam", url_for(:action => "privacy", :controller => "static")  %>
 			</span>
 
 			<% end %>
@@ -105,7 +102,7 @@
 		<p>No form exists with an ID of <%= @crypt.upcase %> either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", contact_us_path %>.
 			<br />
 			<br />
-		If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", forms_path  %> link above, its the quickest way to make an anonymous form on the web. 
+		If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", new_form_path  %> link above, its the quickest way to make an anonymous form on the web. 
 	<% end %>
 <!-- form partial -->
 <center>
@@ -128,11 +125,12 @@
 	<br />
 	
 	
-	If you want to generate your own form then just click on the <%= link_to "Secure Forms", forms_path  %> link above and then Instead of posting your email address out there on the web for anyone to see, we'll give you a link that you can give out instead.
+	If you want to generate your own form then just click on the <%= link_to "Secure Forms", new_form_path  %> link above and then Instead of posting your email address out there on the web for anyone to see, we'll give you a link that you can give out instead.
 	When someone clicks on the link, they'll get a form they can fill out to send you an email. This way you get your email, without ever having to give out your email address. When your done with the link, you can cancel your form any time. 
 	 <br />
 	 <br />
-		<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+		<%= link_to "We do not give out your email or personal information. Period.", 
+						url_for(:action => "privacy", :controller => "static")  %>
 	</p>
 </di>
 </div>
@@ -152,7 +150,10 @@
 		
 		
  <br /><br />
-		<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "users"}, {:rel => "prettyPopin" } %>
+	<%= link_to "We do not give out your email or personal information. Period.", 
+					url_for(:action => "privacy", :controller => "static")  %>
+	
+	
 	</p>
 </di>
 </div>

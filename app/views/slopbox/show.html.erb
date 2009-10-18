@@ -1,0 +1,43 @@
+	<h3>Slop Sent To: <%= @to_email %></h3><br /><br />
+
+	<script type="text/javascript">
+			$("tr[rel^='prettyPopin']").prettyPopin();
+	</script>
+
+
+	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
+		<thead>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th class="center">Recieved</th>
+			</tr>
+
+		</thead>
+		<tbody>
+
+		<% @tickets.each do |ticket| %>
+		<!-- should render in dialog -->
+		
+		<tr class="clickable" onclick = "$.ajax(
+				{beforeSend:function(request){$('#indicator').show();$('#partial_update').hide();},
+		 		complete:function(request){$('#indicator').hide();$('#partial_update').show();
+				$('#dialog').dialog('open');}, success:function(request){$('#partial_update').html(request);},
+				 type:'get', url:'<%= ticket_path(ticket.id) %>'}); return false;" >
+				<td><%= ticket.from_email||"Error Retrieving Email Address" %> </td>
+				<td><%= ticket.subject||"(No Subject)" %></td>
+				<td class="center"><%= ticket.created_at.strftime("%m/%d/%Y")  %></td>
+				</tr>
+		<% end %>
+
+
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>From</th>
+				<th>Subject</th>
+				<th class="center" >Recieved</th>			
+			</tr>
+		</tfoot>
+	</table>
+

@@ -20,7 +20,7 @@ Before do
   ## clear the DB, without transactional fixtures, destroy first so i can use for to seed DB with 
   ## data for development even when cucumber is not running
   User.destroy_all
-  Info.destroy_all
+  Whymail.destroy_all
   Ticket.destroy_all
   Survey.destroy_all
   Website.destroy_all

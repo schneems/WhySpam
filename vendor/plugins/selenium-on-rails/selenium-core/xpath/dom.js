@@ -78,7 +78,7 @@ function xmlParse(xml) {
   var regex_empty = /\/$/;
 
   // See also <http://www.w3.org/TR/REC-xml/#sec-common-syn> for
-  // allowed chars in a tag and attribute name. TODO(mesch): the
+  // allowed chars in a tag and attribute name. THEIRTODO(mesch): the
   // following is still not completely correct.
 
   var regex_tagname = /^([\w:-]*)/;

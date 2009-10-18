@@ -6,7 +6,7 @@ to allow Selenium scripts to be written in plain JavaScript.
 The 'jsparse' function will compile each high level block into a Selenium table script.
 
 
-TODO: 
+THEIRTODO: 
 1) Test! (More browsers, more sample scripts)
 2) Stepping and walking lower levels of the parse tree
 3) Calling Selenium commands directly from JavaScript
