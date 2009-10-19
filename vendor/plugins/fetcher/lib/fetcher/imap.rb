@@ -56,6 +56,8 @@ module Fetcher
       @connection.append(@error_folder, message)
     end
     
+    
+    
     # Delete messages and log out
     def close_connection
       @connection.expunge

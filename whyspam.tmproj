@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/lib/active_scaffold/helpers/pagination_helpers.rb</string>
+	<string>deploy_readme</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,17 +18,17 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>285</integer>
+	<integer>330</integer>
 	<key>metaData</key>
 	<dict>
-		<key>app/controllers/static_controller.rb</key>
+		<key>app/controllers/forms_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>5</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -68,262 +68,112 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>55</integer>
+				<integer>31</integer>
 				<key>line</key>
-				<integer>46</integer>
+				<integer>25</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>37</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>46</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>47</integer>
-			</dict>
+			<integer>20</integer>
 		</dict>
 		<key>app/views/forms/new.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>8</integer>
 				<key>line</key>
-				<integer>47</integer>
+				<integer>41</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>39</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>66</integer>
-				<key>line</key>
-				<integer>48</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>47</integer>
-			</dict>
 		</dict>
-		<key>app/views/forms/show.html.erb</key>
+		<key>app/views/layouts/_account_bar.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>63</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>153</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>147</integer>
+			<integer>0</integer>
 		</dict>
-		<key>app/views/grade_widget/new.html.erb</key>
+		<key>app/views/layouts/_header.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>21</integer>
+				<integer>42</integer>
 				<key>line</key>
-				<integer>44</integer>
+				<integer>2</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>36</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>44</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>21</integer>
-				<key>line</key>
-				<integer>44</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/_bottom_buttons.html.erb</key>
+		<key>app/views/layouts/application.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>30</integer>
 				<key>line</key>
-				<integer>14</integer>
+				<integer>9</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
-		</dict>
-		<key>app/views/layouts/_footer.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>81</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>4</integer>
-				<key>line</key>
-				<integer>18</integer>
-			</dict>
-		</dict>
-		<key>app/views/layouts/_sidebar.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>21</integer>
 		</dict>
 		<key>app/views/manage/index.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>130</integer>
 				<key>line</key>
-				<integer>66</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>120</integer>
-			<key>firstVisibleLine</key>
-			<integer>58</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>12</integer>
-				<key>line</key>
-				<integer>66</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>26</integer>
-				<key>line</key>
-				<integer>66</integer>
-			</dict>
-		</dict>
-		<key>app/views/manage/show.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>49</integer>
-				<key>line</key>
-				<integer>50</integer>
+				<integer>111</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>42</integer>
+			<integer>103</integer>
 		</dict>
-		<key>app/views/static/about.html.erb</key>
+		<key>app/views/slopbox/index.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>32</integer>
 				<key>line</key>
-				<integer>12</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>267</integer>
-			<key>firstVisibleLine</key>
-			<integer>6</integer>
-		</dict>
-		<key>app/views/surveys/_new.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>14</integer>
-				<key>line</key>
-				<integer>70</integer>
+				<integer>21</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>58</integer>
-		</dict>
-		<key>app/views/websites/index.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>13</integer>
 		</dict>
 		<key>app/views/whymail/index.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>20</integer>
+				<integer>29</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>9</integer>
+			<integer>21</integer>
 		</dict>
 		<key>app/views/ztest/widget_test.html.erb</key>
 		<dict>
@@ -394,6 +244,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>deploy_readme</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>19</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>26</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
 		</dict>
 		<key>doc/plugins/rspec-rails-mocha/fr_method_index.html</key>
 		<dict>
@@ -467,6 +347,90 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
+		<key>public/404.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>56</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/422.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/500.html</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>9</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/stylesheets/ie.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>52</integer>
+				<key>line</key>
+				<integer>35</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>20</integer>
+		</dict>
+		<key>public/stylesheets/screen.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>615</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>607</integer>
+		</dict>
+		<key>public/stylesheets/why.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>55</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>51</integer>
+		</dict>
 		<key>spec/factories.rb</key>
 		<dict>
 			<key>caret</key>
@@ -537,73 +501,27 @@
 			<key>firstVisibleLine</key>
 			<integer>3</integer>
 		</dict>
-		<key>vendor/plugins/active_scaffold/lib/active_scaffold/helpers/pagination_helpers.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>20</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>34</integer>
-				<key>line</key>
-				<integer>5</integer>
-			</dict>
-		</dict>
-		<key>vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/lib/active_scaffold/helpers/pagination_helpers.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>0</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/views/layouts/_sidebar.html.erb</string>
 		<string>app/views/whymail/index.html.erb</string>
-		<string>app/views/websites/index.html.erb</string>
-		<string>app/views/surveys/_new.html.erb</string>
-		<string>app/views/manage/index.html.erb</string>
-		<string>vendor/plugins/active_scaffold/lib/active_scaffold/helpers/pagination_helpers.rb</string>
-		<string>vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/test/mock_app/vendor/plugins/active_scaffold/lib/active_scaffold/helpers/pagination_helpers.rb</string>
-		<string>app/views/manage/show.html.erb</string>
-		<string>app/views/forms/_create.html.erb</string>
 		<string>app/views/forms/new.html.erb</string>
-		<string>app/views/forms/show.html.erb</string>
-		<string>app/views/grade_widget/new.html.erb</string>
-		<string>app/views/layouts/_bottom_buttons.html.erb</string>
-		<string>app/views/layouts/_footer.html.erb</string>
-		<string>app/controllers/static_controller.rb</string>
-		<string>app/views/static/about.html.erb</string>
+		<string>app/views/forms/_create.html.erb</string>
+		<string>app/views/slopbox/index.html.erb</string>
+		<string>app/views/layouts/_account_bar.html.erb</string>
+		<string>app/views/manage/index.html.erb</string>
+		<string>deploy_readme</string>
+		<string>public/500.html</string>
+		<string>app/controllers/forms_controller.rb</string>
+		<string>public/stylesheets/why.css</string>
+		<string>app/views/layouts/application.html.erb</string>
+		<string>app/views/layouts/_header.html.erb</string>
+		<string>public/404.html</string>
+		<string>public/422.html</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{383, 17}, {1052, 352}}</string>
+	<string>{{416, 147}, {1052, 352}}</string>
 </dict>
 </plist>
