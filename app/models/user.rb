@@ -19,13 +19,7 @@ class User < ActiveRecord::Base
   
   
  # named_scope :find_by_email, lambda { |*args| {:conditions => ["email = ?", args.first.downcase]} }
- 
- def website
- end
- 
- def website=(website)
-   return website
- end
+
 
   def self.create_digest(email, site)   
       email = Digest::SHA1.hexdigest(email+site)    

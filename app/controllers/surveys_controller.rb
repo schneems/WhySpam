@@ -33,7 +33,9 @@ class SurveysController < ApplicationController
       website = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
       #Website.create(:url => whymail.website, :grade => 'NA', :rank => 100)
       if params[:survey] != nil
-        website.surveys.create(params[:survey])
+        survey = website.surveys.create(params[:survey])
+        survey.user = current_user
+        survey.save
       end
      # whymail.email = nil
       whymail.destroy if whymail.user == current_user

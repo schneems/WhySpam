@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 ## sudo god -c ./config/fetcher-daemon.god -D
 ## script/mailer_daemon_fetcher start
-
 require File.dirname(__FILE__) + '/../config/environment.rb'
 
 class MailerDaemonFetcherDaemon < Daemon::Base

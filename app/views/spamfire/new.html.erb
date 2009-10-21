@@ -8,7 +8,7 @@
   <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
 			:url =>  { :action => "create"}, 
 			:html => { } do |f| %>			
-			
+			<%= @user.website.class %>
 <%= label_tag 'email', 'Email: ' %> <%= f.text_field :email , :rows => 2 %>
 <%= label_tag 'website', 'Website: ' %> <%= f.text_field :website %>
 <%= f.submit "Go" %><br />

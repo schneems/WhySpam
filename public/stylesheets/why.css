@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/why.css?1255903898 */
+
 /* @override http://localhost:3000/stylesheets/why.css?1254972636 */
 
 #header #site-title {
@@ -49,9 +51,7 @@ a {
 	margin-right: 5px;
 	padding: 2px 5px 2px 5px;
 	font-size: 17px;
-	text-decoration: none;
-	border: 1px solid #a0a2a2;
-	
+	text-decoration: none;	
 }
 
 
@@ -136,10 +136,6 @@ color: white;
 }
 */
 
-button:hover {
-  color: white;
-}
-
 span.ui-icon {
 	height: 14px;
 	display: inline-block;
@@ -203,7 +199,6 @@ margin-top: -6px;
 .ui-state-hover h3,
 a.ui-state-hover:hover {
 	text-decoration: none;
-	color: white ;
 }
 
 
@@ -216,4 +211,17 @@ a.ui-state-hover:hover {
 
 #content_wrapper {
 		background: url(/images/abackground_repeat.jpg) repeat-x ;
+}
+
+#nav-button {
+	text-align: center;
+	margin: 0 auto 0;
+}
+
+
+.fg-button {
+	display: inline-block;
+}
+
+background-color: black;
 }

@@ -17,8 +17,6 @@
 
 
 
-
-
 <% @user = User.new(:email => "Email", :website => "Website") %>
 <% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
 				:loading => "$('#indicator').show();$('#update').hide();", 
@@ -55,6 +53,9 @@
 		<%= image_tag("loading.gif", :id => "indicator", :style  =>  'display:none') %>
 	</div>
 
+	<br />
+	<br />
+	<br />
 	<br />
 	</div>
 	<div>

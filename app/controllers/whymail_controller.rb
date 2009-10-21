@@ -12,7 +12,7 @@ class WhymailController < ApplicationController
         @secure_email = @extra_message = nil
         session[:count] +=  1 
           
-          if session[:count] > 10
+          if session[:count] > 10 && ENV['RAILS_ENV'] != "development"
             @extra_message = configatron.session_count_error
           else
             the_user = User.find_or_create_by_email(email)
@@ -22,17 +22,16 @@ class WhymailController < ApplicationController
                 digest = User.create_digest(email, site)   
                 secure_email = the_user.whymail.create(:website => site, :email => digest.upcase + "@WHYSPAM.ME")
               else
-                 @extra_message = configatron.duplicate_email if secure_email != nil 
+                 @extra_message = configatron.duplicate_email if false #secure_email != nil 
                  @extra_message = configatron.bad_email if !the_user.valid?
               end ## if secure_email == nil
            end
          #  @extra_message = "We have a hard time forwarding emails to blank addresses, 
          #                        please fill in the form" if email.strip == ""
            @secure_email =  secure_email.email.upcase if secure_email != nil ##"@whyspam.me"
-           respond_to do |format|
-             format.html {render :partial => "create"}        
-             format.js { render :partial => "create" }
-        end
+           
+           render :partial => "create" 
+
    end
   
 
