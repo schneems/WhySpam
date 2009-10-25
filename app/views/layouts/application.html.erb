@@ -18,21 +18,22 @@
 
   <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
 	<div id = "content_wrapper" >
-	<div id="dialog">
-		<div id = "partial_update"></div>
+		<div id="dialog">
+			<div id = "partial_update"></div>
+		</div>
+	
+		<div class = "container">
+		    <%= render :partial => 'layouts/account_bar' %>
+		    <%= render :partial => 'layouts/header' %>
+		</div>
+	
+	    <div id='whitespace' class='container'>
+	    	  <%= display_flash %>
+	    	  <%= yield %>
+	      <%= render :partial => 'layouts/sidebar' %>
+	
+	    </div>
 	</div>
-	<div class = "container">
-	    <%= render :partial => 'layouts/account_bar' %>
-	    <%= render :partial => 'layouts/header' %>
-	</div>
-    <div id='content' class='clearfix'>
-      <div id='main'>
-    	  <%= display_flash %>
-    	  <%= yield %>
-      </div>
-      <%= render :partial => 'layouts/sidebar' %>
-    </div>
-</div>
 <br />
 <br />
 

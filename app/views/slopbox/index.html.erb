@@ -11,91 +11,91 @@
 </script>
 
 <% end %>
+<div class = "span-19">
+	<%= error_messages_for :ticket %>
+	<% form_for :ticket, :url => {:action => 'show', :controller => 'slopbox'} do |f| -%>
 
-<%= error_messages_for :ticket %>
-<% form_for :ticket, :url => {:action => 'show', :controller => 'slopbox'} do |f| -%>
+	<h2>Dive Into The Slop Box</h2>
+	<div id = "float_wrapper">
 
-<h2>Dive Into The Slop Box</h2>
-<div id = "float_wrapper">
-
-<div id = "main_input" >
-<table class = "prepend-2 last">
-	<tr>
-		<td>
-			<b><%= label_tag 'Pick an email:' %></b>
-		</td>
-		<td colspan = "2"> 
-		<%= f.default_text_field :to_email,"Whatever@WhySpam.Me" %>
-</td>
-	</tr>
-	<%= show_simple_captcha %>
+	<div id = "main_input" >
+	<table class = "prepend-2 last">
+		<tr>
+			<td>
+				<b><%= label_tag 'Pick an email:' %></b>
+			</td>
+			<td colspan = "2"> 
+			<%= f.default_text_field :to_email,"Whatever@WhySpam.Me" %>
+	</td>
+		</tr>
+		<%= show_simple_captcha %>
 	
-</table>
+	</table>
 
 
-<div class='buttons clearfix center'>
-			<%=  f.button_with_icon("Show me my Mail!", "mail-open") %>			
-</div>
-
-
-<% end %>
-
-
-
-
-
-
-</div>
-
-<div class = "float_space"></div>
-</div><!-- wrapper -->
-
-<div id = "update" style = "display:none">
-showing up too soon
-</div>
-
-<center>
-	<%= image_tag("loading.gif",
-				   :id => "indicator",
-				   :style  =>  'display:none') %>
-</center>
-
-
-<br />
-<br />
-<div id = "float_wrapper">
-
-
-
-	<div id="tabs">
-		<ul>
-			<li><a href="#tabs-1">Demo</a></li>
-			<li><a href="#tabs-2">What is a Slop Box?</a></li>
-			<li><a href="#tabs-3">How Do I Use A Slop Box?</a></li>
-		</ul>
-		<div id="tabs-1">
-			<p><strong>WhySpam™ Slopbox Demo</strong></p>
-			<p>Insert YouTube Demo Here</p>
-		</div>
-		<div id="tabs-2">
-			<p><strong>What is a Slop Box?</strong></p>
-			<p>A slop box, is the oldest known defense against spammers. A slopsbox is a temporary inbox that you can use to signup for random services. When a website you don't care about asks for your email address, give them one of ours instead. You never give them your email, heck...you never give us your email. No Signup necessary. 
-			<br /><br />
-			A slop box is:
-
-			<a href = "http://www.slopsbox.com">SlopsBox.com</a> or 
-			<a href = "http://www.mailinator.com">Mailinator.com</a>.
-				<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "static"} %></p>
-
-		</div>
-		<div id="tabs-3">
-			<p><strong>How Do I Use A Slop Box?</strong></p>
-			<p>  TODO add content<br /><br />
-				<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
-		</div>
+	<div class='buttons clearfix center'>
+				<%=  f.button_with_icon("Show me my Mail!", "mail-open") %>			
 	</div>
 
-	</div><!-- End demo -->
+
+	<% end %>
+
+
+
+
+
+
+	</div>
+
+	<div class = "float_space"></div>
+	</div><!-- wrapper -->
+
+	<div id = "update" style = "display:none">
+	showing up too soon
+	</div>
+
+	<center>
+		<%= image_tag("loading.gif",
+					   :id => "indicator",
+					   :style  =>  'display:none') %>
+	</center>
+
+
+	<br />
+	<br />
+	<div id = "float_wrapper">
+
+
+
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Demo</a></li>
+				<li><a href="#tabs-2">What is a Slop Box?</a></li>
+				<li><a href="#tabs-3">How Do I Use A Slop Box?</a></li>
+			</ul>
+			<div id="tabs-1">
+				<p><strong>WhySpam™ Slopbox Demo</strong></p>
+				<p>Insert YouTube Demo Here</p>
+			</div>
+			<div id="tabs-2">
+				<p><strong>What is a Slop Box?</strong></p>
+				<p>A slop box, is the oldest known defense against spammers. A slopsbox is a temporary inbox that you can use to signup for random services. When a website you don't care about asks for your email address, give them one of ours instead. You never give them your email, heck...you never give us your email. No Signup necessary. 
+				<br /><br />
+				A slop box is:
+
+				<a href = "http://www.slopsbox.com">SlopsBox.com</a> or 
+				<a href = "http://www.mailinator.com">Mailinator.com</a>.
+					<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "static"} %></p>
+
+			</div>
+			<div id="tabs-3">
+				<p><strong>How Do I Use A Slop Box?</strong></p>
+				<p>  TODO add content<br /><br />
+					<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
+			</div>
+		</div>
+
+		</div><!-- End demo -->
 	
 	
 
@@ -106,3 +106,4 @@ showing up too soon
 
 
 
+</div>

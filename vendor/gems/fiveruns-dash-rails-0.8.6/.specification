@@ -1,0 +1,94 @@
+--- !ruby/object:Gem::Specification 
+name: fiveruns-dash-rails
+version: !ruby/object:Gem::Version 
+  version: 0.8.6
+platform: ruby
+authors: 
+- FiveRuns Development Team
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2009-04-08 00:00:00 -05:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: fiveruns-dash-ruby
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.8.1
+    version: 
+- !ruby/object:Gem::Dependency 
+  name: fiveruns-dash-activerecord
+  type: :runtime
+  version_requirement: 
+  version_requirements: !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        version: 0.8.1
+    version: 
+description: Provides an API to send metrics from Rails applications to the FiveRuns Dash service
+email: dev@fiveruns.com
+executables: []
+
+extensions: []
+
+extra_rdoc_files: []
+
+files: 
+- README.rdoc
+- Rakefile
+- version.yml
+- init.rb
+- lib/fiveruns
+- lib/fiveruns/dash
+- lib/fiveruns/dash/rails
+- lib/fiveruns/dash/rails/context
+- lib/fiveruns/dash/rails/context/action.rb
+- lib/fiveruns/dash/rails/context/active_record.rb
+- lib/fiveruns/dash/rails/context/template.rb
+- lib/fiveruns/dash/rails/initializer.rb
+- lib/fiveruns/dash/rails/startup.rb
+- lib/fiveruns/dash/rails.rb
+- lib/fiveruns/dash/recipes
+- lib/fiveruns/dash/recipes/actionpack.rb
+- lib/fiveruns/dash/recipes/rails.rb
+- lib/fiveruns-dash-rails.rb
+- lib/fiveruns_dash_rails.rb
+- rails/init.rb
+has_rdoc: true
+homepage: http://github.com/fiveruns/dash-rails
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --inline-source
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      version: "0"
+  version: 
+requirements: []
+
+rubyforge_project: fiveruns
+rubygems_version: 1.3.5
+signing_key: 
+specification_version: 2
+summary: FiveRuns Dash recipe for Ruby on Rails
+test_files: []
+

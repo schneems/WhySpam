@@ -16,75 +16,72 @@
 <% end %>
 
 
+<div class = "span-19 last">
 
-<% @user = User.new(:email => "Email", :website => "Website") %>
-<% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
-				:loading => "$('#indicator').show();$('#update').hide();", 
-				:complete => "$('#indicator').hide();$('#update').show()",
-				:url =>  { :action => "create"}, 
-				:html => { } do |f| %>
+	<% @user = User.new(:email => "Email", :website => "Website") %>
+	<% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
+					:loading => "$('#indicator').show();$('#update').hide();", 
+					:complete => "$('#indicator').hide();$('#update').show()",
+					:url =>  { :action => "create"}, 
+					:html => { } do |f| %>
 
-<h2>WhySpam™ Secure Email  </h2>
-<div class = "prepend-1 last">		
-		
-		
-		<table>
-			<tr><td><%= f.label "Your Email:" %></td><td><%= f.default_text_field :email , configatron.default_email %></td></tr>
-			<tr>
-				<td class = "optional_td"><%= f.label "Website:" %><br />
-					<span class = "optional">Optional</span>
-					<%= link_to " (Why?)", {:action => "optional", :controller => "static"}, {:rel => "prettyPopin" } %>
-				<td><%= f.default_text_field :website, configatron.default_website  %></td>
-			</tr>
-			<tr><td></td><td></td></tr>
-		</table>
-		<br />
+	<h2>WhySpam™ Secure Email  </h2>
+	<div class = "span-19 last">				
+			<table>
+				<tr><td><%= f.label "Your Email:" %></td><td><%= f.default_text_field :email , configatron.default_email %></td></tr>
+				<tr>
+					<td class = "optional_td"><%= f.label "Website:" %><br />
+						<span class = "optional">Optional</span>
+						<%= link_to " (Why?)", {:action => "optional", :controller => "static"}, {:rel => "prettyPopin" } %>
+					<td><%= f.default_text_field :website, configatron.default_website  %></td>
+				</tr>
+				<tr><td></td><td></td></tr>
+			</table>
+			<br />
 	 
-	 	<div class='buttons clearfix center'>		
-			<%=  f.button_with_icon("Generate Secure Email", "mail-closed") %>
-		</div>
+		 	<div class='buttons clearfix center'>		
+				<%=  f.button_with_icon("Generate Secure Email", "mail-closed") %>
+			</div>
 
 
-	<% end %>
-	<div class = "float_space"></div>
-	<div id = "update" style = "display:none"></div>
+		<% end %>
+		<div id = "update" style = "display:none"></div>
 	
-	<div class = "center">
-		<%= image_tag("loading.gif", :id => "indicator", :style  =>  'display:none') %>
+			<div class = "center">
+				<%= image_tag("loading.gif", :id => "indicator", :style  =>  'display:none') %>
+			</div>
+
+					<br />
+					<br />
+					<br />
+					<br />
+			<div class="demo" class = "span-19 last">
+			<div id="tabs" >
+				<ul>
+					<li><a href="#tabs-1">Demo</a></li>
+					<li><a href="#tabs-2">What is A WhySpam™ Secure Email?</a></li>
+					<li><a href="#tabs-3">How Do I Use WhySpam™ Secure Email?</a></li>
+				</ul>
+				<div id="tabs-1">
+					<p><strong>WhySpam™ Secure Email Demo</strong></p>
+					<p>Insert YouTube Demo Here</p>
+				</div>
+				<div id="tabs-2">
+					<p><strong>What is A WhySpam™ Secure Email?</strong></p>
+					<p>WhySpam™ Secure Email is the only way to track websites that sell your information and stop spam in its tracks. We give you a Secure Email address that you only give to one website. When that website sends email to your Secure Email we'll forward it to your personal email.  If they ever spam you or sell your informationon, you can close a WhySpam™ Secure Email account at any time, and report the website as a spammer. <br /><br />
+					This way you get the mail you want in your inbox, and stop the spam you don't want, all without ever exposing your personal email address. <br /><br />
+						<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "static"} %></p>
+
+				</div>
+				<div id="tabs-3">
+				<p><strong>How Do I Use A Secure Email?</strong></p>
+				<p> When a website asks for your e-mail address, go to <a href = "http://www.whyspam.me">WhySpam.Me</a>. Put your personal Email, and the website that wants your information in our form, we'll give you a Secure Email address that you can give to the website. 	When they send messages to your Secure Email, we will forward the messages to your personal Email address. So you get your messages without giving out your personal email address.<br /><br /> If the website ever starts sending spam to your Secure Email address, you can shut it down. That way anyone they sold the Secure Email to is out of luck! When you shut down a Secure Email, we put the website in our rankings. <br /><br />
+					<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
+			</div>
+			</div>
+		</div><!-- End demo -->
+
 	</div>
 
-	<br />
-	<br />
-	<br />
-	<br />
-	</div>
-	<div>
-	<div class="demo" class = "span-24">
-		<div id="tabs" >
-			<ul>
-				<li><a href="#tabs-1">Demo</a></li>
-				<li><a href="#tabs-2">What is A WhySpam™ Secure Email?</a></li>
-				<li><a href="#tabs-3">How Do I Use WhySpam™ Secure Email?</a></li>
-			</ul>
-			<div id="tabs-1">
-				<p><strong>WhySpam™ Secure Email Demo</strong></p>
-				<p>Insert YouTube Demo Here</p>
-			</div>
-			<div id="tabs-2">
-				<p><strong>What is A WhySpam™ Secure Email?</strong></p>
-				<p>WhySpam™ Secure Email is the only way to track websites that sell your information and stop spam in its tracks. We give you a Secure Email address that you only give to one website. When that website sends email to your Secure Email we'll forward it to your personal email.  If they ever spam you or sell your informationon, you can close a WhySpam™ Secure Email account at any time, and report the website as a spammer. <br /><br />
-				This way you get the mail you want in your inbox, and stop the spam you don't want, all without ever exposing your personal email address. <br /><br />
-					<%= link_to "We will never sell your personal email or give out your personal information.", {:action => "privacy", :controller => "static"} %></p>
 
-			</div>
-			<div id="tabs-3">
-			<p><strong>How Do I Use A Secure Email?</strong></p>
-			<p> When a website asks for your e-mail address, go to <a href = "http://www.whyspam.me">WhySpam.Me</a>. Put your personal Email, and the website that wants your information in our form, we'll give you a Secure Email address that you can give to the website. 	When they send messages to your Secure Email, we will forward the messages to your personal Email address. So you get your messages without giving out your personal email address.<br /><br /> If the website ever starts sending spam to your Secure Email address, you can shut it down. That way anyone they sold the Secure Email to is out of luck! When you shut down a Secure Email, we put the website in our rankings. <br /><br />
-				<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
-		</div>
-		</div>
-	</div><!-- End demo -->
-
-</div>
-
-
+</div><!-- span-19 -->
