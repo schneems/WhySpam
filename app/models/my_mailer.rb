@@ -26,10 +26,10 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
-    from_email   = email.from[0]
-    to_email     = email.to[0]
-    message      = email.body
-    subject      = email.subject
+    from_email   = email.from[0] || ""
+    to_email     = email.to[0] || ""
+    message      = email.body || ""
+    subject      = email.subject || ""
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})||Ticket.create(:subject => subject, :from_email => from_email, :to_email => to_email, :body => message)
  end
  

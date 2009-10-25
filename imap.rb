@@ -32,19 +32,23 @@ module Fetcher
       else
         @connection.authenticate(@authentication, @username, @password)
       end
+      
     end
     
     # Retrieve messages from server
     def get_messages
-      @connection.select('INBOX')
+      @connection.select('INBOX')      
       @connection.uid_search(['ALL']).each do |uid|
         msg = @connection.uid_fetch(uid,'RFC822').first.attr['RFC822']
+        puts msg.class
         begin
+          puts "===========processing_message=================="
           process_message(msg)
           add_to_processed_folder(uid) if @processed_folder
         rescue
-          ## all mail will be auto deleted, no INBOX.bogus here
-          #  handle_bogus_message(msg)
+          puts "bad stuff happened"
+        ## all mail will be auto deleted 
+        #  handle_bogus_message(msg)
         end
         # Mark message as deleted 
         @connection.uid_store(uid, "+FLAGS", [:Seen, :Deleted])
