@@ -14,7 +14,7 @@ namespace :mailbox do
           puts "Another fetcher is already running. Exiting."
         end
     end
-  end
+  
     
     
     desc "checks to see if everything is working"
@@ -33,13 +33,13 @@ namespace :mailbox do
           MyMailer.deliver_warning(configatron.admin_email)
         end
       end
-    end
+    
     
     
     desc "cleans up all slop over 24 hours old"
       task :cleanup => :environment do
 
       end
-    end
+    
   
 end
