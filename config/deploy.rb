@@ -47,8 +47,15 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/environments/development.rb #{release_path}/config/environments/development.rb"
     run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/production.rb"
     run "ln -nfs #{shared_path}/config/initializers/site_keys.rb  #{release_path}/config/initializers/site_keys.rb"
+    run "ln -nfs #{shared_path}/config/config.yml  #{release_path}/config/config.yml"
+    
  #   run "rake db:migrate RAILS_ENV=production"
  #    sudo "/etc/init.d/monit restart all"
+  end
+  
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
 end
 
@@ -57,9 +64,3 @@ end
 
 after 'deploy:update_code', 'deploy:symlink_shared', "deploy:symlink", "deploy:update_crontab"
 
-namespace :deploy do
-  desc "Update the crontab file"
-  task :update_crontab, :roles => :db do
-    run "cd #{release_path} && whenever --update-crontab #{application}"
-  end
-end

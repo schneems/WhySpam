@@ -26,10 +26,10 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
-    from_email   = email.from[0] || ""
-    to_email     = email.to[0] || ""
-    message      = email.body || ""
-    subject      = email.subject || ""
+    from_email   = email.from[0]
+    to_email     = email.to[0] 
+    message      = email.body 
+    subject      = email.subject 
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})||Ticket.create(:subject => subject, :from_email => from_email, :to_email => to_email, :body => message)
  end
  
@@ -68,6 +68,16 @@ class MyMailer < ActionMailer::Base
     @from         = "ArubyOnRailsProcess@mycomputer.com" 
     headers         "Reply-to" => "ArubyOnRailsProcess@mycomputer.com"
     @subject      = "This is a subject line someone would send"
+    @sent_on      = Time.now
+    @content_type = "text/html"
+  end
+  
+  
+  def warning(to_email)
+    @recipients   = to_email
+    @from         = "omfgsomethingwentwrong@whyspam.me" 
+    headers         "Reply-to" => "omfgsomethingwentwrong@whyspam.me"
+    @subject      = "Hey Admin, do some Administering"
     @sent_on      = Time.now
     @content_type = "text/html"
   end
