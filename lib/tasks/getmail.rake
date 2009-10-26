@@ -19,15 +19,15 @@ namespace :mailbox do
     
     desc "checks to see if everything is working"
       task :isworking => :environment do
-        testemail = "thisisatestmailboxforwhyspammeyeahthtatsawesome@whyspam.me"
-        tickets = Ticket.find(:all, :conditions => {:from_email => "ArubyOnRailsProcess@mycomputer.com", :to_email => testemail, :subject => "This is a subject line someone would send"})
+        testmail = "thisisatestmailboxforwhyspammeyeahthtatsawesome@whyspam.me"
+        tickets = Ticket.find(:all, :conditions => {:from_email => "ArubyOnRailsProcess@mycomputer.com", :to_email => testmail, :subject => "This is a subject line someone would send"})
         tickets.each do |ticket|
           ticket.delete
         end
         MyMailer.deliver_sample(testmail)
         sleep 180
         begin
-          ticket = Ticket.find(:first, :conditions => {:from_email => "ArubyOnRailsProcess@mycomputer.com", :to_email => testemail, :subject => "This is a subject line someone would send"})
+          ticket = Ticket.find(:first, :conditions => {:from_email => "ArubyOnRailsProcess@mycomputer.com", :to_email => testmail, :subject => "This is a subject line someone would send"})
           ticket.delete
         rescue
           MyMailer.deliver_warning(configatron.admin_email)
