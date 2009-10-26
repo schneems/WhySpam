@@ -22,7 +22,7 @@ namespace :mailbox do
         testmail = "thisisatestmailboxforwhyspammeyeahthtatsawesome@whyspam.me"
         tickets = Ticket.find(:all, :conditions => {:from_email => "ArubyOnRailsProcess@mycomputer.com", :to_email => testmail, :subject => "This is a subject line someone would send"})
         tickets.each do |ticket|
-          ticket.delete
+          ticket.destroy
         end
         MyMailer.deliver_sample(testmail)
         sleep 180
