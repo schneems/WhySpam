@@ -19,9 +19,9 @@ module ApplicationHelper
    # puts params[:action]
    # puts url_for(:controller => params[:controller], :action => params[:action])
       if (options[:action] == params[:action] and options[:controller] == params[:controller] ) || url_for(:controller => params[:controller], :action => params[:action]) == options
-         link_to(name, options, :class => 'ui-state-hover ui-corner-all')
+         link_to(image_tag(name+".png"), options, :class => 'on')
       else
-        link_to(name,options, :class => 'ui-state-default ui-corner-all')
+         link_to(image_tag(name+".png"),options, :class => 'nav-button')
       end
   end
   

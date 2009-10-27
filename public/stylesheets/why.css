@@ -1,10 +1,29 @@
+/* @override http://localhost:3000/stylesheets/why.css?1256617337 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1256617163 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1256614535 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1256609412 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1256607882 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1256583074 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1256088298 */
+
 /* @override http://localhost:3000/stylesheets/why.css?1255903898 */
 
 /* @override http://localhost:3000/stylesheets/why.css?1254972636 */
 
-#header #site-title {
-font-size: 3em;
-}
+
+/* @override http://localhost:3000/stylesheets/why.css?1256088298 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1255903898 */
+
+/* @override http://localhost:3000/stylesheets/why.css?1254972636 */
+
+
 
 .center {
 	margin: 0 auto 0 auto;
@@ -35,15 +54,27 @@ a {
 }
 
 
-
-
-#header div.nav {
-	margin-top: 20px;
+.nav {
+	margin-top: -20px;
 }
 
-#header ul li {
+.nav ul li {
+	
 	display: inline;
 	list-style-type: none;
+	font-size: 17px;
+
+}
+
+.nav a {
+	padding: 0 8px 0 ;
+	color: black;
+	font-size: 18px;
+}
+
+.nav a:hover {
+	
+	text-decoration: none;
 }
 
 #header ul li a:link,
@@ -56,7 +87,7 @@ a {
 
 
 #login_links a,
-#header #site-title a{
+#site-title a{
 	color: white;
 	
 }
@@ -142,10 +173,7 @@ span.ui-icon {
 }
 
 
-#header #site-tag { font-size: 1em; 
-	margin-top: -15px;
-	padding-bottom: 20px;
-}
+
 
 
 #login_links p {
@@ -166,9 +194,9 @@ span.ui-icon {
  	width: 100%;
   padding-top: 15px;
   padding-bottom: 10px;
-  background-color: #202020;
+  background-color: #3e3e3e;
   
-  border-top: solid 3px #0073ea;
+  border-top: 3px solid #fbf5ff;
   
 }
 
@@ -209,19 +237,83 @@ a.ui-state-hover:hover {
 
 
 
-#content_wrapper {
-		background: url(/images/abackground_repeat.jpg) repeat-x ;
-}
-
-#nav-button {
-	text-align: center;
-	margin: 0 auto 0;
-}
-
 
 .fg-button {
 	display: inline-block;
 }
 
-background-color: black;
+body {
+background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center top;
+}
+
+#whitespace {
+	background-color: white;
+}
+
+.spam {
+	background: url(/images/spam.png) no-repeat;
+}
+
+
+#sidebar {
+	margin-left: -10px;
+}
+
+#site-title a:hover {
+	text-decoration: none;
+}
+span.small {
+	font-size:  0.40em;
+}
+
+#header {
+	margin: 20px 0 0 0;
+	
+	padding: 0;
+	text-indent: -9999px;
+	width: 400px;
+	height: 60px;
+	position: relative;
+	background: url(/images/WhyLogo.png) no-repeat;
+}
+#header a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 400px;
+	height: 60px;
+	display: block;
+	border: 0;
+	background: transparent;
+	overflow: hidden;
+}
+#header .fake-hover {
+	margin: 0;
+	padding: 0;
+	width: 400px;
+	height: 60px;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(/images/WhyLogo.png) no-repeat 0 -60px;
+}
+
+
+.on {
+	background: url(/images/on.png) no-repeat;
+}
+
+#main_input_websites {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+input#user_email,
+input#user_website, 
+input#form_email,
+input#ticket_to_email,
+input#captcha {
+	height: 2em;
+	
 }

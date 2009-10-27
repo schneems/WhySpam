@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/screen.css?1256238150 */
+
 /* @override http://localhost:3001/stylesheets/screen.css */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -488,11 +490,7 @@ a.button img {
   height: 16px;
   float: none;
 }
-button:hover {
-  background-color: #dff4ff;
-  border: 1px solid #c2e1ef;
-  color: #336699;
-}
+
 a.button:hover {
   background-color: #dff4ff;
   border: 1px solid #c2e1ef;

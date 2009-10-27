@@ -1,6 +1,10 @@
 
 	
-<div class = "span-24 last">
+	
+		<div id='site-title' class = "span-12 last">
+			<h1 id="header"><a href = "http://www.whyspam.me">Awesome header</a></h1>
+		</div>
+	
 	<div class = "top_bar prepend-12">
 		<div class = "span-5 " id = "login_links">
 			<p>
@@ -20,4 +24,12 @@
 			<% end %>
 		</div>
 	</div>
-</div>
+	
+	<div class = "prepend-10 span-14 nav last">
+		 <ul class = "">
+			<li><%=section_link 'SecureEmail',home_path %></li>
+			<li><%=section_link 'SecureForms', new_form_path %></li>
+			<li><%=section_link "SlopBox", slopbox_index_path %></li>
+			<li><%=section_link "SpamReport", websites_path %></li>
+		</ul>
+	</div>

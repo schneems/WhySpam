@@ -3,12 +3,10 @@
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <%= html_title configatron.site_name %>
-  
     <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %> 
     <%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
     <%# stylesheet_link_tag 'flick/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
     <%= stylesheet_link_tag 'custom_1/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
-
     <%= stylesheet_link_tag 'print.css', :media => 'print' %>
     <!--[if lt IE 8]><%= stylesheet_link_tag 'ie.css', :media => "screen, projection" %><![endif]-->
 
@@ -50,12 +48,44 @@
 			
     	<%= yield :html_head %>
 	<script type="text/javascript">
+		
+		var Header = {
+			// Let's write in JSON to make it more modular
+			addFade : function(selector){
+				$("<span class=\"fake-hover\"></span>").css("display", "none").prependTo($(selector)); 
+				// Safari dislikes hide() for some reason
+				$(selector+" a").bind("mouseenter",function(){
+					$(selector+" .fake-hover").fadeIn("slow");
+				});
+				$(selector+" a").bind("mouseleave",function(){
+					
+					$(selector+" .fake-hover").fadeOut("slow");
+				});
+
+			}
+		};
+
+		$(function(){
+			Header.addFade("#header");
+		});
+
+
 
 		$(function() {
 				$('.ui-state-default').hover(
 					function() { $(this).addClass('ui-state-hover'); }, 
 					function() { $(this).removeClass('ui-state-hover'); }						
 				);
+				$('.nav-button').hover(
+					function() { $(this).addClass('on'); }, 
+					function() { $(this).removeClass('on'); }						
+				);
+
+
+
+
+			
+
 				
 				$('#dialog').dialog({
 					autoOpen: false,
