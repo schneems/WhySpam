@@ -30,6 +30,9 @@ module ApplicationHelper
     
     def button_with_icon(text , icon)
       object_name = self.object_name
+      
+      #return self.submit "<span class='ui-icon'></span>#{text}" , :class => "ui-corner-all ui-state-default"
+      # return "<a href = \"#\" onclick =\"$('#new_user').submit();\" type='submit' name='commit' id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</a>"
       return "<button id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
     end
     

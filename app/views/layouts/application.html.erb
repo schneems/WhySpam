@@ -59,7 +59,7 @@
 				});
 				$(selector+" a").bind("mouseleave",function(){
 					
-					$(selector+" .fake-hover").fadeOut("slow");
+					$(selector+" .fake-hover").hide();
 				});
 
 			}
@@ -93,17 +93,7 @@
 					resizable: false,
 					show: 'scale' ,
 					bgiframe: true,
-					width: 600,
-				/*
-					buttons: {
-						"Ok": function() { 
-							$(this).dialog("close"); 
-						}, 
-						"Cancel": function() { 
-							$(this).dialog("close"); 
-						} 
-					}
-					*/
+					width: 600
 				});
 
 
