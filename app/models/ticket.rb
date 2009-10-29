@@ -13,7 +13,10 @@ class Ticket < ActiveRecord::Base
   validates_presence_of     :subject
   validates_presence_of     :body
   
-  def before_create
+  
+  
+  
+  def after_create
     if self.valid?
        i = Whymail.base_class
        whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
