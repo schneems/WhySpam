@@ -4,10 +4,11 @@
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <%= html_title configatron.site_name %>
 
-	<!-- TODO take bundle_fu modify it so that you can bundle multiple bundles -->
-    <%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
-    <%= stylesheet_link_tag 'custom_1/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
-
+	<!-- bundle :name => "admin_asset_bundle", :css_path => "/temp/", :js_path => "/temp/"-->
+	<% bundle :name => "css" do %>
+    	<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
+    	<%= stylesheet_link_tag 'custom_1/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
+	<% end %>
 
     <%= stylesheet_link_tag 'print.css', :media => 'print' %>
     <!--[if lt IE 8]><%= stylesheet_link_tag 'ie.css', :media => "screen, projection" %><![endif]-->
@@ -46,7 +47,7 @@
 
     <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' %>
     <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js' %>
-
+	
 			<script type="text/javascript">
 				var Header = {
 					// Let's write in JSON to make it more modular
@@ -118,7 +119,6 @@
 		})
 		</script>
 		
-	
 
 		<%= yield :html_head %>
    	

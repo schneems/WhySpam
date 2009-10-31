@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>deploy_readme</string>
+	<string>lib/tasks/deadweight.rake</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -34,36 +34,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>app/helpers/application_helper.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>70</integer>
-				<key>line</key>
-				<integer>23</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>17</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>60</integer>
-				<key>line</key>
-				<integer>23</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>70</integer>
-				<key>line</key>
-				<integer>23</integer>
-			</dict>
 		</dict>
 		<key>app/models/forms.rb</key>
 		<dict>
@@ -112,14 +82,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>29</integer>
 				<key>line</key>
-				<integer>0</integer>
+				<integer>114</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>112</integer>
 		</dict>
 		<key>app/views/ztest/widget_test.html.erb</key>
 		<dict>
@@ -148,6 +118,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
+		</dict>
+		<key>config/database.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>11</integer>
+				<key>line</key>
+				<integer>46</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>33</integer>
 		</dict>
 		<key>db/migrate/20090923003235_create_permissions.rb</key>
 		<dict>
@@ -182,30 +166,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>23</integer>
 				<key>line</key>
-				<integer>125</integer>
+				<integer>55</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>118</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>125</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>126</integer>
-			</dict>
+			<integer>46</integer>
 		</dict>
 		<key>doc/plugins/rspec-rails-mocha/fr_method_index.html</key>
 		<dict>
@@ -279,6 +247,20 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
+		<key>lib/tasks/deadweight.rake</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>25</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>public/404.html</key>
 		<dict>
 			<key>caret</key>
@@ -321,6 +303,34 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>public/javascripts/liquid-canvas.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>public/javascripts/why.js</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>32</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>9</integer>
+		</dict>
 		<key>public/stylesheets/ie.css</key>
 		<dict>
 			<key>caret</key>
@@ -335,33 +345,19 @@
 			<key>firstVisibleLine</key>
 			<integer>20</integer>
 		</dict>
-		<key>public/stylesheets/screen.css</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>19</integer>
-				<key>line</key>
-				<integer>615</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>607</integer>
-		</dict>
 		<key>public/stylesheets/why.css</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>55</integer>
+				<integer>617</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>51</integer>
+			<integer>610</integer>
 		</dict>
 		<key>spec/factories.rb</key>
 		<dict>
@@ -494,31 +490,34 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>34</integer>
+				<integer>7</integer>
 				<key>line</key>
-				<integer>74</integer>
+				<integer>34</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>25</integer>
+			<integer>44</integer>
 		</dict>
 	</dict>
 	<key>openDocuments</key>
 	<array>
 		<string>deploy_readme</string>
+		<string>lib/tasks/deadweight.rake</string>
+		<string>public/stylesheets/why.css</string>
 		<string>vendor/plugins/fetcher/init.rb</string>
 		<string>vendor/plugins/fetcher/install.rb</string>
 		<string>vendor/plugins/fetcher/lib/fetcher.rb</string>
-		<string>vendor/plugins/fetcher/lib/fetcher/base.rb</string>
 		<string>vendor/plugins/fetcher/lib/fetcher/imap.rb</string>
 		<string>app/views/layouts/_header.html.erb</string>
-		<string>app/helpers/application_helper.rb</string>
 		<string>app/views/layouts/application.html.erb</string>
+		<string>public/javascripts/why.js</string>
+		<string>public/javascripts/liquid-canvas.js</string>
+		<string>config/database.yml</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{347, 18}, {1055, 327}}</string>
+	<string>{{280, 46}, {1055, 327}}</string>
 </dict>
 </plist>
