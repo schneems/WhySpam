@@ -33,53 +33,54 @@
 
 <br />
 <br />
-<% if !@whymails.nil? %>
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable_whymails">
-	<thead>
-		<tr>
-			<th>Secure Email Address</th>
-			<th>Website</th>
-			<th>Last Used</th>
-			<th>Created</th>
-			<% if current_user == @user && current_user  %>
-				<th>Action</th>
-			<% end %>
-		</tr>
-	</thead>
-	<tbody>
+<% if !@whymails.empty? %>
+<div class = "prepend-1">
+	<table  cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable_whymails">
+		<thead>
+			<tr>
+				<th>Secure Email Address</th>
+				<th>Website</th>
+				<th>Last Used</th>
+				<th>Created</th>
+				<% if current_user == @user && current_user  %>
+					<th>Action</th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
 		
-<% @whymails.each do |whymail| %>
-<tr class="clickable"  onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show' %>' ">
-	<td><%=h whymail.email %></td>
-	<td><%=h whymail.website %></td>
-	<td><%= whymail.tickets.empty??  "--"  : whymail.tickets.last.created_at.strftime("%m/%d/%Y")%></td>
-	<td><%= whymail.created_at.strftime("%m/%d/%Y") %></td>
-	<% if  current_user == @user && current_user  %>
-		<td>			
-			<%= button_to_remote "Delete", :class => "ui-state-default", :url => spam_survey_url(:id => whymail.id) , :update => "partial_update", :loading => "window.myboolean = true;$('#indicator').show();$('#partial_update').hide();", 
-			:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');window.myboolean=false;" %>
+	<% @whymails.each do |whymail| %>
+	<tr class="clickable"  onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show' %>' ">
+		<td><%=h whymail.email %></td>
+		<td><%=h whymail.website %></td>
+		<td><%= whymail.tickets.empty??  "--"  : whymail.tickets.last.created_at.strftime("%m/%d/%Y")%></td>
+		<td><%= whymail.created_at.strftime("%m/%d/%Y") %></td>
+		<% if  current_user == @user && current_user  %>
+			<td>			
+				<%= button_to_remote "Delete", :class => "ui-state-default", :url => spam_survey_url(:id => whymail.id) , :update => "partial_update", :loading => "window.myboolean = true;$('#indicator').show();$('#partial_update').hide();", 
+				:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');window.myboolean=false;" %>
 			
 			
 			
-		</td>
-	<% end %>
-</tr>    
-        <%= link_to_remote "Delete", :url => spam_survey_url(:id => @whymails.last.id) , :update => "partial_update", :loading => "$('#indicator').show();$('#partial_update').hide();", 
-		:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');" %>                              
-<% end %>                                                                                     
-	<tfoot>
-	</tbody>
-		<tr>
-			<th>Secure Email Address</th>
-			<th>Website</th>
-			<th>Last Used</th>
-			<th>Created</th>
-			<% if current_user == @user && current_user %>
-				<th>Action</th>
-			<% end %>
-		</tr>
-	</tfoot>
-</table>
+			</td>
+		<% end %>
+	</tr>    
+                           
+	<% end %>                                                                                     
+		<tfoot>
+		</tbody>
+			<tr>
+				<th>Secure Email Address</th>
+				<th>Website</th>
+				<th>Last Used</th>
+				<th>Created</th>
+				<% if current_user == @user && current_user %>
+					<th>Action</th>
+				<% end %>
+			</tr>
+		</tfoot>
+	</table>
+</div>
 <% else %>
 <p>You Have no Secure Email Addresses for this Account</p>
 
@@ -91,56 +92,59 @@
 <br />
 <br />
 
+<div class = "prepend-1">
 
-<% if !@forms.nil? %>
+<% if !@forms.empty? %>
 
 
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable_forms">
-	<thead>
-		<tr>
-			<th>Form URL</th>
-			<th>Comments</th>
-			<th>Last Used</th>
-			<th>Created</th>
-			<% if current_user == @user && current_user  %>
-				<th>Action</th>
-			<% end %>
-		</tr>
-	</thead>
-	<tbody>
-<% @forms.each do |form| %>
-<tr class="clickable" onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "form", :action => 'show' %>' " >
-	<td><a href = "<%= forms_url + '/'+ form.address %>"
-		 ><%=h forms_url + '/'+ form.address %></a></td>
+	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable_forms">
+		<thead>
+			<tr>
+				<th>Form URL</th>
+				<th>Comments</th>
+				<th>Last Used</th>
+				<th>Created</th>
+				<% if current_user == @user && current_user  %>
+					<th>Action</th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+	<% @forms.each do |form| %>
+	<tr class="clickable" onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "form", :action => 'show' %>' " >
+		<td><a href = "<%= forms_url + '/'+ form.address %>"
+			 ><%=h forms_url + '/'+ form.address %></a></td>
 		
-	<td class = "comments"><%= form.comments %></td> 
-	<td><%= form.tickets.empty? ?  "--" : form.tickets.last.created_at.strftime("%m/%d/%Y") %></td>
-	<td><%= form.created_at.strftime("%m/%d/%Y") %></td>
-	<% if  current_user == @user && current_user  %>
-		<td>				<!-- form_path(form.id,:method => "delete") -->
-				<%= button_to "Delete", form_path(form.id,:method => "delete")  , :confirm => "Deleting this form will prevent anyone from sending you email from the form located at #{forms_url + '/'+ form.address }. Are you sure you wish to continue?" , :method => :delete, :class => "delete_button", :onclick => "window.mybutton = true", :onblur => "window.mybutton = false;"  %>
-		</td>
-	<% end %>
-</tr>    
+		<td class = "comments"><%= form.comments %></td> 
+		<td><%= form.tickets.empty? ?  "--" : form.tickets.last.created_at.strftime("%m/%d/%Y") %></td>
+		<td><%= form.created_at.strftime("%m/%d/%Y") %></td>
+		<% if  current_user == @user && current_user  %>
+			<td>				<!-- form_path(form.id,:method => "delete") -->
+					<%= button_to "Delete", form_path(form.id,:method => "delete")  , :confirm => "Deleting this form will prevent anyone from sending you email from the form located at #{forms_url + '/'+ form.address }. Are you sure you wish to continue?" , :method => :delete, :class => "delete_button", :onclick => "window.mybutton = true", :onblur => "window.mybutton = false;"  %>
+			</td>
+		<% end %>
+	</tr>    
                                       
-<% end %>                                                                                     
-	</tbody>
-	<tfoot>
-		<tr>
-			<th>Secure Email Address</th>
-			<th>Website</th>
-			<th>Last Used</th>
-			<th>Created</th>
-			<% if current_user == @user && current_user %>
-				<th>Action</th>
-			<% end %>
-		</tr>
-	</tfoot>
-</table>
+	<% end %>                                                                                     
+		</tbody>
+		<tfoot>
+			<tr>
+				<th>Secure Email Address</th>
+				<th>Website</th>
+				<th>Last Used</th>
+				<th>Created</th>
+				<% if current_user == @user && current_user %>
+					<th>Action</th>
+				<% end %>
+			</tr>
+		</tfoot>
+	</table>
 <% else %>
  <p>You Have no Secure Forms for this Account</p>
 <% end %>
 </div>
+</div>
+
 
 
 

@@ -853,6 +853,7 @@ background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center top;
 
 #whitespace {
 	background-color: white;
+		min-height: 470px;
 }
 
 .spam {

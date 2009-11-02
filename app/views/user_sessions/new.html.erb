@@ -1,5 +1,6 @@
 <%= page_title 'Log in' %>
 
+<div class = "prepend-1">
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
 
@@ -13,19 +14,24 @@
     <%= f.password_field :password %>
   </div>
   
-  <div>
-    <%= f.label :remember_me %>
-    <%= f.check_box :remember_me %>
-  </div>
+
   
   <div class='buttons clearfix'>
-    <%= pretty_positive_button 'Log in' %>
-    <%= pretty_negative_button_link 'Cancel', root_path %>
+	<%=  f.button_with_icon("Log In", "check") %> <%= f.check_box :remember_me %>
+	<span>Remember Me</span>
   </div>
+
+
 <% end %>
+
 
 <p>
   Need an account? <%= link_to 'Sign up now.', signup_path %><br/>
 
   Forgot your password? <%= link_to 'Reset your password.', password_reset_path %>
 </p>
+
+</div>
+
+
+

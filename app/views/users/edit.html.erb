@@ -1,12 +1,15 @@
 <%= page_title 'Edit My Account' %>
-
+<div class = "prepend-1">
 <% form_for @user, :url => account_path do |f| %>
   <%= f.error_messages %>
   
   <%= render :partial => "form", :object => f %>
 
   <div class='buttons clearfix'>
-    <%= pretty_positive_button 'Update' %>
-    <%= pretty_negative_button_link 'Cancel', account_path %>
+	<%=  f.button_with_icon("Update", "wrench") %>
+	<br />
+	<%= link_to "Back", account_path %>
   </div>
 <% end %>
+
+</div>
