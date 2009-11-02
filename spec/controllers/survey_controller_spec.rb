@@ -6,7 +6,11 @@ describe SurveysController do
   
   describe "Net /spamfire/new" do
     it "should render new" do
-      @whymail = Factory.create(:whymail, :website => "validwebsite.com")
+      user = Factory.create(:user)
+      @whymail = Factory.create(:whymail, :website => "example.com", :user => user)
+      
+      Whymail.stubs(:find).returns(@whymail)
+      
       get :new, :whymail => @whymail.id
       response.should render_template("new")
       assigns[:survey].should_not == nil
@@ -14,13 +18,17 @@ describe SurveysController do
     end
     
     it "add to an existing survey" do
-      @whymail = Factory.create(:whymail, :website => "")
-      
-      get :new, :whymail => @whymail.id
-      response.should render_template("new")
-      assigns[:survey].should == nil
-      flash[:error].should == configatron.bad_website
-      
+   #   user = Factory.create(:user)
+   #   @whymail = Factory.create(:whymail, :website => "example.com", :user => user)
+   #   
+   #   Whymail.stubs(:find).returns(@whymail)
+   #   
+   #   get :new, :whymail => @whymail.id
+   #   response.should render_template("new")
+   #   
+   #   assigns[:survey].should_not == nil
+   #   flash[:error].should_not == configatron.bad_website
+   #   
     end
 
     

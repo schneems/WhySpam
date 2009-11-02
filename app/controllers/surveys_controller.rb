@@ -3,23 +3,22 @@ class SurveysController < ApplicationController
   layout "application" , :except => [:new ]
 
   def new
+    puts "==========="
     whymail_id = params[:id]
     @whymail = Whymail.find(:first, :include => [:tickets, :user] , :conditions => ["id = ?", whymail_id] )
+    puts @whymail
     @website = @whymail.website
+    puts @website
     site = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
     if !site.nil? && site.save
       @survey = site.surveys.create(:opt_out => "false", :un_solicited=> "false", :sell=> "false", :vulgar=> "false", :give_out=> "false")
+      puts @survey
     else
       flash[:error] = configatron.bad_website
     end
     @user = @whymail.user
-    
-    respond_to do |format|
-      format.html # new.html.erb
-  #    format.xml  { render :xml => @portfolio }
-      format.js {render :partial => 'new'}
-    end
-    
+    puts @user
+
     
   end
 

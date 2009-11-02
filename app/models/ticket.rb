@@ -16,12 +16,13 @@ class Ticket < ActiveRecord::Base
   
   
   
-  def after_create
+  def after_create    
     if self.valid?
        i = Whymail.base_class
        whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
       if !whymail.nil?
         self.whymail_id = whymail.id
+        self.save
         MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body)        
       end
     end
