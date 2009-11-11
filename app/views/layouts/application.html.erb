@@ -5,10 +5,10 @@
     <%= html_title configatron.site_name %>
 
 	<!-- bundle :name => "admin_asset_bundle", :css_path => "/temp/", :js_path => "/temp/"-->
-	<%# bundle :name => "css" do %>
+	<% bundle :name => "css" do %>
     	<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
     	<%= stylesheet_link_tag 'custom_1/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
-	<%# end %>
+	<% end %>
 
     <%= stylesheet_link_tag 'print.css', :media => 'print' %>
     <!--[if lt IE 8]><%= stylesheet_link_tag 'ie.css', :media => "screen, projection" %><![endif]-->
@@ -26,13 +26,14 @@
 		</div><!-- container -->
 	
 	    <div id='whitespace' class='container'>
-	    	  <%= display_flash %>
-			<div class = "span-19">
-		    	  <%= yield %>
-			</div><!-- span-19  -->
+			<div id = "inner-whitespace">
+			    <%= display_flash %>
+				<div class = "span-19">
+				   	  <%= yield %>
+				</div><!-- span-19  -->
 		
-	      <%= render :partial => 'layouts/sidebar' %>
-	
+	      		<%= render :partial => 'layouts/sidebar' %>
+			</div><!-- inner-whitespace -->
 	    </div><!-- whitespace -->
 <br />
 <br />
