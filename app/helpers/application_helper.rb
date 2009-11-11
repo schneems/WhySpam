@@ -33,7 +33,9 @@ module ApplicationHelper
       
       #return self.submit "<span class='ui-icon'></span>#{text}" , :class => "ui-corner-all ui-state-default"
       # return "<a href = \"#\" onclick =\"$('#new_user').submit();\" type='submit' name='commit' id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</a>"
-      return "<button id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
+      return "<button id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'> &nbsp <span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
+      
+      ## don't remove the &nbsp for fear of deat (from IE)
     end
     
     

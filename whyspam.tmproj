@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/tasks/deadweight.rake</string>
+	<string>deploy_readme</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,6 +13,8 @@
 			<string>whyspam</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -21,6 +23,20 @@
 	<integer>256</integer>
 	<key>metaData</key>
 	<dict>
+		<key>Capfile</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>19</integer>
+				<key>line</key>
+				<integer>5</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>app/controllers/forms_controller.rb</key>
 		<dict>
 			<key>caret</key>
@@ -77,19 +93,47 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/views/layouts/application.html.erb</key>
+		<key>app/views/user_sessions/new.html.erb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>29</integer>
+				<integer>25</integer>
 				<key>line</key>
-				<integer>114</integer>
+				<integer>20</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>112</integer>
+			<integer>12</integer>
+		</dict>
+		<key>app/views/users/edit.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>47</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>app/views/users/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>14</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
 		</dict>
 		<key>app/views/ztest/widget_test.html.erb</key>
 		<dict>
@@ -133,6 +177,20 @@
 			<key>firstVisibleLine</key>
 			<integer>33</integer>
 		</dict>
+		<key>config/environment.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>50</integer>
+				<key>line</key>
+				<integer>67</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>62</integer>
+		</dict>
 		<key>db/migrate/20090923003235_create_permissions.rb</key>
 		<dict>
 			<key>caret</key>
@@ -166,14 +224,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>23</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>55</integer>
+				<integer>0</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>46</integer>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>13</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
 		</dict>
 		<key>doc/plugins/rspec-rails-mocha/fr_method_index.html</key>
 		<dict>
@@ -252,9 +326,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>25</integer>
+				<integer>22</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -350,14 +424,28 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>20</integer>
 				<key>line</key>
-				<integer>617</integer>
+				<integer>854</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>610</integer>
+			<integer>845</integer>
+		</dict>
+		<key>spec/controllers/survey_controller_spec.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>4</integer>
 		</dict>
 		<key>spec/factories.rb</key>
 		<dict>
@@ -373,19 +461,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>spec/spec_helper.rb</key>
+		<key>spec/models/ticket_spec.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>34</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>31</integer>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>23</integer>
+			<integer>5</integer>
 		</dict>
 		<key>test/factories.rb</key>
 		<dict>
@@ -457,20 +545,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>vendor/plugins/fetcher/lib/fetcher.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>12</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>8</integer>
-		</dict>
 		<key>vendor/plugins/fetcher/lib/fetcher/base.rb</key>
 		<dict>
 			<key>caret</key>
@@ -504,20 +578,18 @@
 	<array>
 		<string>deploy_readme</string>
 		<string>lib/tasks/deadweight.rake</string>
+		<string>config/environment.rb</string>
+		<string>Capfile</string>
+		<string>spec/controllers/survey_controller_spec.rb</string>
+		<string>spec/models/ticket_spec.rb</string>
+		<string>app/views/user_sessions/new.html.erb</string>
 		<string>public/stylesheets/why.css</string>
-		<string>vendor/plugins/fetcher/init.rb</string>
-		<string>vendor/plugins/fetcher/install.rb</string>
-		<string>vendor/plugins/fetcher/lib/fetcher.rb</string>
-		<string>vendor/plugins/fetcher/lib/fetcher/imap.rb</string>
-		<string>app/views/layouts/_header.html.erb</string>
-		<string>app/views/layouts/application.html.erb</string>
-		<string>public/javascripts/why.js</string>
-		<string>public/javascripts/liquid-canvas.js</string>
-		<string>config/database.yml</string>
+		<string>app/views/users/edit.html.erb</string>
+		<string>app/views/users/show.html.erb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{280, 46}, {1055, 327}}</string>
+	<string>{{366, 21}, {1055, 327}}</string>
 </dict>
 </plist>
