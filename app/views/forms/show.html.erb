@@ -25,8 +25,17 @@
 				<br />
 				  <% form_for :form, :url => {:action => "send_secure_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
 			<table>
-			<tr><td class = "optional_td"><%= f.label "Your Email:" %><br /><span class = "optional">(Optional)</span></td><td colspan = 2><%= f.text_field :email , :rows => 2 %></td></tr>
-			<tr><td><%= f.label "Message:" %></td><td colspan = 5><%=  f.text_area :comments, :rows => 5 %></td></tr>
+			<tr>
+				<td class = "optional_td"><%= f.label "Your Email:" %><br />
+					<span class = "optional">(Optional)</span>
+					</td>
+				<td colspan = 2><%= f.text_field :email , :rows => 2 %></td>
+			</tr>
+			<tr>
+				<td><%= f.label "Message:" %></td>
+				<td colspan = 5><%=  f.text_area :comments, :rows => 5 %></td>
+			</tr>
+
 
 			<%= show_simple_captcha %>
 			</table>
