@@ -2,7 +2,6 @@
 	input#user_email, 
 	input#user_website,
 	input#captcha,
-	textarea#form_comments,
 	input#ticket_to_email,
 	input#login, input#password,
 	input#email ,
@@ -13,6 +12,11 @@
 	input#user_password
 	{
 		height: 40px;
+		font-size: 18pt;
+		width: 300px;
+	}
+	
+	textarea#form_comments {
 		font-size: 18pt;
 		width: 300px;
 	}
@@ -99,7 +103,7 @@ If you wish to create your own contact form, you can do it by clicking on the <%
 		</tr>
 		<tr>
 			<td><%= f.label "Message:" %></td>
-			<td colspan = 2><%=  f.text_area :comments, :rows => 2 %></td>
+			<td colspan = 2><%=  f.text_area :comments, :rows => 4 %></td>
 		</tr>
 
 		<%= show_simple_captcha %>
