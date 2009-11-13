@@ -93,7 +93,7 @@
 
 		</div>
 	<% else %>
-		<p>No form exists with an ID of <%= @crypt.upcase %> either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", contact_us_path %>.
+		<p>No form exists with an ID of <%= @crypt.upcase %> either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", {:action => "contact", :controller => "static"} %>.
 			<br />
 			<br />
 		If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", new_form_path  %> link above, its the quickest way to make an anonymous form on the web. 
