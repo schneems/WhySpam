@@ -17,7 +17,7 @@ Feature: Manage
 	Scenario: I log into manage my account and delete an email by viewing it then pressing delete
 		Given I go to manage users
 		And I successfully login
-		When I have a secure email that has received an email
+		When I have a disposable email that has received an email
 		And I go to manage users
 		Then I click the first table row
 		And I wait for the page to load
@@ -33,7 +33,7 @@ Feature: Manage
 	Scenario: I log into manage my account and delete an email account
 		Given I go to manage users
 		And I successfully login 
-		When I have a secure email that has received an email
+		When I have a disposable email that has received an email
 		And I go to manage users
 		Then I press "css=button.ticket_delete_button"
 		And I wait for jquery to load
@@ -47,7 +47,7 @@ Feature: Manage
 	Scenario: I log into manage my account and delete an email account and submit a survey
 		Given I go to manage users
 		And I successfully login
-		When I have a secure email that has received an email
+		When I have a disposable email that has received an email
 		And I go to manage users
 		Then I press "css=button.ticket_delete_button"
 		And I wait for jquery to load
@@ -67,7 +67,7 @@ Feature: Manage
 			Scenario: I log into manage my account and delete an form for my account
 				Given I go to manage users
 				And I successfully login 
-				When I have a secure form that has received an email
+				When I have a disposable form that has received an email
 				And I go to manage users		
 				Then I get forms count
 				Then I press "css=input.delete_button" 
@@ -80,7 +80,7 @@ Feature: Manage
 				Scenario: I log into manage my account and delete an form for my account
 					Given I go to manage users
 					And I successfully login
-					When I have a secure form that has received an email
+					When I have a disposable form that has received an email
 					And I go to manage users		
 					Then I get ticket count
 					Then I press "css=#dataTable_forms tbody tr.clickable" 

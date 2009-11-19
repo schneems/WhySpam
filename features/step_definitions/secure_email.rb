@@ -34,7 +34,7 @@ Then /^I submit an incorrect (.*) email address$/ do |model|
   @browser.wait_for_condition('selenium.browserbot.getCurrentWindow().jQuery.active == 0', 10000)
 end
 
-Then /^I make sure the secure email shows up$/ do  
+Then /^I make sure the disposable email shows up$/ do  
   assert_equal true , @browser.is_text_present(@email.upcase)
   
   #user = User.last(:include => [:whymail => :tickets])

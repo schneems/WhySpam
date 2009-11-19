@@ -43,7 +43,7 @@ Then /^I successfully login$/ do
 end
 
 
-Given /^I have a secure email that has received an email$/ do
+Given /^I have a disposable email that has received an email$/ do
   
   assert_difference 'Whymail.count', +1 do   
     post '/no_spam', :user => {:email => "#{@user.email}", :website => "example.com"}
@@ -87,7 +87,7 @@ Then /^I assert (.+) difference (.+)$/ do |model, difference|
   assert_same model.capitalize.constantize.count, (@count + difference.to_i)
 end
 
-Then /^I have a secure form that has received an email$/ do
+Then /^I have a disposable form that has received an email$/ do
   user = User.last
   Factory.create(:forms, :email => user.email, :address => "abcd", :user_id => user.id)
   address = Forms.last.address

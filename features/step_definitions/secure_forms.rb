@@ -19,7 +19,7 @@ Then /^I submit a duplicate form email address$/ do
   @browser.wait_for_condition('selenium.browserbot.getCurrentWindow().jQuery.active == 0', 10000)
 end
 
-Then /^I visit my secure form$/ do
+Then /^I visit my disposable form$/ do
   address = Forms.last.address
   @browser.open "http://localhost:3000/forms/#{address}"
 end

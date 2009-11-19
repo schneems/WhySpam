@@ -25,7 +25,7 @@ describe SlopboxController do
     it "should render the show slop" do
       get :show, :ticket => { :to_email => "boblawblawaaaaaaaaaa@example.com" }
       flash[:notice].should_not == "You've got mail"
-      flash[:error].should match(/This is an address that may be used by a WhySpam Secure Email in the future/)
+      flash[:error].should match(/This is an address that may be used by a WhySpam Disposable Email in the future/)
     end
     
     

@@ -89,7 +89,7 @@ describe SurveysController do
  #       assigns[:secure_email].should == secure_email
  # end 
  #  
- #  it "should not allow you to create a secure email with a bad email" do
+ #  it "should not allow you to create a disposable email with a bad email" do
  #    post 'create', :user => { :email => '@example.com', :website => 'sketchy.com' }, :save => {:checked => '0'}
  #      assigns[:extra_message].should == configatron.bad_email_small
  #      post 'create', :user => { :email => '', :website => 'sketchy.com' }, :save => {:checked => '0'}

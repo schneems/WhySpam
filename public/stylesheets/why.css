@@ -2,6 +2,10 @@
 	http://localhost:3000/stylesheets/screen.css?1256238150
 	http://localhost:3001/stylesheets/screen.css
 	http://localhost:3000/stylesheets/why.css?1257184475
+	http://localhost:3000/stylesheets/why.css?1257968011
+	http://localhost:3000/stylesheets/cache/css.css?1258565418
+	http://localhost:3000/stylesheets/why.css?1258339364
+	http://localhost:3000/stylesheets/why.css?1258569287
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -655,7 +659,7 @@ a {
 
 
 .nav {
-	margin-top: -20px;
+	margin-top: -30px;
 }
 
 .nav ul li {
@@ -667,7 +671,7 @@ a {
 }
 
 .nav a {
-	padding: 0 8px 0 ;
+	padding: 0 25px 0 ;
 	color: black;
 	font-size: 18px;
 }
@@ -862,6 +866,11 @@ background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center top;
 		min-height: 550px;
 }
 
+#inner-whitespace {
+	height: 100%;
+	padding: 5px;
+}
+
 
 
 .spam {
@@ -870,7 +879,7 @@ background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center top;
 
 
 #sidebar {
-	margin-left: -10px;
+	margin: 0 0 0 -25px;
 }
 
 #site-title a:hover {
@@ -931,6 +940,7 @@ input#captcha {
 	height: 2em;
 	
 }
+
 
 
 

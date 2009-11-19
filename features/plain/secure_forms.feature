@@ -1,7 +1,7 @@
 Feature: Generate Forms
   In order to generate a form
   As a user
-  I want to generate a secure form
+  I want to generate a disposable form
   
 @form
     Scenario: Generating a form
@@ -9,7 +9,7 @@ Feature: Generate Forms
     	And I submit my unique form email address
 		Then I should see "www.whyspam.me/forms/"
 		And I should see "Give This Link to anyone you want to contact you"
-		Then I visit my secure form
+		Then I visit my disposable form
 		And I submit my test form email address
 		
 		# user_email

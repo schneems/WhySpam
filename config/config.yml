@@ -15,7 +15,7 @@ development: &local
     bad_captcha: "Please Try Copying the Text from the Image Again" 
     bad_email_small: "Bad Email, try Again"
     bad_email: "There were errors with your Email Address. Please try Again"  
-    bad_website: "website that was entered for this secure email is invalid"
+    bad_website: "website that was entered for this disposable email is invalid"
     bad_permissions: "something went wrong, it looks like you're not logged in, or you don't have proper permission"
     please_login: "Please Login First"
     captcha_directions: "Copy Text from Image"

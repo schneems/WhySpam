@@ -6,7 +6,7 @@
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<title>Why Spam Me? - Expose Spammers and Free your Inbox</title>
 		<META name = "description" content = "An online collection of spam fighting tools designed to free your inbox and track the people who sell your email address" />
-		<META name = "keywords" content = "secure email, secure form, stop, spam, spamming, spammer, sanonymous" />
+		<META name = "keywords" content = "disposable email, disposable form, stop, spam, spamming, spammer, sanonymous" />
 		
 		<% the_request = request.path %>
 		<% domain_array = the_request.scan(/([^.||^\d||^\:]+)/) %>
@@ -97,11 +97,11 @@
 				<div id = "content-main">
 						<div id = "nav" >
 						<span id = "nav_1"  >
-						   <%= link_to "Secure Email", root_path, {
+						   <%= link_to "Disposable Email", root_path, {
 										 :host => "whyspam.me", :only_path => true } %>
 						</span>
 							<span id = "nav_2"  >
-							   <%= link_to "Secure Forms", 	new_form_path %>
+							   <%= link_to "Disposable Forms", 	new_form_path %>
 							</span>
 							
 							<span id = "nav_3"  >

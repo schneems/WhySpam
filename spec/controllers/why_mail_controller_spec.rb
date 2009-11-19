@@ -6,7 +6,7 @@ describe WhymailController do
   integrate_views
   
   describe "DESTROY /" do
-     it "should destroy a secure email when user is also current user" do
+     it "should destroy a disposable email when user is also current user" do
        @user = mock_model(User)
        @whymail = mock_model(Whymail)
        @whymail.expects(:user).returns(@user)
@@ -19,7 +19,7 @@ describe WhymailController do
   end
   
   describe "DESTROY /" do
-     it "should not allow a different user to delete a secure email" do
+     it "should not allow a different user to delete a disposable email" do
        @whymail = mock_model(Whymail)
        @whymail.expects(:user).returns(nil)
        @whymail.expects(:destroy).never
@@ -71,13 +71,13 @@ describe WhymailController do
     end 
     
     
-    it "should not allow you to create a secure email with a bad email" do
+    it "should not allow you to create a disposable email with a bad email" do
         post 'create', :user => { :email => 'foo_email', :website => 'sketchy.com' }        
         assigns[:extra_message].should == configatron.bad_email
     end
     
     
-    it "should not allow you to create a secure email with a bad email" do
+    it "should not allow you to create a disposable email with a bad email" do
         post 'create', :user => { :email => '', :website => 'sketchy.com' }        
         assigns[:extra_message].should == configatron.bad_email
     end

@@ -1,5 +1,5 @@
 <% if @website.nil? %>
-No one has reported anything about <h2><%= @myurl %></h2> good or bad. So grab a <%= link_to "Secure Email", root_path, {
+No one has reported anything about <h2><%= @myurl %></h2> good or bad. So grab a <%= link_to "Disposable Email", root_path, {
 				 :host => "whyspam.me", :only_path => 
 				true } %> address and find out if <h2><%= @myurl %></h2> is reputable or not.
 <% else %>
@@ -53,7 +53,7 @@ Total Surveys Counted: <%= @surveys_count %>
 
 
 </table>
-<p>*Note that survey listings are only recorded if the user reports that they only gave their Secure Email to <%= @website.url %></p>
+<p>*Note that survey listings are only recorded if the user reports that they only gave their Disposable Email to <%= @website.url %></p>
 
 <% else %>
 <p>There are no surveys for this website yet</p>

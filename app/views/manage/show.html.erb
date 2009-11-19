@@ -29,7 +29,7 @@
 
 <% if @type == "whymail" %>
 	<h3>Email Sent To: <%= current_user.email %></h3><br /><br />
-	<p>Secure Email Address: (<%= @whymail.email %>)</p><br /><br />
+	<p>Disposable Email Address: (<%= @whymail.email %>)</p><br /><br />
 
 
 
@@ -75,7 +75,7 @@
 	</table>
 
 
-	Delete This Secure Email Address: <%= @whymail.email %>? <button class = "ticket_delete_button" href = "<%= spam_survey_url(:whymail => @whymail.id) %>" 
+	Delete This Disposable Email Address: <%= @whymail.email %>? <button class = "ticket_delete_button" href = "<%= spam_survey_url(:whymail => @whymail.id) %>" 
 		rel = "index"  >Delete</button>
 
 <% else %>
@@ -124,7 +124,7 @@
 		</tfoot>
 	</table>
 
-	Delete This Secure Form? <%= button_to "Delete",form_path(@whymail.id,:method => "delete")  , :confirm => "Deleting this form will prevent anyone from sending you email from the form located at #{'http://www.whyspam.me/'+ @whymail.address }. Are you sure you wish to continue?" , :method => :delete, :class => "delete_button"  %>
+	Delete This Disposable Form? <%= button_to "Delete",form_path(@whymail.id,:method => "delete")  , :confirm => "Deleting this form will prevent anyone from sending you email from the form located at #{'http://www.whyspam.me/'+ @whymail.address }. Are you sure you wish to continue?" , :method => :delete, :class => "delete_button"  %>
 
 
 <% end %>

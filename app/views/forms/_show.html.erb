@@ -80,7 +80,7 @@
 <p>No form exists with this ID either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", {:action => "contact", :controller => "static"} %>.
 	<br />
 	<br />
-If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Secure Forms", new_form_path  %> link above, its the quickest way to make an anonymous form on the web.
+If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Disposable Forms", new_form_path  %> link above, its the quickest way to make an anonymous form on the web.
 <% else %>
 
 		<b> This form was created: <%= @form_data.created_at.strftime("%m/%d/%Y")%> </b>
