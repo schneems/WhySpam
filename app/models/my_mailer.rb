@@ -47,7 +47,7 @@ class MyMailer < ActionMailer::Base
   
   def forward(to_email, from_email, email, subject, message)
     @recipients   = to_email
-    @from         = from_email 
+    @from         = "auto_mailer@whyspam.me" 
     headers        "Reply-to" => from_email
     @subject      = subject
     @sent_on      = Time.now
