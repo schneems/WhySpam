@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/custom_1/jquery-ui-1.7.2.custom.css?1256619910 */
+
 /* @override http://localhost:3000/stylesheets/custom_1/jquery-ui-1.7.2.custom.css?1255900906 */
 
 /*
@@ -281,8 +283,8 @@
 .ui-corner-all { -moz-border-radius: 5px; -webkit-border-radius: 5px; }
 
 /* Overlays */
-.ui-widget-overlay { background: #000000 url(/images/custom_1/ui-bg_flat_0_000000_40x100.png) 50% 50% repeat-x; opacity: 0;filter:Alpha(Opacity=0); }
-.ui-widget-shadow { margin: -20px 0 0 -20px; padding: 20px; background: #000000 url(/images/custom_1/ui-bg_flat_50_000000_40x100.png) 50% 50% repeat-x; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 4px; -webkit-border-radius: 4px; }/* Accordion
+.ui-widget-overlay { background: #000000 url(/images/custom_1/ui-bg_flat_0_000000_40x100.png) 50% 50% repeat-x; opacity: .5;filter:Alpha(Opacity=0); }
+.ui-widget-shadow { margin: 20px 0 0 20px; padding: 20px; background: #000000 url(/images/custom_1/ui-bg_flat_50_000000_40x100.png) 50% 50% repeat-x; opacity: .60;filter:Alpha(Opacity=60); -moz-border-radius: 4px; -webkit-border-radius: 4px; }/* Accordion
 ----------------------------------*/
 .ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
 .ui-accordion .ui-accordion-li-fix { display: inline; }

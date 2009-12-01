@@ -10,7 +10,7 @@ development: &local
     whymail_email: thedickster@gmail.com
     session_count_error_small: "Try Again Later"
     session_count_error: "We don't spam you, please don't spam us.<br />  Relax, lay off for a while and try again later!"
-
+    thanks_for_reporting: "Thanks for reporting on this website"
     duplicate_email: "You already have an email on file for this website/email combo, btw"
     bad_captcha: "Please Try Copying the Text from the Image Again" 
     bad_email_small: "Bad Email, try Again"

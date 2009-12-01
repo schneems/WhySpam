@@ -5,7 +5,7 @@ class Website < ActiveRecord::Base
   validates_presence_of     :rank
   
   
-   attr_accessible :url, :grade, :rank
+   attr_accessible :url, :grade, :rank, :opt_out_count, :un_solicited_count, :sell_count, :vulgar_count, :give_out_count
   
 #  define_index do
 #    # indexes ##column in content
@@ -47,9 +47,14 @@ class Website < ActiveRecord::Base
        when 60..69 then "D"
        when 0..60 then "F"
     end
+    
     website.grade = result
     website.rank = rank
     website.save
+    
+    
+
+    
   end
   
 end

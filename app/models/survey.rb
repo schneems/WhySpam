@@ -15,7 +15,7 @@ class Survey < ActiveRecord::Base
   validates_presence_of     :website_id
   
   
-  def after_save
+  def after_create
     model = self
     model.add_up_surveys
   #  Notifications.deliver_comment("admin@do.com", "New comment was posted", comment)
@@ -28,6 +28,8 @@ class Survey < ActiveRecord::Base
   website = Website.find(:first, :include => :surveys, :conditions => ["id = ?", survey.website_id])  
   current_rank = website.rank || 100
   website.opt_out_count ||= 0
+
+  
   website.un_solicited_count ||= 0
   website.sell_count ||= 0
   website.vulgar_count ||= 0
@@ -45,6 +47,8 @@ class Survey < ActiveRecord::Base
   
   website.save
   website.calculate_rank_and_grade
+  
+
 
 end
 
