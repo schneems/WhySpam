@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>deploy_readme</string>
+	<string>app/views/manage/show.html.erb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -49,6 +49,48 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/controllers/manage_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>104</integer>
+				<key>line</key>
+				<integer>4</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>17</integer>
+		</dict>
+		<key>app/controllers/surveys_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>55</integer>
+				<key>line</key>
+				<integer>37</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>23</integer>
+		</dict>
+		<key>app/controllers/websites_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>27</integer>
+				<key>line</key>
+				<integer>10</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>6</integer>
+		</dict>
 		<key>app/models/forms.rb</key>
 		<dict>
 			<key>caret</key>
@@ -63,19 +105,35 @@
 			<key>firstVisibleLine</key>
 			<integer>15</integer>
 		</dict>
-		<key>app/models/website.rb</key>
+		<key>app/models/survey.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>5</integer>
+				<integer>19</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>15</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>19</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>19</integer>
+			</dict>
 		</dict>
 		<key>app/views/forms/_show.html.erb</key>
 		<dict>
@@ -162,6 +220,20 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>14</integer>
+		</dict>
+		<key>app/views/manage/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>2</integer>
+				<key>line</key>
+				<integer>53</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>43</integer>
 		</dict>
 		<key>app/views/static/about.html.erb</key>
 		<dict>
@@ -263,6 +335,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>app/views/websites/show.html.erb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>29</integer>
+				<key>line</key>
+				<integer>31</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>24</integer>
+		</dict>
 		<key>app/views/whymail/index.html.erb</key>
 		<dict>
 			<key>caret</key>
@@ -305,6 +391,36 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>config/config.yml</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>16</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>6</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>4</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>24</integer>
+				<key>line</key>
+				<integer>12</integer>
+			</dict>
+		</dict>
 		<key>config/database.yml</key>
 		<dict>
 			<key>caret</key>
@@ -332,6 +448,36 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>62</integer>
+		</dict>
+		<key>config/schedule.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>2</integer>
+			</dict>
 		</dict>
 		<key>db/migrate/20090923003235_create_permissions.rb</key>
 		<dict>
@@ -366,29 +512,29 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>187</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>26</integer>
 			</dict>
 			<key>columnSelection</key>
 			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>25</integer>
 			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>52</integer>
+				<integer>175</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>26</integer>
 			</dict>
 			<key>selectTo</key>
 			<dict>
 				<key>column</key>
-				<integer>0</integer>
+				<integer>187</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>26</integer>
 			</dict>
 		</dict>
 		<key>doc/plugins/rspec-rails-mocha/fr_method_index.html</key>
@@ -463,6 +609,34 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
+		<key>lib/getmail.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>5</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>lib/tasks/cleanup.rake</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>6</integer>
+				<key>line</key>
+				<integer>7</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>4</integer>
+		</dict>
 		<key>lib/tasks/deadweight.rake</key>
 		<dict>
 			<key>caret</key>
@@ -471,6 +645,50 @@
 				<integer>22</integer>
 				<key>line</key>
 				<integer>1</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>lib/tasks/getmail.rake</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>34</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<key>lib/tasks/metric_fu.rake</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>4</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -566,7 +784,7 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>line</key>
 				<integer>854</integer>
 			</dict>
@@ -603,19 +821,19 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>spec/models/ticket_spec.rb</key>
+		<key>spec/models/survey_spec.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>6</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>8</integer>
+				<integer>18</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>5</integer>
+			<integer>14</integer>
 		</dict>
 		<key>test/factories.rb</key>
 		<dict>
@@ -733,29 +951,24 @@
 	<key>openDocuments</key>
 	<array>
 		<string>deploy_readme</string>
-		<string>public/500.html</string>
-		<string>transcription.txt</string>
-		<string>app/views/static/about.html.erb</string>
-		<string>app/views/static/contribute.html.erb</string>
-		<string>app/views/static/privacy.html.erb</string>
-		<string>app/views/whymail/index.html.erb</string>
-		<string>app/views/forms/_show.html.erb</string>
-		<string>app/views/layouts/application.html.erb</string>
-		<string>app/views/layouts/_account_bar.html.erb</string>
-		<string>app/views/layouts/contacts.html.erb</string>
+		<string>app/controllers/surveys_controller.rb</string>
+		<string>app/models/survey.rb</string>
+		<string>lib/tasks/cleanup.rake</string>
+		<string>app/views/manage/show.html.erb</string>
+		<string>lib/getmail.rb</string>
+		<string>config/schedule.rb</string>
+		<string>lib/tasks/getmail.rake</string>
+		<string>lib/tasks/metric_fu.rake</string>
 		<string>lib/tasks/deadweight.rake</string>
-		<string>config/environment.rb</string>
-		<string>Capfile</string>
-		<string>spec/controllers/survey_controller_spec.rb</string>
-		<string>spec/models/ticket_spec.rb</string>
-		<string>app/views/user_sessions/new.html.erb</string>
-		<string>public/stylesheets/why.css</string>
-		<string>app/views/users/edit.html.erb</string>
-		<string>app/views/users/show.html.erb</string>
+		<string>config/config.yml</string>
+		<string>app/controllers/manage_controller.rb</string>
+		<string>app/views/websites/show.html.erb</string>
+		<string>app/controllers/websites_controller.rb</string>
+		<string>spec/models/survey_spec.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{384, 157}, {1068, 307}}</string>
+	<string>{{373, -5}, {1057, 314}}</string>
 </dict>
 </plist>

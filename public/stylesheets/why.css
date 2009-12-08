@@ -6,6 +6,7 @@
 	http://localhost:3000/stylesheets/cache/css.css?1258565418
 	http://localhost:3000/stylesheets/why.css?1258339364
 	http://localhost:3000/stylesheets/why.css?1258569287
+	http://localhost:3000/stylesheets/why.css?1258739717
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -18,6 +19,9 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-family: inherit;
   vertical-align: baseline;
 }
+
+
+
 body { line-height: 1.5; }
 table {
   border-collapse: separate;
@@ -940,8 +944,6 @@ input#captcha {
 	height: 2em;
 	
 }
-
-
 
 
 

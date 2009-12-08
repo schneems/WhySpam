@@ -33,7 +33,7 @@
 					<td class = "optional_td"><%= f.label "Website:" %><br />
 						<span class = "optional">Optional</span>
 						<%= link_to " (Why?)", {:action => "optional", :controller => "static"}, {:rel => "prettyPopin" } %>
-					<td><%= f.default_text_field :website, configatron.default_website  %></td>
+					<td><%= f.default_text_field :website, configatron.default_website_optional  %></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 			</table>

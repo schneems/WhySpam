@@ -48,8 +48,8 @@
 
 		<% @tickets.each do |ticket| %>
 		<!-- should render in dialog -->
-		<%= link_to "tix1", ticket_path(ticket.id) %>
-		<%= link_to_remote "tix", :url => ticket_path(2) , :method => 'get', :update => "partial_update", :loading => "$('#indicator').show();$('#partial_update').hide();", 
+		<%# link_to "tix1", ticket_path(ticket.id) %>
+		<%# link_to_remote "tix", :url => ticket_path(2) , :method => 'get', :update => "partial_update", :loading => "$('#indicator').show();$('#partial_update').hide();", 
 		:complete =>"$('#indicator').hide();$('#partial_update').show();$('#dialog').dialog('open');" %>
 		
 		<tr class="clickable" onclick = "$.ajax(

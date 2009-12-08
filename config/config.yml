@@ -25,6 +25,7 @@ development: &local
     invalid_form: "Invalid Form"
     
     default_website: "Example.com"
+    default_website_optional: "Example.com (Optional)"
     default_email: "Your Email Here"
     default_form_comment: "Leave A Description"
     
