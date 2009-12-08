@@ -68,6 +68,9 @@ describe WhymailController do
         post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' }        
         assigns[:secure_email].should == secure_email
         assigns[:extra_message].should == configatron.duplicate_email
+        post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' }        
+        assigns[:secure_email].should == secure_email
+        assigns[:extra_message].should == configatron.duplicate_email
     end 
     
     

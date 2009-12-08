@@ -23,12 +23,26 @@ describe MyMailer do
       @mail = mail_factory(:to_email => "blah.com", :from_email => "foo.com", :subject => "whatup", :body => "hey")
     end
     
-    it "should be able to create an account with no password" do
-      ## TODO write tests, make sure when the user resets the password, it doesn't default to emai
+    it "increment ticket count" do
       assert_difference "Ticket.count", 1 do
         MyMailer.receive(@mail)
       end
     end
+    
+    it "increment ticket count only if unique" do
+      assert_difference "Ticket.count", 1 do
+        MyMailer.receive(@mail)
+      end
+      assert_difference "Ticket.count", 0 do
+        MyMailer.receive(@mail)
+      end
+     # File.open("public/mailtest.txt", 'w')
+     
+    # File.open("mailtest-#{Time.now}.txt", 'a+') {|f| f.write(@mail) }
+    end
+    
+    
+    
   end
   
   describe "test forward_form" do

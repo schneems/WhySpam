@@ -26,6 +26,9 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
+    ## receiving strange duplicate emails, this is for debugging only, will only stay on the server for a few minutes and will be promptly removed
+    File.open("mailtest-#{Time.now}.txt", 'a+') {|f| f.write(email) }
+    
     from_email   = email.from[0]
     to_email     = email.to[0] 
     message      = email.body 
