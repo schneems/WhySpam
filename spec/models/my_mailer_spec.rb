@@ -17,10 +17,12 @@ describe MyMailer do
   end
     
         
+  include MailFixture
   
   describe "test receive" do
     before(:each) do
       @mail = mail_factory(:to_email => "blah.com", :from_email => "foo.com", :subject => "whatup", :body => "hey")
+      @bad_mail = read_fixture('bad-email-2')
     end
     
     it "increment ticket count" do
@@ -31,10 +33,10 @@ describe MyMailer do
     
     it "increment ticket count only if unique" do
       assert_difference "Ticket.count", 1 do
-        MyMailer.receive(@mail)
+        MyMailer.receive(@bad_mail)
       end
       assert_difference "Ticket.count", 0 do
-        MyMailer.receive(@mail)
+        MyMailer.receive(@bad_mail)
       end
      # File.open("public/mailtest.txt", 'w')
      
