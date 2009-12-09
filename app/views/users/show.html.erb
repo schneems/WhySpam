@@ -13,11 +13,12 @@
 
 
 
-
-<p>
-  <b>Last login at:</b>
-  <%=h @user.last_login_at.to_s(:long) %>
-</p>
+<% if @user.last_login_at %>
+	<p>
+	  <b>Last login at:</b>
+	  <%=h @user.last_login_at.to_s(:long) %>
+	</p>
+<% end %>
 
 <p>
   <b>Login count:</b>
