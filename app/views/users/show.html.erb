@@ -13,7 +13,7 @@
 
 
 
-<% if @user.last_login_at %>
+<% if !@user.last_login_at.nil? %>
 	<p>
 	  <b>Last login at:</b>
 	  <%=h @user.last_login_at.to_s(:long) %>
