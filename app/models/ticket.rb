@@ -15,14 +15,18 @@ class Ticket < ActiveRecord::Base
 
   
   def after_create
-      puts "========after_create==========="
-      puts self.id
-      puts self.valid?
+    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n ||========after_create===========||") }
+    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.to_email) }
+    
+    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.id.to_s) }
+    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.valid?.to_s) }
+    
+    
     if self.valid?
-      puts "==1=="
+      File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ "===1") }
        whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
       if !whymail.nil?
-        puts "==2=="
+        File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ "===2") }
         
        # self.whymail_id = whymail.id
        # self.save
@@ -30,7 +34,8 @@ class Ticket < ActiveRecord::Base
        self.update_attributes({"whymail_id" => whymail.id})
        
         if self.valid?
-          puts "==3=="
+          File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ "===3") }
+          
           
           MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body)        
         end

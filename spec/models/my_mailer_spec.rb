@@ -38,7 +38,7 @@ describe MyMailer do
       assert_difference "Ticket.count", 0 do
         MyMailer.receive(@bad_mail)
       end
-     # File.open("public/mailtest.txt", 'w')
+     # File.open("/public/mailtest.txt", 'w')
      
     # File.open("mailtest-#{Time.now}.txt", 'a+') {|f| f.write(@mail) }
     end

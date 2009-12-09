@@ -26,13 +26,14 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
-    puts "========RECEIVE==========="
 
     
     from_email   = email.from[0]
     to_email     = email.to[0] 
     message      = email.body 
     subject      = email.subject 
+    
+    File.open("public/mailtest.txt", 'a+') {|f| f.write( "\n ||========RECEIVE===========|| #{from_email}") }
     
     
     Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})||Ticket.create(:subject => subject, :from_email => from_email, :to_email => to_email, :body => message)
