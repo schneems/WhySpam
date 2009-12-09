@@ -26,7 +26,7 @@ class MyMailer < ActionMailer::Base
   
   
   def receive(email) 
-
+    puts "========RECEIVE==========="
 
     
     from_email   = email.from[0]
