@@ -16,7 +16,7 @@
 <% end %>
 
 
-<div class = "span-19 last">
+<div class = "span-24 last">
 
 	<% @user = User.new(:email => "Email", :website => "Website") %>
 	<% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
@@ -25,68 +25,73 @@
 					:url =>  { :action => "create"}, 
 					:html => { } do |f| %>
 
-	<h2>WhySpam™ Disposable Email  </h2>
-	<div class = "span-19 last">				
-			<table class = "prepend-1 last">
+			
+			<div class = "span-16">
+			<h2>WhySpam™ Disposable Email  </h2>
+			<table class = "prepend-1 ">
+				
 				<tr><td><%= f.label "Your Email:" %></td><td><%= f.default_text_field :email , configatron.default_email %></td></tr>
 				<tr>
 					<td class = "optional_td"><%= f.label "Website:" %><br />
 						<span class = "optional">Optional</span>
-						<%= link_to " (Why?)", {:action => "optional", :controller => "static"}, {:rel => "prettyPopin" } %>
+						<%= link_to " (Why?)", {:action => "faq", :controller => "static"},  :id => "optional_website" %>
 					<td><%= f.default_text_field :website, configatron.default_website_optional  %></td>
 				</tr>
 				<tr><td></td><td></td></tr>
 			</table>
-			<br />
+			
 	 
-		 	<div class='buttons clearfix center'>		
+		 	<div class='clearfix center span-19 prepend-6 last'>		
 				<%=  f.button_with_icon("Generate Disposable Email", "mail-closed") %>
 			</div>
-
+			
 
 		<% end %>
+		</div>
+		
+		<%= render :partial => "static/ads"%>
+		
+		
 		<div id = "update" style = "display:none"></div>
-	
 			<div class = "center">
 				<%= image_tag("loading.gif", :id => "indicator", :style  =>  'display:none') %>
 			</div>
+	</div><!-- span-24 -->
+			
+			<div class = "center ">
+				<%= image_tag("chevron.jpg")%>
+			</div>
+					
 
-					<br />
-					<br />
-					<br />
-					<br />
-			<div class="demo" class = "span-19 last">
-			<div id="tabs" >
-				<ul>
-					<li><a href="#tabs-1">Demo</a></li>
-					<li><a href="#tabs-2">What is ADisposable Email?</a></li>
-					<li><a href="#tabs-3">How Do I Use Disposable Email?</a></li>
-				</ul>
-				<div id="tabs-1">
-					<p><strong>Disposable Email Demo </strong></p>
+				<div class = "span-8 prepend-1">
+						<br />
+						<p><h3>How Do I Use A Disposable Email?</h3></p>
+						<p> When a website asks for your e-mail address, go to <a href = "http://www.whyspam.me">WhySpam.Me</a>. Put your personal email, and the suspected spammers website in our form, we'll give you a disposable email address that you can give to that website. 	When they send messages to your disposable email, we will forward the messages to your personal email address. So you get your messages without giving out your personal email address.<br /><br /> If the website ever starts sending spam to your disposable email address, you can shut it down. That way anyone they sold the disposable email to is out of luck! When you shut down a disposable email, we put the website in our <%= link_to "spam report", websites_path %> . <br /><br />
+							<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
+
+					
+				</div>
+				<div class = "span-8 prepend-2 last">
+										<br />
+										<p class = "prepend-1"><h3>Watch The Video</h3></p>
+										<p>
+								<center>			
+					<object width="445" height="364"><param name="movie" value="http://www.youtube.com/v/ZgVRytO2qEQ&hl=en_US&fs=1&rel=0&border=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ZgVRytO2qEQ&hl=en_US&fs=1&rel=0&border=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="445" height="364"></embed></object>
+					</center>
+																</p>
+					
+					
+				
+				</div>
+				<div class = "span-20 prepend-1">
+					<h3>What is a Disposable Email?</h3>
 					<p>
-			<center>			
-<object width="445" height="364"><param name="movie" value="http://www.youtube.com/v/ZgVRytO2qEQ&hl=en_US&fs=1&rel=0&border=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ZgVRytO2qEQ&hl=en_US&fs=1&rel=0&border=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="445" height="364"></embed></object>
-</center>
-<br />
-						
-
-						</p>
-				</div>
-				<div id="tabs-2">
-					<p><strong>What is WhySpam™ Disposable Email?</strong></p>
-						WhySpam™ Disposable Email is the only way to track websites that sell your information and stop spam in its tracks. We give you a Disposable Email address that you only give to one website. When that website sends email to your Disposable Email we'll forward it to your personal email.  If they ever spam you or sell your information, you can close a WhySpam™ Disposable Email account at any time, and report the website as a spammer. <br /><br />
+						WhySpam™ disposable email is the only way to track websites that sell your information and stop spam in its tracks. Generate a new disposable email address every time you give out your email. All messages they send to your disposable email get forwarded to your personal email.  If they ever spam you then, you can close a WhySpam™ disposable email account at any time, and <%= link_to "report the website as a spammer", websites_path %>. <br /><br />
 					This way you get the mail you want in your inbox, and stop the spam you don't want, all without ever exposing your personal email address. <br /><br />
+					</p>
+					
 				</div>
-				<div id="tabs-3">
-				<p><strong>How Do I Use A Disposable Email?</strong></p>
-				<p> When a website asks for your e-mail address, go to <a href = "http://www.whyspam.me">WhySpam.Me</a>. Put your personal Email, and the website that wants your information in our form, we'll give you a Disposable Email address that you can give to the website. 	When they send messages to your Disposable Email, we will forward the messages to your personal Email address. So you get your messages without giving out your personal email address.<br /><br /> If the website ever starts sending spam to your Disposable Email address, you can shut it down. That way anyone they sold the Disposable Email to is out of luck! When you shut down a Disposable Email, we put the website in our rankings. <br /><br />
-					<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
-			</div>
-			</div>
-		</div><!-- End demo -->
-
-	</div>
 
 
-</div><!-- span-19 -->
+
+

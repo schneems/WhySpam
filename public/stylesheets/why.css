@@ -7,6 +7,8 @@
 	http://localhost:3000/stylesheets/why.css?1258339364
 	http://localhost:3000/stylesheets/why.css?1258569287
 	http://localhost:3000/stylesheets/why.css?1258739717
+	http://localhost:3000/stylesheets/why.css?1259709701
+	http://localhost:3000/stylesheets/why.css?1260467954
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -633,6 +635,10 @@ form div.buttons { margin: 0 0 1.5em 15em; }
 	text-align: center;
 }
 
+.float_left {
+	float: left;
+}
+
 .float_right {
 	float: right;
 }
@@ -871,9 +877,10 @@ background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center top;
 }
 
 #inner-whitespace {
-	height: 100%;
-	padding: 5px;
+	width: 98%;
+	padding: 5px 0 0 5px;
 }
+
 
 
 

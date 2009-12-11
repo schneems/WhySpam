@@ -1,4 +1,7 @@
 class WhymailController < ApplicationController
+  layout "application-2"
+  
+  
   
   def index
   end

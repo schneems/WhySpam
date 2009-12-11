@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  layout "application", :except => [:test, :localtest]  
+  layout "application-2", :except => [:test, :localtest]  
 
   def about
 
