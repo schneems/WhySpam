@@ -5,7 +5,7 @@
 <h2>Frequently Asked Questions</h2>
 
 <ul class = "prepend-1">
-	<li><%= link_to "How Do I delete a Disposable Email?", :anchor => "delete" %></li>
+	<li><%= link_to "How Do I Delete a Disposable Email?", :anchor => "delete" %></li>
 	
 	<li><%= link_to "Why Don't I See Forwarded Messages in my Personal Inbox?", :anchor => "no_messages" %></li>
 	
@@ -45,6 +45,7 @@
 	If after sending yourself an email message, you still don't get anything forwarded to you please <%= link_to " contact us", {:action => "contact", :controller => "static"} %> and let us know your disposable email address. We will investigate why you aren't 
 	 receiving forwarded messages. 	
 	</p>
+	<hr />
 </div>
 
 <div id = "duplicate">
@@ -62,7 +63,6 @@
 
 <div id = "secure">
 	<h3>How Do I Know that my Information is Secure?</h3>
-	<hr />
 	
 	<p class = "prepend-1">
 	We will never send you unsolicited emails or sell your private information. Please review our <%= link_to "privacy policy", url_for(:action => "privacy", :controller => "static")  %>. In addition all of code is open source, so you can see exactly how mail goes from our servers to your inbox. If you're interested in adding new features or helping boost security. Check out the <a href="http://github.com/thinkbohemian/WhySpam">whyspam source code on github</a>.
