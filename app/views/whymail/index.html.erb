@@ -27,14 +27,15 @@
 
 			
 			<div class = "span-16">
-			<h2>WhySpam™ Disposable Email  </h2>
+			<h2>WhySpam™ Disposable Email</h2>
+
 			<table class = "prepend-1 ">
 				
 				<tr><td><%= f.label "Your Email:" %></td><td><%= f.default_text_field :email , configatron.default_email %></td></tr>
 				<tr>
 					<td class = "optional_td"><%= f.label "Website:" %><br />
 						<span class = "optional">Optional</span>
-						<%= link_to " (Why?)", {:action => "faq", :controller => "static"},  :id => "optional_website" %>
+						<%= link_to " (Why?)", {:action => "faq", :controller => "static", :anchor => "optional_website"} %>
 					<td><%= f.default_text_field :website, configatron.default_website_optional  %></td>
 				</tr>
 				<tr><td></td><td></td></tr>
@@ -51,10 +52,13 @@
 		
 		<%= render :partial => "static/ads"%>
 		
-		
-		<div id = "update" style = "display:none"></div>
+		<br />
+		<div id = "update" style = "display:none" class = "last"></div>
 			<div class = "center">
-				<%= image_tag("loading.gif", :id => "indicator", :style  =>  'display:none') %>
+				<div id = "indicator" style="display:none">
+					<hr />
+					<%= image_tag("loading.gif") %>
+				</div>
 			</div>
 	</div><!-- span-24 -->
 			
@@ -83,7 +87,7 @@
 					
 				
 				</div>
-				<div class = "span-20 prepend-1">
+				<div class = "span-17 prepend-1">
 					<h3>What is a Disposable Email?</h3>
 					<p>
 						WhySpam™ disposable email is the only way to track websites that sell your information and stop spam in its tracks. Generate a new disposable email address every time you give out your email. All messages they send to your disposable email get forwarded to your personal email.  If they ever spam you then, you can close a WhySpam™ disposable email account at any time, and <%= link_to "report the website as a spammer", websites_path %>. <br /><br />
@@ -91,7 +95,16 @@
 					</p>
 					
 				</div>
-
-
+				
+				<div class = "span-4 last">
+					<br />
+					<br />
+						<a href = "<%= url_for( :action => 'faq', :controller =>'static' ) %>"  class = "bottom_buttons inline-block center ui-state-default ui-corner-all  " id = "widget">
+							<h2>FAQ</h2><br /><br />
+							<h3>Frequently <br />Asked<br />Questions</h3>
+						</a>	
+						
+				
+				</div>
 
 

@@ -2,12 +2,108 @@
 	<%= render :partial => 'static/ads' %>
 </div>
 
-<br />
+<h2>Frequently Asked Questions</h2>
+
+<ul class = "prepend-1">
+	<li><%= link_to "How Do I delete a Disposable Email?", :anchor => "delete" %></li>
+	
+	<li><%= link_to "Why Don't I See Forwarded Messages in my Personal Inbox?", :anchor => "no_messages" %></li>
+	
+	<li><%= link_to "Why Do I Occasionally get Duplicate Messages?", :anchor => "duplicate" %></li>
+	
+	
+	<li><%= link_to "How Do I Know that my Information is Secure?", :anchor => "secure" %></li>
+	
+	<li><%= link_to "How Does Whyspam cover its costs?", :anchor => "money"%></li>
+	
+	<li><%= link_to "Why Do You Want a Website Address?", :anchor => "optional_website" %></li>
+</ul>
+
+<div id = "delete">
+	<h3>How Do I Delete a Disposable Email?</h3>
+	<hr />
+	<p class = "prepend-1">
+	
+	 <%= link_to 'Log in', login_path %> to your account and then click <%= link_to 'manage spam', manage_index_path %>. From there you can select the delete button on any of your disposable email accounts to remove that address from the face of the earth. After removing an address, you will never receive any forwarded messages from them ever again. 
+	</p>
+</div>
+
+
+<div id = "no_messages">
+	<h3>Why Don't I See Forwarded Messages in my Personal Inbox?</h3>
+	<hr />
+	<p class = "prepend-1">
+	This is extremely rare but possible that your mail server may not be accepting messages from whyspam.me. 
+	If you've given out a disposable email address and haven't seen any forwarded messages, first check to see if our server got the
+	message by <%= link_to 'logging in', login_path %>, and then going to <%= link_to 'manage spam', manage_index_path %>. From here you
+	 can check to see if you've received any emails.
+	<br /><br />
+	If you see that we got the message but it was not forwarded to your inbox, check your spam folder on  your personal account. If you
+	 still cannot find the email send yourself a quick test email to your disposable address. Make sure to put in a subject and a message
+	 in the body so it doesn't get tagged by your mail server as spam. 
+	<br /><br />
+	If after sending yourself an email message, you still don't get anything forwarded to you please <%= link_to " contact us", {:action => "contact", :controller => "static"} %> and let us know your disposable email address. We will investigate why you aren't 
+	 receiving forwarded messages. 	
+	</p>
+</div>
+
+<div id = "duplicate">
+	<h3>Why Do I Occasionally get Duplicate Messages?</h3>
+	<p class = "prepend-1">
+	If you ever get a duplicate email please <%= link_to " contact us", {:action => "contact", :controller => "static"} %>. This is a known yet intermittent issue, and we haven't seen any repeatable trends in reproducing this action. If you can let us know approximately when you received the message and who it was from we can check our server logs and hopefully soon we will have a fix for this issue. 
+	<br /><br />
+	First reported December 12, 2009. Current Status: In Work. Reported Instances: 2
+	
+	</p>
+	<hr />
+	
+</div>
+
+
+<div id = "secure">
+	<h3>How Do I Know that my Information is Secure?</h3>
+	<hr />
+	
+	<p class = "prepend-1">
+	We will never send you unsolicited emails or sell your private information. Please review our <%= link_to "privacy policy", url_for(:action => "privacy", :controller => "static")  %>. In addition all of code is open source, so you can see exactly how mail goes from our servers to your inbox. If you're interested in adding new features or helping boost security. Check out the <a href="http://github.com/thinkbohemian/WhySpam">whyspam source code on github</a>.
+	</p>
+</div>
+
+<div id = "secure">
+	<h3>How Do I Know Whyspam Won't Sell my Information?</h3>
+	<hr />
+	
+	<p class = "prepend-1">
+	Even though that would defeat the whole purpose of the site, it is good that users are wary of giving their email to anyone. The only way we will continue to receive repeat users is by providing quality spam tools with great user experiences. We rely on word of mouth instead of an expensive advertising budget, so we can't afford to have people bad mouthing our service. Don't believe it? Generate a disposable email address and don't give it to anyone, you shouldn't receive any messages...it's that simple. 
+	<br />
+	<br />
+	Sure its possible spammers could foil this test by sending out messages to every email @whyspam.me but they would have to send out every letter-number A-Z and 0-9 for twenty characters thats 20 to the power of 36 which is 13,367,494,500,000,000,000,000,000,000,000 possible combinations just to find your single disposable email. We're not saying it's not possible...just that its really not very economical for them. 
+	<br /><br />
+	If you're wondering how we can afford to do what we do check out: <%= link_to "How Does Whyspam cover its costs?", :anchor => "money"%>
+</p>
+</div>
+
+<div id = "money">
+	<h3>How Does Whyspam cover its costs?</h3>
+	<hr />
+	
+	<p class = "prepend-1">
+	 We pay for our costs with non-invasive and small text ads. We're always looking for new tools to develop and maybe one of them could be commercialized. We may find ways to add premium content for a small fee but disposable email and forms will always be free. If you have any suggestions please <%= link_to " contact us", {:action => "contact", :controller => "static"} %>, or submit feedback with the widget on the left. 
+	<br /><br />
+	All spam reports will be audited for free from time-to-time to ensure no one is abusing the system. If a company or individual wishes for a more frequent spam audit you can <%= link_to " contact us", {:action => "contact", :controller => "static"} %>. 
+	</p>
+</div>
+
+
 
 <div id = "optional_website">
-	<h3>Why Do I Need to give you a Website?</h3>
-	When you tell us the website you plan on giving this Disposable Email address to, then we can keep track of 
-	the websites that spam, and the websites that don't. 
+	
+	<h3>Why Do You Want a Website Address?</h3>
+	<hr />
+	
+	<p class = "prepend-1">
+	When you tell us the website you plan on giving this disposable email address to, then we can keep track of 
+	the websites that spam, and the websites that don't with our <%= link_to "spam report", websites_path %>. 
 	<br />
 	<br />
 	For example, if you give your disposable email address to www.SketchyWebsite.com, and nobody else, and you start getting spam
@@ -17,4 +113,5 @@
 	So to get the most out of <a href = "http://www.whyspam.me">WhySpam.Me</a>, generate a new Disposable Email instead of sharing
 	your personal email account every time you need to give out your address. We'll expose the websites that sell your information, 
 	while keeping your personal email safe.
+	</p>
 </div>

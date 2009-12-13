@@ -11,10 +11,17 @@
 Make Button Remote
 
 -->
-<div id = "new_spamfire_wrapper">
-			<textarea id = "no_spam" class = "center" cols="32" rows="1" 
+<div id = "new_spamfire_wrapper" class = "response">
+		<textarea id = "no_spam" class = "center" cols="32" rows="1" 
 			readonly onclick="this.focus(); this.select();" style = ""><%= @secure_email -%><%= @extra_message.to_s %></textarea>
 
 		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website, :email => @email } , {:id => "spamfire_button"}-%>
 		
+		<p class="center"><%= link_to "log in", login_path %>  to manage your disposable emails </p>
+		
+</div>
+
+<div class = "envelope">
+	
+<%= link_to image_tag( "envelope.png") , home_path %>
 </div>

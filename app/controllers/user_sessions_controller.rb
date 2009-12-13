@@ -12,8 +12,9 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:success] = "You are now logged in."
-      flash[:notice] = "To help prevent unauthorized use please change your password by clicking '<%= link_to 'Account', account_path %>' " if params[:user_session][:email] == params[:user_session][:password]
-      redirect_back_or_default root_path
+     flash[:notice] = "#{@template.link_to('To help prevent unauthorized use please change your password by clicking Account', account_path)}" if params[:user_session][:email] == params[:user_session][:password]
+     
+      redirect_to :action => "index", :controller => "manage"
     else
       render :action => :new
     end

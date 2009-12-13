@@ -17,7 +17,6 @@ class Ticket < ActiveRecord::Base
   def after_create
     
     File.open("public/mailtest.txt", 'a+') {|f| f.write("\n ||========after_create===========||") }
-    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.to_email) }
     
     File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.id.to_s) }
     File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.valid?.to_s) }

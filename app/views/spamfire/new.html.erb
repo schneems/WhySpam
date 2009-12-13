@@ -4,7 +4,7 @@
 
 </style>
 
-<div id = "new_spamfire_wrapper">
+<div id = "new_spamfire_wrapper" class = "span-4">
   <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
 			:url =>  { :action => "create"}, 
 			:html => { } do |f| %>			
@@ -19,7 +19,10 @@
 			<%= error_messages_for :user %>
 </div>
 
-
+<div class = "envelope">
+	
+<%= link_to image_tag( "envelope.png") , home_path %>
+</div>
 
 <center>
 	<%= image_tag("loading.gif",

@@ -15,7 +15,9 @@
 		
 		<br />
 		<a href = "http://www.thinkbohemian.com">©<%= Date.today.year %> Think Bohemian</a>
-		<%= link_to "Privacy", url_for(:action => "privacy", :controller => "static")  %>
-		 |<%= link_to "About", url_for(:action => "about", :controller => "static")  %>
+		 |<%= link_to " Privacy", url_for(:action => "privacy", :controller => "static")  %>
+		 |<%= link_to " About", url_for(:action => "about", :controller => "static")  %>
 		 |<%= link_to " Contact ", {:action => "contact", :controller => "static"} %>
+		 |<%= link_to " FAQ ", {:action => "faq", :controller => "static"} %>
+		
 </div>

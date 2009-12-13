@@ -19,22 +19,24 @@
 <% end %>
 
 
-<div class = "center">
+
+<div class = "span-23 last">
+
+
+
+<div class= "center">
+<div class = "span-23 last">
 <b>Manage:</b>
 <%= link_to "Account Settings", user_path(current_user) %> 
+<hr />
+
+</div>
 </div>
 
-<hr />
-<br />
-
-<div id = "manage_mail">
+<div id = "manage_mail" class = "span-18">
 <h3>WhySpam.me Disposable Email Addresses</h3><br />
-<hr />
-
-<br />
-<br />
 <% if !@whymails.nil? && !@whymails.empty? %>
-<div class = "prepend-1">
+<div class = "">
 	<table  cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable_whymails">
 		<thead>
 			<tr>
@@ -85,14 +87,14 @@
 <p>You Have no Disposable Email Addresses for this Account</p>
 
 <% end %>
+</div>
+<%= render :partial => 'static/ads' %>
 
+<div id = "manage_mail" class = "span-18">
 <h3>WhySpam.me Disposable Forms</h3><br />
-<hr />
 
-<br />
-<br />
 
-<div class = "prepend-1">
+<div class = "">
 
 <% if  !@forms.nil? && !@forms.empty? %>
 
@@ -147,7 +149,9 @@
 
 
 
+<%= render :partial => 'static/ads' %>
 
 
 
 	
+</div>

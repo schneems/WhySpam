@@ -16,25 +16,23 @@
 <% end %>
 
 
-<div class = "center">
+<div class = "span-23 last">
+
+<div class= "center">
+<div class = "span-23 last">
 <b>Manage:</b>
 <%= link_to "Account Settings", user_path(current_user) %> 
+<hr />
+
+</div>
 </div>
 
-<hr />
-<br />
 
-
-
+<div class = "span-18">
 
 <% if @type == "whymail" %>
-	<h3>Email Sent To: <%= current_user.email %></h3><br /><br />
-	<p>Disposable Email Address: (<%= @whymail.email %>)</p><br /><br />
-
-
-
-
-
+	<h3>Email Sent To: <%= current_user.email %></h3>
+	<p>Disposable Email Address: (<%= @whymail.email %>)</p>
 	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
 		<thead>
 			<tr>
@@ -73,15 +71,25 @@
 			</tr>
 		</tfoot>
 	</table>
+</div>
+
+<%= render :partial => 'static/ads' %>
 
 
-	Delete This Disposable Email Address: <%= @whymail.email %>? <button class = "ticket_delete_button" href = "<%= spam_survey_url(:whymail => @whymail.id) %>" 
+<p >
+	<hr />
+	Delete This Disposable Email Address: <%= @whymail.email %> ? <button class = "ticket_delete_button" href = "<%= spam_survey_url(:whymail => @whymail.id) %>" 
 		rel = "index"  >Delete</button>
-
+	<hr />
+</p>	
+		
+		
+		
 <% else %>
+<div class = "span-18">
 
-	<h3>Email Sent To: <%= current_user.email %></h3><br /><br />
-	<p>Secure form: www.whyspam.me/forms/<%= @whymail.address %></p><br /><br />
+	<h3>Email Sent To: <%= current_user.email %></h3>
+	<p>Secure form: www.whyspam.me/forms/<%= @whymail.address %></p>
 
 	<script type="text/javascript">
 			$("tr[rel^='prettyPopin']").prettyPopin();
@@ -123,8 +131,20 @@
 			</tr>
 		</tfoot>
 	</table>
+	
+	</div>
+	<%= render :partial => 'static/ads' %>
+
+
+	<p>
+		<hr />
 
 	Delete This Disposable Form? <%= button_to "Delete",form_path(@whymail.id,:method => "delete")  , :confirm => "Deleting this form will prevent anyone from sending you email from the form located at #{'http://www.whyspam.me/'+ @whymail.address }. Are you sure you wish to continue?" , :method => :delete, :class => "delete_button"  %>
+		<hr />
+	</p>
 
 
 <% end %>
+
+
+</div>

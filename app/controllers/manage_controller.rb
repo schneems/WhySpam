@@ -1,4 +1,8 @@
 class ManageController < ApplicationController
+   layout "application-2"
+   
+   
+   
    
   def index
      if current_user 

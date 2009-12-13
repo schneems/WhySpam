@@ -9,6 +9,7 @@
 	http://localhost:3000/stylesheets/why.css?1258739717
 	http://localhost:3000/stylesheets/why.css?1259709701
 	http://localhost:3000/stylesheets/why.css?1260467954
+	http://localhost:3000/stylesheets/why.css?1260505614
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -639,6 +640,14 @@ form div.buttons { margin: 0 0 1.5em 15em; }
 	float: left;
 }
 
+.indent, .indent-1 {
+ padding: 0 20px 0 20px;
+}
+
+.indent-2{
+	padding-left: 40px;
+}
+
 .float_right {
 	float: right;
 }
@@ -955,3 +964,8 @@ input#captcha {
 
 
 
+
+#no_messages, 
+#delete {
+	clear: both;
+}

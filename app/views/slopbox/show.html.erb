@@ -1,3 +1,24 @@
+<% content_for :html_head do %>
+	<%= stylesheet_link_tag 'demo_page.css' %> 
+	<%= stylesheet_link_tag 'demo_table_jui.css' %> 
+	<%= javascript_include_tag 'jquery.dataTables.min.js' %>
+	
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			window.myboolean = false ;
+			oTable = $('#dataTable_whymails, #dataTable_forms').dataTable({
+				"bJQueryUI": true,
+				"sPaginationType": "full_numbers"
+			});			
+			
+		} );
+	</script>
+
+	<% end %>
+
+
+
 	<h3>Slop Sent To: <%= @to_email %></h3><br /><br />
 
 	<script type="text/javascript">
@@ -5,7 +26,7 @@
 	</script>
 
 
-	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable">
+	<table cellpadding="0" cellspacing="0" border="0" class="display" id="dataTable_whymails">
 		<thead>
 			<tr>
 				<th>From</th>
