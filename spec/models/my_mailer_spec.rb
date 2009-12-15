@@ -11,7 +11,7 @@ describe MyMailer do
     it "should send emails to a valid form" do
      # Whymail.stubs(:find).returns(@whymail)
       @mail =  MyMailer.create_forward("testing@example.com", "foo@example.com", "asdf@whyspam.me", "subject", "message")
-      @mail.from.first.should == "auto_mailer@whyspam.me"
+      @mail.from.first.should == "example.com@whyspam.me"
       @mail.to.first.should == "testing@example.com"
     end
   end

@@ -52,9 +52,15 @@ class MyMailer < ActionMailer::Base
  #end
  
   
+  
+  
+  include Cleanurl
+  
   def forward(to_email, from_email, email, subject, message)
+    
+    
     @recipients   = to_email
-    @from         = "auto_mailer@whyspam.me" 
+    @from         = find_from_url(from_email)+"@whyspam.me" 
     headers        "Reply-to" => from_email
     @subject      = subject
     @sent_on      = Time.now
