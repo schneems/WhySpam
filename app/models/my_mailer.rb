@@ -60,7 +60,8 @@ class MyMailer < ActionMailer::Base
     
     
     @recipients   = to_email
-    @from         = find_from_url(from_email)+"@whyspam.me" 
+   # @from         = find_from_url(from_email)+"@whyspam.me" 
+    @from         = "auto_mailer@whyspam.me" 
     headers        "Reply-to" => from_email
     @subject      = subject
     @sent_on      = Time.now
