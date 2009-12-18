@@ -90,7 +90,7 @@ class MyMailer < ActionMailer::Base
     @recipients   = to_email
     @from         = "omfgsomethingwentwrong@whyspam.me" 
     headers         "Reply-to" => "omfgsomethingwentwrong@whyspam.me"
-    @subject      = "Hey Admin, do some Administering"
+    @subject      = "Hey Admin, do something"
     @sent_on      = Time.now
     @content_type = "text/html"
   end
