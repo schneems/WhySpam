@@ -23,7 +23,7 @@ development: &local
     no_message: "Please enter in a Message to Send"
     form_send_success: "Your message was forwarded to the creator of this form, thanks for using WhySpam.me !!"
     invalid_form: "Invalid Form"
-    
+    admin_sms: "3344621587@vtext.com"
     default_website: "Example.com"
     default_website_optional: "Example.com (Optional)"
     default_email: "Your Email Here"

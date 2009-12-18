@@ -3,24 +3,131 @@
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <%= html_title configatron.site_name %>
-    <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %> 
-    <%= stylesheet_link_tag 'print.css', :media => 'print' %>
-    <!--[if lt IE 8]><%= stylesheet_link_tag 'ie.css', :media => "screen, projection" %><![endif]-->
-    
-    <%= javascript_include_tag :defaults %>
-    <%= active_scaffold_includes %>
+
+	<%# bundle :name => "css" do %>
+    	<%# stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
+    	<%= stylesheet_link_tag 'custom_1/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
+	<%# end %>
+	
+	
+
     <%= stylesheet_link_tag 'active_scaffold_overrides.css' %> 
   </head>
 
   <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
-    <%= render :partial => 'layouts/account_bar' %>
-    <%= render :partial => 'layouts/header' %>
-    <div id='content' class='clearfix'>
-      <div id="admin_nav">
-        <%= render :partial => 'admin/navigation' %>
-      </div>
-  	  <%= yield %>
-    </div>
+	<div id = "content_wrapper" >
+		<div id="dialog">
+			<div id = "partial_update"></div>
+		</div><!-- dialog -->
+
+		<div class = "container">
+		    <%= render :partial => 'layouts/account_bar' %>
+		</div><!-- container -->
+
+	    <div id='whitespace' class='container clearfix'>
+
+			<div class = "span-24 last">
+
+			<div id = "inner-whitespace" class = "span-24 last">
+			    <%= display_flash %>
+			<%= render :partial => 'admin/navigation'%>
+				   	  <%= yield %>
+
+			</div><!-- inner-whitespace -->
+			</div><!-- span-24 last -->
+
+	    </div><!-- whitespace -->
+<br />
+<br />
+
+	<%= render :partial => 'layouts/bottom_buttons'%>
+
+</div><!-- content_wrapper -->
+
+<br />
     <%= render :partial => 'layouts/footer' %>
+
+
+
+    <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' %>
+    <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.min.js' %>
+
+
+
+			<script type="text/javascript">
+				var Header = {
+					// Let's write in JSON to make it more modular
+					addFade : function(selector){
+						$("<span class=\"fake-hover\"></span>").css("display", "none").prependTo($(selector)); 
+						// Safari dislikes hide() for some reason
+						$(selector+" a").bind("mouseenter",function(){
+							$(selector+" .fake-hover").fadeIn("slow");
+						});
+						$(selector+" a").bind("mouseleave",function(){
+							$(selector+" .fake-hover").hide();
+						});
+					}
+				};
+
+				$(function(){
+					Header.addFade("#header");
+				});
+				$(function() {
+						$('.ui-state-default').hover(
+							function() { $(this).addClass('ui-state-hover'); }, 
+							function() { $(this).removeClass('ui-state-hover'); }						
+						);
+						$('.nav-button').hover(
+							function() { $(this).addClass('on'); }, 
+							function() { $(this).removeClass('on'); }						
+						);
+						$('#dialog').dialog({
+							autoOpen: false,
+							modal: true ,
+							resizable: false,
+							show: 'scale' ,
+							bgiframe: true,
+							width: 600
+						});
+						$('#dialog_link').click(function(){
+							$('#dialog').dialog('open');
+							return false;
+						});				
+					});	
+			</script>
+
+
+
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-5070471-4");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+		<script type="text/javascript">
+		  var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
+		  document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
+		</script>
+		<script type="text/javascript">
+		UserVoice.Tab.show({ 
+		  key: 'whyspam',
+		  host: 'whyspam.uservoice.com', 
+		  forum: 'general', 
+		  alignment: 'left',
+		  background_color:'#f00', 
+		  text_color: 'white',
+		  hover_color: '#06C',
+		  lang: 'en'
+		})
+		</script>
+
+
+		<%= yield :html_head %>
+
+
   </body>
 </html>

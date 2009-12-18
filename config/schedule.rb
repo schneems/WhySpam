@@ -9,5 +9,7 @@ every 30.minutes do
 end
 
 
-
+every 6.hours do
+  rake "cleanup:slopbox"
+end
 

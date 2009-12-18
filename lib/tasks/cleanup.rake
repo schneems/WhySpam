@@ -1,7 +1,19 @@
 namespace :cleanup do 
-  
-  
-# mailbox:check
+
+
+  desc "cleans out slop box over 24 hours old"
+    task :slopbox => :environment do
+      tickets = Ticket.find(:all, :conditions => {:whymail_id => nil })
+      
+      tickets.each do |ticket|
+        if ticket.created_at > Time.now + 24.hours
+          ticket.delete
+        end
+      end
+      
+    end
+    
+    
 # cleanup:survey_calculations  
   
   desc "re-calculates all surveys"

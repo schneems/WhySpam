@@ -78,8 +78,8 @@ class MyMailer < ActionMailer::Base
   
   def sample(to_email)
     @recipients   = to_email
-    @from         = "ArubyOnRailsProcess@mycomputer.com" 
-    headers         "Reply-to" => "ArubyOnRailsProcess@mycomputer.com"
+    @from         = "canary@whyspam.me" 
+    headers         "Reply-to" => "canary@whyspam.me"
     @subject      = "This is a subject line someone would send"
     @sent_on      = Time.now
     @content_type = "text/html"
