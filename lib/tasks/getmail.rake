@@ -11,6 +11,8 @@ namespace :mailbox do
 
             fetcher = Fetcher.create({:receiver => MyMailer}.merge(config))
             fetcher.fetch
+            puts "Fetcher Created"
+            
           end
         rescue Lockfile::MaxTriesLockError => e
           puts "Another fetcher is already running. Exiting."
