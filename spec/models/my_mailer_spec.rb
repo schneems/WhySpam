@@ -11,7 +11,7 @@ describe MyMailer do
     it "should send emails to a valid form" do
      # Whymail.stubs(:find).returns(@whymail)
       @mail =  MyMailer.create_forward("testing@example.com", "foo@example.com", "asdf@whyspam.me", "subject", "message")
-      @mail.from.first.should == "foo_at_example.com@whyspam.me"
+      @mail.from.first.should == "foo-AT-example-DOT-com@whyspam.me"
       @mail.to.first.should == "testing@example.com"
     end
   end
@@ -38,6 +38,7 @@ describe MyMailer do
       assert_difference "Ticket.count", 0 do
         MyMailer.receive(@bad_mail)
       end
+      
      # File.open("/public/mailtest.txt", 'w')
      
     # File.open("mailtest-#{Time.now}.txt", 'a+') {|f| f.write(@mail) }

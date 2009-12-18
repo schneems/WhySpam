@@ -34,6 +34,7 @@ namespace :mailbox do
           ticket = Ticket.find(:first, :conditions => {:from_email => "canary@whyspam.me", :to_email => testmail, :subject => "This is a subject line someone would send"})
           ticket.delete
         rescue
+          puts "there was an error"
           MyMailer.deliver_warning(configatron.admin_email)
           MyMailer.deliver_warning(configatron.admin_sms)
         end

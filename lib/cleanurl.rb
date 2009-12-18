@@ -2,7 +2,8 @@ module Cleanurl
 ##   http://dynamic.boingboing.net/cgi-bin/mt/mt-cp.cgi?__mode=register&blog_id=1&return_to=http%3A%2F%2Fboingboing.net%2F
   def find_from_url(address)
     if !address.nil?
-      address = address.gsub(/@/, '_at_') ## removes www
+      address = address.gsub(/@/, '-AT-') ## removes www
+      address = address.gsub(/[.]/, '-DOT-') ## removes www
       
   #    address = /\@(.)+/.match(address)[0]
   #    address = address[1,address.size]    
