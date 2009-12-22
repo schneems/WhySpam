@@ -1,20 +1,24 @@
-Site is currently in a fullly operational beta!!
+Site is currently in a fully operational beta!!
 
-== Welcome to Whyspam Me
+==== Whyspam Me ===
+ 
+Whyspam Me is a spam accountability and email anonymizing application originally written by Richard Schneeman.
 
-Do you like spam? 
+For more information on what that means go to http://www.whyspam.me and watch our video. 
 
-Didn't think so...
+Our main defense against spammers is the disposable email system. A user gives our web-app an email, and gets a disposable email back. The user then gives that disposable email out to websites and we can track who spams and who doesn't without the user ever risking personal information. 
 
-WhySpam is an opensource set of tools online tools to fight spam. Plain an simple. If you care about fighting spam, and saving pandas, then download the code, replace config/database.yml, config/environments/development.rb, and config/mailer_daemon.yml
- and you're up and running.
 
- To start using the mail fetcher, run:
 
-sudo god -c ./config/fetcher-daemon.god -D
+==== Application  Flow ====
+When a user fills out the form on the index page, a user object is created where the user name is random, the login is the personal email address and the password is the personal email address. This user object is then assigned a Whymail object that contains a disposable email. When someone sends that disposable email a message it gets received by servers running running postfix and courier on a Ubuntu.
 
-Then start your server: script/server
+Every so often the Whyspam application get the emails into my application by running:
 
-Navigate to http://localhost:3000 and read the directions, if you have any comments, thoughts, or criticisms...let me know. I need all sorts of help. From wording, and images, basic layout, to optimizing code, security, and maybe a little therapy. 
+rake mailbox:check
 
+This creates a fetcher daemon and makes sure the daemon is re-spawned if ever killed. Once the email is in the web-app the email object is sent to the receive method of the MyMailer model and a new ticket is created. This will fire the after_create callback for the ticket, which checks to see if there is a User that has a Whymail object that has the same disposable email. If that ticket has an associated Whymail address (disposable email address), then the body and subject are forwarded to the private personal user's inbox. 
+
+
+If you are interested in helping out please visit http://whyspam.me/static/contribute or you can send us a message at http://whyspam.me/static/contact.
 

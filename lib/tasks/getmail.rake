@@ -31,7 +31,7 @@ namespace :mailbox do
           ticket.destroy
         end
         MyMailer.deliver_sample(testmail)
-        sleep 180
+        sleep 300
         begin
           ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => testmail, :subject => subject})
           ticket.delete
