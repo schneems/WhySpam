@@ -58,8 +58,9 @@ module Fetcher
     
     # Store the message for inspection if the receiver errors
     def handle_bogus_message(message)
-      create_mailbox(@error_folder)
-      @connection.append(@error_folder, message)
+     # create_mailbox(@error_folder)
+     # @connection.append(@error_folder, message)
+     # if bogus message, do nothing
     end
     
     # Delete messages and log out

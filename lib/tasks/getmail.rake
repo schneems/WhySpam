@@ -24,14 +24,16 @@ namespace :mailbox do
     desc "checks to see if everything is working"
       task :isworking => :environment do
         testmail = "thisisatestmailboxforwhyspammeyeahthtatsawesome@whyspam.me"
-        tickets = Ticket.find(:all, :conditions => {:from_email => "canary@whyspam.me", :to_email => testmail, :subject => "This is a subject line someone would send"})
+        subject = "This is a subject line someone would send"
+        from_email = "canary@whyspam.me"
+        tickets = Ticket.find(:all, :conditions => {:from_email => from_email, :to_email => testmail, :subject => subject})
         tickets.each do |ticket|
           ticket.destroy
         end
         MyMailer.deliver_sample(testmail)
         sleep 180
         begin
-          ticket = Ticket.find(:first, :conditions => {:from_email => "canary@whyspam.me", :to_email => testmail, :subject => "This is a subject line someone would send"})
+          ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => testmail, :subject => subject})
           ticket.delete
         rescue
           puts "there was an error"

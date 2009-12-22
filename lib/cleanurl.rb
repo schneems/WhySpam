@@ -4,7 +4,6 @@ module Cleanurl
     if !address.nil?
       address = address.gsub(/@/, '-AT-') ## removes www
       address = address.gsub(/[.]/, '-DOT-') ## removes www
-      
   #    address = /\@(.)+/.match(address)[0]
   #    address = address[1,address.size]    
     end

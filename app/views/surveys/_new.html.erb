@@ -9,7 +9,7 @@ This is the last step before you block all spam coming from <%= @whymail.email %
 
 <% form_for :survey, :url => {:action => 'create', :controller => 'surveys', :whymail => @whymail.id}  do |f| -%> 
 
-<%= f.submit "No Thanks, Just Block This Forwarding account" %>
+<%= f.submit "Just Delete this Account" %>
 
 
 <% end %>
@@ -59,7 +59,7 @@ This is the last step before you block all spam coming from <%= @whymail.email %
 <%=  f.hidden_field :email, :value => @whymail.email %>
 <%= f.hidden_field :user_id, :value => current_user %> 
 
-<%= f.submit "Report & Block This Spamer" , :id => "survey_submit_2"%>
+<%= f.submit " Delete this Account and Submit Survey" , :id => "survey_submit_2"%>
 <% end %>
 
 <% else %>
