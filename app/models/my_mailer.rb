@@ -87,13 +87,13 @@ class MyMailer < ActionMailer::Base
   end
   
   
-  def warning(to_email)
+  def warning(to_email, message)
     @recipients   = to_email
     @from         = "omfgsomethingwentwrong@whyspam.me" 
     headers         "Reply-to" => "omfgsomethingwentwrong@whyspam.me"
     @subject      = "Hey Admin, do something"
     @sent_on      = Time.now
-    @content_type = "text/html"
+    body[:message] = message
   end
   
 

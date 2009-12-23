@@ -34,12 +34,20 @@ namespace :mailbox do
         sleep 300
         begin
           ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => testmail, :subject => subject})
+        rescue
+          msg = "Error on Ticket.find: \n" + ticket.class
+          MyMailer.deliver_warning(configatron.admin_email, msg)
+          MyMailer.deliver_warning(configatron.admin_sms, msg)
+        end
+        
+        begin
           ticket.delete
         rescue
-          puts "there was an error"
-          MyMailer.deliver_warning(configatron.admin_email)
-          MyMailer.deliver_warning(configatron.admin_sms)
+          msg = "error on ticket.delete: \n"+ ticket.class
+          MyMailer.deliver_warning(configatron.admin_email, msg )
+          MyMailer.deliver_warning(configatron.admin_sms, msg)
         end
+        
       end
     
     

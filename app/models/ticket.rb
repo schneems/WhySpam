@@ -14,29 +14,16 @@ class Ticket < ActiveRecord::Base
   
 
   
-  def after_create
-    
-    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n ||========after_create===========||") }
-    
-    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.id.to_s) }
-    File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ self.valid?.to_s) }
-    
-    
+  def after_create    
+    # sleeps added due to possible race condition, evaluating permanent database fix
     if self.valid?
-      File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ "===1") }
        whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
+       sleep 1  
       if !whymail.nil?
-        File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ "===2") }
-        
-       # self.whymail_id = whymail.id
-       # self.save
-       
        self.update_attributes({"whymail_id" => whymail.id})
-       
+       sleep 1
         if self.valid?
-          File.open("public/mailtest.txt", 'a+') {|f| f.write("\n"+ "===3") }
-          
-          
+          sleep 1
           MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body)        
         end
       end
