@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090923003235) do
+ActiveRecord::Schema.define(:version => 20091223193335) do
 
   create_table "forms", :force => true do |t|
     t.text     "comments"
@@ -53,7 +53,11 @@ ActiveRecord::Schema.define(:version => 20090923003235) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "forms_id"
+    t.string   "body_hash"
   end
+
+  add_index "tickets", ["to_email", "body", "from_email"], :name => "index_tickets_on_to_email_and_body_and_from_email", :unique => true, :limit => {"body"=>"255", "to_email"=>"255", "from_email"=>"255"}
+  add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
 
   create_table "users", :force => true do |t|
     t.datetime "created_at"
@@ -74,11 +78,11 @@ ActiveRecord::Schema.define(:version => 20090923003235) do
     t.boolean  "admin",             :default => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at"
-  add_index "users", ["login"], :name => "index_users_on_login"
-  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
-  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
+  add_index "users", ["email"], :name => "index_users_on_email", :limit => {"email"=>nil}
+  add_index "users", ["last_request_at"], :name => "index_users_on_last_request_at", :limit => {"last_request_at"=>nil}
+  add_index "users", ["login"], :name => "index_users_on_login", :limit => {"login"=>nil}
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token", :limit => {"perishable_token"=>nil}
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token", :limit => {"persistence_token"=>nil}
 
   create_table "websites", :force => true do |t|
     t.string   "url"

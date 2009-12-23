@@ -5,11 +5,15 @@
 			<textarea id = "no_spam" class = "center" cols="35" rows="1" readonly onclick="this.focus(); this.select();" style = ""><%= @secure_email %></textarea>
 			
 			<br />
-			<p>All email sent to this disposable email address will be forwarded to <%= @email %>, keeping you anonymous and secure. </p>
+			<p>All email sent to this disposable email address will be forwarded to <%= @email %>. </p>
+			<p>To test this mailbox send an email to <a href="mailto:<%= @secure_email %>?subject=This is a Test Email&body=Replace me with your message">yourself</a></p>
 <% end %>
 <center>
 <%= @extra_message %>
+<br />
+
 </center>
+
 </div>
 <hr />
 

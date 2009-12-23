@@ -1,0 +1,38 @@
+# Logfile created on Wed Dec 23 14:29:51 -0600 2009 by logger.rb/22285
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (91.4ms)[0m   [0mCREATE TABLE `people` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `first_name` varchar(255), `last_name` varchar(255), `permalink` varchar(255), `administrator` tinyint(1)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (412.6ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (116.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSELECT version FROM `schema_migrations`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mINSERT INTO `schema_migrations` (version) VALUES ('0')[0m
+  [4;36;1mSQL (91.3ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name` ON `people` (`last_name`)[0m
+  [4;35;1mSQL (98.3ms)[0m   [0mDROP INDEX `index_people_on_last_name` ON people[0m
+  [4;36;1mSQL (123.4ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`, `first_name`)[0m
+  [4;35;1mSQL (121.4ms)[0m   [0mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;36;1mSQL (123.0ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`, `first_name`)[0m
+  [4;35;1mSQL (124.0ms)[0m   [0mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;36;1mSQL (120.4ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`, `first_name`)[0m
+  [4;35;1mSQL (128.1ms)[0m   [0mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;36;1mSQL (128.9ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`, `first_name`)[0m
+  [4;35;1mSQL (114.4ms)[0m   [0mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;36;1mSQL (109.9ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name` ON `people` (`last_name`(10))[0m
+  [4;35;1mSQL (111.4ms)[0m   [0mDROP INDEX `index_people_on_last_name` ON people[0m
+  [4;36;1mSQL (123.0ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name` ON `people` (`last_name`(10))[0m
+  [4;35;1mSQL (111.1ms)[0m   [0mDROP INDEX `index_people_on_last_name` ON people[0m
+  [4;36;1mSQL (100.7ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`(10), `first_name`(10))[0m
+  [4;35;1mSQL (110.9ms)[0m   [0mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;36;1mSQL (100.8ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`(10), `first_name`(20))[0m
+  [4;35;1mSQL (110.9ms)[0m   [0mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;36;1mSQL (110.9ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name_and_first_name` ON `people` (`last_name`(10), `first_name`(20))[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mshow index from people[0m
+  [4;36;1mSQL (112.2ms)[0m   [0;1mDROP INDEX `index_people_on_last_name_and_first_name` ON people[0m
+  [4;35;1mSQL (100.1ms)[0m   [0mCREATE INDEX `index_people_on_last_name` ON `people` (`last_name`(10))[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mshow index from people[0m
+  [4;35;1mSQL (112.3ms)[0m   [0mDROP INDEX `index_people_on_last_name` ON people[0m
+  [4;36;1mSQL (98.3ms)[0m   [0;1mCREATE INDEX `index_people_on_last_name` ON `people` (`last_name`(10))[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mshow index from people[0m
+  [4;36;1mSQL (109.6ms)[0m   [0;1mDROP INDEX `index_people_on_last_name` ON people[0m
+  [4;35;1mMysqlIndexLengthTest::Person Load (0.7ms)[0m   [0mSELECT * FROM `people` [0m

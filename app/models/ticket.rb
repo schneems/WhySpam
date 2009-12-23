@@ -15,15 +15,11 @@ class Ticket < ActiveRecord::Base
 
   
   def after_create    
-    # sleeps added due to possible race condition, evaluating permanent database fix
     if self.valid?
        whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
-       sleep 1  
       if !whymail.nil?
        self.update_attributes({"whymail_id" => whymail.id})
-       sleep 1
         if self.valid?
-          sleep 1
           MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body)        
         end
       end

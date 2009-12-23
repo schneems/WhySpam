@@ -57,10 +57,16 @@ namespace :deploy do
   task :update_crontab, :roles => :db do
     run "cd #{release_path} && whenever --update-crontab #{application}"
   end
+  
+  desc "check to make sure server works"
+  task :canary_check do
+    run "rake mailbox:isworking"
+  end
+  
 end
 
 
 
 
-after 'deploy:update_code', 'deploy:symlink_shared', "deploy:symlink", "deploy:update_crontab"
+after 'deploy:update_code', 'deploy:symlink_shared', "deploy:symlink", "deploy:update_crontab, deploy:canary_check"
 

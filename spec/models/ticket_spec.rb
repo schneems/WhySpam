@@ -2,6 +2,22 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Ticket do 
   
+  describe "should utilize the body_hash" do
+     it "should generate the same body hash for the same body" do
+       message = "anything at all"
+       body_hash = Digest::SHA1.hexdigest(message)
+       body_hash.should == Digest::SHA1.hexdigest(message)
+     end
+     
+     it "should generate a  different body hash for the same body" do
+       message = "anything at all"
+       body_hash = Digest::SHA1.hexdigest(message)
+       different_message = "anything at all "
+       body_hash.should_not == Digest::SHA1.hexdigest(different_message)
+     end
+     
+   end
+   
   describe "should pass validations" do
     it "should fail validiations if a ticket has the same to, from, and body" do
       subject = "hello"
