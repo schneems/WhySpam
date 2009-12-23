@@ -60,7 +60,7 @@ namespace :deploy do
   
   desc "check to make sure server works"
   task :canary_check do
-    run "rake mailbox:isworking"
+    run "sudo rake mailbox:isworking"
   end
   
 end
@@ -68,5 +68,5 @@ end
 
 
 
-after 'deploy:update_code', 'deploy:symlink_shared', "deploy:symlink", "deploy:update_crontab, deploy:canary_check"
+after 'deploy:update_code', 'deploy:symlink_shared', "deploy:symlink", "deploy:update_crontab", "deploy:canary_check"
 

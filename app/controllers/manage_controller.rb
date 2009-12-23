@@ -28,7 +28,7 @@ class ManageController < ApplicationController
     if @whymail.user.nil? || @whymail.user != current_user
       @tickets = nil
       @whymail = nil
-      redirect_to :action => 'login_path
+      redirect_to login_path
       flash[:error] = configatron.bad_permissions
     end
   end
