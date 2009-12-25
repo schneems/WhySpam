@@ -60,7 +60,10 @@ namespace :deploy do
   
   desc "check to make sure server works"
   task :canary_check do
-    run "sudo rake mailbox:isworking"
+    
+    
+ #   run "rake mailbox:isworking"
+    
   end
   
 end

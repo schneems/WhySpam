@@ -3,7 +3,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :whymail
   belongs_to :forms
   
-  attr_accessible :to_email, :from_email, :subject, :body, :whymail_id
+ # attr_accessible :to_email, :from_email, :subject, :body, :whymail_id, :body_hash
   
   
   validates_uniqueness_of   :to_email, :scope => [:body, :from_email]

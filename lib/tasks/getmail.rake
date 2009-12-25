@@ -25,7 +25,7 @@ namespace :mailbox do
       task :isworking => :environment do
         $last_canary = Time.now
         $system_status = "Up"
-        
+        puts "Checking to see if system is up"
         testmail = "thisisatestmailboxforwhyspammeyeahthtatsawesome@whyspam.me"
         subject = "This is a subject line someone would send"
         from_email = "canary@whyspam.me"
@@ -41,7 +41,7 @@ namespace :mailbox do
           ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => testmail, :subject => subject})
         rescue
           $system_status = "down"
-          msg = "Error on Ticket.find: \n" + ticket.class
+          msg = "Error on Ticket.find: \n" + ticket.class.to_s
           MyMailer.deliver_warning(configatron.admin_email, msg)
           MyMailer.deliver_warning(configatron.admin_sms, msg)
         end
@@ -51,10 +51,11 @@ namespace :mailbox do
         rescue
           $system_status = "down"
           
-          msg = "error on ticket.delete: \n"+ ticket.class
+          msg = "error on ticket.delete: \n "+ ticket.class.to_s
           MyMailer.deliver_warning(configatron.admin_email, msg )
           MyMailer.deliver_warning(configatron.admin_sms, msg)
         end
+        puts "End Check"
         
       end
     

@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20091223193335) do
     t.string   "body_hash"
   end
 
-  add_index "tickets", ["to_email", "body", "from_email"], :name => "index_tickets_on_to_email_and_body_and_from_email", :unique => true, :limit => {"body"=>"255", "to_email"=>"255", "from_email"=>"255"}
   add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
 
   create_table "users", :force => true do |t|

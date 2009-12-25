@@ -26,9 +26,16 @@ describe MyMailer do
     end
     
     it "increment ticket count" do
+      puts "===================="
+      body = TMail::Mail.parse(@mail).body.to_s
+      body_hash = Digest::SHA1.hexdigest(body) 
       assert_difference "Ticket.count", 1 do
         MyMailer.receive(@mail)
       end
+      puts Ticket.last.body
+      puts Ticket.last.body_hash
+      
+      Ticket.last.body_hash.should == body_hash
     end
     
     it "increment ticket count only if unique" do

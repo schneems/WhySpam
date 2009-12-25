@@ -35,7 +35,11 @@ class MyMailer < ActionMailer::Base
     
     
     
-    Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})||Ticket.create(:subject => subject, :from_email => from_email, :to_email => to_email, :body => message, :body_hash => Digest::SHA1.hexdigest(message) )
+    Ticket.find(:first, :conditions => {:from_email => from_email, 
+              :to_email => to_email, :body => message})||Ticket.create(:subject => subject, 
+              :from_email => from_email, :to_email => to_email, 
+              :body => message, :body_hash => Digest::SHA1.hexdigest(message) )
+    
     
     
  end

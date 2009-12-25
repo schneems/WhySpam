@@ -1,7 +1,7 @@
 # This file was auto-generated.  Feel free to customize it to your whim.
 
 development: &local
-    site_name: WhySpam.Me
+    site_name: "WhySpam Me? - Disposable Email addresses and Spam Tracking"
     site_domain: "localhost:3000"
     site_title: Why Spam Me
     site_tag: Expose Spammers and Free your Inbox
