@@ -11,6 +11,8 @@
 	http://localhost:3000/stylesheets/why.css?1260467954
 	http://localhost:3000/stylesheets/why.css?1260505614
 	http://localhost:3000/stylesheets/why.css?1260659969
+	http://localhost:3000/stylesheets/why.css?1261172710
+	http://localhost:3000/stylesheets/why.css?1262229739
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -23,6 +25,13 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-family: inherit;
   vertical-align: baseline;
 }
+
+#users-per-day,
+#tickets-per-day {
+	height: 300px;
+	width: 450px;
+}
+
 
 
 

@@ -1,13 +1,14 @@
 <% content_for :html_head do %>
 
-	<%= javascript_include_tag 'highcharts', :cache => true %>
+<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
+
+<%= javascript_include_tag 'highcharts'  %>
 
 	<script type="text/javascript">
-	array = <%=  @month.to_json  %>;
-	alert(array);
+	array = <%=  @user_per_month.to_json  %>;
 			var chart = new Highcharts.Chart({
 			   chart: {
-			      renderTo: 'chart-container-1', 
+			      renderTo: 'users-per-day', 
 			      defaultSeriesType: 'area'
 			   },
 			   title: {
@@ -25,56 +26,90 @@
 			   yAxis: {
 			      title: {
 			         text: 'Users'
-			      }
+			      },
+				tickInterval: "1"
 			      
 			   },
 			   tooltip: {
 			      formatter: function() {
-			         return this.series.name +' produced <b>'+
-			            Highcharts.numberFormat(this.y, 0, null, ' ') +'</b><br/>warheads in '+ this.x;
+			         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
+			             ' '+ this.x;
 			      }
 			   },
 			   plotOptions: {
 			      area: {
-			         pointStart: 1940,
+			         pointStart: 0,
 			         marker: {
 			            enabled: false,
 			            symbol: 'circle',
-			            radius: 2
+			            radius: 1
 			         }
 			      }
 			   },
 			   series: [{
-			      name: 'blah',
+			      name: 'Users',
 			      data: array
 			   }]
 			});
 
+
+
+
+		array = <%=  @ticket_per_month.to_json  %>;
+		var chart = new Highcharts.Chart({
+		   chart: {
+		      renderTo: 'tickets-per-day', 
+		      defaultSeriesType: 'area'
+		   },
+		   title: {
+		      text: 'Tickets Per Day'
+		   },
+
+		   xAxis: {
+			title: {
+				text: 'Day'
+			},
+			
+		   },
+		   yAxis: {
+		      title: {
+		         text: 'Tickets'
+		      },
+			tickInterval: "1"
+		      
+		   },
+		   tooltip: {
+		      formatter: function() {
+		         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
+		             ' '+ this.x;
+		      }
+		   },
+		   plotOptions: {
+		      area: {
+		         pointStart: 0,
+		         marker: {
+		            enabled: false,
+		            symbol: 'circle',
+		            radius: 1
+		         }
+		      }
+		   },
+		   series: [{
+		      name: 'Tickets',
+		      data: array
+		   }]
+		});
 			
 	</script>
 <% end %>
 
 
 
-<div id = "chart-container-1">
-	
-	<br />
-	<br />
-	<br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br /><br />
-	<br />
-	
+<div id = "users-per-day" class="span-6">
 </div>
 
+
+
+<div id = "tickets-per-day" class="span-6">
+</div>
 

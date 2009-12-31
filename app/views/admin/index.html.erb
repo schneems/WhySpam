@@ -1,0 +1,115 @@
+<% content_for :html_head do %>
+
+<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
+
+<%= javascript_include_tag 'highcharts'  %>
+
+	<script type="text/javascript">
+	array = <%=  @user_per_month.to_json  %>;
+			var chart = new Highcharts.Chart({
+			   chart: {
+			      renderTo: 'users-per-day', 
+			      defaultSeriesType: 'area'
+			   },
+			   title: {
+			      text: 'Users Per Day'
+			   },
+			   subtitle: {
+			      text: ''
+			   },
+			   xAxis: {
+				title: {
+					text: 'Day'
+				},
+				
+			   },
+			   yAxis: {
+			      title: {
+			         text: 'Users'
+			      },
+				tickInterval: "1"
+			      
+			   },
+			   tooltip: {
+			      formatter: function() {
+			         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
+			             ' '+ this.x;
+			      }
+			   },
+			   plotOptions: {
+			      area: {
+			         pointStart: 0,
+			         marker: {
+			            enabled: false,
+			            symbol: 'circle',
+			            radius: 1
+			         }
+			      }
+			   },
+			   series: [{
+			      name: 'Users',
+			      data: array
+			   }]
+			});
+
+
+
+
+		array = <%=  @ticket_per_month.to_json  %>;
+		var chart = new Highcharts.Chart({
+		   chart: {
+		      renderTo: 'tickets-per-day', 
+		      defaultSeriesType: 'area'
+		   },
+		   title: {
+		      text: 'Tickets Per Day'
+		   },
+
+		   xAxis: {
+			title: {
+				text: 'Day'
+			},
+			
+		   },
+		   yAxis: {
+		      title: {
+		         text: 'Tickets'
+		      },
+			tickInterval: "1"
+		      
+		   },
+		   tooltip: {
+		      formatter: function() {
+		         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
+		             ' '+ this.x;
+		      }
+		   },
+		   plotOptions: {
+		      area: {
+		         pointStart: 0,
+		         marker: {
+		            enabled: false,
+		            symbol: 'circle',
+		            radius: 1
+		         }
+		      }
+		   },
+		   series: [{
+		      name: 'Tickets',
+		      data: array
+		   }]
+		});
+			
+	</script>
+<% end %>
+
+
+
+<div id = "users-per-day" class="span-6">
+</div>
+
+
+
+<div id = "tickets-per-day" class="span-6">
+</div>
+
