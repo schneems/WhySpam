@@ -13,6 +13,8 @@
 	http://localhost:3000/stylesheets/why.css?1260659969
 	http://localhost:3000/stylesheets/why.css?1261172710
 	http://localhost:3000/stylesheets/why.css?1262229739
+	http://localhost:3000/stylesheets/why.css?1262230076
+	http://localhost:3000/stylesheets/why.css?1262473680
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -147,9 +149,26 @@ table {
   margin-bottom: 1.4em;
   width: 100%;
 }
+
+#youtube-video {
+	margin-top: 30px;
+	margin: 40px 0 40px 10px;
+}
+
+#widget b.faq {
+	font-size: 23px;
+}
+
+#widget b {
+	font-size: 12px;
+}
 th { font-weight: bold; }
 thead th { background: #c3d9ff; }
 th, td, caption { padding: 4px 10px 4px 5px; }
+
+td.optional_td {
+	width: 100px;
+}
 tr.even td { background: #e5ecf9; }
 tfoot { font-style: italic; }
 caption { background: #eeeeee; }
@@ -192,6 +211,10 @@ caption { background: #eeeeee; }
   padding-bottom: 0;
 }
 label { font-weight: bold; }
+
+#new_user div.span-18 table.prepend-1. tbody tr td {
+	width: 1em;
+}
 fieldset {
   padding: 1.4em;
   margin: 0 0 1.5em 0;
@@ -602,10 +625,7 @@ a.negative:active {
 #content #admin_nav ul li { display: inline; }
 
 form div { margin: 0 0 1.5em; }
-form div label {
-  width: 15em;
-  float: left;
-}
+
 form div.buttons { margin: 0 0 1.5em 15em; }
 .fieldWithErrors label { color: #8a1f11; }
 .fieldWithErrors input {
@@ -790,9 +810,7 @@ form div label {
   width: 11em;
 }
 
-td.optional_td {
-	width: 4em;
-}
+
 /*
 button:hover {
 background-color: #0073EA;

@@ -6,9 +6,10 @@ class AdminController < ApplicationController
     #    @users_month = User.find(:all, :conditions => [ "created_at < ?",  Time.now - 1.month ],:order => 'created_at DESC')
 
 
-    @user_per_month =  @ticket_per_month  = Array.new(31, 0) 
+        @user_per_month = Array.new(30, 0)
         users.each do |user|
             0.upto(30) do |date|
+
               if user.created_at > (Time.now.beginning_of_day - (date+1).days) && user.created_at < (Time.now.beginning_of_day - date.days)
                 @user_per_month[date] =+ 1 
               end
@@ -34,8 +35,8 @@ class AdminController < ApplicationController
             #  puts "================================="
               
               
-              if ticket.created_at > (Time.now.beginning_of_day - (date+1).days) && ticket.created_at < (Time.now.beginning_of_day - date.days)
-                @ticket_per_month[date] =  @ticket_per_month[date] + 1
+              if ticket.created_at.utc > (Time.now.beginning_of_day.utc - (date+1).days) && ticket.created_at.utc < (Time.now.beginning_of_day.utc - date.days)
+                @ticket_per_month[date] =  @ticket_per_month[date]  + 1
                 break
               end              
               
