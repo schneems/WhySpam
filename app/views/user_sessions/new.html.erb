@@ -1,36 +1,37 @@
 <%= page_title 'Log in' %>
 
-<div class = "prepend-1">
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
+<div class = "prepend-1">
 
-  <div>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+  <table>
+	<tr>
+   		<td><%= f.label "Email:" %></td>
+    	<td><%= f.text_field :email %></td>
+	</tr>
   
-  <div>
-    <%= f.label :password, "Password: <br />(Default is your email)" %>
-    <%= f.password_field :password %>
-  </div>
-  
+	<tr>
+    <td> <%= f.label :password, "Password: <br />(Default is your email)" %></td>
+    <td><%= f.password_field :password %></td>
+	</tr>
+  </table>
 
   
-  <div class='buttons clearfix'>
-	<%=  f.button_with_icon("Log In", "check") %> <%= f.check_box :remember_me %>
+  <div class='buttons clearfix prepend-2'>
+	<%=  f.button_with_icon("Log In", "check") %><br /> <%= f.check_box :remember_me %>
 	<span>Remember Me</span>
   </div>
 
+</div>
 
 <% end %>
 
-
+<div class="prepend-1">
 <p>
   Need an account? <%= link_to 'Sign up now.', signup_path %><br/>
 
   Forgot your password? <%= link_to 'Reset your password.', password_reset_path %>
 </p>
-
 </div>
 
 

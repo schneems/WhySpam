@@ -19,7 +19,7 @@ class AdminController < ApplicationController
 
         tickets = Ticket.find(:all, :conditions => [ "created_at > ?",  (Time.now.beginning_of_day - 1.month) ],:order => 'created_at DESC')
         
-        @ticket_per_month = Array.new(30, 0)
+        @ticket_per_month = Array.new(31, 0)
         
         
         tickets.each do |ticket|
