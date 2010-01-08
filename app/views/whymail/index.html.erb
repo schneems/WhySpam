@@ -27,24 +27,25 @@
 
 			
 			<div class = "span-13">
-			<h2>WhySpam™ Disposable Email</h2>
+			<h2>Disposable Email -</h2>
 <br />
 			<table class = "prepend-1 ">
 				
 				<tr>
-					<td><%= f.label "Your Email:" %></td>
+					<td><%= f.label "Your Email:" %><br />	
+						<span class = "optional_td"><%= link_to " (will remain private)", url_for(:action => "privacy", :controller => "static")  %>		 
+ </span>
+						</td>
 					<td><%= f.default_text_field :email , configatron.default_email %></td>
 				</tr>
 
 				<tr>
 					<td class = "optional_td">
 						<%= f.label "Website:" %><br />
-						<span class = "optional">Optional</span>
-						<%= link_to " (Why?)", {:action => "faq", :controller => "static", :anchor => "optional_website"} %>
 					</td>
 
 					<td>
-						<%= f.default_text_field :website, configatron.default_website_optional  %>
+						<%= f.default_text_field :website, configatron.default_website  %>
 					</td>
 				</tr>
 			</table>
@@ -58,8 +59,8 @@
 		<% end %>
 		</div>
 		
-		<div class = "span-10 last" id = "youtube-video">
-<object width="378" height="234"><param name="movie" value="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="378" height="234"></embed></object>
+		<div class = "span-9 last" id = "youtube-video">
+<object width="355" height="225"><param name="movie" value="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="355" height="225"></embed></object>
 		</div>
 		<%# render :partial => "static/ads"%>
 		
@@ -73,35 +74,71 @@
 			</div>
 	</div><!-- span-24 -->
 			
-			<div class = "center ">
-				<%= image_tag("chevron.jpg")%>
+			<div class = " span-22 clearfix chevron" >
+				<%# image_tag("chevron.jpg")%>
+				<div class="span-4 chev center">
+					<h3><b>Step 1</b></h3>
+					<p>
+						<b>Enter Your Email</b>
+						<br /><br />
+						<i>"foo@example.com"</i>
+					</p>
+				</div>
+				<div class="span-4 chev center">
+					<h3><b>Step 2</b></h3>
+					<p>
+						<b>Enter Website In-Question</b>
+						<br />
+						<i>"www.example.com"</i>
+						
+					</p>
+				</div>
+				<div class="span-4 chev center">
+					<h3><b>Step 3</b></h3>
+					<p>
+						<b>Generate Disposable Email</b>
+						<br />
+						<i>(press the button)</i>
+						
+					</p>
+				</div>
+				<div class="span-4 chev center">
+					<h3><b>Step 4</b></h3>
+					<p>
+						<b>Give Out Your Disposable Email</b>
+						<br />
+						<i>(to the website in-question)</i>
+						</p>
+				</div>
+				<div class="span-3 center">
+					<br /><br />
+					<a style = "margin-left:30px" href = "<%= url_for( :action => 'faq', :controller =>'static' ) %>"  
+						class ="bottom_buttons inline-block center ui-state-default ui-corner-all" id = "widget">
+						<b class = "faq">FAQ</b><br />
+						<b>Frequently <br /> Asked <br />Questions</b>
+					</a>
+				</div>
 			</div>
 					
 
-				<div class = "span-15 prepend-1">
+				<div class = "prepend-1 span-17">
 						<br />
-						<p><h3>How Do I Use A Disposable Email?</h3></p>
+						<p><h3>How Do I Generate A Disposable Email?</h3></p>
 
+						
 						<p> 
-							<a style = "float:left;" 
-								href = "<%= url_for( :action => 'faq', :controller =>'static' ) %>"  
-								class ="bottom_buttons inline-block center ui-state-default ui-corner-all" id = "widget">
-								<b class = "faq">FAQ</b><br />
-								<b>Frequently <br /> Asked <br />Questions</b>
-							</a>
+						<div id = "you-tube-how">
+<object width="560" height="380"><param name="movie" value="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="380"></embed></object>
+						</div>
 							
-							
-							When a website asks for your e-mail address, go to <a href = "http://www.whyspam.me">WhySpam.Me</a>. Put your personal email, and the suspected spammers website in our form, we'll give you a disposable email address that you can give to that website. 	When they send messages to your disposable email, we will forward the messages to your personal email address. So you get your messages without giving out your personal email address.<br /><br /> If the website ever starts sending spam to your disposable email address, you can shut it down. That way anyone they sold the disposable email to is out of luck! When you shut down a disposable email, we put the website in our <%= link_to "spam report", websites_path %> . <br /><br />
-							<%= link_to "We do not give out your email or personal information. Period.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %></p>
 
-					
 				</div>
 
 
 
 					
 
-				<div class = "span-4 prepend-1 last">
+				<div class = "span-4 last">
 					<br />
 					<%= render :partial => "static/ads"%>				
 				</div>

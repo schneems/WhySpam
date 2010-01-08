@@ -4,7 +4,10 @@
 
 <%= javascript_include_tag 'highcharts'  %>
 
+
+	
 	<script type="text/javascript">
+	date_array = <%= format_dates_for_array(@user_date_array).to_json %>
 	array = <%=  @user_per_month.to_json  %>;
 			var chart = new Highcharts.Chart({
 			   chart: {
@@ -17,12 +20,11 @@
 			   subtitle: {
 			      text: ''
 			   },
-			   xAxis: {
-				title: {
-					text: 'Day'
-				},
-				
+			 xAxis: {
+			      //categories: date_array
 			   },
+
+				
 			   yAxis: {
 			      title: {
 			         text: 'Users'
@@ -99,23 +101,92 @@
 		      data: array
 		   }]
 		});
+		
+		
+		
+		
+		array = <%=  @whymail_per_month.to_json  %>;
+		var chart = new Highcharts.Chart({
+		   chart: {
+		      renderTo: 'whymails-per-day', 
+		      defaultSeriesType: 'area'
+		   },
+		   title: {
+		      text: 'Whymails Per Day'
+		   },
+
+		   xAxis: {
+			title: {
+				text: 'Day'
+			},
+			
+		   },
+		   yAxis: {
+		      title: {
+		         text: 'Whymails'
+		      },
+			tickInterval: "1"
+		      
+		   },
+		   tooltip: {
+		      formatter: function() {
+		         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
+		             ' '+ this.x;
+		      }
+		   },
+		   plotOptions: {
+		      area: {
+		         pointStart: 0,
+		         marker: {
+		            enabled: false,
+		            symbol: 'circle',
+		            radius: 1
+		         }
+		      }
+		   },
+		   series: [{
+		      name: 'Whymails',
+		      data: array
+		   }]
+		});
+		
 			
 	</script>
 <% end %>
 
 
-
-<div id = "users-per-day" class="span-6">
+<div>
+	
+	
+	<%# @user_date_array.each do |date| %>
+		<%# day_of_the_week(date) %><br />
+	<%# end %>
+	
+<br /><br />
+	
+	</div>
+<div id = "users-per-day" class="small-chart span-6">
 </div>
 
 
 
-<div id = "tickets-per-day" class="span-6">
+<div id = "tickets-per-day" class="small-chart span-6">
 </div>
 <br />
+
+<div id = "whymails-per-day" class=" small-chart span-6">
+</div>
+<br />
+
+<div id = "blah-per-day" class=" small-chart span-6">
+</div>
+<br />
+<hr />
 
 Users Total 30 Day: <%= @user_count %>
 <br />
+Whymail Total 30 Day: <%= @whymail_count %>
+<br />
 Ticket Total 30 Day: <%= @ticket_count %>
 
-
+<br />

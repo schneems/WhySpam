@@ -15,6 +15,10 @@
 	http://localhost:3000/stylesheets/why.css?1262229739
 	http://localhost:3000/stylesheets/why.css?1262230076
 	http://localhost:3000/stylesheets/why.css?1262473680
+	http://localhost:3000/stylesheets/why.css?1262578290
+	http://localhost:3000/stylesheets/why.css?1262714420
+	http://localhost:3000/stylesheets/why.css?1262828355
+	http://localhost:3000/stylesheets/why.css?1262830696
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -29,7 +33,8 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 }
 
 #users-per-day,
-#tickets-per-day {
+#tickets-per-day, 
+.small-chart {
 	height: 300px;
 	width: 450px;
 }
@@ -152,7 +157,7 @@ table {
 
 #youtube-video {
 	margin-top: 30px;
-	margin: 40px 0 40px 10px;
+	margin: 40px 0 40px 30px;
 }
 
 #widget b.faq {
@@ -166,8 +171,9 @@ th { font-weight: bold; }
 thead th { background: #c3d9ff; }
 th, td, caption { padding: 4px 10px 4px 5px; }
 
-td.optional_td {
-	width: 100px;
+.optional_td {
+	width: 200px;
+	color: #989898;
 }
 tr.even td { background: #e5ecf9; }
 tfoot { font-style: italic; }
@@ -284,6 +290,8 @@ form.inline p { margin-bottom: 0; }
   margin-right: 10px;
 }
 .last, div.last { margin-right: 0; }
+
+
 .span-1 { width: 30px; }
 .span-2 { width: 70px; }
 .span-3 { width: 110px; }
@@ -364,6 +372,9 @@ input.span-24, textarea.span-24 { width: 938px !important; }
 .append-21 { padding-right: 840px; }
 .append-22 { padding-right: 880px; }
 .append-23 { padding-right: 920px; }
+.prepend-1/2 {
+	padding-left: 20px;
+}
 .prepend-1 { padding-left: 40px; }
 .prepend-2 { padding-left: 80px; }
 .prepend-3 { padding-left: 120px; }
@@ -997,4 +1008,31 @@ input#captcha {
 #no_messages, 
 #delete {
 	clear: both;
+}
+
+
+.chevron {
+	margin: 0 0 0 10px;
+	background: white url(/images/chevron.jpg) no-repeat;
+	height: 180px;
+	
+}
+
+div.chev {
+	padding: 0;
+	margin:  70px 20px 0;
+	width: 137px;
+	
+}
+
+.chevron h3 b {
+	color: #ff0000;
+}
+
+
+
+#you-tube-how {
+	float:left;
+	margin: 0 30px 10px 20px;
+
 }

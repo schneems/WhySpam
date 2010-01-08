@@ -2,6 +2,31 @@
 module ApplicationHelper
   
   
+  def format_dates_for_array(date_array)
+    final_array = []
+    date_array.each do |date|
+      final_array << day_of_the_week(date).to_s
+    end
+    return final_array
+  end
+  
+  def day_of_the_week(date)
+    day_num = date.strftime("%w")
+
+    day = case day_num
+    when "0" then "Sunday"
+    when "1" then "Monday"
+    when "2" then "Tuesday"
+    when "3" then "Wednesday"
+    when "4" then "Thursday"
+    when "5" then "Friday"
+    when "6" then "Saturday"
+    else ""
+    end
+      return day + " " +date.strftime("%d")
+  end
+  
+  
   def clean_url(url)
        url = url.gsub(/w{3}\./, '') ## removes www
        url = url.gsub(/^https\:\/\/|^http\:\/\//, '') 
@@ -39,7 +64,7 @@ module ApplicationHelper
     end
     
     
-    def default_text_field(name, value)
+    def default_text_field(name, value)   
       text_field(name, :value => value,  :class => "gray-input", :onfocus => "if (this.value=='#{value}') this.value = '';this.style.color = 'black';", :onblur => "if (this.value=='') {this.value = '#{value}';this.style.color = '';}" )
     end
   
