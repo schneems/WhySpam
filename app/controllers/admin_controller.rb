@@ -3,7 +3,7 @@ class AdminController < ApplicationController
   include Graph
 
   def index
-
+        @users =  format_highchart(:class => "User", :months => 1).to_json.gsub!(/\"/, '')
         user_hash = graphArray(:class => "User", :months => 1)
         ticket_hash = graphArray(:class => "ticket", :months => 1)     
         whymail_hash  = graphArray(:class => "whymail", :months => 1)

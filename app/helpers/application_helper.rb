@@ -1,6 +1,9 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def format_for_highchart()
+    
+  end
   
   def format_dates_for_array(date_array)
     final_array = []
@@ -10,22 +13,25 @@ module ApplicationHelper
     return final_array
   end
   
-  def day_of_the_week(date)
-    day_num = date.strftime("%w")
-
-    day = case day_num
-    when "0" then "Sunday"
-    when "1" then "Monday"
-    when "2" then "Tuesday"
-    when "3" then "Wednesday"
-    when "4" then "Thursday"
-    when "5" then "Friday"
-    when "6" then "Saturday"
-    else ""
-    end
-      return day + " " +date.strftime("%d")
+  def jsyear_month_day(date)
+   year =  date.strftime("%Y")
+   month = date.strftime("%m").to_i - 1
+   month = month.to_s
+   day = date.strftime("%d")    
+      return year + ',' + month + ',' + day + '<br />'
   end
   
+  #  day = case day_num
+  #  when "0" then "Sunday"
+  #  when "1" then "Monday"
+  #  when "2" then "Tuesday"
+  #  when "3" then "Wednesday"
+  #  when "4" then "Thursday"
+  #  when "5" then "Friday"
+  #  when "6" then "Saturday"
+  #  else ""
+  #  end
+  # year, month - 1, day
   
   def clean_url(url)
        url = url.gsub(/w{3}\./, '') ## removes www

@@ -13,6 +13,7 @@ module Cleanurl
 
   def clean_url(url)
     if !url.nil?
+       url = url.to_s
        url = url.gsub(/w{3}\./, '') ## removes www
        url = url.gsub(/^https\:\/\/|^http\:\/\//, '') 
        # url = /[\d\D]+\//.match(url)[0] if ! /[\d\D]+\//.match(url).nil?  ## pulls out asdlfkjsdlkfj/
