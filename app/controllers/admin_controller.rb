@@ -3,20 +3,10 @@ class AdminController < ApplicationController
   include Graph
 
   def index
-        @users =  format_highchart(:class => "User", :months => 1).to_json.gsub!(/\"/, '')
-        user_hash = graphArray(:class => "User", :months => 1)
-        ticket_hash = graphArray(:class => "ticket", :months => 1)     
-        whymail_hash  = graphArray(:class => "whymail", :months => 1)
-        
-        @user_per_month = user_hash[:array]
-        @user_count = user_hash[:count]
-        
-        @user_date_array = user_hash[:date_array]
-        @ticket_per_month  = ticket_hash[:array]
-        @ticket_count = ticket_hash[:count]
-        @whymail_per_month = whymail_hash[:array]
-        @whymail_count = whymail_hash[:count]
-    
+        @users =  format_highchart(:class => "User", :months => 1) #
+        @tickets =  format_highchart(:class => "ticket", :months => 1)
+        @whymails =  format_highchart(:class => "whymail", :months => 1)
+        puts @users[:count]
   end
   
   

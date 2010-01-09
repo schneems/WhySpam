@@ -30,6 +30,7 @@ module Graph
      end     
      count = 0
      output_array.each{|item| count += item.to_i }
+
      month_data = {:date_array => date_array.reverse!, :array => output_array.reverse!, :count => count }
     return month_data
   end
@@ -39,6 +40,7 @@ module Graph
     month_data = graphArray(graph_hash)
     highchart_array = []
 
+    
       0.upto((month_data[:date_array].size) - 1) do |count|
         year =  month_data[:date_array][count].strftime("%Y")
         month = month_data[:date_array][count].strftime("%m").to_i - 1
@@ -46,7 +48,9 @@ module Graph
         day = month_data[:date_array][count].strftime("%d")    
         highchart_array << ["Date.UTC(#{year}, #{month}, #{day})", month_data[:array][count] ]
       end
-      return highchart_array
+      
+      highchart_hash = {:data => highchart_array, :count => month_data[:count]}
+      return highchart_hash
   end
   
   
@@ -61,16 +65,6 @@ module Graph
     end
 
 
-    def clean_url(url)
-      if !url.nil?
-         url = url.gsub(/w{3}\./, '') ## removes www
-         url = url.gsub(/^https\:\/\/|^http\:\/\//, '') 
-         # url = /[\d\D]+\//.match(url)[0] if ! /[\d\D]+\//.match(url).nil?  ## pulls out asdlfkjsdlkfj/
-         url = /^[^\/]+/.match(url)[0] if ! /^[^\/]+/.match(url).nil? 
-         url = url.gsub(/\/$/, '') ## removes trailing slash if there is one
-      end
-         return url
-    end
 
 
   end

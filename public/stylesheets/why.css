@@ -19,6 +19,7 @@
 	http://localhost:3000/stylesheets/why.css?1262714420
 	http://localhost:3000/stylesheets/why.css?1262828355
 	http://localhost:3000/stylesheets/why.css?1262830696
+	http://localhost:3000/stylesheets/why.css?1262914067
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -172,7 +173,8 @@ thead th { background: #c3d9ff; }
 th, td, caption { padding: 4px 10px 4px 5px; }
 
 .optional_td {
-	width: 200px;
+	width: 110px;
+	display: block;
 	color: #989898;
 }
 tr.even td { background: #e5ecf9; }
