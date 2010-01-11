@@ -3,9 +3,8 @@
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <%= html_title configatron.site_name %>
-	<META NAME="DESCRIPTION" CONTENT="Generate a free disposable email address to give to websites and track who sends you spam.">
-	<META NAME="KEYWORDS" CONTENT="disposable,email,anonymous,anonymizing,spam,accountability,report">
-
+	<META NAME="DESCRIPTION" CONTENT="Free disposable email addresses protect your identity and send messages straight to your inbox.">
+	<META NAME="KEYWORDS" CONTENT="free disposable email,temporary email,free email,spam blocker,anonymous email,spam list,remove spam,email,anonymous,spam,stop spam,accountability,secure email,forward,report">
 	<!-- bundle :name => "admin_asset_bundle", :css_path => "/temp/", :js_path => "/temp/"-->
 	<%# bundle :name => "css" do %>
     	<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
@@ -107,22 +106,28 @@
 		var pageTracker = _gat._getTracker("UA-5070471-4");
 		pageTracker._trackPageview();
 		} catch(err) {}</script>
-
-		<script type="text/javascript">
-		  var uservoiceJsHost = ("https:" == document.location.protocol) ? "https://uservoice.com" : "http://cdn.uservoice.com";
-		  document.write(unescape("%3Cscript src='" + uservoiceJsHost + "/javascripts/widgets/tab.js' type='text/javascript'%3E%3C/script%3E"))
+		<script type="text/javascript" charset="utf-8">
+		  var is_ssl = ("https:" == document.location.protocol);
+		  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+		  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
 		</script>
-		<script type="text/javascript">
-		UserVoice.Tab.show({ 
-		  key: 'whyspam',
-		  host: 'whyspam.uservoice.com', 
-		  forum: 'general', 
-		  alignment: 'left',
-		  background_color:'#f00', 
-		  text_color: 'white',
-		  hover_color: '#06C',
-		  lang: 'en'
-		})
+
+		<script type="text/javascript" charset="utf-8">
+		  var feedback_widget_options = {};
+
+		  feedback_widget_options.display = "overlay";  
+		  feedback_widget_options.company = "why_spam_me";
+		  feedback_widget_options.placement = "left";
+		  feedback_widget_options.color = "#030303";
+		  feedback_widget_options.style = "idea";
+
+
+
+
+
+
+
+		  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 		</script>
 		
 
