@@ -1,5 +1,10 @@
 
 <% content_for :html_head do %>
+
+<% @keywords =  'report spam mail,spam blocker,spam list,report spammers,report spam email,report spam,blacklist,abuse,website,domains,spam check,email abuse,spam war,utility,spammers'%>
+
+<% @description = 'Use the free spam list to check whether or not a website is a spammer. If a website abuses your email address, report them here.'  %>
+
 	<%= stylesheet_link_tag 'demo_page.css' %> 
 	<%= stylesheet_link_tag 'demo_table_jui.css' %> 
 	<%= javascript_include_tag 'jquery.dataTables.min.js' %>
@@ -17,8 +22,9 @@
 <% end %>
 
 
+
 <div class = "span-19 last">
-<h2>WhySpam™ Website Rankings  </h2>
+	<%= page_title('Spam List and Website Rankings', 'h2') %>
 <br />
 <center>
  

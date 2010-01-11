@@ -1,4 +1,9 @@
+
 <% content_for :html_head do %>
+<% @keywords = 'free disposable email,temporary email,free email,spam blocker,anonymous email, spam list,remove spam,email,anonymous,spam,stop spam,accountability, secure email,forward,report'%>
+
+<% @description = Time.now.strftime("%b %d, %Y") + ' Free disposable email addresses protect your identity and forward messages straight to your inbox. Keep disposable email addresses for as long as you want and delete them when you\'re ready.'  %>
+
 <script type="text/javascript">
 		$(function() {
 			$("#tabs").tabs();
@@ -27,7 +32,7 @@
 
 			
 			<div class = "span-13">
-			<h2>Free Disposable Email -</h2>
+			 <%= page_title('Free Disposable Email', 'h2') %>
 <br />
 			<table class = "prepend-1 ">
 				

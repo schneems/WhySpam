@@ -3,8 +3,10 @@
   <head>
   	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <%= html_title configatron.site_name %>
-	<META NAME="DESCRIPTION" CONTENT="Free disposable email addresses protect your identity and send messages straight to your inbox.">
-	<META NAME="KEYWORDS" CONTENT="free disposable email,temporary email,free email,spam blocker,anonymous email,spam list,remove spam,email,anonymous,spam,stop spam,accountability,secure email,forward,report">
+		
+<%=  meta_tags(meta = {:description => @description||Time.now.strftime("%b %d, %Y") +'WhySpam.me is a collection of tools you can use to cut down on the spam you receive and hit spammers where it hurts...in the wallet! Use it to safe guard your identity by generating disposable email addresses and check websites reputations.', :keywords => @keywords||'free disposable email,temporary email,free email,spam blocker,anonymous email, spam list,remove spam,email,anonymous,spam,stop spam,accountability, secure email,forward,report'}) %>
+
+
 	<!-- bundle :name => "admin_asset_bundle", :css_path => "/temp/", :js_path => "/temp/"-->
 	<%# bundle :name => "css" do %>
     	<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 

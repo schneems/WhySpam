@@ -1,3 +1,8 @@
+<% @keywords = 'login, log in, manage, whyspam me, disposable email login, disposable form login '%>
+
+<% @description = Time.now.strftime("%b %d, %Y") + 'Log in to submit a spam survey, delete a disposable email,  or delete a contact form.'  %>
+
+
 <%= page_title 'Log in' %>
 
 <% form_for @user_session, :url => user_session_path do |f| %>
