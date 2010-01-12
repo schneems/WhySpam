@@ -1,12 +1,26 @@
+<% @keywords =  @myurl.to_s + 'report spam mail,spam blocker,spam list,report spammers,report spam email,report spam,blacklist,abuse,website,domains,spam check,email abuse,spam war,utility,spammers'%>
+
+
+
+
 <% if @website.nil? %>
-No one has reported anything about <h2><%= @myurl %></h2> good or bad. So grab a <%= link_to "Disposable Email", root_path, {
+<% @description = Time.now.strftime("%b %d, %Y") + ': no one has reported if '+ @myurl + ' is a trustworthy site, use caution when giving out our email to them. Generate a disposable email to be safe. '  %>
+
+No one has reported anything about <h2><%= @myurl %></h2> good or bad. Use caution when giving out your personal email to them. Generate a  <%= link_to "Disposable Email Address", root_path, {
 				 :host => "whyspam.me", :only_path => 
-				true } %> address and find out if <h2><%= @myurl %></h2> is reputable or not.
+				true } %>  to be safe. 
 <% else %>
+
 <p>
-	<center> Survey Results for: <b><a href = "http://<%=h @website.url %>"><%=h @website.url %></a></b></center>
+	<center><%= page_title("Spam Report for #{ @website.url }  ", "h2") %> 
+		<b><a href = 'http://<%=h @website.url %>' rel="nofollow"><%=h @website.url%>  </a></b>
+		</center>
 
 <hr />
+<br />
+<%= @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @surveys_count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
+<hr />
+<br />
 <br />
 
 Added on: <%= @website.created_at.to_s(:long) %><br />
