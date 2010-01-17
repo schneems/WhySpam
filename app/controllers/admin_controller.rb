@@ -7,7 +7,6 @@ class AdminController < ApplicationController
         @tickets =  format_highchart(:class => "ticket", :months => 1)
         @whymails =  format_highchart(:class => "whymail", :months => 1)
         @forms =  format_highchart(:class => "forms", :months => 1)
-        
   end
   
   
