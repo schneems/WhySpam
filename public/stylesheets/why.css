@@ -33,6 +33,7 @@
 	http://localhost:3000/stylesheets/why.css?1263689966
 	http://localhost:3000/stylesheets/why.css?1263692114
 	http://localhost:3000/stylesheets/why.css?1263692806
+	http://localhost:3000/stylesheets/why.css?1263692969
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -185,7 +186,7 @@ table {
 	width: 560px;
 	border: 1px solid #8b8b8b;
 
-background: #b2b4e3 url(/images/loading.gif) no-repeat 170px 75px;
+background: #c3c4f7 url(/images/loading.gif) no-repeat 170px 75px;
 
 }
 
@@ -193,7 +194,17 @@ background: #b2b4e3 url(/images/loading.gif) no-repeat 170px 75px;
 .disposableEmail #user_email {
 height: 30px;
 margin-bottom: 20px;
+	background-color: #fffeff;
+}
+
+.remoteErrorMessage {
+	margin: 10px;
+	color: #fffeff;
+	font-size: 18px;
 	
+	background-color: #f3856e;
+	border: 2px solid #9e0600;
+	font-weight: bold;
 }
 
 

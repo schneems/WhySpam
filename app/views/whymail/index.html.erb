@@ -27,7 +27,6 @@
 
 <div class = "span-24 last disposableEmail">
 
-	<% @user = User.new(:email => "Email", :website => "Website") %>
 	<% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
 					:loading => "$('#indicator').show();$('#update').hide();", 
 					:complete => "$('#indicator').hide();$('#update').show()",
@@ -65,7 +64,6 @@
 			</div>
 			
 
-		<% end %>
 		</div>
 		
 		<div class = "span-9 last" id = "youtube-video">
@@ -85,6 +83,9 @@
 				</div>
 			</div>
 	</div><!-- span-24 -->
+	
+	<% end %>
+	
 			
 			<div class = " span-22 clearfix chevron" >
 				<%# image_tag("chevron.jpg")%>

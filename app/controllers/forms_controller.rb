@@ -1,4 +1,5 @@
 class FormsController < ApplicationController
+  layout "application-2", :except => [:test, :localtest, :foreign_show]  
   
   # Be sure to include AuthenticationSystem in Application Controller instead
   ## sudo god -c ./config/fetcher-daemon.god -D
@@ -29,7 +30,6 @@ class FormsController < ApplicationController
     from_email = params[:form][:email]||" "
     
     message = params[:form][:comments]
-    message = name + "  sent you a message: \n" + message
     if simple_captcha_valid?
     #  render :text => "workz foo"
       session[:count] = 0 if RAILS_ENV == "development"
@@ -47,6 +47,8 @@ class FormsController < ApplicationController
             if !form.nil?
               flash[:notice] = configatron.form_send_success
               flash[:error] = nil
+              message = name + "  sent you a message: \n" + message
+              
               MyMailer.deliver_forward_form(form_id, from_email, message)
             else
               flash[:error] = "-  #{configatron.invalid_form} <br />"

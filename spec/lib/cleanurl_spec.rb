@@ -2,6 +2,21 @@ require File.expand_path(File.dirname(__FILE__) + '../../spec_helper')
   include Cleanurl
 
 describe "cleanurl" do 
+  
+  describe "is_not_email" do
+    it "should sanatize any URLs into a standard with no http://" do
+       isEmail =  is_email("email@email.com")
+       isEmail.should == true
+    end
+    
+    it "should sanatize any URLs into a standard with no http://" do
+       isEmail =  is_email("emailemail.com")
+       isEmail.should == false
+    end
+    
+  end
+    
+    
   describe "clean_url" do
     it "should sanatize any URLs into a standard with no http://" do
        url =  clean_url("http://blah.com")

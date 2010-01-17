@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  layout "application-2", :except => [:test, :localtest]  
+  layout "application-2", :except => [:test, :localtest, :foreign_show]  
   helper :all # include all helpers, all the time
   
   

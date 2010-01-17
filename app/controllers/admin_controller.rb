@@ -3,9 +3,12 @@ class AdminController < ApplicationController
   include Graph
 
   def index
+        
         @users =  format_highchart(:class => "User", :months => 1) #
         @tickets =  format_highchart(:class => "ticket", :months => 1)
         @whymails =  format_highchart(:class => "whymail", :months => 1)
+        @websites =  format_highchart(:class => "Website", :months => 1)
+        
         @forms =  format_highchart(:class => "forms", :months => 1)
   end
   

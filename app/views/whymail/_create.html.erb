@@ -1,18 +1,26 @@
 <hr />
 <div id = "no_spam_container" class = "center">
-<% if @secure_email != nil %>
+<% if @whymail.email != nil && @whymail.valid? %>
 	<div id = "no_spam_label">	Your Disposable Email:</div><br />
-			<textarea id = "no_spam" class = "center" cols="35" rows="1" readonly onclick="this.focus(); this.select();" style = ""><%= @secure_email %></textarea>
+			<textarea id = "no_spam" class = "center" cols="35" rows="1" readonly onclick="this.focus(); this.select();" style = ""><%= @whymail.email %></textarea>
 			
 			<br />
 			<p>All email sent to this disposable email address will be forwarded to <%= @email %>. </p>
-			<p>To test this mailbox send an email to <a href="mailto:<%= @secure_email %>?subject=This is a Test Email&body=Replace me with your message">yourself</a></p>
-<% end %>
+			<p>To test this mailbox send an email to <a href="mailto:<%= @whymail.email %>?subject=This is a Test Email&body=Replace me with your message">yourself</a></p>
+			
+<% else %>
 <center>
-<%= @extra_message %>
-<br />
 
+	<div class= "remoteErrorMessage">
+		<%= @whymail.errors.full_messages.first %>
+	</div>
+	<br />
 </center>
+
+<% end %>
+
+	
+
 
 </div>
 <hr />

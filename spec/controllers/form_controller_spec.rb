@@ -17,20 +17,23 @@ describe FormsController do
       
     it "should give me a session error when i use it too many times" do
         session[:count] = 11
-        post 'create', :form => { :email => 'foo_form@example.com', :name => "Richie" }
+        post 'create', :forms => { :email => 'foo_form@example.com', :name => "Richie" }
         assigns[:extra_message].should == configatron.session_count_error
         session[:count] = 0
     end
     
     it "should render create" do
-      post 'create', :form => { :email => 'foo_form_0@example.com', :name => "Richie" }
+      post 'create', :forms => { :email => 'foo_form_0@example.com', :name => "Richie" }
       response.should render_template("_create")
+      assert_response :success
     end
     
     it "should create a user if one does not already exist" do
       assert_difference 'User.count', 1 do   
-          post 'create', :form => { :email => 'foo_form@example.com', :name => "Richie" }
+          post 'create', :forms => { :email => 'foo_form@example.com', :name => "Richie" }
       end
+      assert_response :success
+      
     end
     
   #  it "should not allow me to create more than one form for given set of email/comments" do
@@ -43,9 +46,11 @@ describe FormsController do
     
     it "should not allow me to create more than one form for given set of email/comments" do
       assert_difference 'Forms.count', 1 do   
-          post 'create', :form => { :email => 'foo_form2@example.com', :name => "Richie" }
+          post 'create', :forms => { :email => 'foo_form2@example.com', :name => "Richie" }
       end
       assigns[:address].should == Forms.last.address
+      assert_response :success
+      
     end
   end
   
@@ -61,13 +66,14 @@ describe FormsController do
        get 'show', :id => @form.id
        
        assigns[:form_data].name.should == "Richie"
-       response.should have_text("Richie")
+      # response.should have_text("Richie")
        
      end
 
     it "delete a form" do
          get 'show', :id => @form.id
          response.should render_template("show")
+         assert_response :success
     end
     
   end
@@ -120,8 +126,8 @@ describe FormsController do
     
     it "should render show" do
       post 'send_form', :form => { :form_id => @form.id, :email => 'foo_form_sent_0@example.com', :name => "Richie", :comments => "whazzup" }
-      
       response.should redirect_to("/forms/huzzah")
+      assert_response :redirect
     end
     
     
@@ -140,17 +146,20 @@ describe FormsController do
         end
        # assigns[:extra_message].should = configatron.session_count_error
         session[:count] = 0
+        assert_response :redirect
     end
     
-    it "should fail if i submit an invalid id" do
-        post 'send_form', :form => { :form_id => @form.id, :email => 'foo_form_sent_1@example.com', :name => "" }
+    it "should fail if i submit no message" do
+        post 'send_form', :form => { :form_id => @form.id, :email => 'foo_form_sent_1@example.com', :name => "" , :comments => "" }
         flash[:error].should match(/#{configatron.no_message}/)
+        assert_response :redirect
     end
     
     it "should fail if i submit an invalid id" do
         Forms.stubs(:find).returns(nil)
         post 'send_form', :form => { :form_id => @form.id, :email => 'foo_form_sent_1@example.com', :comments => 'this is a super cool feature' }
         flash[:error].should match(/#{configatron.invalid_form}/)
+        assert_response :redirect
     end
     
     

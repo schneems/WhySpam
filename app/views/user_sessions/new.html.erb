@@ -7,7 +7,7 @@
 
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
-<div class = "prepend-1">
+<div class = "prepend-1 span-16">
 
   <table>
 	<tr>
@@ -29,12 +29,14 @@
 
 </div>
 
+<div class="span-4 prepend-1">
+	<%= render :partial => "static/ads" %>
+</div>
+
 <% end %>
 
-<div class="prepend-1">
+<div class="prepend-1 span-12">
 <p>
-  Need an account? <%# link_to 'Sign up now.', signup_path %><br/>
-
   Forgot your password? <%= link_to 'Reset your password.', password_reset_path %>
 </p>
 </div>

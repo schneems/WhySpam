@@ -2,7 +2,7 @@ class Website < ActiveRecord::Base
   has_many :surveys
   validates_presence_of     :url
   validates_presence_of     :grade
-  validates_presence_of     :rank
+ # validates_presence_of     :rank
   
   
    attr_accessible :url, :grade, :rank, :opt_out_count, :un_solicited_count, :sell_count, :vulgar_count, :give_out_count

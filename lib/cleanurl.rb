@@ -9,6 +9,11 @@ module Cleanurl
     end
     return address
   end
+  
+  def is_email(url)
+    result = /\@/.match(url.to_s)
+    return !result.nil?
+  end
 
 
   def clean_url(url)

@@ -7,7 +7,56 @@
 
 	
 	<script type="text/javascript">
+	date_array = <%= @websites[:data].to_json.gsub!(/\"/, '') %>;
 	
+	
+		var chart = new Highcharts.Chart({
+		   chart: {
+		      renderTo: 'websites-per-day',
+		   },
+		        title: {
+		      text: 'New websites Per Day'
+		   },
+		        subtitle: {
+		      text: 'New websites, they\'re awesome and stuff'
+		   },
+		   xAxis: {
+		      type: 'datetime',
+		      title: {
+		         text: null
+		      }
+		   },
+		   yAxis: {
+		      title: {
+		         text: 'websites'
+		      },
+		      min: 0,
+		      showFirstLabel: false
+		   },
+		   tooltip: {
+		      formatter: function() {
+		         return Highcharts.numberFormat(this.y, 0) + " websites on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
+		      }
+		   },
+		   legend: {
+		      enabled: false
+		   },
+		   plotOptions: {
+		      spline: {
+		         marker: {
+		            enable: false
+		         }
+		      }
+		   },
+		  
+		   series: [{
+		      data: date_array
+		   }]
+		});
+		
+
+    // ===========================================================
+
 	date_array = <%= @forms[:data].to_json.gsub!(/\"/, '') %>;
 	
 	
@@ -221,6 +270,11 @@
 <div class = "span-24">
 	<div id = "whymails-per-day" class="small-chart span-11">
 	</div>
+	<div id = "websites-per-day" class="small-chart span-11">
+	</div>
+</div>
+
+<div class = "span-24">
 	<div id = "forms-per-day" class="small-chart span-11">
 	</div>
 </div>
@@ -414,10 +468,6 @@
 	<div id="outputDiv"></div>
 	<img src="dummy.gif" style="display:none" alt="required for Google Data"/>
 	
-	
-	
-	
-	
 <hr />
 
 Users Total 30 Day: <%= @users[:count] %>
@@ -425,6 +475,10 @@ Users Total 30 Day: <%= @users[:count] %>
 Whymail Total 30 Day: <%= @whymails[:count]  %>
 <br />
 Ticket Total 30 Day: <%= @tickets[:count]  %>
+
+Websites Total 30 Day: <%= @websites[:count]  %>
+
+
 <br />
 Forms Total 30 Day: <%= @forms[:count]  %>
 
