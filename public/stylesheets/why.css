@@ -30,6 +30,8 @@
 	http://localhost:3000/stylesheets/why.css?1263687330
 	http://localhost:3000/stylesheets/why.css?1263687786
 	http://localhost:3000/stylesheets/why.css?1263688488
+	http://localhost:3000/stylesheets/why.css?1263689966
+	http://localhost:3000/stylesheets/why.css?1263692114
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -1080,9 +1082,10 @@ table.forms textarea{
 }
 
 #form_comments, 
+#forms_name,
+#forms_email,
 #form_name,
 #form_email,
-
 #captcha {
 		
 -moz-border-radius: 5px;
@@ -1102,6 +1105,8 @@ font-size: 13px;
 }
 
 
+#forms_name,
+#forms_email,
 #form_name,
 #form_email,
 #captcha {
@@ -1135,8 +1140,8 @@ width: 415px;
 
 
 
-.genNewDisposableForm #form_name,
-.genNewDisposableForm #form_email{
+.genNewDisposableForm #forms_name,
+.genNewDisposableForm #forms_email{
 	width: 350px;
 }
 
