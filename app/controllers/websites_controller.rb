@@ -22,7 +22,7 @@ class WebsitesController < ApplicationController
       end  
     end  
     
-    @myurl = "No Website Was Given" if @myurl.strip == ""
+    @myurl = "No Website Was Given" if @myurl.to_s.strip == ""
     ## @surveys_count - @opt_out_count
     #@surveys_count - @opt_out_count
    end
