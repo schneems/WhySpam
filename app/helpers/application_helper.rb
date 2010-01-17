@@ -44,11 +44,7 @@ module ApplicationHelper
   
   
   def section_link(name,options)
-   # puts "=================="
-   # puts options
-   # puts params[:controller]
-   # puts params[:action]
-   # puts url_for(:controller => params[:controller], :action => params[:action])
+
       if (options[:action] == params[:action] and options[:controller] == params[:controller] ) || url_for(:controller => params[:controller], :action => params[:action]) == options
          link_to(image_tag(name+".png"), options, :class => 'on')
       else

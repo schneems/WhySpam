@@ -23,23 +23,29 @@
 	<!-- create -->
 	  <% remote_form_for :form, :url => forms_path, :update => 'update_this_partial', :loading => "$('#indicator').show();$('#update_this_partial').hide();", :complete => "$('#indicator').hide();$('#update_this_partial').show();" do |f| %>
 	<div id = "main_input" >
-<table  class = "prepend-1 last">
-<tr><td><%= f.label "Your Email:" %></td>
-	<td colspan = 2><%= f.default_text_field :email, configatron.default_email %></td>
+<table  class = "prepend-1 last genNewDisposableForm">
+	<tr>
+		<td class = "optional_td"> <%= f.label "Your Name:" %>
+			<br /><span class = "optional">(Optional)</span></td>
+		<td 2><%= f.default_text_field :name , "Anonymous" %></td>
+	</tr>
+	
+<tr>
+	<td><%= f.label "Your Email:" %></td>
+	<td><%= f.default_text_field :email, configatron.default_email %></td>
 </tr>
 <tr>
-	<td class = "optional_td"> <%= f.label "Description:" %>
-		<br /><span class = "optional">(Optional)</span></td>
-	<td><%= f.default_text_area :comments , configatron.default_form_comment %></td>
+	<td></td>
+	<td>
+		<%= show_simple_captcha %>
+	</td>
 </tr>
-
-<%= show_simple_captcha %>
 
 </table>
 
 
 	<br />
-<div class='buttons clearfix center'>
+<div class='prepend-2 buttons clearfix center'>
 			<%=  f.button_with_icon("Generate Disposable Form", "document") %>			
 </div>
 	
@@ -66,7 +72,9 @@
 		<p> Give This Link to anyone you want to contact you </p>
 	<% end %>
 	<div onclick="this.focus(); this.select();" class = "center">
+		
 	<%= @extra_message %>
+	
 	</div>
 	</div>
 	<hr />
@@ -75,11 +83,10 @@
 	
 	In addition to using the above link, you can also put this disposable form directly on your website !! To use copy the code below and put it in the html of your website. Then anyone can send you a safe and secure message. 
 
-	<% end %>
 	
 	<div class = "center">
 	<br />
-	<code>
+	<code >
 	<textarea id="code" cols="65" rows="10" readonly onclick="this.focus(); this.select();" style = "overflow:hidden">
 &lt;div id = &quot;WhySpamJavaScript&quot; class = &quot;center&quot;&gt;	
   &lt;script type=&quot;text/javascript&quot;&gt;
@@ -94,8 +101,13 @@
 	</code>
 	<br />
 	<br />
+	<br />
 	<hr />
 	</div>
+	
+	<% end %>
+	
+	
 <% end %>
 
 

@@ -20,6 +20,15 @@
 	http://localhost:3000/stylesheets/why.css?1262828355
 	http://localhost:3000/stylesheets/why.css?1262830696
 	http://localhost:3000/stylesheets/why.css?1262914067
+	http://localhost:3000/stylesheets/why.css?1262994749
+	http://localhost:3000/stylesheets/why.css?1263513364
+	http://localhost:3000/stylesheets/why.css?1263662134
+	http://localhost:3000/stylesheets/why.css?1263662598
+	http://localhost:3000/stylesheets/why.css?1263663055
+	http://localhost:3000/stylesheets/why.css?1263663192
+	http://localhost:3000/stylesheets/why.css?1263680753
+	http://localhost:3000/stylesheets/why.css?1263687330
+	http://localhost:3000/stylesheets/why.css?1263687786
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -157,9 +166,37 @@ table {
 }
 
 #youtube-video {
-	margin-top: 30px;
 	margin: 40px 0 40px 30px;
+	height: 225px;
+	width: 355px;
+	border: 1px solid #8b8b8b;
+
+	background: #fffeff url(/images/loading.gif) no-repeat 170px 75px;
 }
+
+#you-tube-how {
+	height: 380px;
+	width: 560px;
+	border: 1px solid #8b8b8b;
+
+	background: #fffeff url(/images/loading.gif) no-repeat 170px 75px;
+}
+
+.disposableEmail #user_website,
+.disposableEmail #user_email {
+height: 30px;
+margin-bottom: 20px;
+	
+}
+
+
+
+#you-tube-how object, 
+#youtube-video object {
+	display: none;
+}
+
+
 
 #widget b.faq {
 	font-size: 23px;
@@ -243,16 +280,17 @@ input.title:focus { border-color: #666666; }
 textarea:focus { border-color: #666666; }
 select:focus { border-color: #666666; }
 input[type=text], input[type=password], input.text, input.title, textarea, select { margin: 0.5em 0; }
+
+
+
+
+
 input.text, input.title {
   width: 300px;
   padding: 5px;
 }
 input.title { font-size: 1.5em; }
-textarea {
-  width: 390px;
-  height: 250px;
-  padding: 5px;
-}
+
 input[type=checkbox], input[type=radio], input.checkbox, input.radio {
   position: relative;
   top: 0.25em;
@@ -695,7 +733,7 @@ form div.buttons { margin: 0 0 1.5em 15em; }
 	float: right;
 }
 
-textarea {width:390px;height:250px;padding:5px;}
+
 
 
 textarea#no_spam {
@@ -864,7 +902,7 @@ span.ui-icon {
   
   margin: 0 auto;
   text-align: center;
-  font-size: 0.75em;
+  font-size: 14px;
   color: #666666;
  	width: 100%;
   padding-top: 5px;
@@ -994,15 +1032,6 @@ span.small {
 	margin-left: 10px;
 }
 
-input#user_email,
-input#user_website, 
-input#form_email,
-input#ticket_to_email,
-input#captcha {
-	height: 2em;
-	
-}
-
 
 
 
@@ -1037,4 +1066,78 @@ div.chev {
 	float:left;
 	margin: 0 30px 10px 20px;
 
+}
+
+
+
+
+table.forms textarea{
+	font-size: 23px;
+}
+
+#form_comments, 
+#form_name,
+#form_email,
+
+#captcha {
+		
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-color: #949494;
+
+font-size: 13px;
+
+}
+
+
+#form_comments {
+	color: black;
+	width: 370px;
+  height: 150px;
+  padding: 5px;
+}
+
+
+#form_name,
+#form_email,
+#captcha {
+
+	width: 185px;
+
+	
+	height: 28px;
+	padding: 0;
+	margin: 0 5px 0 0;
+}
+
+.disposableForm {
+margin: 5px 5px 5px 10px;
+width: 415px;
+	
+}
+
+
+
+
+.simple_captcha_image img{
+	width: 155px;
+	height: 30px;
+	margin-bottom: -5px;
+	border: 1px solid #939393;
+}
+
+
+
+
+
+
+.genNewDisposableForm #form_name,
+.genNewDisposableForm #form_email{
+	width: 350px;
+}
+
+
+#code {
+	width: 620px;
+	font: 12px "Courier New", Courier, mono;
 }

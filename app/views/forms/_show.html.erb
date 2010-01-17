@@ -1,124 +1,49 @@
-<style type='text/css'>
-	input#user_email, 
-	input#user_website,
-	input#captcha,
-	input#ticket_to_email,
-	input#login, input#password,
-	input#email ,
-	input#form_email, 
-	input#old_password,
-	input#user_login,
-	input#password_confirmation,
-	input#user_password
-	{
-		height: 40px;
-		font-size: 18pt;
-		width: 300px;
-	}
-	
-	textarea#form_comments {
-		font-size: 18pt;
-		width: 300px;
-	}
-	span.simple_captcha_image img {
-		float: right;
-		padding-left: 3px;
-		border: 1px solid black;
-		height: 40px;
-		width: 140px;
-		padding-bottom: 10px;
-		background-color: #fff;
-	}
-	input#captcha,
- 	input#captcha
-	{
-		width: 145px;
-	}
-	#externspamwrap 
-	{
-		overflow: visible;
-		-moz-border-radius: 10px;
-		-webkit-border-radius: 10px;
-		padding:20px;
-		border: 2px black solid;
-		margin: 0 auto 0 auto;
-		width: 400px;
-	}
-	.float_right {
-		float:right;
-	}
-	#flash {
-		margin-top: 20px;
-		text-align: center;
-		margin-left: auto;
-		margin-right: auto;
-		background-color: blue;
-		color: white;
-		font-size: 16pt;
-		width: 60%;
-		border: 2px solid black;
-	}
-	div#flash.flash_error {
-		margin-top: 20px;
-		text-align: center;
-		margin-left: auto;
-		margin-right: auto;
-		background-color: red;
-		color: white;
-		font-size: 16pt;
-		width: 60%;
-		border: 2px solid black;
-	}
-	
-	
-</style>
-
 <div id = "externspamwrap">
 	<% if flash[:notice] && !@localrequest  %><div id="flash"><%= flash[:notice] %></div><% end %>	
 	<% if flash[:error] && !@localrequest%><div id="flash" class = "flash_error" ><%= flash[:error] %></div><% end %>
 <% if @form_data.nil? %>
+
+
 <p>No form exists with this ID either this user has deleted this form, or someone mistyped this form URL. If you believe you've gotten this message in error please <%= link_to "Contact Us", {:action => "contact", :controller => "static"} %>.
 	<br />
 	<br />
 If you wish to create your own contact form, you can do it by clicking on the <%= link_to "Disposable Forms", new_form_path  %> link above, its the quickest way to make an anonymous form on the web.
 <% else %>
 
-		<b> This form was created: <%= @form_data.created_at.strftime("%m/%d/%Y")%> </b>
-		<br />
-		<br />
-		<b> User comments for this form:</b>
-		<br />
-		<br />
-		<%= @form_data.comments.nil? || @form_data.comments.empty? ? "This user left no comments for this form" : @form_data.comments %>
-	
-		<br />
-		<br />
-		  <% form_for :form, :url => {:action => "send_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
-	<table>
-		<tr>
-			<td class = "optional_td"><%= f.label "Your Email:" %><br />
-				<span class = "optional">(Optional)</span>
-			</td>
-			<td colspan = 2><%= f.text_field :email , :rows => 2 %></td>
-		</tr>
-		<tr>
-			<td><%= f.label "Message:" %></td>
-			<td colspan = 2><%=  f.text_area :comments, :rows => 4 %></td>
-		</tr>
+	<div class = "messageWrapper">
+			<div class = "span-1"><a href="http://whyspam.me/forms/new" ><%= image_tag("whyFav.png", :alt => "Disposable contact forms by whyspam.me") %></a></div>
+			<p class = "span-10">
+				<b>Leave a Message For: &nbsp</b>
+				<%= @form_data.name.nil? || @form_data.name.empty? ? "Anonomous" : @form_data.name %>
+			</p>
+	<div class = 'disposableForm'>
+			  <%#remote_form_for :form, :url => forms_path, :update => 'update_this_partial', :loading => "$('#indicator').show();$('#update_this_partial').hide();", :complete => "$('#indicator').hide();$('#update_this_partial').show();" do |f| %>
+		<% form_for :form, :url => {:action => "send_form", :controller => "forms"}, :update => 'update_this_partial' do |f| %>
+		<table class = "forms">
+			<tr>
+				<td colspan=2 ><%= f.default_text_area :comments, "Leave a Message"  %> </td>
+			</tr>
+			<tr>
+				<td><%= f.default_text_field :name, "Your Name" %><%= f.default_text_field :email, "Your Email" %></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<%= show_simple_captcha %>
+				</td>
+			</tr>
+		</table>
+		<%= f.hidden_field :form_id, :value => @form_data.id %>
+		
+		<div class = "span-4">
+			<%= f.submit "Send Your Message"  %>
+		</div>
+		 <p class = " prepend-6 span-6"><b>	Created: <%= @form_data.created_at.strftime("%m/%d/%Y")%> </b></p>
 
-		<%= show_simple_captcha %>
-	</table>
-	<center>
-		<br />
-
-	<%= f.hidden_field :form_id, :value => @form_data.id %>
-	<%= f.submit "Send Your Message" %>
-	</center>
-			<br />
-	<span class = "float_right">
-	<a href = "http://www.whyspam.me/forms" target="_blank">WhySpam.me Secure forms</a> 
-	</span>
-	<% end %>
+		<% end %>
+		
+	</div>
 				<%= error_messages_for :user %>
+	</div>
 <% end %>
 </div>

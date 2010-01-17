@@ -1,6 +1,5 @@
 class SurveysController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  layout "application" , :except => [:new ]
 
   def new
     whymail_id = params[:id]

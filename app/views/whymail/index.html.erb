@@ -14,6 +14,10 @@
 			);
 			
 			
+			$('#youtube-video object').css("display", "block");
+			$('#you-tube-how object').css("display", "block");
+
+
 		});	
 
 </script>
@@ -21,7 +25,7 @@
 <% end %>
 
 
-<div class = "span-24 last">
+<div class = "span-24 last disposableEmail">
 
 	<% @user = User.new(:email => "Email", :website => "Website") %>
 	<% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
@@ -65,7 +69,10 @@
 		</div>
 		
 		<div class = "span-9 last" id = "youtube-video">
-<object width="355" height="225"><param name="movie" value="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="355" height="225"></embed></object>
+			
+			<object width="355" height="225" ><param name="movie" value="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="355" height="225"></embed></object>
+			
+			
 		</div>
 		<%# render :partial => "static/ads"%>
 		
@@ -134,9 +141,11 @@
 						<p> 
 						<div id = "you-tube-how">
 <object width="560" height="380"><param name="movie" value="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="380"></embed></object>
+
+
+
 						</div>
 							
-
 				</div>
 
 
@@ -144,6 +153,8 @@
 					
 
 				<div class = "span-4 last">
+					<br />
+					<br />
 					<br />
 					<%= render :partial => "static/ads"%>				
 				</div>

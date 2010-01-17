@@ -27,12 +27,7 @@ class AdminController < ApplicationController
           
           
             0.upto(30) do |date|
-            #  puts ticket.created_at.utc.to_s(:long)
-            #  t = Time.now.beginning_of_day - (date+1).days
-            #  puts t.utc.to_s(:long)
-            #  t = Time.now.beginning_of_day - date.days
-            #  puts t.utc.to_s(:long)
-            #  puts "================================="
+
               
               
               if ticket.created_at.utc > (Time.now.beginning_of_day.utc - (date+1).days) && ticket.created_at.utc < (Time.now.beginning_of_day.utc - date.days)

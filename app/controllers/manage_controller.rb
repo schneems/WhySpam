@@ -1,5 +1,4 @@
 class ManageController < ApplicationController
-   layout "application-2"
    
    
    

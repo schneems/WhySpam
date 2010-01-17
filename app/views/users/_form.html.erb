@@ -1,20 +1,23 @@
-<div>
-  <%= form.label :login, "Displayed Name" %>
-  <%= form.text_field :login %>
-</div>
+<table>
+	<tr>
+	
+	  <td><%= form.label :login, "Displayed Name:" %></td>
+	  <td><%= form.text_field :login %></td>
+	</tr>
 
 
-<div>
-  <%= form.label :email, "Email (not editable)" %>
-  <%= form.text_field :email, :disabled => true  %>
-</div>
+	<tr>
+	  <td><%= form.label :email, "Email (not editable):" %></td>
+	  <td><%= form.text_field :email, :disabled => true  %></td>
+	</tr>
 
-<div>
-  <%= form.label :password, (form.object.new_record? ? "Password" : "Change password")  %>
-  <%= form.password_field :password %>
-</div>
+	<tr>
+	  <td><%= form.label :password, (form.object.new_record? ? "Password: " : "Change password:")  %></td>
+	  <td><%= form.password_field :password %></td>
+	</tr>
+	<tr>
+	  <td><%= form.label :password_confirmation, "Password Confirmation:" %></td>
+	  <td><%= form.password_field :password_confirmation %></td>
+	</tr>
 
-<div>
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation %>
-</div>
+</table>

@@ -5,19 +5,22 @@
 <% @description = 'Disposable contact forms are a free easy way to let people on the web send you emails using a form without having to give out your personal email address. All form submissions are forwarded directly to your inbox.  '  %>
 
 
-<div class = "span-19">
+<div class = "span-24">
 	<%= page_title('Disposable Contact Forms', 'h2') %>
 	
-	<h2>  </h2>
-
-
-	<%= render :partial => "create"  %>
-
-	<center>
+	
+	<div class = "span-18">
+		<%= render :partial => "create"  %>
+	</div>
+	<div class = "prepend-1 last">
+		<%= render :partial => "static/ads"%>
+	</div>
+	
+	<div class = "span-24 last center">
 		<%= image_tag("loading.gif",
 					   :id => "indicator",
 					   :style  =>  'display:none') %>
-	</center>
+	</div>
 
 
 	<br />

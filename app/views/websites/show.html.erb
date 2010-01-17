@@ -1,80 +1,81 @@
 <% @keywords =  @myurl.to_s + 'report spam mail,spam blocker,spam list,report spammers,report spam email,report spam,blacklist,abuse,website,domains,spam check,email abuse,spam war,utility,spammers'%>
 
-
-
-
 <% if @website.nil? %>
+
 <% @description = Time.now.strftime("%b %d, %Y") + ': no one has reported if '+ @myurl + ' is a trustworthy site, use caution when giving out our email to them. Generate a disposable email to be safe. '  %>
 
 No one has reported anything about <h2><%= @myurl %></h2> good or bad. Use caution when giving out your personal email to them. Generate a  <%= link_to "Disposable Email Address", root_path, {
 				 :host => "whyspam.me", :only_path => 
 				true } %>  to be safe. 
 <% else %>
-
 <p>
-	<center><%= page_title("Spam Report for #{ @website.url }  ", "h2") %> 
-		<b><a href = 'http://<%=h @website.url %>' rel="nofollow"><%=h @website.url%>  </a></b>
-		</center>
+<center>
+	<%= page_title("Spam Report for #{ @website.url }  ", "h2") %> 
+	<b><a href = 'http://<%=h @website.url %>' rel="nofollow"><%=h @website.url%></a></b>
+</center>
 
+<% @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @surveys_count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
+<br />
+<div class="span-18">
+	Added on: <%= @website.created_at.to_s(:long) %><br />
+	Grade: <b><%= @website.grade %></b><br />
+	Score: <%= @website.rank %><br />
+
+	Total Surveys Counted: <%= @surveys_count %>
+
+	<% if @surveys_count != 0 %>
+	<br/>
+	<br />
+	<b>Survey Results</b>
+	<table>
+		<tr>
+			<td></td>
+			<td><u>Yes</u></td>
+			<td><u>No</u></td>
+			<td><u>Percent</u></td>
+		</tr>
+		<tr>
+
+			<td>Did you have to opt out of emails? </td>
+			<td><%= @opt_out_count %></td>
+			<td><%= @surveys_count - @opt_out_count %></td>
+			<td><%= (@opt_out_count/@surveys_count)*100 %> %</td>
+		</tr>
+		<tr>
+			<td>Did they Send you Un-solicited Emails? </td>
+			<td><%= @un_solicited_count %></td>
+			<td><%= @surveys_count - @un_solicited_count %></td>
+			<td><%= (@un_solicited_count/@surveys_count)*100 %> %</td>
+		</tr>
+		<tr>
+			<td>Did they sell your email address?  </td>
+			<td><%= @sell_count %></td>
+			<td><%= @surveys_count - @sell_count %></td>
+			<td><%= (@sell_count/@surveys_count)*100 %> %</td>
+		</tr>
+		<tr>
+			<td>Did you receive inappropriate emails? </td>
+			<td><%= @vulgar_count %></td>
+			<td><%= @surveys_count - @vulgar_count %></td>
+			<td><%= (@vulgar_count/@surveys_count)*100 %> %</td>
+		</tr>
+
+
+	</table>
+	<p>*Note that survey listings are only recorded if the user reports that they only gave their Disposable Email to <%= @website.url %></p>
+
+	<% else %>
+	<p>There are no surveys for this website yet</p>
+
+	<% end %>
+</div>
+
+<div>
+	<%= render :partial => "static/ads" %>
+</div>
+<br />
 <hr />
-<br />
-<%= @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @surveys_count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
-<hr />
-<br />
-<br />
-
-Added on: <%= @website.created_at.to_s(:long) %><br />
-Grade: <b><%= @website.grade %></b><br />
-Score: <%= @website.rank %><br />
-
-Total Surveys Counted: <%= @surveys_count %>
-
-<% if @surveys_count != 0 %>
-<br/>
-<br />
-<b>Survey Results</b>
-<table>
-	<tr>
-		<td></td>
-		<td><u>Yes</u></td>
-		<td><u>No</u></td>
-		<td><u>Percent</u></td>
-	</tr>
-	<tr>
-
-		<td>Did you have to opt out of emails? </td>
-		<td><%= @opt_out_count %></td>
-		<td><%= @surveys_count - @opt_out_count %></td>
-		<td><%= (@opt_out_count/@surveys_count)*100 %> %</td>
-	</tr>
-	<tr>
-		<td>Did they Send you Un-solicited Emails? </td>
-		<td><%= @un_solicited_count %></td>
-		<td><%= @surveys_count - @un_solicited_count %></td>
-		<td><%= (@un_solicited_count/@surveys_count)*100 %> %</td>
-	</tr>
-	<tr>
-		<td>Did they sell your email address?  </td>
-		<td><%= @sell_count %></td>
-		<td><%= @surveys_count - @sell_count %></td>
-		<td><%= (@sell_count/@surveys_count)*100 %> %</td>
-	</tr>
-	<tr>
-		<td>Did you receive inappropriate emails? </td>
-		<td><%= @vulgar_count %></td>
-		<td><%= @surveys_count - @vulgar_count %></td>
-		<td><%= (@vulgar_count/@surveys_count)*100 %> %</td>
-	</tr>
-
-
-</table>
-<p>*Note that survey listings are only recorded if the user reports that they only gave their Disposable Email to <%= @website.url %></p>
-
-<% else %>
-<p>There are no surveys for this website yet</p>
-
-<% end %>
-<br />
+<div class="span-24">
 Comments:<br />
 <% for survey in @website.surveys %>
 	<div>
@@ -86,3 +87,4 @@ Comments:<br />
 </p>
 <% end %>
 
+</div>

@@ -23,71 +23,79 @@
 
 
 
-<div class = "span-19 last">
-	<%= page_title('Spam List and Website Rankings', 'h2') %>
-<br />
-<center>
+<div class = "span-18 last">
+		<%= page_title('Spam List and Website Rankings', 'h2') %>
+	<br />
+	<center>
  
-</center>
+	</center>
 
-<div id = "float_wrapper">
-<div id = "main_input_websites" >
-<% if @websites != nil %>
+	<div id = "float_wrapper">
+	<div id = "main_input_websites" >
+	<% if @websites != nil %>
 
-<table cellpadding="0" cellspacing="0" border="0" class="display span-16 last" id="example">
-	<thead>
-		<tr>
-			<th>Grade</th>
-			<th>Address</th>
-			<th>Date Added</th>
-		</tr>
-	</thead>
-	<tbody>
+	<table cellpadding="0" cellspacing="0" border="0" class="display span-16 last" id="example">
+		<thead>
+			<tr>
+				<th>Grade</th>
+				<th>Address</th>
+				<th>Date Added</th>
+			</tr>
+		</thead>
+		<tbody>
 
-	<% for website in @websites %>
-		<tr  class="clickable"  onclick = "window.location.href = '<%=  website_path(website.id) %>' ">
-			<td><%= website.grade %></td>
-			<td><%= link_to "#{h website.url}", show_website_path(:url => website.url) %></td>
-			<td><%= website.created_at.strftime("%m/%d/%Y") %></td>
-		</tr>
+		<% for website in @websites %>
+			<tr  class="clickable"  onclick = "window.location.href = '<%=  website_path(website.id) %>' ">
+				<td><%= website.grade %></td>
+				<td><%= link_to "#{h website.url}", show_website_path(:url => website.url) %></td>
+				<td><%= website.created_at.strftime("%m/%d/%Y") %></td>
+			</tr>
 		
+		<% end %>
+		</tbody>
+	</table>
 	<% end %>
-	</tbody>
-</table>
-<% end %>
-</div>
-<div class = "float_space"></div>
-</div><!-- wrapper -->
+	</div>
+	<div class = "float_space"></div>
+	</div><!-- wrapper -->
 
 
-	<b>This Site is beta, and the algorithm for determining the website rankings isn't quit 100% but if you'd like to help... this is an open source project</b>
+		<b>This Site is beta, and the algorithm for determining the website rankings isn't quit 100% but if you'd like to help... this is an open source project</b>
 	
-<br />
-<br />
+	<br />
+	<br />
 
-<div id = "email_explained">
+	<div id = "email_explained">
 	
-	<h4>What is a WhySpam™ Website Ranking ?</h4>
-	<p>
-	WhySpam™ Website rankings are the best way to know if the site you're about to give your email to is a known spammer. Some websites make money by selling your personal information to spammers. So every-time someone makes a customized WhySpam™ <%= link_to "Disposable Email", root_path  %> and only hands it out to a single website, if they start to recieve unsolicited mail from a third party, then we know that website sold their information. By exposing those who sell your information we can help everyone steer clear from the bad websites, and let everyone know about the websites who respect your privacy. 
- 	<br /><br />
-		<%= link_to "Too Bad not Everyone Respects your Privacy Like us.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %>
-	</p>
+		<h4>What is a WhySpam™ Website Ranking ?</h4>
+		<p>
+		WhySpam™ Website rankings are the best way to know if the site you're about to give your email to is a known spammer. Some websites make money by selling your personal information to spammers. So every-time someone makes a customized WhySpam™ <%= link_to "Disposable Email", root_path  %> and only hands it out to a single website, if they start to recieve unsolicited mail from a third party, then we know that website sold their information. By exposing those who sell your information we can help everyone steer clear from the bad websites, and let everyone know about the websites who respect your privacy. 
+	 	<br /><br />
+			<%= link_to "Too Bad not Everyone Respects your Privacy Like us.", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %>
+		</p>
+	</div>
+
+			<div id = "email_useage">
+					<h4>Did You Know?</h4>
+					<p>
+						Spammers exist because one in every 25 million junk emails that they send gets a reply, and the money that they make from that one reply is more than it costs to send out 25 million emails. Pretty impressive, no? So the best way to slow spam is to make the cost of sending out all those emails greater than the profit they would receive from the one reply. Simple economics right? But since the price per email isn't something we can really change, we have to increase the number of junk emails they have to send in-order to get a reply. But how can we do that ?
+						<br />
+						<br />
+						If you make a new WhySpam™ <%= link_to "Free Disposable Email", root_path  %> address every time you give out your email address to a website, then you can get spam out of your inbox, and hit those spammers where it really hurts...in the wallet. Also if you want to know if a website is likely to spam you before you ever sign up visit our WhySpam™ Website Rankings and check. If someone is getting rich by selling your information, take action into your own hands and dollars out of theirs...don't use their sites, it's that easy!
+				 <br /><br />
+						<%= link_to "Just Say no To Spam!", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %>
+					</p>
+			</div>
 </div>
 
-		<div id = "email_useage">
-				<h4>Did You Know?</h4>
-				<p>
-					Spammers exist because one in every 25 million junk emails that they send gets a reply, and the money that they make from that one reply is more than it costs to send out 25 million emails. Pretty impressive, no? So the best way to slow spam is to make the cost of sending out all those emails greater than the profit they would receive from the one reply. Simple economics right? But since the price per email isn't something we can really change, we have to increase the number of junk emails they have to send in-order to get a reply. But how can we do that ?
-					<br />
-					<br />
-					If you make a new WhySpam™ <%= link_to "Free Disposable Email", root_path  %> address every time you give out your email address to a website, then you can get spam out of your inbox, and hit those spammers where it really hurts...in the wallet. Also if you want to know if a website is likely to spam you before you ever sign up visit our WhySpam™ Website Rankings and check. If someone is getting rich by selling your information, take action into your own hands and dollars out of theirs...don't use their sites, it's that easy!
-			 <br /><br />
-					<%= link_to "Just Say no To Spam!", {:action => "privacy", :controller => "static"}, {:rel => "prettyPopin" } %>
-				</p>
-		</div>
+
+<div>
+	<br />
+	<br />
+	<br />
+	<%= render :partial => "static/ads" %>
+
+	<%= render :partial => "static/ads" %>
 </div>
-
-
 	
 	

@@ -1,37 +1,32 @@
 <%= page_title 'My Account' %>
-<div class = "prepend-1">
-
-<p>
-  <b>Log in:</b>
-  <%=h @user.login %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
-
-
-
-<% if !@user.last_login_at.nil? %>
-	<p>
-	  <b>Last login at:</b>
-	  <%=h @user.last_login_at.to_s(:long) %>
-	</p>
-<% end %>
-
-<p>
-  <b>Login count:</b>
-  <%=h @user.login_count %>
-</p>
-
-
-
-<p>
-  <b>Password:</b>
-   ************
-</p>
-
+<div class = "prepend-1 span-10">
+<table>
+	<tr>
+	  <td>Login:</td>
+	  <td><%=h @user.login %></td>
+	</tr>
+	<tr>
+	  <td>Email:</td>
+	  <td><%=h @user.email %></td>
+	</tr>
+	<% if !@user.last_login_at.nil? %>
+		<tr>
+		  <td>Last login at:</td>
+		  <td><%=h @user.last_login_at.to_s(:long) %></td>
+		</tr>
+	<% end %>
+	<tr>
+	  <td>Login count:</td>
+	  <td><%=h @user.login_count %></td>
+	</tr>
+	<tr>
+	  <td>Password:</td>
+	   <td>************</td>
+	</tr>
+</table>
 
 <%= link_to 'Edit', edit_account_path %>
+</div>
+<div class="span-6 prepend-6">
+	<%= render :partial => "static/ads" %>
 </div>

@@ -9,7 +9,6 @@ class TicketsController < ApplicationController
   ## command t finds file name in project...totally aweso
   
   
-  layout "application", :except => [:spam_survey, :report_spam, :test, :ie, :ie2, :test2, :HEY, :optional]
     
 #  def show_all_tickets
 #    whymail_id = params[:whymail]

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091223193335) do
+ActiveRecord::Schema.define(:version => 20100115161701) do
 
   create_table "forms", :force => true do |t|
     t.text     "comments"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20091223193335) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "simple_captcha_data", :force => true do |t|

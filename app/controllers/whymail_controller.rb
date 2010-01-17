@@ -1,5 +1,4 @@
 class WhymailController < ApplicationController
-  layout "application-2"
   
   
   
@@ -11,7 +10,6 @@ class WhymailController < ApplicationController
      ## can most likely be simplified
        session[:count] = session[:count]||0
        @email = email = params[:user][:email]
-       puts @email
         site = params[:user][:website]||" "        
         @secure_email = @extra_message = nil
         session[:count] +=  1 
@@ -28,6 +26,7 @@ class WhymailController < ApplicationController
               else
                  @extra_message = configatron.duplicate_email if secure_email != nil 
                  @extra_message = configatron.bad_email if !the_user.valid?
+                 
               end ## if secure_email == nil
            end
          #  @extra_message = "We have a hard time forwarding emails to blank addresses, 

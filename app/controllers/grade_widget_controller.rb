@@ -1,7 +1,6 @@
 
 class GradeWidgetController < ApplicationController
 
-  layout "application", :except => [:show, :spam_survey, :report_spam, :test, :ie, :ie2, :test2, :HEY, :optional]
   
   def validated
     render :partial => 'validated'

@@ -2,10 +2,9 @@ class WebsitesController < ApplicationController
   auto_complete_for :website, :url
 
  
-   layout "application"
    
    def show
-    @myurl = params[:url]
+    @myurl = params[:url] || ""
     website_id = params[:id]
     @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])||Website.find(:first, :include => [{:surveys => :user}], :conditions => ["url = ?", @myurl])
     if !@website.nil?      
@@ -22,6 +21,8 @@ class WebsitesController < ApplicationController
         @surveys_count = 0  
       end  
     end  
+    
+    @myurl = "No Website Was Given" if @myurl.strip == ""
     ## @surveys_count - @opt_out_count
     #@surveys_count - @opt_out_count
    end

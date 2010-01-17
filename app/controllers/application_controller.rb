@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  layout "application", :except => [:test, :localtest]  
+  layout "application-2", :except => [:test, :localtest]  
   helper :all # include all helpers, all the time
   
   
@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
   
   include Cleanurl
   
+ unless ActionController::Base.consider_all_requests_local
+    rescue_from Exception,                            :with => :render_error
+    rescue_from ActiveRecord::RecordNotFound,         :with => :render_not_found
+    rescue_from ActionController::RoutingError,       :with => :render_not_found
+    rescue_from ActionController::UnknownController,  :with => :render_not_found
+    rescue_from ActionController::UnknownAction,      :with => :render_not_found
+ end
+   
 
   
   
@@ -39,20 +47,42 @@ class ApplicationController < ActionController::Base
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
  #  filter_parameter_logging :password
+ 
  include AuthlogicSystem # see lib/authlogic_system
  #include ExceptionNotifiable
   
   helper :all
   helper_method :current_user_session, :current_user
   #filter_parameter_logging :password, :password_confirmation
+  
+
+  
+  
 
   protected
-    def render_500
-      respond_to do |type|
-        type.html { render :template => "static/500", :status => "500 Error" }
-        type.all  { render :nothing => true, :status => "500 Error" }
-      end
-    end
+   # def render_500
+   #   respond_to do |type|
+   #     type.html { render :template => "static/500", :status => "500 Error" }
+   #     type.all  { render :nothing => true, :status => "500 Error" }
+   #   end
+   # end
+   
+   def render_not_found(exception)
+     log_error(exception)
+     notify_hoptoad(exception)
+     activate_authlogic
+     @error = 404
+     render :template => "/static/notfound.html.erb", :status => @error
+   end
+   
+   
+   def render_not_found(exception)
+         log_error(exception)
+         notify_hoptoad(exception)
+         activate_authlogic
+         @error = 500
+         render :template => "/static/notfound.html.erb", :status => @error     
+   end
     
     
 end

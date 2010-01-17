@@ -84,6 +84,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.static '/:action', :controller => 'static'
-  
-  
+ 
+ 
+ 
 end
