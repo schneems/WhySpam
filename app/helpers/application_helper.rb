@@ -67,11 +67,23 @@ module ApplicationHelper
     
     
     def default_text_field(name, value)   
+      
+      if object[name].nil?
       text_field(name, :value => value,  :class => "gray-input", :onfocus => "if (this.value=='#{value}') this.value = '';this.style.color = 'black';", :onblur => "if (this.value=='') {this.value = '#{value}';this.style.color = '';}" )
+      else
+        value = object[name] 
+        text_field(name, :value => value)
+      end
+      
     end
   
     def default_text_area(name, value)
-      text_area(name, :value => value,  :class => "gray-input", :onfocus => "if (this.value=='#{value}') this.value = '';this.style.color = 'black';", :onblur => "if (this.value=='') {this.value = '#{value}';this.style.color = '';}" )    
+      if object[name].nil?
+          text_area(name, :value => value,  :class => "gray-input", :onfocus => "if (this.value=='#{value}') this.value = '';this.style.color = 'black';", :onblur => "if (this.value=='') {this.value = '#{value}';this.style.color = '';}" )    
+      else
+        value = object[name] 
+        text_area(name, :value => value )    
+      end
     end
   end
   

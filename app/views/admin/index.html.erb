@@ -8,9 +8,57 @@
 	
 	<script type="text/javascript">
 	
+	date_array = <%= @forms[:data].to_json.gsub!(/\"/, '') %>;
+	
+	
+		var chart = new Highcharts.Chart({
+		   chart: {
+		      renderTo: 'forms-per-day',
+		   },
+		        title: {
+		      text: 'New Forms Per Day'
+		   },
+		        subtitle: {
+		      text: 'New Forms, they\'re awesome and stuff'
+		   },
+		   xAxis: {
+		      type: 'datetime',
+		      title: {
+		         text: null
+		      }
+		   },
+		   yAxis: {
+		      title: {
+		         text: 'Forms'
+		      },
+		      min: 0,
+		      showFirstLabel: false
+		   },
+		   tooltip: {
+		      formatter: function() {
+		         return Highcharts.numberFormat(this.y, 0) + " Forms on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
+		      }
+		   },
+		   legend: {
+		      enabled: false
+		   },
+		   plotOptions: {
+		      spline: {
+		         marker: {
+		            enable: false
+		         }
+		      }
+		   },
+		  
+		   series: [{
+		      data: date_array
+		   }]
+		});
+		
+
+    // ===========================================================
 
 
-    
 	date_array = <%= @users[:data].to_json.gsub!(/\"/, '') %>;
 	
 	
@@ -150,103 +198,7 @@
 				      data: date_array
 				   }]
 				});
-//=======================================================
-/*
 
-		array = <%=  @ticket_per_month.to_json  %>;
-		var chart = new Highcharts.Chart({
-		   chart: {
-		      renderTo: 'tickets-per-day', 
-		      defaultSeriesType: 'area'
-		   },
-		   title: {
-		      text: 'Tickets Per Day'
-		   },
-
-		   xAxis: {
-			title: {
-				text: 'Day'
-			},
-			
-		   },
-		   yAxis: {
-		      title: {
-		         text: 'Tickets'
-		      },
-			tickInterval: "1"
-		      
-		   },
-		   tooltip: {
-		      formatter: function() {
-		         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
-		             ' '+ this.x;
-		      }
-		   },
-		   plotOptions: {
-		      area: {
-		         pointStart: 0,
-		         marker: {
-		            enabled: false,
-		            symbol: 'circle',
-		            radius: 1
-		         }
-		      }
-		   },
-		   series: [{
-		      name: 'Tickets',
-		      data: array
-		   }]
-		});
-		
-		
-		
-		
-		array = <%=  @whymail_per_month.to_json  %>;
-		var chart = new Highcharts.Chart({
-		   chart: {
-		      renderTo: 'whymails-per-day', 
-		      defaultSeriesType: 'area'
-		   },
-		   title: {
-		      text: 'Whymails Per Day'
-		   },
-
-		   xAxis: {
-			title: {
-				text: 'Day'
-			},
-			
-		   },
-		   yAxis: {
-		      title: {
-		         text: 'Whymails'
-		      },
-			tickInterval: "1"
-		      
-		   },
-		   tooltip: {
-		      formatter: function() {
-		         return Highcharts.numberFormat(this.y, 0, null, ' ')+' '+ this.series.name +' added <b>'+
-		             ' '+ this.x;
-		      }
-		   },
-		   plotOptions: {
-		      area: {
-		         pointStart: 0,
-		         marker: {
-		            enabled: false,
-		            symbol: 'circle',
-		            radius: 1
-		         }
-		      }
-		   },
-		   series: [{
-		      name: 'Whymails',
-		      data: array
-		   }]
-		});
-		*/
-			
 	</script>
 <% end %>
 
@@ -258,16 +210,18 @@
 	
 	</div>
 <div class = "span-24">
-	<div id = "users-per-day" class="small-chart span-6">
+	<div id = "users-per-day" class="small-chart span-11">
 	</div>
 
 
 
-	<div id = "tickets-per-day" class="small-chart span-6">
+	<div id = "tickets-per-day" class="small-chart span-11">
 	</div>
 </div>
-<div class = "span-12">
-	<div id = "whymails-per-day" class="small-chart ">
+<div class = "span-24">
+	<div id = "whymails-per-day" class="small-chart span-11">
+	</div>
+	<div id = "forms-per-day" class="small-chart span-11">
 	</div>
 </div>
 	
@@ -461,6 +415,9 @@
 	<img src="dummy.gif" style="display:none" alt="required for Google Data"/>
 	
 	
+	
+	
+	
 <hr />
 
 Users Total 30 Day: <%= @users[:count] %>
@@ -468,5 +425,8 @@ Users Total 30 Day: <%= @users[:count] %>
 Whymail Total 30 Day: <%= @whymails[:count]  %>
 <br />
 Ticket Total 30 Day: <%= @tickets[:count]  %>
+<br />
+Forms Total 30 Day: <%= @forms[:count]  %>
+
 
 <br />

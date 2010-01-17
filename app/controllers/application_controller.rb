@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
    #   end
    # end
    
-   def render_not_found(exception)
+   def render_error(exception)
      log_error(exception)
      notify_hoptoad(exception)
      activate_authlogic

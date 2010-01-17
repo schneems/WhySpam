@@ -3,6 +3,12 @@ class FormsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   ## sudo god -c ./config/fetcher-daemon.god -D
   ## check for logged in and user before viewing mail and deleting !!
+  def new
+    
+  @form =Forms.new  
+  end
+  
+  
   def index
     redirect_to :action => "new"
   end
@@ -79,13 +85,14 @@ class FormsController < ApplicationController
   
   def create
    # debugger
-    name = params[:form][:name]||" "
-    email = params[:form][:email]||" "
+    name = params[:forms][:name]||" " 
+    email = params[:forms][:email]||" "
   #  comments = params[:form][:comments]
   #  user = User.find_or_create_by_email(email)
     #@form = Forms.new(:email => email, :comments => comments)
     
     @rendered = true
+    @form = Forms.new(:email => email, :name => name)
     if simple_captcha_valid?
       @extra_message  = nil
       @secure_form = nil
@@ -108,7 +115,6 @@ class FormsController < ApplicationController
     else
         @extra_message = configatron.bad_captcha
     end    
-    
     render :partial => "create" 
   end
   

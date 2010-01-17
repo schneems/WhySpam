@@ -21,10 +21,13 @@
 <div id = "float_wrapper">
 
 	<!-- create -->
-	  <% remote_form_for :form, :url => forms_path, :update => 'update_this_partial', :loading => "$('#indicator').show();$('#update_this_partial').hide();", :complete => "$('#indicator').hide();$('#update_this_partial').show();" do |f| %>
+ 	
+	
+	  <% remote_form_for @form , :url => forms_path, :update => 'update_this_partial', :loading => "$('#indicator').show();$('#update_this_partial').hide();", :complete => "$('#indicator').hide();$('#update_this_partial').show();" do |f| %>
 	<div id = "main_input" >
 <table  class = "prepend-1 last genNewDisposableForm">
 	<tr>
+		
 		<td class = "optional_td"> <%= f.label "Your Name:" %>
 			<br /><span class = "optional">(Optional)</span></td>
 		<td 2><%= f.default_text_field :name , "Anonymous" %></td>
