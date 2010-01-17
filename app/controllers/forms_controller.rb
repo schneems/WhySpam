@@ -29,7 +29,7 @@ class FormsController < ApplicationController
     from_email = params[:form][:email]||" "
     
     message = params[:form][:comments]
-    message = name + "sent you a message: \n"
+    message = name + "  sent you a message: \n" + message
     if simple_captcha_valid?
     #  render :text => "workz foo"
       session[:count] = 0 if RAILS_ENV == "development"

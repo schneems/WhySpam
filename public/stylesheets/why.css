@@ -32,6 +32,7 @@
 	http://localhost:3000/stylesheets/why.css?1263688488
 	http://localhost:3000/stylesheets/why.css?1263689966
 	http://localhost:3000/stylesheets/why.css?1263692114
+	http://localhost:3000/stylesheets/why.css?1263692806
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -184,7 +185,7 @@ table {
 	width: 560px;
 	border: 1px solid #8b8b8b;
 
-background: #caccff url(/images/loading.gif) no-repeat 170px 75px;
+background: #b2b4e3 url(/images/loading.gif) no-repeat 170px 75px;
 
 }
 
