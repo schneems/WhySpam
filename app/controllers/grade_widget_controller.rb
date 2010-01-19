@@ -16,7 +16,7 @@ class GradeWidgetController < ApplicationController
   
   ## http://localhost:3000/grade_widget/hey?checked=true
   def show
-    @myurl = clean_url(params[:url])
+    @myurl = (params[:url])
     checked = params[:checked].downcase if params[:checked]
     @website = Website.find(:first, :conditions => ["url = ?", @myurl])
     if @website.nil? || checked == "true"
@@ -43,7 +43,7 @@ class GradeWidgetController < ApplicationController
   end
   
   def create
-    @website = clean_url(params[:website])
+    @website = Cleanurl.sanatize(params[:website])
     displaytype = params[:displaytype]||"notchecked"
     @boolean = "false"
     @boolean = "true" if displaytype.downcase == "checked"

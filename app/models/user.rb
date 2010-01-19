@@ -19,30 +19,7 @@ class User < ActiveRecord::Base
   
   
  # named_scope :find_by_email, lambda { |*args| {:conditions => ["email = ?", args.first.downcase]} }
-
-
-  def self.create_digest(email, site)   
-      email = Digest::SHA1.hexdigest(email+site)    
-       guess = email[0,20]
-      if Whymail.email(guess) == []
-        # return guess
-      else
-        guess = email[20,20]
-
-        if Whymail.email(guess) == []
-          # return guess
-        else
-          count = 0
-          while Whymail.email(guess) != []
-            count = count+1
-            guess = Digest::SHA1.hexdigest(guess+count.to_s)[0,20]
-          end # while 
-        end # second if
-      end ## first if
-         return guess
-  end
-  
-  
+   
   
        def self.find_by_secret_address(email)                                                    
          whymail = Whymail.find(:first, :include => :user, :conditions => ["email = ?", email ])   

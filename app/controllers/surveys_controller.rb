@@ -12,8 +12,6 @@ class SurveysController < ApplicationController
       flash[:error] = configatron.bad_website
     end
     @user = @whymail.user
-
-    
   end
 
 
@@ -23,8 +21,8 @@ class SurveysController < ApplicationController
     if current_user
       whymail = Whymail.find(:first, :include => :user, :conditions => ["id = ?", whymail_id])
       @website = whymail.website
-      website = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
-      #Website.create(:url => whymail.website, :grade => 'NA', :rank => 100)
+      website = Website.find_or_create_by_url(@website)
+
       if params[:survey] != nil
         survey = website.surveys.create(params[:survey])
         survey.user = current_user

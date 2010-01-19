@@ -2,16 +2,16 @@ class Website < ActiveRecord::Base
   has_many :surveys
   validates_presence_of     :url
   validates_presence_of     :grade
- # validates_presence_of     :rank
   
   
    attr_accessible :url, :grade, :rank, :opt_out_count, :un_solicited_count, :sell_count, :vulgar_count, :give_out_count
   
-#  define_index do
-#    # indexes ##column in content
-#    indexes url
-#    indexes surveys.comments as => surveys_comments
-#  end
+
+
+  def self.find_or_create_by_url(url)
+    url = Cleanurl.sanatize(url)
+    self.find_by_url(url)||self.create(:url => url, :rank => 0, :grade => "N/A")
+  end
   
   def calculate_rank_and_grade
     

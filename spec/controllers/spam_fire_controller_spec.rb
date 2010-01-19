@@ -49,7 +49,6 @@ describe SpamfireController do
      email = 'spamfire_cookie_test@example.com'
      post 'create', :user => { :email => email, :website => 'sketchy.com' }, :save => {:checked => '1'}
      cookies[:email].should == email 
-     cookies[:checked].should == "true"
    end
    
    it "should save my email address if i check yes" do

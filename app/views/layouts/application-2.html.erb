@@ -85,6 +85,8 @@
 							function() { $(this).addClass('on'); }, 
 							function() { $(this).removeClass('on'); }						
 						);
+						
+						
 						$('#dialog').dialog({
 							autoOpen: false,
 							modal: true ,
@@ -93,6 +95,7 @@
 							bgiframe: true,
 							width: 600
 						});
+						
 						$('#dialog_link').click(function(){
 							$('#dialog').dialog('open');
 							return false;
@@ -125,13 +128,6 @@
 		  feedback_widget_options.placement = "left";
 		  feedback_widget_options.color = "#030303";
 		  feedback_widget_options.style = "idea";
-
-
-
-
-
-
-
 		  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 		</script>
 		

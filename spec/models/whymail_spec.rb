@@ -9,6 +9,21 @@ describe Whymail do
     
   end
   
+  it "should   " do    
+      whymail = Whymail.create_with_user(@email, @website )
+      digest1 = Whymail.create_digest(@email, @website, "whyspam.me")
+      whymail.email.should_not == digest1 
+  end
+  
+    
+
+  
+  it "should create a new and different cryptmail if one already exists with that same cryptmail" do    
+      whymail = Whymail.create_with_user(@email, @website )
+      digest1 = Whymail.create_digest(@email, @website, "whyspam.me")
+      whymail.email.should_not == digest1 
+  end
+  
    it "create_with_user should not create a whymail the website is an email address" do
    
      assert_difference 'User.count', 1 do   

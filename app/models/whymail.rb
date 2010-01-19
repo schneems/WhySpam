@@ -12,46 +12,31 @@ class Whymail < ActiveRecord::Base
   validate :user_must_be_valid
     
   include Cleanurl
-    #   Whymail.email("A527827171573EB1FD1125337E1DF725D53DAB37")
     
   def user_must_be_valid
-
-      errors.add("The email address you provided") if user.nil?
-      
+      errors.add("The email address you provided") if user.nil?      
   end
     
   def website_cannot_be_email
     errors.add(:website, "cannot be an email address") if is_email(website)
-  #  puts "==============================="
-  #  puts is_email(website)
-  #  puts errors.full_messages
-  end
-
-
-    
-    
+  end    
     
     def self.create_with_user(email, website)
-
      user = User.find_or_create_by_email(email)
-
-     whymail = user.whymail.find(:first, :conditions => ["website = ?", website])||user.whymail.create_with_digest(email, website)
-      
-     
-     
+     whymail = user.whymail.find(:first, :conditions => ["website = ?", website])||user.whymail.create_with_digest(email, website)   
     end
     
     
     def self.create_with_digest(email, website)
-      digest = create_digest(email, website)
-        self.create(:email => digest.upcase + "@WHYSPAM.ME", :website => website) 
-
+      digest = create_digest(email, website, "whyspam.me")
+        self.create(:email => digest.upcase , :website => website) 
     end
     
 
     def website_to_listings
       site = self.website
-      Website.find(:first, :conditions => ["url = ?", site])||Website.create(:url => site, :grade => "N/A", :rank => 0)
+      Website.find_or_create_by_url(self.website)
+     # Website.find(:first, :conditions => ["url = ?", site])||Website.create(:url => site, :grade => "N/A", :rank => 0)
     end
     
 
@@ -59,32 +44,32 @@ class Whymail < ActiveRecord::Base
       url = self.website||""
       url = url.gsub(/^website$/, 'No Website Given') ## removes "website" 
         if !url.empty?
-            self.website = clean_url(url)
+            self.website = Cleanurl.sanatize(url)
         end
-     #  var regExUrl = new RegExp("http...[\\d\\D][^\/]+", "g");
-    # 	var whyspam_url = current_url_to_string.match(regExUrl);
      end
      
+
      
-     def self.create_digest(email, site)   
+     def self.create_digest(email, site, server)   
          email = Digest::SHA1.hexdigest(email+site)    
           guess = email[0,20]
-         if Whymail.email(guess.upcase) == []
+          server = server.upcase
+         if Whymail.find_by_email(guess.upcase + "@" + server).nil?
            # return guess
          else
            guess = email[20,20]
 
-           if Whymail.email(guess) == []
+           if Whymail.find_by_email(guess.upcase + "@" + server).nil?
              # return guess
            else
              count = 0
-             while Whymail.email(guess) != []
+             if Whymail.find_by_email(guess.upcase + "@" + server).nil?
                count = count+1
                guess = Digest::SHA1.hexdigest(guess+count.to_s)[0,20]
              end # while 
            end # second if
          end ## first if
-            return guess
+            return guess + "@" + server
      end
      
      

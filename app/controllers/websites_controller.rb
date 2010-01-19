@@ -5,6 +5,7 @@ class WebsitesController < ApplicationController
    
    def show
     @myurl = params[:url] || ""
+    @myurl = @myurl.to_s
     website_id = params[:id]
     @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])||Website.find(:first, :include => [{:surveys => :user}], :conditions => ["url = ?", @myurl])
     if !@website.nil?      

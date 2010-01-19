@@ -40,10 +40,7 @@ describe WhymailController do
   
   
   describe "CREATE /secure_email" do
-    it "should render create" do
-      post 'create', :user => { :email => 'foo_email_0@example.com', :website => 'sketchy.com' }
-      response.should render_template("_create")
-    end
+    
     
     it "should give me a session error" do
         session[:count] = 11
@@ -52,37 +49,41 @@ describe WhymailController do
         session[:count] = 0
     end
     
-
     
+    
+    it "should render create" do
+      post 'create', :user => { :email => 'foo_email_0@example.com', :website => 'sketchy.com' }
+      response.should render_template("_create")
+    end
+    
+
+  
     
     it "should create a user if no user exists with that email" do
-        usercount = User.count
+      assert_difference 'User.count', 1 do   
         post 'create', :user => { :email => 'foo_email1@example.com', :website => 'sketchy.com' }        
-        User.count.should ==  usercount + 1
-        
+      end
     end
     
     it "should get the same email with the same email" do
         post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' }        
-        secure_email = assigns[:secure_email]
-        post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' }        
-        assigns[:secure_email].should == secure_email
-        assigns[:extra_message].should == configatron.duplicate_email
-        post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' }        
-        assigns[:secure_email].should == secure_email
-        assigns[:extra_message].should == configatron.duplicate_email
+        whymail = assigns[:whymail]
+        
+        post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' } 
+        assigns[:whymail].should == whymail       
     end 
     
     
     it "should not allow you to create a disposable email with a bad email" do
         post 'create', :user => { :email => 'foo_email', :website => 'sketchy.com' }        
-        assigns[:extra_message].should == configatron.bad_email
+        assigns[:whymail].errors.should_not == nil    
     end
     
     
     it "should not allow you to create a disposable email with a bad email" do
-        post 'create', :user => { :email => '', :website => 'sketchy.com' }        
-        assigns[:extra_message].should == configatron.bad_email
+        post 'create', :user => { :email => '', :website => 'sketchy.com' }    
+        assigns[:whymail].errors.should_not == nil    
+#        assigns[:extra_message].should == configatron.bad_email
     end
     
     

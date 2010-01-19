@@ -1,6 +1,8 @@
+
 <% @keywords =  @myurl.to_s + 'report spam mail,spam blocker,spam list,report spammers,report spam email,report spam,blacklist,abuse,website,domains,spam check,email abuse,spam war,utility,spammers'%>
 
 <% if @website.nil? %>
+
 
 <% @description = Time.now.strftime("%b %d, %Y") + ': no one has reported if '+ @myurl + ' is a trustworthy site, use caution when giving out our email to them. Generate a disposable email to be safe. '  %>
 
@@ -88,3 +90,5 @@ Comments:<br />
 <% end %>
 
 </div>
+
+<% render :partial => "pie"%>

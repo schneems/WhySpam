@@ -4,32 +4,37 @@
 
 </style>
 
-<div id = "new_spamfire_wrapper" class = "span-4">
-  <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
-			:url =>  { :action => "create"}, 
-			:html => { } do |f| %>			
-<%= label_tag 'email', 'Email: ' %> <%= f.text_field :email , :rows => 2 %>
-<%= label_tag 'website', 'Website: ' %> <%= f.text_field :website %>
-<%= f.submit "Go" %><br />
-<%= label_tag 'save', 'Remember Email? ' %> <%= check_box :save , 'checked', (@checked == "true" ? {:checked => 'checked'} : {:checked => 'unchecked'}) %>
-
-
-<% end %>
-
-			<%= error_messages_for :user %>
-</div>
 
 <div class = "envelope">
-	
 <%= link_to image_tag( "envelope.png") , home_path, :target => "_blank" %>
 </div>
 
-<center>
-	<%= image_tag("loading.gif",
-				   :id => "indicator",
-				   :style  =>  'display:none') %>
-</center>
 
+<div id = "new_spamfire_wrapper" class = "span-10">
 	
+ 	 <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
+				:url =>  { :action => "create"}, 
+				:html => { } do |f| %>			
+	<%= label_tag 'email', 'Email: ' %> <%= f.text_field :email , :rows => 2 %>
+	<%= label_tag 'website', 'Website: ' %> <%= f.text_field :website %>
+	<%= f.submit "Go" %><br />
+	<div class= "bottom-spamfire">
+	<div class = "span-4">
+	<%= label_tag 'save', 'Remember Email? ' %> <%= check_box :save , 'checked', (@checked == "true" ? {:checked => 'checked'} : {:checked => 'unchecked'}) %>
+	</div>
+	
+	<p class= "fire_grade span-10 prepend-4"> &nbsp This website has a grade of: <%= link_to @website.grade,  show_website_path(:url => @website.url), :target => "_blank"  %></p>
+	</div>
+
+	<% end %>
+
+				<%= error_messages_for :user %>
+	</div>
+
+
+
+
+	<div class = "span-5">
+	</div>
 
 </div>

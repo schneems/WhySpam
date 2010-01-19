@@ -15,6 +15,11 @@ class Admin::UsersController < ApplicationController
  #   config.show.columns.exclude :password, :password_confirmation
  # end
   
+  def new
+    redirect_to :action => "new", :controller => "user_sessions"
+  end
+  
+  
   protected
     def authorized?
       current_user.admin?

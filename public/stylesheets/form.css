@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/form.css?1263750967
 	http://localhost:3000/stylesheets/form.css?1263751159
+	http://localhost:3000/stylesheets/form.css?1263751701
 */
 
 input[type="text"]:hover, 
@@ -164,6 +165,10 @@ textarea:focus { border-color: #666666; }
 	height: 30px;
 	margin-bottom: -5px;
 	border: 1px solid #939393;
+}
+
+img {
+	border: none;
 }
 
 

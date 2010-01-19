@@ -16,7 +16,9 @@ module Cleanurl
   end
 
 
-  def clean_url(url)
+
+  
+  def self.sanatize(url)
     if !url.nil?
        url = url.to_s
        url = url.gsub(/w{3}\./, '') ## removes www

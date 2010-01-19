@@ -16,6 +16,7 @@ class WhymailController < ApplicationController
           
           if session[:count] > 10 && ENV['RAILS_ENV'] != "development"
               @extra_message = configatron.session_count_error
+              @whymail = Whymail.new
           else
               @whymail = Whymail.create_with_user(email, website)
           end
