@@ -12,6 +12,7 @@ class SurveysController < ApplicationController
       flash[:error] = configatron.bad_website
     end
     @user = @whymail.user
+    render :partial => 'new'
   end
 
 

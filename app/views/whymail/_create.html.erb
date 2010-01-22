@@ -1,8 +1,9 @@
 <hr />
 <div id = "no_spam_container" class = "center">
-<% if  @whymail.valid? %>
+<% if  @whymail.valid? && !@whymail.nil? %>
 	<div id = "no_spam_label">	Your Disposable Email:</div><br />
-			<textarea id = "no_spam" class = "center" cols="35" rows="1" readonly onclick="this.focus(); this.select();" style = ""><%= @whymail.email %></textarea>
+			<textarea id = "no_spam" class = "center" cols="35" rows="1"
+			 	readonly onclick="this.focus(); this.select();" style = ""><%= @whymail.email %></textarea>
 			
 			<br />
 			<p>All email sent to this disposable email address will be forwarded to <%= @email %>. </p>

@@ -34,6 +34,7 @@
 	http://localhost:3000/stylesheets/why.css?1263692114
 	http://localhost:3000/stylesheets/why.css?1263692806
 	http://localhost:3000/stylesheets/why.css?1263692969
+	http://localhost:3000/stylesheets/why.css?1263765651
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -194,7 +195,6 @@ background: #c3c4f7 url(/images/loading.gif) no-repeat 170px 75px;
 .disposableEmail #user_email {
 height: 30px;
 margin-bottom: 20px;
-	background-color: #fffeff;
 }
 
 .remoteErrorMessage {
@@ -864,7 +864,6 @@ input.title:hover,
 input.title:focus,
 textarea:hover,
 textarea:focus
-
 {
 	background-color: #EFEFEF;
 	border-color: #9c9c9c;
@@ -964,7 +963,10 @@ a.ui-state-hover:hover {
 	
 .clickable {
 	cursor: pointer;
+	
 }
+
+
 
 
 
@@ -1161,4 +1163,11 @@ width: 415px;
 #code {
 	width: 620px;
 	font: 12px "Courier New", Courier, mono;
+}
+
+
+.delete {
+
+margin: 13px 0;
+	
 }

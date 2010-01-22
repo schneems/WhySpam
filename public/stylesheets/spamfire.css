@@ -9,8 +9,17 @@
 	http://localhost:3000/stylesheets/spamfire.css?1260544632
 	http://localhost:3000/stylesheets/spamfire.css?1260548201
 	http://localhost:3000/stylesheets/spamfire.css?1260549344
+	http://localhost:3000/stylesheets/spamfire.css?1263783063
 */
+fire_grade{
+	float: left;
+	margin-left: 200px;
+}
 
+div.bottom-spamfire {
+	margin-top: 5px;
+	
+}
 
 .prepend-1 { padding-left: 40px; }
 .prepend-2 { padding-left: 80px; }
@@ -97,7 +106,6 @@ font-size: 13px;
 
 #new_user label {
 	font-size: 13px;
-	
 	height: 17px;
 }
 
@@ -125,7 +133,7 @@ form.button-to {
 
 #new_spamfire_wrapper p {
 	padding: 0;
-	margin:  0 0 0 15px;
+	margin:  0 0 0 px;
 	font-size: 10pt;
 }
 

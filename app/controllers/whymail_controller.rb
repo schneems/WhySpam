@@ -8,8 +8,8 @@ class WhymailController < ApplicationController
    
    
    def create 
-       session[:count] = session[:count]||0
-       @email = email = params[:user][:email]
+        session[:count] = session[:count]||0
+        @email = email = params[:user][:email]
         website = params[:user][:website]||" "        
         @secure_email = @extra_message = nil
         session[:count] +=  1 

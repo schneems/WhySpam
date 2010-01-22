@@ -12,7 +12,7 @@ describe SurveysController do
       Whymail.stubs(:find).returns(@whymail)
       
       get :new, :whymail => @whymail.id
-      response.should render_template("new")
+      response.should render_template("_new")
       assigns[:survey].should_not == nil
       
     end
