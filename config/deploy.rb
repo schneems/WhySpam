@@ -48,7 +48,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/environments/production.rb #{release_path}/config/environments/production.rb"
     run "ln -nfs #{shared_path}/config/initializers/site_keys.rb  #{release_path}/config/initializers/site_keys.rb"
     run "ln -nfs #{shared_path}/config/config.yml  #{release_path}/config/config.yml"
-    run "ln -nfs #{shared_path}/config/environment.rb  #{release_path}}/config/environment.rb"
+    run "ln -nfs #{shared_path}/config/environment.rb  #{release_path}/config/environment.rb"
     
  #   run "rake db:migrate RAILS_ENV=production"
  #    sudo "/etc/init.d/monit restart all"

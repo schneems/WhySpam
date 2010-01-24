@@ -4,7 +4,7 @@ describe SurveysController do
   integrate_views
 
   
-  describe "Net /spamfire/new" do
+  describe "GET /spamfire/new" do
     it "should render new" do
       user = Factory.create(:user)
       @whymail = Factory.create(:whymail, :website => "example.com", :user => user)
@@ -41,30 +41,41 @@ describe SurveysController do
       Whymail.stubs(:find).returns(@whymail)
       login_as(@user)
       
+      
     end
     
     it "should create a new survey " do
+      puts "ffffffffffffffffffffff"
       @whymail.expects(:destroy).returns(true)
       
       assert_difference "Survey.count", 1 do      
         post 'create', :whymail => @whymail.id, :survey => {:opt_out => "true", :un_solicited => "true", :sell => "true", :vulgar => "true", :give_out => "true", :email => "blah"}      
-      end
+      end  
+      
+      response.should be_redirect      
+      response.should redirect_to(:controller => 'websites', :action => 'show',  :url => @whymail.website)
+      
     end
     
     it "should not create a survey if no survey params given" do
       @whymail.expects(:destroy).returns(true)
-      
       assert_difference "Survey.count", 0 do      
         post 'create', :whymail => @whymail.id
-      end
+      end    
+      
+      response.should be_redirect      
+      response.should redirect_to(:controller => 'websites', :action => 'show',  :url => @whymail.website)
     end
     
-    it "should not create a survey if no survey params given" do
+    it "should not create a survey if user is not logged in " do
       login_as(nil)
       @whymail.expects(:destroy).never
       assert_difference "Survey.count", 0 do      
         post 'create', :whymail => @whymail.id
       end
+      response.should be_redirect      
+      response.should redirect_to(:controller => 'manage', :action => 'index')
+      
     end
     
     

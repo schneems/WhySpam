@@ -13,14 +13,18 @@ class WebsitesController < ApplicationController
       @un_solicited_count = @website.un_solicited_count || 0
       @sell_count = @website.sell_count || 0
       @vulgar_count = @website.vulgar_count || 0 
-      @give_out_count = @website.give_out_count || 0
+      @give_out_count = @surveys_count_total = @website.give_out_count || 0
       
       if !@website.surveys.nil? && !@website.surveys.empty?
-        @surveys_count = @website.surveys.count 
-        @surveys_count -= @give_out_count  
+        @surveys_count_total = @website.surveys.count 
+        @surveys_count = @surveys_count_total - @give_out_count  
       else  
         @surveys_count = 0  
-      end  
+      end 
+      @whymail_count = Whymail.find(:all, :conditions => ["website = ?", @myurl ]).count
+      
+      @percent_deleted = 100 * @surveys_count_total / (@surveys_count_total + @whymail_count ) if (@whymail_count  + @surveys_count_total) != 0 
+      
     end  
     
     @myurl = "No Website Was Given" if @myurl.to_s.strip == ""

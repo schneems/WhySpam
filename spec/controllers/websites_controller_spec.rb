@@ -3,6 +3,8 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe WebsitesController do
   integrate_views
   
+
+  
   
   describe "GET /index" do
     it "should render websites" do
@@ -13,6 +15,10 @@ describe WebsitesController do
       get :index      
       assigns[:websites].should == @website
       response.should render_template("index")
+      # response.should be_success
+      # response.should be_redirect
+      
+      
     end
   end
   

@@ -7,7 +7,7 @@ class SurveysController < ApplicationController
     @website = @whymail.website
     site = Website.find(:first, :conditions => ["url = ?", @website])||Website.create(:url => @website, :grade => 'NA', :rank => 100)
     if !site.nil? && site.save
-      @survey = site.surveys.create(:opt_out => "false", :un_solicited=> "false", :sell=> "false", :vulgar=> "false", :give_out=> "false")
+      @survey = site.surveys.new(:opt_out => "false", :un_solicited=> "false", :sell=> "false", :vulgar=> "false", :give_out=> "false")
     else
       flash[:error] = configatron.bad_website
     end
@@ -23,22 +23,21 @@ class SurveysController < ApplicationController
       whymail = Whymail.find(:first, :include => :user, :conditions => ["id = ?", whymail_id])
       @website = whymail.website
       website = Website.find_or_create_by_url(@website)
-
+      
       if params[:survey] != nil
         survey = website.surveys.create(params[:survey])
         survey.user = current_user
         survey.save
       end
+      
+      
      # whymail.email = nil
       whymail.destroy if whymail.user == current_user
-      redirect_to :action => 'show', :controller => 'websites', :url => @website
-      
       flash[:notice] = configatron.thanks_for_reporting
-      
+      redirect_to :controller => 'websites', :action => 'show',  :url => @website
     else
-      redirect_to :action => "index", :controller => "manage"
-    flash[:error] = configatron.bad_permissions
-    
+      flash[:error] = configatron.bad_permissions      
+      redirect_to :controller => "manage", :action => "index"
     end
   end
   

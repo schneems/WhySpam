@@ -5,7 +5,7 @@
 
 
 <p>
-This is the last step before you block all spam coming from <%= @whymail.email %>. Once done, this action cannot be undone. If you wish to report <%= @whymail.website %> as selling your information to another company, or if you have recieved unsolicited emails from them please submit the survey below. Then click on the link at the bottom. <br /> <br />
+This is the last step before you block all spam coming from <%= @whymail.email %>. Once done, this action cannot be undone. If you wish to report <%= @whymail.website %> as selling your information to another company, or if you have received unsolicited emails from them please submit the survey below. Then click on the link at the bottom. <br /> <br />
 
 <% form_for :survey, :url => {:action => 'create', :controller => 'surveys', :whymail => @whymail.id}  do |f| -%> 
 
@@ -15,7 +15,7 @@ This is the last step before you block all spam coming from <%= @whymail.email %
 <% end %>
 </p>
 
-<% form_for @survey, :url => { :action => 'create', :controller => 'surveys', :whymail => @whymail.id } do |f| -%> 
+<% form_for @survey, :url => {:action => 'create', :controller => 'surveys', :whymail => @whymail.id } do |f| -%> 
 
 <hr />
 
@@ -59,7 +59,7 @@ This is the last step before you block all spam coming from <%= @whymail.email %
 <%=  f.hidden_field :email, :value => @whymail.email %>
 <%= f.hidden_field :user_id, :value => current_user %> 
 
-<%= f.submit " Delete this Account and Submit Survey" , :id => "survey_submit_2"%>
+<%= f.submit " Delete this Account and Submit Survey" %>
 <% end %>
 
 <% else %>
