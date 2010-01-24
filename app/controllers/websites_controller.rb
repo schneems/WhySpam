@@ -24,7 +24,7 @@ class WebsitesController < ApplicationController
       @whymail_count = Whymail.find(:all, :conditions => ["website = ?", @myurl ]).count
       
       @percent_deleted = 100 * @surveys_count_total / (@surveys_count_total + @whymail_count ) if (@whymail_count  + @surveys_count_total) != 0 
-      
+      @percent_deleted = @percent_deleted||0
     end  
     
     @myurl = "No Website Was Given" if @myurl.to_s.strip == ""
