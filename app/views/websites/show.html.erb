@@ -18,21 +18,18 @@ No one has reported anything about <h2><%= @myurl %></h2> good or bad. Use cauti
 
 <div>
 	<!--
-	<% if (100 - @percent_deleted)  == 0 %>
-	<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= @percent_deleted  %>,0
-	&chs=250x100&chl=Deleted">
-	<% else %>
-	<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= @percent_deleted  %>,<%= 100 - @percent_deleted  %>
-	&chs=250x100&chl=Deleted|Kept">
+		<% if (100 - @percent_deleted)  == 0 %>
+		<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= @percent_deleted  %>,0
+		&chs=250x100&chl=Deleted">
+		<% else %>
+		<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= @percent_deleted  %>,<%= 100 - @percent_deleted  %>
+		&chs=250x100&chl=Deleted|Kept">
 
-	<% end %>
-	<b><%= @percent_deleted  %></b>% of Users deleted their email
+		<% end %>
+		<b><%= @percent_deleted  %></b>% of Users deleted their email
 	-->
 </div>
 
-<br /><br />
-total surveys: <%= @surveys_count_total %><br />
-whymails: <%= @whymail_count %><br />
 
 
 
