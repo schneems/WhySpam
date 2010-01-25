@@ -7,24 +7,27 @@ class WebsitesController < ApplicationController
     @myurl = params[:url] || ""
     @myurl = @myurl.to_s
     website_id = params[:id]
+    
     @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])||Website.find(:first, :include => [{:surveys => :user}], :conditions => ["url = ?", @myurl])
+    
     if !@website.nil?      
-      @opt_out_count = @website.opt_out_count || 0
-      @un_solicited_count = @website.un_solicited_count || 0
-      @sell_count = @website.sell_count || 0
-      @vulgar_count = @website.vulgar_count || 0 
-      @give_out_count = @surveys_count_total = @website.give_out_count || 0
+     # @opt_out_count = @website.opt_out_count || 0
+     # @un_solicited_count = @website.un_solicited_count || 0
+     # @sell_count = @website.sell_count || 0
+     # @vulgar_count = @website.vulgar_count || 0 
+     # @give_out_count = @surveys_count_total = @website.give_out_count || 0
       
-      if !@website.surveys.nil? && !@website.surveys.empty?
-        @surveys_count_total = @website.surveys.count 
-        @surveys_count = @surveys_count_total - @give_out_count  
-      else  
-        @surveys_count = 0  
-      end 
+    #  if !@website.surveys.nil? && !@website.surveys.empty?
+    #    @surveys_count_total = @website.surveys.count 
+    #  else  
+    #    @surveys_count = 0  
+    #  end 
+
       @whymail_count = Whymail.find(:all, :conditions => ["website = ?", @myurl ]).count
       
-      @percent_deleted = 100 * @surveys_count_total / (@surveys_count_total + @whymail_count ) if (@whymail_count  + @surveys_count_total) != 0 
-      @percent_deleted = @percent_deleted||0
+      
+      @percent_deleted = 100 * @website.surveys.count / (@website.surveys.count + @whymail_count ) if (@whymail_count  + @website.surveys.count) != 0 
+      @percent_deleted = @percent_deleted||100 
     end  
     
     @myurl = "No Website Was Given" if @myurl.to_s.strip == ""

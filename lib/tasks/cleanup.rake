@@ -22,11 +22,11 @@ namespace :cleanup do
         website.opt_out_count = website.un_solicited_count = website.sell_count = website.vulgar_count = website.give_out_count = nil 
         puts website
         website.surveys.each do |survey|
-          survey.add_up_surveys
+          if survey.give_out != "true"
+            survey.add_up_surveys
+          end
         end        
-      end
-      
-      
+      end      
     end
   
   

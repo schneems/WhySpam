@@ -15,45 +15,65 @@ No one has reported anything about <h2><%= @myurl %></h2> good or bad. Use cauti
 				true } %>  to be safe. 
 <% else %>
 
-
-<div>
-	<!--
-		<% if (100 - @percent_deleted)  == 0 %>
-		<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= @percent_deleted  %>,0
-		&chs=250x100&chl=Deleted">
-		<% else %>
-		<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= @percent_deleted  %>,<%= 100 - @percent_deleted  %>
-		&chs=250x100&chl=Deleted|Kept">
-
-		<% end %>
-		<b><%= @percent_deleted  %></b>% of Users deleted their email
-	-->
-</div>
-
-
-
-
-
-
 <p>
 <center>
 	<%= page_title("Spam Report for #{ @website.url }  ", "h2") %> 
 	<b><a href = 'http://<%=h @website.url %>' rel="nofollow"><%=h @website.url%></a></b>
 </center>
 
-<% @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @surveys_count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
-<br />
-<div class="span-18">
-	Added on: <%= @website.created_at.to_s(:long) %><br />
-	Grade: <b><%= @website.grade %></b><br />
+<% @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @website.surveys.count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
+<hr />
+<div class="span-8 prepend-1">
+	<b><h2>Grade:<%= @website.grade %></h2></b>
+	
+	
+	<div class="prepend-1">
 	Score: <%= @website.rank %><br />
+	Added on: <%= @website.created_at.strftime("%a %b %d, %Y") %><br />
+	(Grade and Score based surveys)
+	</div>
 
-	Total Surveys Counted: <%= @surveys_count %>
+</div>
 
-	<% if @surveys_count != 0 %>
-	<br/>
+<div class="span-9">
 	<br />
-	<b>Survey Results</b>
+	<% case @percent_deleted
+		 when 100  %>
+		<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= 100 - @percent_deleted  %>,<%= @percent_deleted  %>
+		&chs=250x100&chl=|Deleted&chco=faff00,f00000">
+		<div class="prepend-1">
+			<b> <%= @percent_deleted  %>% of users have deleted the email<br />that they generated to give to <br /><%= @website.url %></b>
+		</div>		
+		<% when 0  %>
+			<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= 100- @percent_deleted  %>,<%= @percent_deleted  %>
+			&chs=250x100&chl=Kept|&chco=faff00,f00000">
+			<div class="prepend-1">
+				<b><%= @percent_deleted  %>% of users have deleted the email<br />that they generated to give to <br /><%= @website.url %></b>
+			</div>
+		<% else %>	
+		<img src = "http://chart.apis.google.com/chart?cht=p3&chd=t:<%= 100- @percent_deleted  %>,<%= @percent_deleted  %>
+		&chs=250x100&chl=Kept|Deleted&chco=faff00,f00000">
+		<div class="prepend-1">
+			<b><%= @percent_deleted  %>% of users deleted the email<br />that they generated to give to  <br /><%= @website.url %></b>
+		</div>
+	<%	end	%>
+	
+	
+
+</div>
+
+
+
+<div >
+	<%= render :partial => "static/ads" %>
+</div>
+
+<hr />
+<% if @website.surveys.count != 0 %>
+
+<div class="span-16 prepend-1">
+	<b><h3>Survey Results</h3></b>
+
 	<table>
 		<tr>
 			<td></td>
@@ -64,42 +84,50 @@ No one has reported anything about <h2><%= @myurl %></h2> good or bad. Use cauti
 		<tr>
 
 			<td>Did you have to opt out of emails? </td>
-			<td><%= @opt_out_count %></td>
-			<td><%= @surveys_count - @opt_out_count %></td>
-			<td><%= (@opt_out_count/@surveys_count)*100 %> %</td>
+			<td><%= @website.opt_out_count %></td>
+			<td><%= @website.surveys.count - @website.opt_out_count %></td>
+			<td><%= ((@website.opt_out_count.to_f/@website.surveys.count)*100).round %> %</td>
 		</tr>
 		<tr>
 			<td>Did they Send you Un-solicited Emails? </td>
-			<td><%= @un_solicited_count %></td>
-			<td><%= @surveys_count - @un_solicited_count %></td>
-			<td><%= (@un_solicited_count/@surveys_count)*100 %> %</td>
+			<td><%= @website.un_solicited_count %></td>
+			<td><%= @website.surveys.count - @website.un_solicited_count %></td>
+			<td><%= ((@website.un_solicited_count.to_f/@website.surveys.count)*100).round %> %</td>
 		</tr>
+		
 		<tr>
 			<td>Did they sell your email address?  </td>
-			<td><%= @sell_count %></td>
-			<td><%= @surveys_count - @sell_count %></td>
-			<td><%= (@sell_count/@surveys_count)*100 %> %</td>
+			<td><%= @website.sell_count %></td>
+			<td><%= @website.surveys.count - @website.sell_count %></td>
+			<td><%= ((@website.sell_count.to_f/@website.surveys.count)*100).round %> %</td>
 		</tr>
 		<tr>
 			<td>Did you receive inappropriate emails? </td>
-			<td><%= @vulgar_count %></td>
-			<td><%= @surveys_count - @vulgar_count %></td>
-			<td><%= (@vulgar_count/@surveys_count)*100 %> %</td>
+			<td><%= @website.vulgar_count %></td>
+			<td><%= @website.surveys.count - @website.vulgar_count %></td>
+			<td><%= ((@website.vulgar_count.to_f/@website.surveys.count)*100).round %> %</td>
 		</tr>
 
 
 	</table>
 	<p>*Note that survey listings are only recorded if the user reports that they only gave their Disposable Email to <%= @website.url %></p>
 
-	<% else %>
-	<p>There are no surveys for this website yet</p>
 
-	<% end %>
 </div>
 
-<div>
+<div class="prepend-1 span-4">
+	<br />
+	<br />
 	<%= render :partial => "static/ads" %>
 </div>
+
+<% else %>
+<p>There are no surveys for this website yet</p>
+
+<% end %>
+
+
+
 <br />
 <hr />
 <div class="span-24">
@@ -107,7 +135,7 @@ Comments:<br />
 <% for survey in @website.surveys %>
 	<div>
 	<%=  survey.comments %><br />
-	<%= survey.created_at.to_s(:short) %> | <%= survey.user.login if !survey.user.nil? %>
+	<%= survey.created_at.strftime("%a %b %d, %Y") %> | <%= survey.user.login if !survey.user.nil? %>
 	</div><br />
 <% end %>
 
