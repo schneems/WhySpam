@@ -1,3 +1,7 @@
 [submodule "vendor/plugins/restful_authentication"]
 	path = vendor/plugins/restful_authentication
 	url = git://github.com/technoweenie/restful-authentication.git
+
+[submodule "vendor/plugins/mockIMAP"]
+	path = vendor/plugins/mockIMAP
+	url = git://github.com/thinkbohemian/mockIMAP
