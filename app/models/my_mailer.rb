@@ -16,6 +16,7 @@ class MyMailer < ActionMailer::Base
     @sent_on      = Time.now
     @email        = whymail_address
     
+    
     plainPart = htmlPart = nil
     #check incoming message if it contained plain or html, sends the appropriate messages
       email.parts.each do |origPart|        
@@ -32,6 +33,7 @@ class MyMailer < ActionMailer::Base
           p.body = render_message("forward.text.html.erb", :message => email.body.to_s) if htmlPart.nil? && plainPart.nil? 
       end
 
+      content_type = "multipart/alternative" unless plainPart.nil? 
       
 
     #takes attachments and re-sends them

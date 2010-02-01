@@ -44,9 +44,11 @@ describe MyMailer do
   include MailFixture
   describe "forward" do 
     it "parse and send this problem email" do
+      email  = TMail::Mail.parse(readEmail("testing3.eml"))
+      
       email  = TMail::Mail.parse(readEmail("testing2.eml"))
       MyMailer.deliver_forward("foo@foos.com", "alskdjfalskfjlkJ@whyspam.me", email)
-      email = TMail::Mail.parse(readEmail("testing2.eml"))
+      email = TMail::Mail.parse(getMockEmails.last)
       email.body.strip.should_not be_empty
       email.body.strip.should_not be_nil
     end
