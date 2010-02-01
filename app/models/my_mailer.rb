@@ -23,13 +23,15 @@ class MyMailer < ActionMailer::Base
         htmlPart = origPart.body if origPart.content_type == "text/html"
       end
     
+      part "text/plain" do |p|
+          p.body = render_message("forward.text.plain.erb", :message => plainPart) unless plainPart.nil?  
+      end
+      
       part "text/html" do |p|
           p.body = render_message("forward.text.html.erb", :message => htmlPart) unless htmlPart.nil? 
           p.body = render_message("forward.text.html.erb", :message => email.body.to_s) if htmlPart.nil? && plainPart.nil? 
       end
-      part "text/plain" do |p|
-          p.body = render_message("forward.text.plain.erb", :message => plainPart) unless plainPart.nil?  
-      end
+
       
 
     #takes attachments and re-sends them
