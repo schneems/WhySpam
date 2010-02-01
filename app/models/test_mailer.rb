@@ -8,34 +8,40 @@ class TestMailer < ActionMailer::Base
     end
 
 
-  def forward(to_email, email)
-    
-    @recipients   = to_email
-    @from         = "autoMailer@whyspam.me"
-    headers         "Reply-to" => email.from.first
-    @subject      = email.subject
-    @sent_on      = Time.now
-    
-    #check incoming message if it contained plain or html, sends the appropriate messages
-    email.parts.each do |receivePart|
-        if receivePart.content_type == "text/plain"
-            part "text/plain" do |p|
-                p.body = render_message("forwardPLAIN", :message => receivePart.body)
-            end
-        elsif receivePart.content_type == "text/html" || receivePart.content_type == "multipart/alternative"
-            part "text/html" do |p|
-                p.body = render_message("forwardHTML", :message => receivePart.body)
-                
-            end 
-        end
-    end
-
-    $has_attachment = email.has_attachments? if RAILS_ENV == "test" ## this is a hack added for testing purposes
-    #takes attachments and re-sends them
-    email.attachments.each do |receiveAttachment|
-      attachment :content_type => receiveAttachment.content_type.to_s ,  :body => receiveAttachment.read
-    end
-  end
+ # def forward(to_email_address, email)
+ #
+ #   
+ #   @recipients   = to_email_address
+ #   @from         = "autoMailer@whyspam.me"
+ #   headers         "Reply-to" => email.from.first
+ #   @subject      = email.subject
+ #   @sent_on      = Time.now
+ #   @email        = 
+ #   
+ #   plainPart = htmlPart = nil
+ #   #check incoming message if it contained plain or html, sends the appropriate messages
+ #     email.parts.each do |receivePart|        
+ #       plainPart = receivePart.body if receivePart.content_type == "text/plain"
+ #       htmlPart = receivePart.body if receivePart.content_type == "text/html"
+ #     end
+ #   
+ #     part "text/html" do |p|
+ #         p.body = render_message("forwardHTML", :message => htmlPart) unless htmlPart.nil? 
+ #         p.body = render_message("forwardHTML", :message => email.body) unless htmlPart.nil? && plainPart.nil?          
+ #     end
+ #     part "text/plain" do |p|
+ #         p.body = render_message("forwardPLAIN", :message => plainPart) unless plainPart.nil?  
+ #     end
+ #     
+ #
+ #   #takes attachments and re-sends them
+ #   if email.has_attachments?
+ #     $has_attachment = true if RAILS_ENV == "test" ## this is a hack added for testing purposes
+ #     email.attachments.each do |receiveAttachment|
+ #       attachment :filename => receiveAttachment.original_filename , :content_type => receiveAttachment.content_type.to_s ,  :body => receiveAttachment.read
+ #     end
+ #   end
+ # end
   
   def sendMultipleAttachments(to_email)
     @recipients   = to_email
@@ -54,9 +60,9 @@ class TestMailer < ActionMailer::Base
       p.body = render_message("sendattachmentPLAIN", :message => "This Is a message")
     end
     
-    attachment :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/blog.png") 
-    attachment :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/email.png") 
-    attachment :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/WhyLogo.png") 
+    attachment :filename => "blog.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/blog.png") 
+    attachment :filename => "email.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/email.png") 
+    attachment :filename => "whylogo.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/WhyLogo.png") 
     
   end
 
@@ -76,7 +82,7 @@ class TestMailer < ActionMailer::Base
       p.body = render_message("sendattachmentPLAIN", :message => "This Is a message")
     end
     
-    attachment :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/blog.png") 
+    attachment :filename => "blog.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/blog.png") 
 
 
   end

@@ -15,15 +15,8 @@ module MailFactory
   end
   
   
- # def mail_factory(from_email, to_email, subject, body) 
- #   temp_string  = IO.read("#{MailFactory::TEMPLATES_PATH}/emails/template_email") 
- #   from_email =  "example@example.com"  if from_email.nil? || from_email == ""
- #   to_email = "foo@example.com" if to_email.nil? || to_email == ""
- #   subject = "testing testing" if subject.nil? || subject == ""
- #   body = "This is a test body. Pretty generic really, should make it past most filters" if body.nil? || body == ""
- #   temp_string = temp_string.gsub(/xxxfrom_emailxxx/, from_email ) 
- #   temp_string = temp_string.gsub(/xxxto_emailxxx/, to_email ) 
- #   temp_string = temp_string.gsub(/xxxsubjectxxx/, subject ) 
- #   temp_string = temp_string.gsub(/xxxbodyxxx/, body )
- # end 
+ def readEmail(email_to_read) 
+   temp_string  = IO.read("#{MailFactory::TEMPLATES_PATH}/emails/#{email_to_read}") 
+   return temp_string
+ end 
 end 

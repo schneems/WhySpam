@@ -7,34 +7,35 @@ class MyMailer < ActionMailer::Base
   end
   
   
-  def forward(to_email_address, email)
+  def forward(to_email_address, whymail_address, email)
     
     @recipients   = to_email_address
     @from         = "autoMailer@whyspam.me"
     headers         "Reply-to" => email.from.first
     @subject      = email.subject
     @sent_on      = Time.now
+    @email        = whymail_address
     
-    
+    plainPart = htmlPart = nil
     #check incoming message if it contained plain or html, sends the appropriate messages
-    email.parts.each do |receivePart|
-        if receivePart.content_type == "text/plain"
-            part "text/plain" do |p|
-                p.body = render_message("forwardPLAIN", :message => receivePart.body)
-            end
-        elsif receivePart.content_type == "text/html" || receivePart.content_type == "multipart/alternative"
-            part "text/html" do |p|
-                p.body = render_message("forwardHTML", :message => receivePart.body)
-                
-            end 
-        end
-    end
+      email.parts.each do |origPart|        
+        plainPart = origPart.body if origPart.content_type == "text/plain"
+        htmlPart = origPart.body if origPart.content_type == "text/html"
+      end
+    
+      part "text/html" do |p|
+          p.body = render_message("forwardHTML", :message => htmlPart) unless htmlPart.nil? 
+          p.body = render_message("forwardHTML", :message => email.body.to_s) if htmlPart.nil? && plainPart.nil? 
+      end
+      part "text/plain" do |p|
+          p.body = render_message("forwardPLAIN", :message => plainPart) unless plainPart.nil?  
+      end
+      
 
     #takes attachments and re-sends them
     if email.has_attachments?
-      $has_attachment = true if RAILS_ENV == "test" ## this is a hack added for testing purposes
-      email.attachments.each do |receiveAttachment|
-        attachment :content_type => receiveAttachment.content_type.to_s ,  :body => receiveAttachment.read
+      email.attachments.each do |origAttachment|
+        attachment :filename => origAttachment.original_filename , :content_type => origAttachment.content_type.to_s ,  :body => origAttachment.read
       end
     end
   end

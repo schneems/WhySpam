@@ -1,0 +1,79 @@
+Return-Path: <foo@example.com>
+Received: from ?192.168.1.101? (99-61-70-99.lightspeed.austtx.sbcglobal.net [99.61.70.99])
+        by mx.google.com with ESMTPS id 23sm4969480iwn.7.2010.01.31.18.19.45
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Sun, 31 Jan 2010 18:19:47 -0800 (PST)
+From: RichardSchneeman <foo@example.com>
+Content-Type: multipart/alternative; boundary=Apple-Mail-9-1068259591
+Subject: testing
+Date: Sun, 31 Jan 2010 20:19:44 -0600
+Message-Id: <6AB68931-AB77-457A-AB1E-6F57EB87E0E7@example.com>
+To: foo04EF2EF49CE@WHYSPAM.ME
+Mime-Version: 1.0 (Apple Message framework v1077)
+X-Mailer: Apple Mail (2.1077)
+
+
+--Apple-Mail-9-1068259591
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii
+
+this is a test, this is only a test
+
+Richie Rich
+http://example.com
+@example
+
+
+
+
+
+
+--Apple-Mail-9-1068259591
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html><head></head><body style=3D"word-wrap: break-word; =
+-webkit-nbsp-mode: space; -webkit-line-break: after-white-space; ">this =
+is a test, this is only a test<br><br><br><div>
+<span class=3D"Apple-style-span" style=3D"border-collapse: separate; =
+color: rgb(0, 0, 0); font-family: Helvetica; font-size: medium; =
+font-style: normal; font-variant: normal; font-weight: normal; =
+letter-spacing: normal; line-height: normal; orphans: 2; text-align: =
+auto; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; =
+-webkit-border-vertical-spacing: 0px; =
+-webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: =
+auto; -webkit-text-stroke-width: 0px; "><span class=3D"Apple-style-span" =
+style=3D"border-collapse: separate; color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: medium; font-style: normal; font-variant: normal; =
+font-weight: normal; letter-spacing: normal; line-height: normal; =
+orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; =
+-webkit-border-vertical-spacing: 0px; =
+-webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: =
+auto; -webkit-text-stroke-width: 0px; "><div style=3D"word-wrap: =
+break-word; -webkit-nbsp-mode: space; -webkit-line-break: =
+after-white-space; "><span class=3D"Apple-style-span" =
+style=3D"border-collapse: separate; color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: medium; font-style: normal; font-variant: normal; =
+font-weight: normal; letter-spacing: normal; line-height: normal; =
+orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; =
+widows: 2; word-spacing: 0px; -webkit-border-horizontal-spacing: 0px; =
+-webkit-border-vertical-spacing: 0px; =
+-webkit-text-decorations-in-effect: none; -webkit-text-size-adjust: =
+auto; -webkit-text-stroke-width: 0px; "><div style=3D"word-wrap: =
+break-word; -webkit-nbsp-mode: space; -webkit-line-break: =
+after-white-space; "><div><div>Richard Schneeman</div><div><a =
+href=3D"http://example.com/">http://example.com</a></div><div>=
+<a =
+href=3D"http://www.twitter.com/example.com">@example.com</a></div><div=
+><br></div></div></div></span><br =
+class=3D"Apple-interchange-newline"></div></span><br =
+class=3D"Apple-interchange-newline"></span><br =
+class=3D"Apple-interchange-newline">
+</div>
+<br></body></html>=
+
+--Apple-Mail-9-1068259591--

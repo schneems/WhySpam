@@ -2,24 +2,56 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe MyMailer do 
   
-  
-#  describe "test forward_form" do
-#    before(:each) do
-#    #  @whymail = mock_model(Whymail, :id => 1, :email => "testing@example.com", :email => "asdf@whyspam.me")
-#    
-#    end
-#    
-#    it "should send emails to a valid form" do
-#     # Whymail.stubs(:find).returns(@whymail)
-#        
-#      @mail =  MyMailer.create_forward("testing@example.com", "foo@example.com", "asdf@whyspam.me", "subject", "message")
-#      @mail.from.first.should == "autoMailer@whyspam.me"
-#      @mail.to.first.should == "testing@example.com"
-#    end
-#  end
+  describe "MyMailer forward " do
+    before(:each) do
+      @to_email = "autoTest@foo.com"
+      @forward_email = "forward@foo.com"
+      @whymail = "abcefghijklmnop@whyspam.me"
+    end
+
+    # forward email if it has many attachments 
+    
+    it "should send mime email" do
+      TestMailer.deliver_mime(@to_email)
+      mail = TMail::Mail.parse(getMockEmails.last)
+      sleep 1
+      MyMailer.deliver_forward(@forward_email, @whymail, mail)
+      forwardmail = TMail::Mail.parse(getMockEmails.last)
+      forwardmail.to.first.should == @forward_email
+      forwardmail.subject.should == mail.subject
+      forwardmail.date.should_not == mail.date # makes sure it is a different email
+      forwardmail.parts.count.should == mail.parts.count 
+      forwardmail.should_not be_has_attachment
+    end
+    
+    it "should send an email with an attachment email" do
+      TestMailer.deliver_sendAttachment(@to_email)
+      mail = TMail::Mail.parse(getMockEmails.last)
+      sleep 1
+      MyMailer.deliver_forward(@forward_email, @whymail, mail)
+      forwardmail = TMail::Mail.parse(getMockEmails.last)
+      forwardmail.to.first.should == @forward_email
+      forwardmail.subject.should == mail.subject
+      forwardmail.date.should_not == mail.date # makes sure it is a different email
+      forwardmail.should be_has_attachment
+
+    end
+
+    
+  end
     
         
   include MailFixture
+  describe "forward" do 
+    it "parse and send this problem email" do
+      email  = TMail::Mail.parse(readEmail("testing2.eml"))
+      MyMailer.deliver_forward("foo@foos.com", "alskdjfalskfjlkJ@whyspam.me", email)
+      email = TMail::Mail.parse(readEmail("testing2.eml"))
+      email.body.strip.should_not be_empty
+      email.body.strip.should_not be_nil
+    end
+    
+  end
   
   describe "test receive" do
     before(:each) do
@@ -40,19 +72,16 @@ describe MyMailer do
     end
     
     it "increment ticket count only if unique" do
-      
       assert_difference "Ticket.count", 1 do
         MyMailer.receive(@mail)
       end
       assert_difference "Ticket.count", 0 do
         MyMailer.receive(@mail)
       end
-      
-     # File.open("/public/mailtest.txt", 'w')
-     
-    # File.open("mailtest-#{Time.now}.txt", 'a+') {|f| f.write(@mail) }
     end
     
+    
+   
     
     
   end

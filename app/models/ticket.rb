@@ -31,16 +31,16 @@ class Ticket < ActiveRecord::Base
       whymail = Whymail.find(:first, :conditions => ['(email = ?)', to_email.upcase ] ) 
       ticket = Ticket.create(:subject => email.subject, :from_email => email.from.first, :to_email => to_email, :whymail_id => whymail.id,
                                   :body => message , :body_hash => Digest::SHA1.hexdigest(message) ) unless whymail.nil?
-      ticket.send_email(email) unless ticket.nil?
+      ticket.send_email(to_email, email) unless ticket.nil?
     end
     
   end
     
     
   
-  def send_email(email)
+  def send_email(whymail_address, email)
     if self.valid?
-      MyMailer.deliver_forward(self.whymail.user.email, email)        
+      MyMailer.deliver_forward(self.whymail.user.email, whymail_address, email)        
     end
   end
   
