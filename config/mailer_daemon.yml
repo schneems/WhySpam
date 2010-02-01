@@ -1,17 +1,24 @@
 development: 
-  type: pop                             
-  server: mail.whyspam.me
-  username: postmaster@whyspam.me 
-  password: mailphr3ak 
-  receiver: MyMailer 
-  port: 110
+  ssl: TRUE
+  authentication: LOGIN
+  use_login: TRUE
+  type: IMAP                             
+  server: imap.gmail.com
+  username: thinkbohemian
+  password: H3lloj3d 
+  receiver: TestMailer 
+  port: 993
   
   
 test:
-  type: pop
-  server: localhost
-  username: username
-  password: password
+    type: IMAP                             
+    server: imap.gmail.com
+    username: thinkbohemian@gmail.com
+    password: H3lloj3d 
+    receiver: TestMailer 
+    port: 993
+    
+    
   
 production: 
   type: IMAP                             

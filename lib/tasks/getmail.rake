@@ -6,11 +6,15 @@ namespace :mailbox do
     task :check => :environment do
         begin
           Lockfile.new('cron_mail_fetcher.lock', :retries => 0) do
+            
+            
             config = YAML.load_file("#{RAILS_ROOT}/config/mailer_daemon.yml")
             config = config[RAILS_ENV].to_options
-
-            fetcher = Fetcher.create({:receiver => MyMailer}.merge(config))
+            fetcher = Fetcher.create(config)
             fetcher.fetch
+            
+            
+            
             puts "Fetcher Created"
             
           end

@@ -3,31 +3,34 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe MyMailer do 
   
   
-  describe "test forward_form" do
-    before(:each) do
-    #  @whymail = mock_model(Whymail, :id => 1, :email => "testing@example.com", :email => "asdf@whyspam.me")
-    end
-    
-    it "should send emails to a valid form" do
-     # Whymail.stubs(:find).returns(@whymail)
-      @mail =  MyMailer.create_forward("testing@example.com", "foo@example.com", "asdf@whyspam.me", "subject", "message")
-      @mail.from.first.should == "auto_mailer@whyspam.me"
-      @mail.to.first.should == "testing@example.com"
-    end
-  end
+#  describe "test forward_form" do
+#    before(:each) do
+#    #  @whymail = mock_model(Whymail, :id => 1, :email => "testing@example.com", :email => "asdf@whyspam.me")
+#    
+#    end
+#    
+#    it "should send emails to a valid form" do
+#     # Whymail.stubs(:find).returns(@whymail)
+#        
+#      @mail =  MyMailer.create_forward("testing@example.com", "foo@example.com", "asdf@whyspam.me", "subject", "message")
+#      @mail.from.first.should == "autoMailer@whyspam.me"
+#      @mail.to.first.should == "testing@example.com"
+#    end
+#  end
     
         
   include MailFixture
   
   describe "test receive" do
     before(:each) do
-      @mail = mail_factory(:to_email => "blah.com", :from_email => "foo.com", :subject => "whatup", :body => "hey")
-      @bad_mail = read_fixture('bad-email-2')
+      user = Factory(:user)
+      @whymail = Factory(:whymail, :user_id => user.id)
+      TestMailer.deliver_mime(@whymail.email)
+      @mail = getMockEmails.last
     end
     
     it "increment ticket count" do
-      body = TMail::Mail.parse(@mail).body.to_s
-      body_hash = Digest::SHA1.hexdigest(body) 
+      body_hash = Digest::SHA1.hexdigest(TMail::Mail.parse(@mail).body.to_s) 
       assert_difference "Ticket.count", 1 do
         MyMailer.receive(@mail)
       end
@@ -37,11 +40,12 @@ describe MyMailer do
     end
     
     it "increment ticket count only if unique" do
+      
       assert_difference "Ticket.count", 1 do
-        MyMailer.receive(@bad_mail)
+        MyMailer.receive(@mail)
       end
       assert_difference "Ticket.count", 0 do
-        MyMailer.receive(@bad_mail)
+        MyMailer.receive(@mail)
       end
       
      # File.open("/public/mailtest.txt", 'w')

@@ -2,6 +2,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Website do
   
+ # describe "after_destroy" do
+ #   it "should create a usedwhymail after a whymail is destroyed"
+ #   
+ #   end
+ # end
+  
   describe "populate_website_counts_from_surveys" do
     it "should give me the add up my surveys or set them to zero" do
         @website = Website.create(:url => "testing.com", :grade => "NA" )

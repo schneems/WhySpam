@@ -8,6 +8,7 @@ class Whymail < ActiveRecord::Base
   named_scope :email, lambda { |*args| {:conditions => ["email = ?", args.first.upcase]} }
   attr_accessible :email, :comments, :website, :email
   before_save :sanitize_url, :website_to_listings
+  #after_destroy :createusedwhymail
   validate :website_cannot_be_email
   validate :user_must_be_valid
     

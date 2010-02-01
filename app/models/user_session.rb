@@ -1,5 +1,7 @@
 class UserSession < Authlogic::Session::Base
-
+      generalize_credentials_error_messages true 
+      
+      
  # remove_acts_as_authentic_module(Authlogic::ActsAsAuthentic::Login)
  # validate_login_field  :false
     

@@ -13,17 +13,48 @@ class Ticket < ActiveRecord::Base
   validates_presence_of     :body
   
 
+ 
+ 
+  def self.get_email_addresses(email)
+    email_array = []
+    email.to.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$/i).nil? } unless email.to.nil?
+    email.cc.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$/i).nil? }  unless email.cc.nil?
+    email.bcc.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$/i).nil? } unless email.bcc.nil?
+    return email_array
+  end
+ 
+ 
+  def self.find_or_create_and_send(email)
+    message = email.body
+    email_addresses = Ticket.get_email_addresses(email)
+    email_addresses.each do |to_email|
+      whymail = Whymail.find(:first, :conditions => ['(email = ?)', to_email.upcase ] ) 
+      ticket = Ticket.create(:subject => email.subject, :from_email => email.from.first, :to_email => to_email, :whymail_id => whymail.id,
+                                  :body => message , :body_hash => Digest::SHA1.hexdigest(message) ) unless whymail.nil?
+      ticket.send_email(email) unless ticket.nil?
+    end
+    
+  end
+    
+    
   
-  def after_create    
+  def send_email(email)
     if self.valid?
-       whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
-      if !whymail.nil?
-       self.update_attributes({"whymail_id" => whymail.id})
-        if self.valid?
-          MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body)        
-        end
-      end
+      MyMailer.deliver_forward(self.whymail.user.email, email)        
     end
   end
+  
+
+
+  
+ # def after_create    
+ #   if self.valid?
+ #      whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
+ #     if !whymail.nil?
+ #         self.update_attributes({"whymail_id" => whymail.id})
+ #         MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body) if self.valid?
+ #     end
+ #   end
+ # end
     
 end

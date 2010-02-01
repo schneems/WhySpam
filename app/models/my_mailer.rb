@@ -1,18 +1,57 @@
 class MyMailer < ActionMailer::Base
   
+  include Cleanurl
+  
+  def receive(email) 
+    Ticket.find_or_create_and_send(email)
+  end
+  
+  
+  def forward(to_email_address, email)
+    
+    @recipients   = to_email_address
+    @from         = "autoMailer@whyspam.me"
+    headers         "Reply-to" => email.from.first
+    @subject      = email.subject
+    @sent_on      = Time.now
+    
+    
+    #check incoming message if it contained plain or html, sends the appropriate messages
+    email.parts.each do |receivePart|
+        if receivePart.content_type == "text/plain"
+            part "text/plain" do |p|
+                p.body = render_message("forwardPLAIN", :message => receivePart.body)
+            end
+        elsif receivePart.content_type == "text/html" || receivePart.content_type == "multipart/alternative"
+            part "text/html" do |p|
+                p.body = render_message("forwardHTML", :message => receivePart.body)
+                
+            end 
+        end
+    end
+
+    #takes attachments and re-sends them
+    if email.has_attachments?
+      $has_attachment = true if RAILS_ENV == "test" ## this is a hack added for testing purposes
+      email.attachments.each do |receiveAttachment|
+        attachment :content_type => receiveAttachment.content_type.to_s ,  :body => receiveAttachment.read
+      end
+    end
+  end
+  
   
   
 # sudo god -c ./config/fetcher-daemon.god -D  
   def forward_form(form_id, from_email, message) 
     form =  Forms.find(form_id)
     to_email = form.email
-    from_email = from_email.strip.empty? ? 'donotreply@whyspam.me' : from_email
+    from_email = from_email.strip.empty? ? 'noEmailWasGiven@whyspam.me' : from_email
     ticket = Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, :body => message})        
     if ticket.nil?
       ticket = Ticket.create(:from_email => from_email, :to_email => to_email, :body => message, :subject => "Form Forwarded by WhySpam", :forms_id => form_id)
       if !to_email.nil?
         @recipients   = to_email
-        @from         = "auto_mailer@whyspam.me" 
+        @from         = from_email 
         headers         "Reply-to" => from_email
         @subject      = "Form Forwarded by WhySpam"
         @sent_on      = Time.now
@@ -23,58 +62,45 @@ class MyMailer < ActionMailer::Base
     end    
   end
   
-  
-  
-  def receive(email) 
 
-    
-    from_email   = email.from[0]
-    to_email     = email.to[0] 
-    message      = email.body 
-    subject      = email.subject 
-    
-    
-    
-    Ticket.find(:first, :conditions => {:from_email => from_email, 
-              :to_email => to_email, :body => message})||Ticket.create(:subject => subject, 
-              :from_email => from_email, :to_email => to_email, 
-              :body => message, :body_hash => Digest::SHA1.hexdigest(message) )
-    
-    
-    
- end
+  
+  
+  
+#  def receive(email) 
+#
+#    
+#    from_email   = email.from[0]
+#    to_email     = email.to[0] 
+#    message      = email.body 
+#    subject      = email.subject 
+#    
+#    
+#    
+#    Ticket.find(:first, :conditions => {:from_email => from_email, :to_email => to_email, 
+#                :body => message})||Ticket.create(:subject => subject, :from_email => from_email, 
+#                :to_email => to_email, :body => message, :body_hash => Digest::SHA1.hexdigest(message))
+#    
+#    
+# end
  
- 
- #def forgot_password(user) ## will use this
- #  @recipients   = user.email
- #  body[:password] = user.new_random_password
- #  user.save
- #  @from         = "postmaster@whyspam.me" 
- #  headers        "Reply-to" => "DoNotReply@whyspam.me"
- #  @subject      = 'You have requested to change your password'
- #  @content_type = "text/html"
- #end
- 
+
   
   
   
-  include Cleanurl
-  
-  def forward(to_email, from_email, email, subject, message)
-    
-    
-    @recipients   = to_email
-   # @from         = find_from_url(from_email)+"@whyspam.me" 
-    @from         = "auto_mailer@whyspam.me" 
-    headers        "Reply-to" => from_email
-    @subject      = subject
-    @sent_on      = Time.now
-    @content_type = "text/html"
-    body[:email] = email
-    body[:message] = message
-    #body[:name]  = name
-    #body[:email] = email       
-  end
+ # def forward(to_email, from_email, email, subject, message)
+ #   
+ #   
+ #   @recipients   = to_email
+ #   @from         = "autoMailer@whyspam.me"
+ #   headers        "Reply-to" => from_email
+ #   @subject      = subject
+ #   @sent_on      = Time.now
+ #   @content_type = "text/html"
+ #   body[:email] = email
+ #   body[:message] = message
+ #   #body[:name]  = name
+ #   #body[:email] = email       
+ # end
    
    
   
@@ -91,13 +117,13 @@ class MyMailer < ActionMailer::Base
   end
   
   
-  def warning(to_email, message)
+  def warning(to_email)
     @recipients   = to_email
     @from         = "omfgsomethingwentwrong@whyspam.me" 
     headers         "Reply-to" => "omfgsomethingwentwrong@whyspam.me"
     @subject      = "Hey Admin, do something"
     @sent_on      = Time.now
-    body[:message] = message
+    @content_type = "text/html"
   end
   
 
