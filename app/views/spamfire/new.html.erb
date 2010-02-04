@@ -43,7 +43,7 @@
 			
 			Website  
 			Grade Is:
-			<% if  @website.url == configatron.default_website %>
+			<% if  @website.url == "Example.com" %>
 				N/A
 			<% else %>
 				<%= link_to @website.grade,  show_website_path(:url => @website.url), :target => "_blank"  %>
