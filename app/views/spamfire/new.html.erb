@@ -43,7 +43,7 @@
 			
 			Website  
 			Grade Is:
-			<% if  @website.url == "Example.com" %>
+			<% if  @website.url.strip.downcase == "Example.com".strip.downcase %>
 				N/A
 			<% else %>
 				<%= link_to @website.grade,  show_website_path(:url => @website.url), :target => "_blank"  %>
