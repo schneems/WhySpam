@@ -1,22 +1,25 @@
+
+<%= stylesheet_link_tag 'demo_page.css' %> 
+<%= stylesheet_link_tag 'demo_table_jui.css' %>
+
 <%= stylesheet_link_tag 'spamfire.css' %>	
 
 
-
-<div id = "new_spamfire_wrapper" class = "span-14">
-	<div class = "span-14">
+<div id = "new_spamfire_wrapper" class = "span-20">
+	<div class = "span-20">
 		<div class = "envelope">
 		<%= link_to image_tag( "whyFav.png") , home_path, :target => "_blank" %>
 		</div>
 		<%= link_to "Generate A New Email", {:controller => "spamfire", :action => "new"} %> &nbsp | &nbsp <%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'} %>
 
 	</div>
-<div class = "span-13 dataTable_whymails_wrapper" >
-	<table  cellpadding="0" cellspacing="0" border="0" style = "width:500px" class="display" id="dataTable_whymails">
+<div style = "width:500px" class = "span-20 white_corners" >
+	<table  style = "width:100px"cellpadding="0" cellspacing="0" border="0" class="span-16 display" id="dataTable_whymails">
 		<thead>
 			<tr>
 				<th>Disposable Address</th>
 				<th>Website</th>
-				<th>Created</th>
+				
 				<% if current_user  %>
 					<th>Action</th>
 				<% end %>
@@ -25,10 +28,9 @@
 		<tbody>
 		
 	<% @whymails.each do |whymail| %>
-	<tr class="clickable"  >
-		<td><%=h whymail.email %></td>
-		<td><%=h whymail.website %></td>
-		<td><%= whymail.created_at.strftime("%Y.%m.%d") %></td>
+	<tr class="fixed"  >
+		<td><%=h whymail.email%></td>
+		<td style = ""><%=h whymail.website[22].nil? ? whymail.website : whymail.website[0,22] +"..."  %></td>
 		<% if current_user  %>
 			<td>
 				<%= link_to "Check", { :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show', :target => "_blank"} %>
@@ -44,7 +46,6 @@
 			<tr>
 				<th>Disposable Email Address</th>
 				<th>Website</th>
-				<th>(Y.M.D)</th>
 				<% if current_user %>
 					<th>Action</th>
 				<% end %>
@@ -58,8 +59,7 @@
 
 
 
-<%= stylesheet_link_tag 'demo_page.css' %> 
-<%= stylesheet_link_tag 'demo_table_jui.css' %> 
+
 <%= javascript_include_tag 'jquery.dataTables.min.js' %>
 
 
@@ -67,8 +67,9 @@
 	$(document).ready(function() {
 		window.myboolean = false ;
 		oTable = $('#dataTable_whymails, #dataTable_forms').dataTable({
-			"bAutoWidth": false,
-			"sPaginationType": "full_numbers"
+			"bAutoWidth": true,
+			
+
 		});			
 		
 	} );
