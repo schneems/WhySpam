@@ -18,6 +18,7 @@
 	http://localhost:3000/stylesheets/spamfire.css?1265216629
 	http://localhost:3000/stylesheets/spamfire.css?1265231472
 	http://localhost:3000/stylesheets/spamfire.css?1265302558
+	http://localhost:3000/stylesheets/spamfire.css?1265302705
 */
 
 fire_grade{
@@ -140,9 +141,12 @@ html, body {
 }
 
 
+.dataTables_wrapper {
+	width: 520px;
+}
+
 #dataTable_whymails, 
-.dataTables_wrapper, 
-tr
+
  {
 	width: 500px;
 	
