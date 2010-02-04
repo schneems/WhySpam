@@ -19,6 +19,8 @@
 	http://localhost:3000/stylesheets/spamfire.css?1265231472
 	http://localhost:3000/stylesheets/spamfire.css?1265302558
 	http://localhost:3000/stylesheets/spamfire.css?1265302705
+	http://localhost:3000/stylesheets/spamfire.css?1265313491
+	http://localhost:3000/stylesheets/spamfire.css?1265315098
 */
 
 fire_grade{
@@ -143,19 +145,19 @@ html, body {
 
 
 .dataTables_wrapper {
-	width: 520px;
 }
 
 #dataTable_whymails {
-	width: 500px;
+	width: 510px;
 	
 }
 
-.dataTables_wrapper {
-	background-color: #fffeff;
+.dataTable_whymails_wrapper {
+	background-color: white;
   -moz-border-radius: 15px;
   -webkit-border-radius: 15px;
 	border: 2px solid #d4d4d4;
+	padding: 10px;
 }
 
 form.button-to {

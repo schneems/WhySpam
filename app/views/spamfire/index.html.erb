@@ -10,7 +10,7 @@
 		<%= link_to "Generate A New Email", {:controller => "spamfire", :action => "new"} %> &nbsp | &nbsp <%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'} %>
 
 	</div>
-<div class = "span-13" >
+<div class = "span-13 dataTable_whymails_wrapper" >
 	<table  cellpadding="0" cellspacing="0" border="0" style = "width:500px" class="display" id="dataTable_whymails">
 		<thead>
 			<tr>
@@ -67,7 +67,7 @@
 	$(document).ready(function() {
 		window.myboolean = false ;
 		oTable = $('#dataTable_whymails, #dataTable_forms').dataTable({
-			"bJQueryUI": true,
+			"bAutoWidth": false,
 			"sPaginationType": "full_numbers"
 		});			
 		
