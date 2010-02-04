@@ -55,8 +55,8 @@
 	<tr class="clickable"  onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show' %>' ">
 		<td><%=h whymail.email %></td>
 		<td><%=h whymail.website %></td>
-		<td><%= whymail.tickets.empty??  "--"  : whymail.tickets.last.created_at.strftime("%m/%d/%Y")%></td>
-		<td><%= whymail.created_at.strftime("%m/%d/%Y") %></td>
+		<td><%= whymail.tickets.empty? ?  "--"  : whymail.tickets.last.created_at.strftime("%Y/%m/%d") %></td>
+		<td><%= whymail.created_at.strftime("%Y/%m/%d") %></td>
 		<% if  current_user == @user && current_user  %>
 			<td>			
 				<%= button_to_remote "Delete", :class => "ui-state-default", :url => spam_survey_url(:id => whymail.id) , :update => "partial_update", :loading => "window.myboolean = true;$('#indicator').show();$('#partial_update').hide();", 
@@ -91,7 +91,7 @@
 <%= render :partial => 'static/ads' %>
 
 <div id = "manage_mail" class = "span-18">
-<h3>WhySpam.me Disposable Forms</h3><br />
+<h3>WhySpam.me Disposable Forms - In Alpha</h3><br />
 
 
 <div class = "">

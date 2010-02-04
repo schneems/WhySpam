@@ -8,13 +8,23 @@
 <%= link_to image_tag( "envelope.png") , home_path, :target => "_blank"  %>
 </div>
 
-<div id = "new_spamfire_wrapper" class = "span-10">
-		<textarea id = "no_spam" class = "center" cols="32" rows="1" 
-			readonly onclick="this.focus(); this.select();" style = ""><%= @whymail.email if @extra_message.nil? -%><%= @extra_message.to_s %></textarea>
+<div id = "new_spamfire_wrapper" class = "span-7">
+	<input type="text" size="35" onclick="this.focus(); this.select();" style value="<%= @whymail.email if @extra_message.nil? -%><%= @extra_message.to_s %>">
 
-		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website, :email => @email } , {:id => "spamfire_button"}-%>
+
 		
-		<p class="center"><%= link_to "log in", login_path %>  to manage your disposable emails </p>
+	<div class = "span-12 prepend-2">
+		<% if current_user %>
+			<%= link_to "View",  {:action => "index", :controller => "spamfire" }%> or 
+		 	<%= link_to "Delete", manage_index_path, :target => "_blank"%>  emails
+		<% else %>
+		  <%= link_to 'Log In', {:action => 'new', :controller => 'spamfire_sessions' } %> to View or Delete Emails
+		<% end %>
+	</div>
+		
+</div>
+<div class = "span-3">
+		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website, :email => @email } , {:id => "spamfire_button"} -%>  <%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'}%>
 		
 </div>
 

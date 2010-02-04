@@ -10,31 +10,60 @@
 </div>
 
 
-<div id = "new_spamfire_wrapper" class = "span-10">
+<div id = "new_spamfire_wrapper" class = "span-12">
 	
  	 <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
 				:url =>  { :action => "create"}, 
 				:html => { } do |f| %>			
-	<%= label_tag 'email', 'Email: ' %> <%= f.text_field :email , :rows => 2 %>
-	<%= label_tag 'website', 'Website: ' %> <%= f.text_field :website %>
-	<%= f.submit "Go" %><br />
-	<div class= "bottom-spamfire">
-	<div class = "span-4">
-	<%= label_tag 'save', 'Remember Email? ' %> <%= check_box :save , 'checked', (@checked == "true" ? {:checked => 'checked'} : {:checked => 'unchecked'}) %>
+	<div class = "span-6">
+		<div class = "span-2">
+						
+			<%= label_tag 'email', 'Email: ' %> 
+			<%= label_tag 'website', 'Website: ' %>
+		</div>
+		<div class = "span-4">
+			<%= f.text_field :email , :rows => 2 %>
+			 <%= f.text_field :website %>
+			<br />
+		</div>
 	</div>
-	
-	<p class= "fire_grade span-10 prepend-4"> &nbsp This website has a grade of: <%= link_to @website.grade,  show_website_path(:url => @website.url), :target => "_blank"  %></p>
-	</div>
+		<div class = "span-6">
+		<%= f.submit "Generate" %>	
+		&nbsp &nbsp
+		<% if current_user %>
+		  <%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'} %>
+		<% else %>
+		  <%= link_to 'Remember Me (Log In)', {:action => 'new', :controller => 'spamfire_sessions' } %>		
+		<% end %>
+		
+		</div>
 
-	<% end %>
+		<div class = "span-5">
+
+			
+			Website  
+			Grade Is:
+			<% if  @website.url == configatron.default_website %>
+				N/A
+			<% else %>
+				<%= link_to @website.grade,  show_website_path(:url => @website.url), :target => "_blank"  %>
+			<% end %>
+			
+			
+		</div>
 
 				<%= error_messages_for :user %>
-	</div>
 
 
-
-
-	<div class = "span-5">
-	</div>
+<% end %>
+<div class = "span-12 prepend-2">
+	<% if current_user %>
+		<%= link_to "View",  {:action => "index", :controller => "spamfire" }%> or 
+	 	<%= link_to "Delete", manage_index_path, :target => "_blank" %>  emails
+	<% else %>
+	  <%= link_to 'Log In', {:action => 'new', :controller => 'spamfire_sessions' } %> to View or Delete Emails
+	<% end %>
+</div>
 
 </div>
+

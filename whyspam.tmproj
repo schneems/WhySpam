@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>deploy_readme</string>
+	<string>spec/controllers/spamfire_sessions_controller_spec.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -18,7 +18,7 @@
 		</dict>
 	</array>
 	<key>fileHierarchyDrawerWidth</key>
-	<integer>305</integer>
+	<integer>274</integer>
 	<key>metaData</key>
 	<dict>
 		<key>Capfile</key>
@@ -49,49 +49,47 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>app/controllers/admin_controller.rb</key>
+		<key>app/controllers/spamfire_sessions_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>17</integer>
+				<integer>124</integer>
 				<key>line</key>
-				<integer>9</integer>
+				<integer>16</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>8</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>9</integer>
-			</dict>
+			<integer>7</integer>
 		</dict>
-		<key>app/controllers/whymail_controller.rb</key>
+		<key>app/controllers/users_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>8</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>13</integer>
+			<integer>6</integer>
+		</dict>
+		<key>app/controllers/websites_controller.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>30</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>22</integer>
 		</dict>
 		<key>app/helpers/application_helper.rb</key>
 		<dict>
@@ -106,36 +104,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>37</integer>
-		</dict>
-		<key>app/views/layouts/_account_bar.html.erb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>17</integer>
-				<key>line</key>
-				<integer>29</integer>
-			</dict>
-			<key>columnSelection</key>
-			<false/>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>20</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>10</integer>
-				<key>line</key>
-				<integer>29</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>29</integer>
-			</dict>
 		</dict>
 		<key>app/views/layouts/_header.html.erb</key>
 		<dict>
@@ -251,20 +219,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>deploy_readme</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>29</integer>
-				<key>line</key>
-				<integer>212</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>205</integer>
-		</dict>
 		<key>doc/plugins/rspec-rails-mocha/fr_method_index.html</key>
 		<dict>
 			<key>caret</key>
@@ -345,6 +299,20 @@
 				<integer>13</integer>
 				<key>line</key>
 				<integer>7</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>lib/tasks/getmail.rake</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>12</integer>
+				<key>line</key>
+				<integer>8</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -435,6 +403,20 @@
 			<key>firstVisibleLine</key>
 			<integer>20</integer>
 		</dict>
+		<key>spec/controllers/spamfire_sessions_controller_spec.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>29</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>19</integer>
+		</dict>
 		<key>spec/controllers/survey_controller_spec.rb</key>
 		<dict>
 			<key>caret</key>
@@ -463,76 +445,6 @@
 			<key>firstVisibleLine</key>
 			<integer>33</integer>
 		</dict>
-		<key>spec/controllers/user_sessions_controller_spec.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>7</integer>
-				<key>line</key>
-				<integer>7</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>37</integer>
-		</dict>
-		<key>spec/controllers/users_controller_spec.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>37</integer>
-				<key>line</key>
-				<integer>68</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>62</integer>
-		</dict>
-		<key>spec/factories.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
-		<key>spec/models/ticket_spec.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>3</integer>
-				<key>line</key>
-				<integer>19</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>5</integer>
-		</dict>
-		<key>spec/models/user_spec.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>1</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>27</integer>
-		</dict>
 		<key>test/factories.rb</key>
 		<dict>
 			<key>caret</key>
@@ -546,34 +458,6 @@
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>42</integer>
-		</dict>
-		<key>test/unit/grade_widget_test.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>15</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>3</integer>
-		</dict>
-		<key>test/unit/spamfire_test.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>3</integer>
 		</dict>
 		<key>transcription.txt</key>
 		<dict>
@@ -592,18 +476,15 @@
 	</dict>
 	<key>openDocuments</key>
 	<array>
-		<string>app/controllers/admin_controller.rb</string>
-		<string>app/views/whymail/_create.html.erb</string>
-		<string>app/controllers/whymail_controller.rb</string>
-		<string>deploy_readme</string>
-		<string>app/views/layouts/_header.html.erb</string>
-		<string>app/views/layouts/_account_bar.html.erb</string>
-		<string>app/helpers/application_helper.rb</string>
-		<string>config/environment.rb</string>
+		<string>lib/tasks/getmail.rake</string>
+		<string>app/controllers/spamfire_sessions_controller.rb</string>
+		<string>app/controllers/websites_controller.rb</string>
+		<string>app/controllers/users_controller.rb</string>
+		<string>spec/controllers/spamfire_sessions_controller_spec.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{347, 0}, {1093, 352}}</string>
+	<string>{{309, 50}, {1093, 352}}</string>
 </dict>
 </plist>

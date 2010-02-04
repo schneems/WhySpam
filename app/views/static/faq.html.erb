@@ -10,16 +10,19 @@
 	<li><%= link_to "How Do I Generate A Disposable Email?" , :anchor => "generate" %>
 	<li><%= link_to "How Do I Delete a Disposable Email?", :anchor => "delete" %></li>
 	
-	<li><%= link_to "Why Don't I See Forwarded Messages in my Personal Inbox?", :anchor => "no_messages" %></li>
-	
-	<li><%= link_to "Why Do I Occasionally get Duplicate Messages?", :anchor => "duplicate" %></li>
-	
+	<li><%= link_to "Why Don't I See Forwarded Messages in my Personal Inbox?", :anchor => "no_messages" %></li>	
 	
 	<li><%= link_to "How Do I Know that my Information is Secure?", :anchor => "secure" %></li>
 	
-	<li><%= link_to "How Does Whyspam cover its costs?", :anchor => "money"%></li>
+	<li><%= link_to "How Does Whyspam Cover its Costs?", :anchor => "money"%></li>
 	
-	<li><%= link_to "Why Do You Want a Website Address?", :anchor => "optional_website" %></li>
+	<li><%= link_to "Do you have a browser Plugin?", :anchor => "plugin" %></li>
+	
+	<li><%= link_to "How can I Show Users that my Website is Trustworthy?", :anchor => "plugin" %></li>
+	<li><%= link_to "I Really Hate Spam, How Can I Help?", :anchor => "plugin" %></li>
+	
+	
+	
 </ul>
 <br /><br /><br />
 
@@ -67,17 +70,7 @@
 	<hr />
 </div>
 
-<div id = "duplicate">
-	<h3>Why Do I Occasionally get Duplicate Messages?</h3>
-	<p class = "prepend-1">
-	If you ever get a duplicate email please <%= link_to " contact us", {:action => "contact", :controller => "static"} %>. This is a known yet intermittent issue, and we haven't seen any repeatable trends in reproducing this action. If you can let us know approximately when you received the message and who it was from we can check our server logs and hopefully soon we will have a fix for this issue. 
-	<br /><br />
-	First reported December 12, 2009. Current Status: In Work. Reported Instances: 2
-	
-	</p>
-	<hr />
-	
-</div>
+
 
 
 <div id = "secure">
@@ -96,7 +89,7 @@
 	Even though that would defeat the whole purpose of the site, it is good that users are wary of giving their email to anyone. The only way we will continue to receive repeat users is by providing quality spam tools with great user experiences. We rely on word of mouth instead of an expensive advertising budget, so we can't afford to have people bad mouthing our service. Don't believe it? Generate a disposable email address and don't give it to anyone, you shouldn't receive any messages...it's that simple. 
 	<br />
 	<br />
-	Sure its possible spammers could foil this test by sending out messages to every email @whyspam.me but they would have to send out every letter-number A-Z and 0-9 for twenty characters thats 20 to the power of 36 which is 13,367,494,500,000,000,000,000,000,000,000 possible combinations just to find your single disposable email. We're not saying it's not possible...just that its really not very economical for them. 
+	Sure its possible spammers could foil this test by sending out messages to every email @whyspam.me but they would have to send out every letter-number A-Z and 0-9 for twenty characters thats 20 to the power of 36 which is <b>13,367,494,500,000,000,000,000,000,000,000</b> possible combinations just to find your single disposable email. We're not saying it's not possible...just that its really not very economical for them. 
 	<br /><br />
 	If you're wondering how we can afford to do what we do check out: <%= link_to "How Does Whyspam cover its costs?", :anchor => "money"%>
 </p>
@@ -114,23 +107,37 @@
 </div>
 
 
-
-<div id = "optional_website">
+<div id = "plugin">
 	
-	<h3>Why Do You Want a Website Address?</h3>
+	<h3>Do you have a Browser Plugin?</h3>
 	<hr />
 	
 	<p class = "prepend-1">
-	When you tell us the website you plan on giving this disposable email address to, then we can keep track of 
-	the websites that spam, and the websites that don't with our <%= link_to "spam report", websites_path %>. 
-	<br />
-	<br />
-	For example, if you give your disposable email address to www.SketchyWebsite.com, and nobody else, and you start getting spam
-	then we know that www.SketchyWebsite.com sold your email address, and we'll tell the world!! 
-	<br />
-	<br />
-	So to get the most out of <a href = "http://www.whyspam.me">WhySpam.Me</a>, generate a new Disposable Email instead of sharing
-	your personal email account every time you need to give out your address. We'll expose the websites that sell your information, 
-	while keeping your personal email safe.
+		Yes, our browser plugin for firefox is called <a href = "https://addons.mozilla.org/en-US/firefox/addon/14411">SpamFire</a>, and we call our plugin for Chrome <a href="https://chrome.google.com/extensions/detail/bocfjjmdfnoogaflbdbeigbihlalcbdk">SpamFireCR</a>. Both let you generate disposable email from the comfort of your own browser, you never have to visit our site. The more emails you use, the safer you are. 
+	</p>
+</div>
+
+<div id = "badge">
+	
+	<h3>How can I Show Users that my Website is Trustworthy</h3>
+	<hr />
+	
+	<p class = "prepend-1">
+		So you've got a website and its great, you know that you're a trustworthy person, but unfortunately being trustworthy isn't a visible attribute when it comes to websites, until now. 
+		<br /><br />
+		You can put a why spam badge that lets your users know at a glance that not only are you trustworthy, you're accountable for your actions, and remain committed to respecting their email and privacy rights. 
+	</p>
+</div>
+
+
+
+
+<div id = "help">
+	
+	<h3>I Really Hate Spam, How Can I Help?</h3>
+	<hr />
+	
+	<p class = "prepend-1">
+		WhySpam.Me is completely open sourced. We listen to what you have to say, so please give us your feedback using the widget on the left. If you've got design, web development, or security experience please send us a message or check out our code repository. We love new ideas and we're very open to trying new things, as long as it helps out our users. If you don't know anything about web stuff, don't worry we need your help telling people how they can hold websites accountable for the spam they sell. So please, evangelize away, the more people who use disposable emails, the more accurate our spam list and rankings are!
 	</p>
 </div>

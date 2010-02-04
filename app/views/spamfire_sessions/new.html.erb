@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag 'spamfire.css' %>	
+
+
+
+<% form_for @user_session, :url => {:action => "create", :controller => "spamfire_sessions"} do |f| %>
+
+  <%= f.error_messages %>
+<div class = "envelope">
+<%= link_to image_tag( "envelope.png") , home_path, :target => "_blank" %>
+</div>
+
+<div id = "new_spamfire_wrapper">
+	<div class = "span-6">
+		<div class = "span-2">
+	   		<%= f.label "Email:" %>
+		    <%= f.label :password, "Password:" %>
+	
+		</div>
+		<div class = "span-2">
+			<%= f.text_field :email %>
+	    	<%= f.password_field :password %>
+		</div>
+	<div class = "span-5 prepend-1">
+  	    (Default Password is your Email)
+	</div>
+
+	</div>
+
+
+  <div class='buttons clearfix span-6'>
+	<%=  f.submit "Log In", :id => "spamfire_button" %> <%= f.check_box :remember_me %><span>Stay Logged In?</span><br />
+	&nbsp &nbsp &nbsp &nbsp
+	<%= link_to 'Reset your password', password_reset_path, :target => '_blank' %>
+  </div>
+
+
+<% end %>
+
+<div class="prepend-1 span-12">
+<p>
+</p>
+</div>
+
+
+
+</div>
+
+
+
+

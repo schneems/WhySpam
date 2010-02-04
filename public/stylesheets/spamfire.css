@@ -10,7 +10,16 @@
 	http://localhost:3000/stylesheets/spamfire.css?1260548201
 	http://localhost:3000/stylesheets/spamfire.css?1260549344
 	http://localhost:3000/stylesheets/spamfire.css?1263783063
+	http://localhost:3000/stylesheets/spamfire.css?1264033086
+	http://localhost:3000/stylesheets/spamfire.css?1265149884
+	http://localhost:3000/stylesheets/spamfire.css?1265149893
+	http://localhost:3000/stylesheets/spamfire.css?1265150584
+	http://localhost:3000/stylesheets/spamfire.css?1265151125
+	http://localhost:3000/stylesheets/spamfire.css?1265216629
+	http://localhost:3000/stylesheets/spamfire.css?1265231472
+	http://localhost:3000/stylesheets/spamfire.css?1265302558
 */
+
 fire_grade{
 	float: left;
 	margin-left: 200px;
@@ -47,7 +56,6 @@ div.bottom-spamfire {
 
 .column, div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, div.span-21, div.span-22, div.span-23, div.span-24 {
   float: left;
-  margin-right: 10px;
 }
 
 .span-1 { width: 30px; }
@@ -79,13 +87,21 @@ div.bottom-spamfire {
 }
 
 #user_email,
-#user_website
+#user_website,
+#user_session_email,
+#user_session_password
+
  {
 	
-	max-width: 120px;
+	max-width: 150px;
 	padding:0;
-	margin: 0;
 }
+
+#new_spamfire_wrapper label {
+	margin: 15px 0;
+}
+
+
 
 
 
@@ -93,29 +109,50 @@ div.bottom-spamfire {
 
 html, body {
 	background-color: #ececec;
-	height: 20px;
+	height: 90px;
 }
 
-#user_submit, 
-#spamfire_button {
-margin-top: 2px;
-height: 27px;
-font-size: 13px;
 
-}
 
 #new_user label {
 	font-size: 13px;
 	height: 17px;
 }
 
-#no_spam {
-	display: inline-block;
-	float:left;
+#new_spamfire_wrapper, 
+#new_spamfire_wrapper tr
+	{
 	overflow:hidden;
+	line-height: 18px;
 	font-size: 13px;
-	line-height: 17px;
-	text-align: center;
+}
+
+
+.dataTables_wrapper th {
+	border-bottom: 2px solid #878787;
+	border-top: 2px solid #bababa;
+	border-left: 1px solid #939393;
+}
+
+#spam_survey {
+	width: 500px;
+
+}
+
+
+#dataTable_whymails, 
+.dataTables_wrapper, 
+tr
+ {
+	width: 500px;
+	
+}
+
+.dataTables_wrapper {
+	background-color: #fffeff;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+	border: 2px solid #d4d4d4;
 }
 
 form.button-to {
@@ -123,9 +160,7 @@ form.button-to {
 }
 
 
-#new_spamfire_wrapper {
-	float: left;
-}
+
 
 #new_spamfire_wrapper.response {
 	margin-top: 15px;
@@ -140,7 +175,7 @@ form.button-to {
 
 .envelope {
 	float: left;
-	padding: 0 20px 0 20px; 
+	padding: 0 10px 0 10px; 
 }
 
 .envelope img {

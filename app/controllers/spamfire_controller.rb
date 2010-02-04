@@ -1,16 +1,20 @@
 class SpamfireController < ApplicationController
 layout nil
 
+
+
 def index
+  unless current_user.nil?
+    user = current_user
+    @whymails = user.whymail
+  end
 end
-
-
 
 def new
   #http://localhost:3000/spamfire/new?website=http://blah.com&email=asdlfkj
   website = params[:website]||"Example.com"
-  email = params[:email]||cookies[:email]||""  
-  email = "Your Email" if email.strip.empty?
+#  email = params[:email]||cookies[:email]||""  
+  email =  current_user.nil?  ?  "Your Email" : current_user.email  
   @checked = cookies[:checked]||"true"
   @user = User.new(:email => email, :website => Cleanurl.sanatize(website)) 
   @website = Website.find_or_create_by_url(website)
@@ -20,14 +24,7 @@ end
 def create
   session[:count] = session[:count]||0
   @email = email = params[:user][:email]||0
-  
-   if params[:save][:checked] == "1"
-     cookies[:email] = email 
-     cookies[:checked] = "true"
-   else
-     cookies[:checked] = "false"
-     cookies[:email] = ""
-   end
+
    
   website = site = params[:user][:website]||" "
   session[:count] = 0 if ENV['RAILS_ENV'] == 'development'
