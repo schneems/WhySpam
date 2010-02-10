@@ -44,7 +44,6 @@ module ApplicationHelper
   
   
   def section_link(name,options)
-
       if (options[:action] == params[:action] and options[:controller] == params[:controller] ) || url_for(:controller => params[:controller], :action => params[:action]) == options
          link_to(image_tag(name+".png"), options, :class => 'on')
       else
@@ -55,12 +54,12 @@ module ApplicationHelper
   class ActionView::Helpers::FormBuilder
     
     
-    def button_with_icon(text , icon)
+    def button_with_icon(text , icon, options = { } )
       object_name = self.object_name
       
       #return self.submit "<span class='ui-icon'></span>#{text}" , :class => "ui-corner-all ui-state-default"
       # return "<a href = \"#\" onclick =\"$('#new_user').submit();\" type='submit' name='commit' id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</a>"
-      return "<button id='#{object_name}_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'> &nbsp <span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
+      return "<button id='#{object_name}' class = '#{options[:class]} ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'> &nbsp <span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
       
       ## don't remove the &nbsp for fear of deat (from IE)
     end
@@ -94,8 +93,8 @@ module ApplicationHelper
     end
   end
   
-  def button_with_icon(text , icon)
-    return "<button id='foo_submit' class = 'ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
+  def button_with_icon(text , icon, options = { })
+    return "<button id='foo_submit' class = '#{options[:class]} ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"
   end
   
   def default_text_field_tag(name, value)

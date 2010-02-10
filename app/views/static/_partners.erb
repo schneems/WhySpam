@@ -1,0 +1,81 @@
+<div id= "animate">
+<table class = "prepend-1" id = "partners">
+	<thead>
+		<tr>
+		
+			<td>&nbsp</td><td>Free</td><td>Lite</td><td>Regular</td><td>Max</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr><th>Price</th><td class = "partner-odd" >N/A</td><td>$10</td><td class = "partner-odd" >$50</td><td>$300</td></tr>
+	
+		<tr><th>Users</th><td class = "partner-odd" >1</td><td>1</td><td class = "partner-odd" >3</td><td>100</td></tr>
+		<tr><th>WhySpam Audit</th><td class = "partner-odd"> Occasionally</td><td>1 Per Month <br />Guaranteed</td><td class = "partner-odd" >2 Per Month <br />Guaranteed</td><td>1 Per Day <br />Guaranteed</td></tr>
+		<tr><th>
+		Site Badge
+		<%# link_to_remote "Site Badge", { :update => "partners", 
+							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+							:url => url_for(:action => "_sitebadge", :controller => "static")},
+		 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %>
+			
+			</th><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
+		
+		<tr><th>Donation to <%= link_to_remote "Spam The Homeless", { :update => "partners", 
+								:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+								:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+								:url => url_for(:action => "_donate", :controller => "static")},
+			 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+			<td class = "partner-odd" ><!-- no --></td><td><%= image_tag "check.png" %></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
+	
+		<tr><th><%= link_to_remote "Status Alerts", { :update => "partners", 
+													:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+													:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+													:url => url_for(:action => "_sitebadge", :controller => "static")},
+								 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+								
+		<td class = "partner-odd"><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
+	
+		<tr><th><%= link_to_remote "User Statistics Data", { :update => "partners", 
+							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+							:url => url_for(:action => "_sitebadge", :controller => "static")},
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+							
+		<td class = "partner-odd"><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
+		<tr><th><%= link_to_remote "Coordinated A/B Tests", { :update => "partners", 
+							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+							:url => url_for(:action => "_sitebadge", :controller => "static")},
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+		<td class = "partner-odd" ><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><!-- no --></td><td><%= image_tag "check.png" %></td></tr>
+		<tr><th><%= link_to_remote "Can-Spam Compliance", { :update => "partners", 
+							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+							:url => url_for(:action => "_sitebadge", :controller => "static")},
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+		<td class = "partner-odd"><!-- no --></td><td ><!-- no --></td><td class = "partner-odd" ></td><td><%= image_tag "check.png" %></td></tr>
+	
+		<tr><th><%= link_to_remote "Custom User Surveys", { :update => "partners", 
+							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
+							:url => url_for(:action => "_sitebadge", :controller => "static")},
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+		<td class = "partner-odd"><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><!-- no --></td><td><%= image_tag "check.png" %></td></tr>
+	
+		<tr><th></th>
+			<%# button_with_icon "Signup", "battery-0", :class => "partner-signup"  %>
+			<td class = "partner-odd">
+				<%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %>
+			</td>
+			<td><%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %></td>
+			<td class = "partner-odd">
+				<%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %>
+			</td>
+			<td><%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %></td></tr>
+	</tbody>
+		
+		
+	
+</table>
+</div>

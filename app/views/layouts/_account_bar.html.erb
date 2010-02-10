@@ -25,13 +25,16 @@
 		</div>
 	</div>
 	
-	<div class = "prepend-10 span-14 nav last">
+	<div class = "prepend-10 span-15 nav last">
 		 <ul class = "">
 			<li><%=section_link 'email',home_path %></li>
 			<%#  section_link 'forms', new_form_path %>
 			<li></li>
 			<li><%=section_link 'blog', "http://blog.whyspam.me" %></li>
-			<li>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp<%# section_link "SlopBox", slopbox_index_path %></li>
+			<li><%#section_link 'partners', {:controller => "static", :action => "partners"} %></li>
+			
+			<li><%# section_link 'companies', "http://whyspam.me/static/companies" %></li>
+						
 			<li><%=section_link "SpamReport", websites_path %></li>
 		</ul>
 	</div>

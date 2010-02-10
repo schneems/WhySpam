@@ -36,6 +36,9 @@
 	http://localhost:3000/stylesheets/why.css?1263692969
 	http://localhost:3000/stylesheets/why.css?1263765651
 	http://localhost:3000/stylesheets/why.css?1263946183
+	http://localhost:3000/stylesheets/why.css?1265229996
+	http://localhost:3000/stylesheets/why.css?1265494221
+	http://localhost:3000/stylesheets/why.css?1265495309
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -47,6 +50,43 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
+}
+
+#partners  td, 
+#partners  {
+	text-align: center;
+}
+
+#partners  td, 
+#partners  th{
+		font-weight: bold;
+
+	background-color: #c7e8ff;
+	border: 1px solid white;
+}
+
+#partners td.partner-odd {
+	background-color: #bedef5;
+}
+
+button.partner-signup,
+a.partner-signup {
+	padding: 10px 20px 10px 20px;
+	color: #4200fc;
+
+}
+
+#partners  th {
+text-align: right;
+width: 190px;
+}
+
+#partners thead td{
+	text-align: center;
+	color: white;
+		background-image: url(../images/partner-bar.png);
+	border-style: none;
+	font-size: 19px;
 }
 
 #users-per-day,
@@ -956,8 +996,10 @@ margin-top: -6px;
 
 .ui-state-hover h2, 
 .ui-state-hover h3,
+.ui-state-hover,
 a.ui-state-hover:hover {
 	text-decoration: none;
+	color: white;
 }
 
 
@@ -1171,4 +1213,8 @@ width: 415px;
 
 margin: 13px 0;
 	
+}
+
+.ui-state-hover {
+	color: white;
 }

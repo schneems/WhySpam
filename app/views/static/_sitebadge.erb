@@ -1,0 +1,13 @@
+<div id = "siteBadge">
+A Site Bad
+
+
+<hr />
+
+<%= link_to_remote "Back", { :update => "animate", 
+					:loading => "$('#animate').slideUp('slow').slideDown('slow')",
+					:complete => "$('#partners').hide().slideDown('slow').show()" ,			
+					:url => url_for(:action => "_partners", :controller => "static")},
+ 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-back" }   %>
+
+</div>
