@@ -1,6 +1,6 @@
 class SaveEmailToTicket < ActiveRecord::Migration
   def self.up
-    add_column :tickets, :email, :string
+    add_column :tickets, :email, :text
     
   end
 

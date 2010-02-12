@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20100212153834) do
     t.datetime "updated_at"
     t.integer  "forms_id"
     t.string   "body_hash"
-    t.string   "email"
+    t.text     "email"
   end
 
   add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
