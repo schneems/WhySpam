@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100126032751) do
+ActiveRecord::Schema.define(:version => 20100212153834) do
 
   create_table "forms", :force => true do |t|
     t.text     "comments"
@@ -55,21 +55,10 @@ ActiveRecord::Schema.define(:version => 20100126032751) do
     t.datetime "updated_at"
     t.integer  "forms_id"
     t.string   "body_hash"
-  end
-
-  add_index "tickets", ["to_email", "body", "from_email"], :name => "index_tickets_on_to_email_and_body_and_from_email", :unique => true, :limit => {"body"=>"255", "to_email"=>"255", "from_email"=>"255"}
-  add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
-
-  create_table "usedwhymail", :force => true do |t|
-    t.string   "website"
     t.string   "email"
-    t.string   "main_url"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
-  add_index "usedwhymail", ["email"], :name => "index_usedwhymail_on_email", :limit => {"email"=>nil}
+  add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
 
   create_table "users", :force => true do |t|
     t.datetime "created_at"
@@ -117,7 +106,5 @@ ActiveRecord::Schema.define(:version => 20100126032751) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "whymail", ["email"], :name => "index_whymail_on_email", :limit => {"email"=>nil}
 
 end

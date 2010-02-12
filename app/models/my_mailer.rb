@@ -15,7 +15,7 @@ class MyMailer < ActionMailer::Base
     @subject      = email.subject
     @sent_on      = Time.now
     @email        = whymail_address
-    @content_type = "multipart/alternative" 
+    @content_type = email.content_type
     
     plainPart = htmlPart = nil
     #check incoming message if it contained plain or html, sends the appropriate messages

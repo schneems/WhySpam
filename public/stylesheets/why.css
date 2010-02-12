@@ -39,6 +39,8 @@
 	http://localhost:3000/stylesheets/why.css?1265229996
 	http://localhost:3000/stylesheets/why.css?1265494221
 	http://localhost:3000/stylesheets/why.css?1265495309
+	http://localhost:3000/stylesheets/why.css?1265687982
+	http://localhost:3000/stylesheets/why.css?1265930876
 */
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
@@ -63,6 +65,17 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 
 	background-color: #c7e8ff;
 	border: 1px solid white;
+}
+
+#siteBadge p {
+	text-align: left;
+	
+}
+
+.back a {
+	font-weight: bold;
+	font-size: 31px;
+	
 }
 
 #partners td.partner-odd {
