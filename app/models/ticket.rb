@@ -27,12 +27,16 @@ class Ticket < ActiveRecord::Base
   def self.find_or_create_and_send(email)
     message = email.body
     email_addresses = Ticket.get_email_addresses(email)
+    
     email_addresses.each do |to_email|
       whymail = Whymail.find(:first, :conditions => ['(email = ?)', to_email.upcase ] ) 
-      ticket = Ticket.create(:subject => email.subject, :from_email => email.from.first, :to_email => to_email, :whymail_id => whymail.id,
+      @ticket = Ticket.create(:subject => email.subject, :from_email => email.from.first, :to_email => to_email, :whymail_id => whymail.id,
                                   :body => message , :email => email, :body_hash => Digest::SHA1.hexdigest(message) ) unless whymail.nil?
-      ticket.send_email(to_email, email) unless ticket.nil?
+
+      @ticket.send_email(to_email, email) unless @ticket.nil?
     end
+    
+    return @ticket
     
   end
     

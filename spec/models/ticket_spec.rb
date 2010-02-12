@@ -30,9 +30,9 @@ describe Ticket do
       TestMailer.deliver_mime(@whymail.email)
       email = TMail::Mail.parse(getMockEmails.last)
       assert_difference [ "Ticket.count", "getMockEmails.count" ] , 1 do
-        Ticket.find_or_create_and_send(email)
+          ticket = Ticket.find_or_create_and_send(email)
+          ticket.email.body.should == email.body
       end      
-      
     end
     
     it "should not create a new ticket or email if there is no whymail" do 
