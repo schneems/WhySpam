@@ -2,7 +2,7 @@
 	
 	
 		<div id='site-title' class = "span-12 last">
-			<h1 id="header"><a href = "http://www.whyspam.me">Awesome header</a></h1>
+			<h1 id="header"><a href = "http://www.whyspam.me">Disposable Email</a></h1>
 		</div>
 	
 	<div class = "top_bar prepend-12">
@@ -27,14 +27,11 @@
 	
 	<div class = "prepend-10 span-15 nav last">
 		 <ul class = "">
-			<li><%=section_link 'email',home_path %></li>
+			<li><%=section_link 'email',home_path, :alt => "free email" %></li>
 			<%#  section_link 'forms', new_form_path %>
 			<li></li>
-			<li><%=section_link 'blog', "http://blog.whyspam.me" %></li>
-			<li><%# section_link 'partners', {:controller => "static", :action => "partners"} %></li>
-			
-			<li><%# section_link 'companies', "http://whyspam.me/static/companies" %></li>
-						
-			<li><%=section_link "SpamReport", websites_path %></li>
+			<li><%=section_link 'blog', "http://blog.whyspam.me",  :alt => "disposable email blog"  %></li>
+			<li><%# section_link 'partners', {:controller => "static", :action => "partners"} %></li>						
+			<li><%=section_link "SpamReport", websites_path, :alt => "spam report" %></li>
 		</ul>
 	</div>

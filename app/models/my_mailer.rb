@@ -6,6 +6,97 @@ class MyMailer < ActionMailer::Base
     Ticket.find_or_create_and_send(email)
   end
   
+    # ====================================================================================
+    def mypartworker(p)      
+      if p.multipart? then
+          p.parts.each do |pp|
+            mypartworker(pp)
+          end
+      else
+          if p.content_type == "text/html"
+            puts p.content_type
+            p.part.body  = p.part.body + "<hr /> <br /> FFFFFFFFFFUUUUUUUUUUUUU"  
+          elsif p.content_type == "text/plain"
+            puts p.content_type
+            p.part.body  = p.part.body + "\n \n UUUUUUUUUUUUUUUUFFFFFFFFFFFFFF"
+          end  
+        end 
+      end
+  
+
+  
+  
+  
+  
+  
+  
+      ######################################################################################
+      
+      
+      
+      
+      
+      
+      
+      def partworker(p,mp)
+        if p.multipart? then
+          mp.part p.content_type.to_s do |mmp|
+            p.parts.each do |pp|
+              partworker(pp,mmp)
+            end
+          end
+        else
+          
+          if p.content_type == "text/html"
+            mp.part :content_type => p.content_type,
+              :disposition => p.disposition,
+              :transfer_encoding => p.transfer_encoding,            
+              :body => p.body + "<hr /> <br /> FFFFFFFFFFUUUUUUUUUUUUU"  
+          elsif p.content_type == "text/plain"
+            mp.part :content_type => p.content_type,
+              :disposition => p.disposition,
+              :transfer_encoding => p.transfer_encoding,            
+              :body => p.body + "\n \n UUUUUUUUUUUUUUUUFFFFFFFFFFFFFF"
+            else
+              mp.part :content_type => p.content_type,
+                :disposition => p.disposition,
+                :transfer_encoding => p.transfer_encoding,            
+                :body => p.body
+          end  
+            
+            
+          end 
+        end
+        
+        def mailer(to_email_address, whymail_address, mail)          
+          subject       mail.subject
+          recipients    to_email_address
+          headers       "Reply-to" => mail.from.first
+          from          "Fwd from " + Cleanurl.find_from_url(mail.from.first)  + "<autoMailer@whyspam.me>"
+          sent_on       Time.now
+          @email = whymail_address
+
+
+          if mail.multipart? then
+            part mail.content_type do |mp| 
+              mail.parts.each do |p|                
+                partworker(p,mp)
+              end
+            end                   
+          else
+            part :content_type => mail.content_type,
+              :disposition => mail.disposition,
+              :transfer_encoding => mail.transfer_encoding,            
+              :body => mail.body
+          end
+      end
+  
+  
+  
+  ######################################################################################
+  
+  
+  
   
   def forward(to_email_address, whymail_address, email)
     
@@ -17,33 +108,41 @@ class MyMailer < ActionMailer::Base
     @email        = whymail_address
     @content_type = email.content_type
     
-    plainPart = htmlPart = nil
-    #check incoming message if it contained plain or html, sends the appropriate messages
-      email.parts.each do |origPart|        
-        plainPart = origPart.body if origPart.content_type == "text/plain"
-        htmlPart = origPart.body if origPart.content_type == "text/html"
-      end
     
 
-      
-      part "text/html" do |p|
-          p.body = render_message("forward.text.html.erb", :message => htmlPart) unless htmlPart.nil? 
-      end
-      
-      part "text/plain" do |p|
-          p.body = render_message("forward.text.plain.erb", :message => plainPart) unless plainPart.nil? 
-          p.body = render_message("forward.text.plain.erb", :message => email.body.to_s) if htmlPart.nil? && plainPart.nil? 
-      end
-
-      
-      
-
-    #takes attachments and re-sends them
-    if email.has_attachments?
-      email.attachments.each do |origAttachment|
-        attachment :filename => origAttachment.original_filename , :content_type => origAttachment.content_type.to_s ,  :body => origAttachment.read
-      end
-    end
+  #  email.parts.each do |origPart|
+  #       part origPart.content_type do |p|
+  #             p.body = origPart.body
+  #       end           
+  #  end
+  #  
+  #  plainPart = htmlPart = nil
+  #  #check incoming message if it contained plain or html, sends the appropriate messages
+  #    email.parts.each do |origPart|        
+  #      plainPart = origPart.body if origPart.content_type == "text/plain"
+  #      htmlPart = origPart.body if origPart.content_type == "text/html"
+  #    end
+  #  
+  #
+  #    
+  #    part "text/html" do |p|
+  #        p.body = render_message("forward.text.html.erb", :message => htmlPart) unless htmlPart.nil? 
+  #    end
+  #    
+  #    part "text/plain" do |p|
+  #        p.body = render_message("forward.text.plain.erb", :message => plainPart) unless plainPart.nil? 
+  #        p.body = render_message("forward.text.plain.erb", :message => email.body.to_s) if htmlPart.nil? && plainPart.nil? 
+  #    end
+  #
+  #    
+  #    
+  #
+  #  #takes attachments and re-sends them
+  #  if email.has_attachments?
+  #    email.attachments.each do |origAttachment|
+  #      attachment :filename => origAttachment.original_filename , :content_type => origAttachment.content_type.to_s ,  :body => origAttachment.read
+  #    end
+  #  end
   end
   
   

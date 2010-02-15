@@ -67,7 +67,8 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 	border: 1px solid white;
 }
 
-#siteBadge p {
+#siteBadge p, 
+#siteBadge h2 {
 	text-align: left;
 	
 }
@@ -599,12 +600,15 @@ hr.space {
   visibility: hidden;
 }
 .clearfix:after {
+	
+	
   content: "\0020";
   display: block;
   height: 0;
   clear: both;
   visibility: hidden;
   overflow: hidden;
+
 }
 .container:after {
   content: "\0020";
@@ -614,7 +618,9 @@ hr.space {
   visibility: hidden;
   overflow: hidden;
 }
-.clearfix, .container { display: block; }
+.clearfix, .container { display: block;
+
+}
 .clear { clear: both; }
 a.button, button {
   display: block;

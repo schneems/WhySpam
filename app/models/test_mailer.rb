@@ -58,12 +58,10 @@ class TestMailer < ActionMailer::Base
 
     part "text/plain" do |p|
       p.body = render_message("sendattachmentPLAIN", :message => "This Is a message")
-    end
-    
+    end    
     attachment :filename => "blog.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/blog.png") 
     attachment :filename => "email.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/email.png") 
     attachment :filename => "whylogo.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/WhyLogo.png") 
-    
   end
 
   def sendAttachment(to_email) ## attachments must specify part
@@ -81,6 +79,7 @@ class TestMailer < ActionMailer::Base
     part "text/plain" do |p|
       p.body = render_message("sendattachmentPLAIN", :message => "This Is a message")
     end
+    
     
     attachment :filename => "blog.png", :content_type => "image/png",  :body => File.read("/Users/richardschneeman/Documents/rails/whyspam/public/images/blog.png") 
 

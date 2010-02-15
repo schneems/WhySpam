@@ -43,11 +43,11 @@ module ApplicationHelper
  # end
   
   
-  def section_link(name,options)
+  def section_link(name,options, html = {})
       if (options[:action] == params[:action] and options[:controller] == params[:controller] ) || url_for(:controller => params[:controller], :action => params[:action]) == options
-         link_to(image_tag(name+".png"), options, :class => 'on')
+         link_to(image_tag(name+".png", :alt => html[:alt].to_s ), options, :class => 'on')
       else
-         link_to(image_tag(name+".png"),options, :class => 'nav-button')
+         link_to(image_tag(name+".png", :alt => html[:alt].to_s ),options, :class => 'nav-button')
       end
   end
   

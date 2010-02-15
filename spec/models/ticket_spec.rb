@@ -2,6 +2,84 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Ticket do 
   
+  describe "send_email" do
+    before(:each) do
+      @user = Factory.create(:user)       
+      @whymail = Factory.create(:whymail, :user_id => @user.id)
+      @ticket = Factory.create(:ticket, :whymail_id => @whymail.id)
+    end
+    
+   
+    it "should send multiple attachments email" do
+      TestMailer.deliver_sendMultipleAttachments("foo@example.com")
+      email = TMail::Mail.parse(getMockEmails.last)
+      subject = email.subject
+      from = email.from
+      parts_count = email.parts.count
+      
+      @ticket.send_email(email)
+
+      forwardmail = TMail::Mail.parse(getMockEmails.last)
+     
+      forwardmail.should be_has_attachment
+    
+    end
+   
+   
+     it "should send mime email" do
+       TestMailer.deliver_mime("foo@example.com")
+       email = TMail::Mail.parse(getMockEmails.last)
+       subject = email.subject
+       from = email.from
+       parts_count = email.parts.count
+       
+       @ticket.send_email(email)
+
+       forwardmail = TMail::Mail.parse(getMockEmails.last)
+      
+      
+       forwardmail.to.first.should == @ticket.whymail.user.email
+       forwardmail.subject.should == subject
+       forwardmail.from.should_not == from ## check to make sure it is a different email
+       forwardmail.parts.count.should ==  parts_count
+       forwardmail.should_not be_has_attachment
+     end
+    
+     it "should send a regular email" do
+
+       email  = TMail::Mail.parse(readEmail("testing2.eml"))
+       @ticket.send_email(email)
+       
+       email = TMail::Mail.parse(getMockEmails.last)
+       email.body.strip.should_not be_empty
+       email.body.strip.should_not be_nil
+     end
+     
+     
+      it "should send an email with an attachment email" do
+        TestMailer.deliver_sendAttachment("foo@example.com")
+        email = TMail::Mail.parse(getMockEmails.last)
+        subject = email.subject
+        from = email.from
+        
+        @ticket.send_email(email)
+
+        forwardmail = TMail::Mail.parse(getMockEmails.last)
+
+        forwardmail.to.first.should == @ticket.whymail.user.email
+        
+        forwardmail.subject.should == subject
+        
+        forwardmail.from.should_not == from ## check to make sure it is a different email
+        
+        forwardmail.should be_has_attachment
+     
+      end
+     
+     
+  
+  end
+  
   describe "Ticket.get_email_addresses" do
     it "should make an array of email addresses" do 
       mail = TMail::Mail.new

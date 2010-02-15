@@ -33,7 +33,8 @@ class Ticket < ActiveRecord::Base
       @ticket = Ticket.create(:subject => email.subject, :from_email => email.from.first, :to_email => to_email, :whymail_id => whymail.id,
                                   :body => message , :email => email.to_s, :body_hash => Digest::SHA1.hexdigest(message) ) unless whymail.nil?
 
-      @ticket.send_email(to_email, email) unless @ticket.nil?
+                
+      @ticket.send_email(email) unless @ticket.nil?
     end
     
     return @ticket
@@ -42,23 +43,53 @@ class Ticket < ActiveRecord::Base
     
     
   
-  def send_email(whymail_address, email)
+  def send_email(email)
     if self.valid?
-      MyMailer.deliver_forward(self.whymail.user.email, whymail_address, email)        
+      newEmail = email
+      newEmail.to = self.whymail.user.email
+      puts email.from.first
+      
+      newEmail["Reply-To"] = email.from.first ## must come before newEmail.from
+      
+      newEmail.from = "Fwd from " + Cleanurl.find_from_url(email.from.first)  + "<autoMailer@whyspam.me>"
+      whymail_address = self.whymail.email
+      plain = "______________________________________________________________
+              Forwarded from WhySpam.Me: to block emails through #{whymail_address}, 
+              go to http://www.whyspam.me/manage and delete this disposable address."
+      html = "<div class = 'wrapper' style = 'min-height: 100%;	height: auto !important;height: 100%;margin: 0 auto -142px;'>
+                <div class = 'push' style = 'height: 142px;'> &nbsp</div>
+              </div><!-- wrapper -->
+              <div class = 'footer' style = 'height: 142px;height:100%; color:black; background-color:white;' >                      
+                <hr />
+                <p>Forwarded from WhySpam.Me: to block emails through #{whymail_address}
+                go to <a href = 'http://www.whyspam.me/manage'>Manage Emails</a> and delete this disposable address.</p>
+              </div>"
+
+      self.appendfooter(newEmail, {:html => html, :plain => plain} )
+      
+      MyMailer.deliver(newEmail)  # MyMailer.deliver_forward(self.whymail.user.email, whymail_address, email)  
     end
   end
   
 
 
+  def appendfooter(part, footer = { })   
+    ## takes an email and recursivly finds all parts of the email, if text/html or text/plain parts exist, then footer will get appended   
+    if part.multipart?
+        part.parts.each do |subpart|
+          appendfooter(subpart, footer)
+        end
+    else
+        if part.content_type == "text/html"
+          part.body  = part.body + footer[:html].to_s
+        elsif part.content_type == "text/plain"
+          part.body  = part.body + footer[:plain].to_s
+        end  
+      end 
+    end
+    
+
   
- # def after_create    
- #   if self.valid?
- #      whymail = Whymail.find(:first, :include => :user, :conditions => ['(email = ?)', self.to_email.upcase ] )    
- #     if !whymail.nil?
- #         self.update_attributes({"whymail_id" => whymail.id})
- #         MyMailer.deliver_forward(whymail.user.email, self.from_email, self.to_email, self.subject, self.body) if self.valid?
- #     end
- #   end
- # end
+
     
 end
