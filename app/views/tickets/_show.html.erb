@@ -3,7 +3,7 @@
                                                                                    
 <div id = "show_ticket">
 	<% if current_user == @user && current_user  %>
-		<%= link_to "Delete", {:action => "delete", :id => @ticket.id, :controller => "tickets"}, :confirm => "Are you sure?", :method => :delete %>
+		<%= link_to "Delete", {:action => "destroy", :id => @ticket.id, :controller => "tickets"}, :confirm => "Are you sure?", :method => :delete %>
 	<hr />
 	
 	<% end %>

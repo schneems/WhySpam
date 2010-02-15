@@ -6,19 +6,31 @@ describe TicketsController do
   describe "show /signup" do
     
     before(:each) do
-      @ticket = mock_model(Ticket, :id => 1, :whymail => true , :from_email => "foo@example.com", :to_email => "too@example.com", :subject => "subject", :body => "body", :created_at => Time.now)
-      Ticket.expects(:find).returns(@ticket)
-      @user = mock_model(User)
+      @user = Factory.create(:user)
+      @whymail = Factory.create(:whymail, :user_id => @user.id )
+      @ticket = Factory.create(:ticket, :whymail_id => @whymail.id )
     end
     
-    it "should show slop if no whymail or forms" do
-      @ticket.stubs(:whymail).returns(nil)
-      @ticket.stubs(:forms).returns(nil)
+    it "should allow for us to delete tickets" do 
+
+      post :destroy, :id => @ticket.id
+      assert_response :redirect
       
-      get :show, :id => @ticket.id
-      assigns[:user].should be_nil
-      response.should render_template("_show")
+      
     end
+    
+    
+  # slopbox was removed from this app 
+  #  it "should show slop if no whymail or forms" do
+  #    @ticket.whymail = nil
+  #    @ticket.forms = nil
+  #    request.env["HTTP_REFERER"] = "new"     
+  #
+  #
+  #    get :show, :id => @ticket.id      
+  #    assigns[:user].should be_nil
+  #    response.should render_template("_show")
+  #  end
     
     it "should show whymail if not slop and current_user is user" do
       @ticket.stubs(:whymail).returns(true)
