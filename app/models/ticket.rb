@@ -48,8 +48,6 @@ class Ticket < ActiveRecord::Base
       newEmail = email
       newEmail.to = self.whymail.user.email      
       newEmail["Reply-To"] = email.from.first ## must come before newEmail.from
-      # check to see if sent from includes frindly from, if not ...send from email address
-      # blah
       
       Fwdemail.change_friendly_from( newEmail , "autoMailer@whyspam.me", :append_message => " (Forwarded by WhySpam.Me)")
       #     newEmail.from = '"MikelA@blah.com" <mikel@me.com>' #'"hello@hi.com"+"<autoMailer@whyspam.me>"' #Cleanurl.find_from_url(email.from.first) + " (Forwarded by WhySpam.Me) "  + "<autoMailer@whyspam.me>"  
