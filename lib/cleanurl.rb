@@ -5,8 +5,8 @@ module Cleanurl
 
   def self.find_from_url(address)
     if !address.nil?
-      address = address.gsub(/@/, '-AT-') ## removes @ repaces with -AT-
-      address = address.gsub(/[.]/, '-DOT-') ## removes . replaces with -DOT-
+      address = address.gsub(/@/, '-at-') ## removes @ repaces with -AT-
+      address = address.gsub(/[.]/, '-dot-') ## removes . replaces with -DOT-
   #    address = /\@(.)+/.match(address)[0]
   #    address = address[1,address.size]    
     end

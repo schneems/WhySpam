@@ -31,7 +31,7 @@ class Ticket < ActiveRecord::Base
     email_addresses.each do |to_email|
       whymail = Whymail.find(:first, :conditions => ['(email = ?)', to_email.upcase ] ) 
       @ticket = Ticket.create(:subject => email.subject, :from_email => email.from.first, :to_email => to_email, :whymail_id => whymail.id,
-                                  :body => message , :email => email.to_s, :body_hash => Digest::SHA1.hexdigest(message) ) unless whymail.nil?
+                                  :body => message ,  :body_hash => Digest::SHA1.hexdigest(message) ) unless whymail.nil?
 
                 
       @ticket.send_email(email) unless @ticket.nil?
@@ -46,16 +46,14 @@ class Ticket < ActiveRecord::Base
   def send_email(email)
     if self.valid?
       newEmail = email
-      newEmail.to = self.whymail.user.email
-      puts email.from.first
-      
+      newEmail.to = self.whymail.user.email      
       newEmail["Reply-To"] = email.from.first ## must come before newEmail.from
       
-      newEmail.from = "Fwd from " + Cleanurl.find_from_url(email.from.first)  + "<autoMailer@whyspam.me>"
+      newEmail.from = Cleanurl.find_from_url(email.from.first) + " (Forwarded by WhySpam.Me) "  + "<autoMailer@whyspam.me>"
       whymail_address = self.whymail.email
       plain = "______________________________________________________________
-              Forwarded from WhySpam.Me: to block emails through #{whymail_address}, 
-              go to http://www.whyspam.me/manage and delete this disposable address."
+      Forwarded from WhySpam.Me: to block emails through #{whymail_address}, 
+      go to http://www.whyspam.me/manage and delete this disposable address."
       html = "<div class = 'wrapper' style = 'min-height: 100%;	height: auto !important;height: 100%;margin: 0 auto -142px;'>
                 <div class = 'push' style = 'height: 142px;'> &nbsp</div>
               </div><!-- wrapper -->
