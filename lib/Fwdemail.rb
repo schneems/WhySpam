@@ -1,8 +1,5 @@
 module Fwdemail
 
-
-
-
  def self.change_friendly_from(email, to_email, options = {} )  
     friendly_from = email.friendly_from || email.from.first
     template = '"#{friendly_from}"  <#{from_address}>'
