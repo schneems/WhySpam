@@ -48,8 +48,11 @@ class Ticket < ActiveRecord::Base
       newEmail = email
       newEmail.to = self.whymail.user.email      
       newEmail["Reply-To"] = email.from.first ## must come before newEmail.from
+      # check to see if sent from includes frindly from, if not ...send from email address
+      # blah
       
-      newEmail.from = Cleanurl.find_from_url(email.from.first) + " (Forwarded by WhySpam.Me) "  + "<autoMailer@whyspam.me>"
+      Fwdemail.change_friendly_from( newEmail , "autoMailer@whyspam.me", :append_message => " (Forwarded by WhySpam.Me)")
+      #     newEmail.from = '"MikelA@blah.com" <mikel@me.com>' #'"hello@hi.com"+"<autoMailer@whyspam.me>"' #Cleanurl.find_from_url(email.from.first) + " (Forwarded by WhySpam.Me) "  + "<autoMailer@whyspam.me>"  
       whymail_address = self.whymail.email
       plain = "______________________________________________________________
       Forwarded from WhySpam.Me: to block emails through #{whymail_address}, 
@@ -63,7 +66,7 @@ class Ticket < ActiveRecord::Base
                 go to <a href = 'http://www.whyspam.me/manage'>Manage Emails</a> and delete this disposable address.</p>
               </div>"
 
-      self.appendfooter(newEmail, {:html => html, :plain => plain} )
+      Fwdemail.appendfooter(newEmail, {:html => html, :plain => plain} )
       
       MyMailer.deliver(newEmail)  # MyMailer.deliver_forward(self.whymail.user.email, whymail_address, email)  
     end
@@ -71,20 +74,7 @@ class Ticket < ActiveRecord::Base
   
 
 
-  def appendfooter(part, footer = { })   
-    ## takes an email and recursivly finds all parts of the email, if text/html or text/plain parts exist, then footer will get appended   
-    if part.multipart?
-        part.parts.each do |subpart|
-          appendfooter(subpart, footer)
-        end
-    else
-        if part.content_type == "text/html"
-          part.body  = part.body + footer[:html].to_s
-        elsif part.content_type == "text/plain"
-          part.body  = part.body + footer[:plain].to_s
-        end  
-      end 
-    end
+
     
 
   
