@@ -75,7 +75,6 @@ describe "Graph" do
        result = getModelArray(days, :class => "Ticket", :months => 1)       
        result.count.should == 1
        result.last.should == @ticket
-       puts result
       # false.should == true
     end
   end
