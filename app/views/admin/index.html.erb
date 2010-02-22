@@ -1,218 +1,23 @@
 <% content_for :html_head do %>
 
-<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
+		<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
 
-<%= javascript_include_tag 'highcharts'  %>
-
-
-	
-	<script type="text/javascript">
-	date_array = <%= @websites[:data].to_json.gsub!(/\"/, '') %>;
-	
-	
-		var chart = new Highcharts.Chart({
-		   chart: {
-		      renderTo: 'websites-per-day',
-		   },
-		        title: {
-		      text: 'New websites Per Day'
-		   },
-		        subtitle: {
-		      text: 'New websites, they\'re awesome and stuff'
-		   },
-		   xAxis: {
-		      type: 'datetime',
-		      title: {
-		         text: null
-		      }
-		   },
-		   yAxis: {
-		      title: {
-		         text: 'websites'
-		      },
-		      min: 0,
-		      showFirstLabel: false
-		   },
-		   tooltip: {
-		      formatter: function() {
-		         return Highcharts.numberFormat(this.y, 0) + " websites on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
-		      }
-		   },
-		   legend: {
-		      enabled: false
-		   },
-		   plotOptions: {
-		      spline: {
-		         marker: {
-		            enable: false
-		         }
-		      }
-		   },
-		  
-		   series: [{
-		      data: date_array
-		   }]
-		});
-		
-
-    // ===========================================================
-
-	date_array = <%= @forms[:data].to_json.gsub!(/\"/, '') %>;
-	
-	
-		var chart = new Highcharts.Chart({
-		   chart: {
-		      renderTo: 'forms-per-day',
-		   },
-		        title: {
-		      text: 'New Forms Per Day'
-		   },
-		        subtitle: {
-		      text: 'New Forms, they\'re awesome and stuff'
-		   },
-		   xAxis: {
-		      type: 'datetime',
-		      title: {
-		         text: null
-		      }
-		   },
-		   yAxis: {
-		      title: {
-		         text: 'Forms'
-		      },
-		      min: 0,
-		      showFirstLabel: false
-		   },
-		   tooltip: {
-		      formatter: function() {
-		         return Highcharts.numberFormat(this.y, 0) + " Forms on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
-		      }
-		   },
-		   legend: {
-		      enabled: false
-		   },
-		   plotOptions: {
-		      spline: {
-		         marker: {
-		            enable: false
-		         }
-		      }
-		   },
-		  
-		   series: [{
-		      data: date_array
-		   }]
-		});
-		
-
-    // ===========================================================
+		<%= javascript_include_tag 'highcharts'  %>
 
 
-	date_array = <%= @users[:data].to_json.gsub!(/\"/, '') %>;
 	
-	
-		var chart = new Highcharts.Chart({
-		   chart: {
-		      renderTo: 'users-per-day',
-		   },
-		        title: {
-		      text: 'New Users Per Day'
-		   },
-		        subtitle: {
-		      text: 'New Users, they\'re awesome and stuff'
-		   },
-		   xAxis: {
-		      type: 'datetime',
-		      title: {
-		         text: null
-		      }
-		   },
-		   yAxis: {
-		      title: {
-		         text: 'Users'
-		      },
-		      min: 0,
-		      showFirstLabel: false
-		   },
-		   tooltip: {
-		      formatter: function() {
-		         return Highcharts.numberFormat(this.y, 0) + " Users on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
-		      }
-		   },
-		   legend: {
-		      enabled: false
-		   },
-		   plotOptions: {
-		      spline: {
-		         marker: {
-		            enable: false
-		         }
-		      }
-		   },
-		  
-		   series: [{
-		      data: date_array
-		   }]
-		});
-		
-		
-		date_array = <%= @tickets[:data].to_json.gsub!(/\"/, '') %>;
-			var chart = new Highcharts.Chart({
-			   chart: {
-			      renderTo: 'tickets-per-day',
-			   },
-			        title: {
-			      text: 'New Tickets Per Day'
-			   },
-			        subtitle: {
-			      text: 'New Tickets, they\'re awesome and stuff'
-			   },
-			   xAxis: {
-			      type: 'datetime',
-			      title: {
-			         text: null
-			      }
-			   },
-			   yAxis: {
-			      title: {
-			         text: 'Tickets'
-			      },
-			      min: 0,
-			      showFirstLabel: false
-			   },
-			   tooltip: {
-			      formatter: function() {
-			         return Highcharts.numberFormat(this.y, 0) + " Tickets on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
-			      }
-			   },
-			   legend: {
-			      enabled: false
-			   },
-			   plotOptions: {
-			      spline: {
-			         marker: {
-			            enable: false
-			         }
-			      }
-			   },
-
-			   series: [{
-			      data: date_array
-			   }]
-			});
-	
-	
-	
-			date_array = <%= @whymails[:data].to_json.gsub!(/\"/, '') %>;
+			<script type="text/javascript">
+			websites_array = <%= @websites[:data].to_json.gsub!(/\"/, '') %>;
+			surveys_array = <%= @surveys[:data].to_json.gsub!(/\"/, '') %>;
 				var chart = new Highcharts.Chart({
 				   chart: {
-				      renderTo: 'whymails-per-day',
+				      renderTo: 'websites-per-day',
 				   },
 				        title: {
-				      text: 'New Whymails Per Day'
+				      text: 'New Websites Versus Surveys'
 				   },
 				        subtitle: {
-				      text: 'New Whymails, they\'re awesome and stuff'
+				      text: 'New websites and surveys, they\'re awesome and stuff'
 				   },
 				   xAxis: {
 				      type: 'datetime',
@@ -222,14 +27,14 @@
 				   },
 				   yAxis: {
 				      title: {
-				         text: 'Whymails'
+				         text: 'websites & surveys'
 				      },
 				      min: 0,
 				      showFirstLabel: false
 				   },
 				   tooltip: {
 				      formatter: function() {
-				         return Highcharts.numberFormat(this.y, 0) + " Whymails on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
+						         return Highcharts.numberFormat(this.y, 0) + " " + this.series.name + " on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
 				      }
 				   },
 				   legend: {
@@ -242,13 +47,123 @@
 				         }
 				      }
 				   },
-
+		  
+		
 				   series: [{
-				      data: date_array
+					  name: 'New Websites',
+				      data: websites_array },
+					{
+					  name: 'New Surveys',
+					  data: surveys_array    
 				   }]
+				
 				});
+		
 
-	</script>
+		    // ===========================================================
+
+		    // ===========================================================
+
+		
+				date_array = <%= @tickets[:data].to_json.gsub!(/\"/, '') %>;
+					var chart = new Highcharts.Chart({
+					   chart: {
+					      renderTo: 'tickets-per-day',
+					   },
+					        title: {
+					      text: 'New Tickets Per Day'
+					   },
+					        subtitle: {
+					      text: 'New Tickets, they\'re awesome and stuff'
+					   },
+					   xAxis: {
+					      type: 'datetime',
+					      title: {
+					         text: null
+					      }
+					   },
+					   yAxis: {
+					      title: {
+					         text: 'Tickets'
+					      },
+					      min: 0,
+					      showFirstLabel: false
+					   },
+					   tooltip: {
+					      formatter: function() {
+					         return Highcharts.numberFormat(this.y, 0) + " Tickets on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
+					      }
+					   },
+					   legend: {
+					      enabled: false
+					   },
+					   plotOptions: {
+					      spline: {
+					         marker: {
+					            enable: false
+					         }
+					      }
+					   },
+
+					   series: [{
+					      data: date_array
+					   }]
+					});
+	
+	
+	
+					whymail_array = <%= @whymails[:data].to_json.gsub!(/\"/, '') %>;
+					user_array = <%= @users[:data].to_json.gsub!(/\"/, '') %>;
+					
+						var chart = new Highcharts.Chart({
+						   chart: {
+						      renderTo: 'whymails-per-day',
+						   },
+						        title: {
+						      text: 'New Emails Versus New Users'
+						   },
+						        subtitle: {
+						      text: 'New Users and Emails, they\'re awesome and stuff'
+						   },
+						   xAxis: {
+						      type: 'datetime',
+						      title: {
+						         text: null
+						      }
+						   },
+						   yAxis: {
+						      title: {
+						         text: 'Whymails'
+						      },
+						      min: 0,
+						      showFirstLabel: false
+						   },
+						   tooltip: {
+						      formatter: function() {
+						         return Highcharts.numberFormat(this.y, 0) + " " + this.series.name + " on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
+						      }
+						   },
+						   legend: {
+						      enabled: false
+						   },
+						   plotOptions: {
+						      spline: {
+						         marker: {
+						            enable: false
+						         }
+						      }
+						   },
+
+						   series: [{
+							  name: 'Emails Generated',
+						      data: whymail_array },
+							{
+							  name: 'New Users',
+							  data: user_array    
+						   }]
+						});
+
+			</script>
 <% end %>
 
 
@@ -259,196 +174,21 @@
 	
 	</div>
 <div class = "span-24">
-	<div id = "users-per-day" class="small-chart span-11">
-	</div>
-
-
-
-	<div id = "tickets-per-day" class="small-chart span-11">
-	</div>
-</div>
-<div class = "span-24">
 	<div id = "whymails-per-day" class="small-chart span-11">
 	</div>
 	<div id = "websites-per-day" class="small-chart span-11">
 	</div>
+
 </div>
 
+
 <div class = "span-24">
-	<div id = "forms-per-day" class="small-chart span-11">
+	<div id = "tickets-per-day" class="small-chart span-11">
 	</div>
+	
 </div>
 	
 	<hr />
-	
-	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<!--	<script type="text/javascript" src="gettingStarted.js"></script> -->
-	
-	<script type="text/javascript">
-	// Load the Google data JavaScript client library.
-	google.load('gdata', '2.x', {packages: ['analytics']});
-
-	// Set the callback function when the library is ready.
-	google.setOnLoadCallback(init);
-
-	/**
-	 * This is called once the Google Data JavaScript library has been loaded.
-	 * It creates a new AnalyticsService object, adds a click handler to the
-	 * authentication button and updates the button text depending on the status.
-	 */
-	function init() {
-	  myService = new google.gdata.analytics.AnalyticsService('gaExportAPI_acctSample_v2.0');
-	  scope = 'https://www.google.com/analytics/feeds';
-	  var button = document.getElementById('authButton');
-
-	  // Add a click handler to the Authentication button.
-	  button.onclick = function() {
-	    // Test if the user is not authenticated.
-	    if (!google.accounts.user.checkLogin(scope)) {
-	      // Authenticate the user.
-	      google.accounts.user.login(scope);
-	    } else {
-	      // Log the user out.
-	      google.accounts.user.logout();
-	      getStatus();
-	    }
-	  }
-	  getStatus();
-	}
-
-	/**
-	 * Utility method to display the user controls if the user is
-	 * logged in. If user is logged in, get Account data and
-	 * get Report Data buttons are displayed.
-	 */
-	function getStatus() {
-	  var getAccountButton = document.getElementById('getAccount');
-	  getAccountButton.onclick = getAccountFeed;
-
-	  var getDataButton = document.getElementById('getData');
-	  getDataButton.onclick = getDataFeed;
-
-	  var dataControls = document.getElementById('dataControls');
-	  var loginButton = document.getElementById('authButton');
-	  if (!google.accounts.user.checkLogin(scope)) {
-	    dataControls.style.display = 'none';   // hide control div
-	    loginButton.innerHTML = 'Access Google Analytics';
-	  } else {
-	    dataControls.style.display = 'block';  // show control div
-	    loginButton.innerHTML = 'Logout';
-	  }
-	}
-
-	/**
-	 * Main method to get account data from the API.
-	 */
-	function getAccountFeed() {
-	  var myFeedUri =
-	      'https://www.google.com/analytics/feeds/accounts/default?max-results=50';
-	  myService.getAccountFeed(myFeedUri, handleAccountFeed, handleError);
-	}
-
-	/**
-	 * Handle the account data returned by the Export API by constructing the inner parts
-	 * of an HTML table and inserting into the HTML file.
-	 * @param {object} result Parameter passed back from the feed handler.
-	 */
-	function handleAccountFeed(result) {
-	  // An array of analytics feed entries.
-	  var entries = result.feed.getEntries();
-
-	  // Create an HTML Table using an array of elements.
-	  var outputTable = ['<table><tr>',
-	                     '<th>Account Name</th>',
-	                     '<th>Profile Name</th>',
-	                     '<th>Profile ID</th>',
-	                     '<th>Table Id</th></tr>'];
-
-	  // Iterate through the feed entries and add the data as table rows.
-	  for (var i = 0, entry; entry = entries[i]; ++i) {
-
-	    // Add a row in the HTML Table array for each value.
-	    var row = [
-	      entry.getPropertyValue('ga:AccountName'),
-	      entry.getTitle().getText(),
-	      entry.getPropertyValue('ga:ProfileId'),
-	      entry.getTableId().getValue()
-	    ].join('</td><td>');
-	    outputTable.push('<tr><td>', row, '</td></tr>');
-	  }
-	  outputTable.push('</table>');
-
-	  // Insert the table into the UI.
-	  document.getElementById('outputDiv').innerHTML =
-	      outputTable.join('');
-	}
-
-	/**
-	 * Main method to get report data from the Export API.
-	 */
-	function getDataFeed() {
-	var myFeedUri = 'https://www.google.com/analytics/feeds/data' +
-	    '?start-date=2010-01-01' +
-	    '&end-date=2010-01-09' +
-	    '&dimensions=ga:pageTitle,ga:pagePath' +
-	    '&metrics=ga:pageviews' +
-	    '&sort=-ga:pageviews' +
-	    '&max-results=10' +
-	    '&ids=' + document.getElementById('tableId').value;
-
-	  myService.getDataFeed(myFeedUri, handleDataFeed, handleError);
-	}
-
-	/**
-	 * Handle the data returned by the Export API by constructing the
-	 * inner parts of an HTML table and inserting into the HTML File.
-	 * @param {object} result Parameter passed back from the feed handler.
-	 */
-	function handleDataFeed(result) {
-
-	 // An array of Analytics feed entries.
-	 var entries = result.feed.getEntries();
-
-	 // Create an HTML Table using an array of elements.
-	 var outputTable = ['<table><tr>',
-	                    '<th>Page Title</th>',
-	                    '<th>Page Path</th>',
-	                    '<th>Pageviews</th></tr>'];
-
-	  // Iterate through the feed entries and add the data as table rows.
-	  for (var i = 0, entry; entry = entries[i]; ++i) {
-
-	     // Add a row in the HTML Table array.
-	     var row = [
-	       entry.getValueOf('ga:pageTitle'),
-	       entry.getValueOf('ga:pagePath'),
-	       entry.getValueOf('ga:pageviews')
-	     ].join('</td><td>');
-	     outputTable.push('<tr><td>', row, '</td></tr>');
-	   }
-	   outputTable.push('</table>');
-
-	  // Insert the table into the UI.
-	  document.getElementById('outputDiv').innerHTML =
-	      outputTable.join('');
-	}
-
-	/**
-	 * Alert any errors that come from the API request.
-	 * @param {object} e The error object returned by the Analytics API.
-	 */
-	function handleError(e) {
-	  var error = 'There was an error!\n';
-	  if (e.cause) {
-	    error += e.cause.status;
-	  } else {
-	    error.message;
-	  }
-	  alert(error);
-	}
-
-
-	</script>
 	
 	
 	
@@ -480,7 +220,188 @@ Websites Total 30 Day: <%= @websites[:count]  %>
 
 
 <br />
-Forms Total 30 Day: <%= @forms[:count]  %>
+Surveys Total 30 Day: <%= @surveys[:count]  %>
 
 
 <br />
+
+
+
+
+
+<!-- 
+
+
+
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+// Load the Google data JavaScript client library.
+google.load('gdata', '2.x', {packages: ['analytics']});
+
+// Set the callback function when the library is ready.
+google.setOnLoadCallback(init);
+
+/**
+ * This is called once the Google Data JavaScript library has been loaded.
+ * It creates a new AnalyticsService object, adds a click handler to the
+ * authentication button and updates the button text depending on the status.
+ */
+function init() {
+  myService = new google.gdata.analytics.AnalyticsService('gaExportAPI_acctSample_v2.0');
+  scope = 'https://www.google.com/analytics/feeds';
+  var button = document.getElementById('authButton');
+
+  // Add a click handler to the Authentication button.
+  button.onclick = function() {
+    // Test if the user is not authenticated.
+    if (!google.accounts.user.checkLogin(scope)) {
+      // Authenticate the user.
+      google.accounts.user.login(scope);
+    } else {
+      // Log the user out.
+      google.accounts.user.logout();
+      getStatus();
+    }
+  }
+  getStatus();
+}
+
+/**
+ * Utility method to display the user controls if the user is
+ * logged in. If user is logged in, get Account data and
+ * get Report Data buttons are displayed.
+ */
+function getStatus() {
+  var getAccountButton = document.getElementById('getAccount');
+  getAccountButton.onclick = getAccountFeed;
+
+  var getDataButton = document.getElementById('getData');
+  getDataButton.onclick = getDataFeed;
+
+  var dataControls = document.getElementById('dataControls');
+  var loginButton = document.getElementById('authButton');
+  if (!google.accounts.user.checkLogin(scope)) {
+    dataControls.style.display = 'none';   // hide control div
+    loginButton.innerHTML = 'Access Google Analytics';
+  } else {
+    dataControls.style.display = 'block';  // show control div
+    loginButton.innerHTML = 'Logout';
+  }
+}
+
+/**
+ * Main method to get account data from the API.
+ */
+function getAccountFeed() {
+  var myFeedUri =
+      'https://www.google.com/analytics/feeds/accounts/default?max-results=50';
+  myService.getAccountFeed(myFeedUri, handleAccountFeed, handleError);
+}
+
+/**
+ * Handle the account data returned by the Export API by constructing the inner parts
+ * of an HTML table and inserting into the HTML file.
+ * @param {object} result Parameter passed back from the feed handler.
+ */
+function handleAccountFeed(result) {
+  // An array of analytics feed entries.
+  var entries = result.feed.getEntries();
+
+  // Create an HTML Table using an array of elements.
+  var outputTable = ['<table><tr>',
+                     '<th>Account Name</th>',
+                     '<th>Profile Name</th>',
+                     '<th>Profile ID</th>',
+                     '<th>Table Id</th></tr>'];
+
+  // Iterate through the feed entries and add the data as table rows.
+  for (var i = 0, entry; entry = entries[i]; ++i) {
+
+    // Add a row in the HTML Table array for each value.
+    var row = [
+      entry.getPropertyValue('ga:AccountName'),
+      entry.getTitle().getText(),
+      entry.getPropertyValue('ga:ProfileId'),
+      entry.getTableId().getValue()
+    ].join('</td><td>');
+    outputTable.push('<tr><td>', row, '</td></tr>');
+  }
+  outputTable.push('</table>');
+
+  // Insert the table into the UI.
+  document.getElementById('outputDiv').innerHTML =
+      outputTable.join('');
+}
+
+/**
+ * Main method to get report data from the Export API.
+ */
+function getDataFeed() {
+var myFeedUri = 'https://www.google.com/analytics/feeds/data' +
+    '?start-date=2010-01-01' +
+    '&end-date=2010-01-09' +
+    '&dimensions=ga:pageTitle,ga:pagePath' +
+    '&metrics=ga:pageviews' +
+    '&sort=-ga:pageviews' +
+    '&max-results=10' +
+    '&ids=' + document.getElementById('tableId').value;
+
+  myService.getDataFeed(myFeedUri, handleDataFeed, handleError);
+}
+
+/**
+ * Handle the data returned by the Export API by constructing the
+ * inner parts of an HTML table and inserting into the HTML File.
+ * @param {object} result Parameter passed back from the feed handler.
+ */
+function handleDataFeed(result) {
+
+ // An array of Analytics feed entries.
+ var entries = result.feed.getEntries();
+
+ // Create an HTML Table using an array of elements.
+ var outputTable = ['<table><tr>',
+                    '<th>Page Title</th>',
+                    '<th>Page Path</th>',
+                    '<th>Pageviews</th></tr>'];
+
+  // Iterate through the feed entries and add the data as table rows.
+  for (var i = 0, entry; entry = entries[i]; ++i) {
+
+     // Add a row in the HTML Table array.
+     var row = [
+       entry.getValueOf('ga:pageTitle'),
+       entry.getValueOf('ga:pagePath'),
+       entry.getValueOf('ga:pageviews')
+     ].join('</td><td>');
+     outputTable.push('<tr><td>', row, '</td></tr>');
+   }
+   outputTable.push('</table>');
+
+  // Insert the table into the UI.
+  document.getElementById('outputDiv').innerHTML =
+      outputTable.join('');
+}
+
+/**
+ * Alert any errors that come from the API request.
+ * @param {object} e The error object returned by the Analytics API.
+ */
+function handleError(e) {
+  var error = 'There was an error!\n';
+  if (e.cause) {
+    error += e.cause.status;
+  } else {
+    error.message;
+  }
+  alert(error);
+}
+
+
+</script>
+
+
+
+-->

@@ -1,3 +1,16 @@
+<% content_for :html_head do %>
+	<script type="text/javascript" src="http://api.mixpanel.com/site_media/js/api/mixpanel.js"></script>
+	<script type="text/javascript">
+	    try {
+	        var mpmetrics = new MixpanelLib("831c5d9fbbd4cc4bb95d9f5b3a82b70e");
+	    } catch(err) {
+	        null_fn = function () {};
+	        var mpmetrics = { track: null_fn, track_funnel: null_fn, register: null_fn, register_once: null_fn };
+	    }
+	</script>
+<% end %>
+
+
 <div id= "animate" >
 <table class = "prepend-1" id = "partners">
 	<thead>
@@ -25,53 +38,85 @@
 								:loading => "$('#animate').slideUp('slow').slideDown('slow')",
 								:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
 								:url => url_for(:action => "_donate", :controller => "static")},
-			 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+			 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left ", 
+								:onclick => 		"javascript: pageTracker._trackPageview('/partners/donate');" }   %></th>
 			<td class = "partner-odd" ><!-- no --></td><td><%= image_tag "check.png" %></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
 	
-		<tr><th>Status Alerts<%# link_to_remote "Status Alerts", { :update => "partners", 
+		<tr>
+			<th>Status Alerts<%# link_to_remote "Status Alerts", { :update => "partners", 
 													:loading => "$('#animate').slideUp('slow').slideDown('slow')",
 													:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
 													:url => url_for(:action => "_sitebadge", :controller => "static")},
-								 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+								 					:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }%>
+			</th>
 								
-		<td class = "partner-odd"><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
+			<td class = "partner-odd">
+				<!-- no -->
+			</td>
+			<td>
+				<!-- no -->
+			</td>
+			<td class = "partner-odd" >
+				<%= image_tag "check.png" %>
+			</td>
+			<td>
+				<%= image_tag "check.png" %>
+			</td>
+		</tr>
 	
 		<tr><th><%= link_to_remote "User Statistics Data", { :update => "partners", 
 							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
 							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
 							:url => url_for(:action => "_statistics", :controller => "static")},
-							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }, 
+									:onclick => 		"javascript: pageTracker._trackPageview('/partners/statistics_data');"   %></th>
 							
 		<td class = "partner-odd"><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><%= image_tag "check.png" %></td><td><%= image_tag "check.png" %></td></tr>
 		<tr><th><%= link_to_remote "Coordinated A/B Tests", { :update => "partners", 
 							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
 							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
 							:url => url_for(:action => "_abtest", :controller => "static")},
-							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left ", 
+									:onclick => 		"javascript: pageTracker._trackPageview('/partners/a-b-tests');"  }   %></th>
 		<td class = "partner-odd" ><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><!-- no --></td><td><%= image_tag "check.png" %></td></tr>
 		<tr><th><%= link_to_remote "Can-Spam Compliance", { :update => "partners", 
 							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
 							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
 							:url => url_for(:action => "_canspam", :controller => "static")},
-							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left " }   %></th>
+							:html => { :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left ", 
+									:onclick => 		"javascript: pageTracker._trackPageview('/partners/can-spam');" }   %></th>
 		<td class = "partner-odd"><!-- no --></td><td ><!-- no --></td><td class = "partner-odd" ></td><td><%= image_tag "check.png" %></td></tr>
 	
 		<tr><th><%= link_to_remote "Custom User Surveys", { :update => "partners", 
 							:loading => "$('#animate').slideUp('slow').slideDown('slow')",
 							:complete => "$('#siteBadge').hide().slideDown('slow').show()" ,			
-							:url => url_for(:action => "_cust_surveys", :controller => "static")} %></th>
+							:url => url_for(:action => "_cust_surveys", :controller => "static")}, 
+									:onclick => 		"javascript: pageTracker._trackPageview('/partners/custom-user-surveys');" %></th>
 		<td class = "partner-odd"><!-- no --></td><td><!-- no --></td><td class = "partner-odd" ><!-- no --></td><td><%= image_tag "check.png" %></td></tr>
 	
 		<tr><th></th>
 			<%# button_with_icon "Signup", "battery-0", :class => "partner-signup"  %>
-			<td class = "partner-odd">
-				<%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %>
+			<td class="partner-odd">
+				<%= link_to "Signup", {:controller => 'grade_widget', :action => 'new'} , 
+					:class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup ", 
+							:onclick => 		"javascript: pageTracker._trackPageview('/partners/signup/free');" %>
 			</td>
-			<td><%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %></td>
-			<td class = "partner-odd">
-				<%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %>
+			<td >
+				<%= link_to "Signup", {:controller => 'static', :action => 'cs'}, 
+					:class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup ", 
+							:onclick => 		"javascript: pageTracker._trackPageview('/partners/signup/lite');" %>
+			</td >
+			<td class="partner-odd">
+				<%= link_to "Signup", {:controller => 'static', :action => 'cs'} , 
+					:class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup ", 
+							:onclick => 		"javascript: pageTracker._trackPageview('/partners/signup/regular');" %>
 			</td>
-			<td><%= link_to "Signup", "http://whyspam.me" , :class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup " %></td></tr>
+			<td >
+			<%= link_to "Signup", {:controller => 'static', :action => 'cs'}, 
+				:class => "ui-corner-all fg-button ui-state-default fg-button-icon-left partner-signup ", 
+						:onclick => 		"javascript: pageTracker._trackPageview('/partners/signup/max');" %>
+			</td>
+		</tr>
 	</tbody>
 		
 		

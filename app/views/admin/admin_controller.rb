@@ -5,11 +5,9 @@ class AdminController < ApplicationController
         users = User.find(:all, :conditions => [ "created_at > ?",  (Time.now.beginning_of_day - 1.month) ],:order => 'created_at DESC')
     #    @users_month = User.find(:all, :conditions => [ "created_at < ?",  Time.now - 1.month ],:order => 'created_at DESC')
 
-
         @user_per_month = Array.new(30, 0)
         users.each do |user|
             0.upto(30) do |date|
-
               if user.created_at > (Time.now.beginning_of_day - (date+1).days) && user.created_at < (Time.now.beginning_of_day - date.days)
                 @user_per_month[date] =+ 1 
               end

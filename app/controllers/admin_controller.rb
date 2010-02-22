@@ -8,8 +8,16 @@ class AdminController < ApplicationController
         @tickets =  format_highchart(:class => "ticket", :months => 1)
         @whymails =  format_highchart(:class => "whymail", :months => 1)
         @websites =  format_highchart(:class => "Website", :months => 1)
-        
-        @forms =  format_highchart(:class => "forms", :months => 1)
+        @surveys =  format_highchart(:class => "Survey", :months => 1)
+             
+         
+  #    puts @websites[:data].to_json.gsub!(/\"/, '') 
+  #     jsvars[:array] = ["hello"]
+  #     jsvars[:arrayofArray] = [["hello"]]
+  #     
+  #    jsvars[:websites_array] = @websites[:data]
+  #    jsvars[:surveys_array] = @surveys[:data]
+       
   end
   
   

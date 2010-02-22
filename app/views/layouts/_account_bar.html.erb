@@ -29,9 +29,9 @@
 		 <ul class = "">
 			<li><%=section_link 'email',home_path, :alt => "free email" %></li>
 			<%#  section_link 'forms', new_form_path %>
-			<li></li>
-			<li><%=section_link 'blog', "http://blog.whyspam.me",  :alt => "disposable email blog"  %></li>
-			<li><%# section_link 'partners', {:controller => "static", :action => "partners"} %></li>						
+			<li>&nbsp &nbsp  <%= section_link 'partners', {:controller => "static", :action => "partners"} %></li>
+			<li><%= section_link 'blog', "http://blog.whyspam.me",  :alt => "disposable email blog"  %></li>
+									
 			<li><%=section_link "SpamReport", websites_path, :alt => "spam report" %></li>
 		</ul>
 	</div>

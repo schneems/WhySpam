@@ -4,17 +4,22 @@
 		
 
 		<%  current_page = url_escape(request.url) %>
-		<%= link_to image_tag("digg_32.png"),  "http://digg.com/submit?phase=2&url="+ current_page, :rel => "nofollow" %>
-		<%= link_to image_tag("reddit_32.png"), "http://www.reddit.com/submit?url="+ current_page, :rel => "nofollow"  %> 
-		<%= link_to image_tag("twitter_32.png"), "http://twitter.com/home?status=" + current_page, :rel => "nofollow"  %>
-		<%= link_to image_tag("stumbleupon_32.png"), "http://www.stumbleupon.com/submit?url=" +  current_page, :rel => "nofollow"  %> 
-		<%= link_to image_tag("yahoobuzz_32.png"), "http://buzz.yahoo.com/buzz?targetUrl=" +  current_page, :rel => "nofollow"  %> 
-		<%= link_to image_tag("delicious_32.png"), "	http://del.icio.us/post?url=" +  current_page, :rel => "nofollow"  %> 			
-		<%= link_to image_tag("facebook_32.png"), "http://www.facebook.com/sharer.php?u=" +  current_page, :rel => "nofollow"  %> 
-		<%# link_to image_tag("rss_32.png"), "www.digg.com" +  current_page %>
-		
+		<%= link_to image_tag("digg_32.png"),  "http://digg.com/submit?phase=2&url="+ current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/digg');" %>
+		<%= link_to image_tag("reddit_32.png"), "http://www.reddit.com/submit?url="+ current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/reddit');"  %> 
+		<%= link_to image_tag("twitter_32.png"), "http://twitter.com/home?status=" + current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/twitter');"  %>
+		<%= link_to image_tag("stumbleupon_32.png"), "http://www.stumbleupon.com/submit?url=" +  current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/stumbleupon');"  %> 
+		<%= link_to image_tag("yahoobuzz_32.png"), "http://buzz.yahoo.com/buzz?targetUrl=" +  current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/yahoobuzz');"  %> 
+		<%= link_to image_tag("delicious_32.png"), "	http://del.icio.us/post?url=" +  current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/delicious');"  %> 			
+		<%= link_to image_tag("facebook_32.png"), "http://www.facebook.com/sharer.php?u=" +  current_page, :rel => "nofollow", 
+				:onclick => 		"javascript: pageTracker._trackPageview('/outgoing/facebook');"  %> 		
 		<br />
-		<a href = "http://www.thinkbohemian.com">©<%= Date.today.year %> Think Bohemian</a>
+		<a href = "http://www.thinkbohemian.com" onClick="javascript: pageTracker._trackPageview('/outgoing/thinkbohemian');">©<%= Date.today.year %> Think Bohemian</a>
 		 |<%= link_to " Privacy", url_for(:action => "privacy", :controller => "static")  %>
 		 |<%= link_to " About", url_for(:action => "about", :controller => "static")  %>
 		 |<%= link_to " Contact ", {:action => "contact", :controller => "static"} %>

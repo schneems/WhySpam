@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>spec/controllers/spamfire_sessions_controller_spec.rb</string>
+	<string>lib/graph.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -77,33 +77,19 @@
 			<key>firstVisibleLine</key>
 			<integer>6</integer>
 		</dict>
-		<key>app/controllers/websites_controller.rb</key>
+		<key>app/views/admin/admin_controller.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>9</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>30</integer>
+				<integer>10</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>22</integer>
-		</dict>
-		<key>app/helpers/application_helper.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>22</integer>
-				<key>line</key>
-				<integer>50</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
 			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>37</integer>
 		</dict>
 		<key>app/views/layouts/_header.html.erb</key>
 		<dict>
@@ -291,6 +277,34 @@
 				<integer>12</integer>
 			</dict>
 		</dict>
+		<key>lib/fwdemail.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>3</integer>
+				<key>line</key>
+				<integer>3</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>lib/graph.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>53</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>47</integer>
+		</dict>
 		<key>lib/tasks/deadweight.rake</key>
 		<dict>
 			<key>caret</key>
@@ -403,20 +417,6 @@
 			<key>firstVisibleLine</key>
 			<integer>20</integer>
 		</dict>
-		<key>spec/controllers/spamfire_sessions_controller_spec.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>0</integer>
-				<key>line</key>
-				<integer>29</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>19</integer>
-		</dict>
 		<key>spec/controllers/survey_controller_spec.rb</key>
 		<dict>
 			<key>caret</key>
@@ -431,19 +431,19 @@
 			<key>firstVisibleLine</key>
 			<integer>43</integer>
 		</dict>
-		<key>spec/controllers/ticket_controller_spec.rb</key>
+		<key>spec/models/my_mailer_spec.rb</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>10</integer>
+				<integer>13</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>33</integer>
+			<integer>0</integer>
 		</dict>
 		<key>test/factories.rb</key>
 		<dict>
@@ -478,13 +478,15 @@
 	<array>
 		<string>lib/tasks/getmail.rake</string>
 		<string>app/controllers/spamfire_sessions_controller.rb</string>
-		<string>app/controllers/websites_controller.rb</string>
 		<string>app/controllers/users_controller.rb</string>
-		<string>spec/controllers/spamfire_sessions_controller_spec.rb</string>
+		<string>spec/models/my_mailer_spec.rb</string>
+		<string>lib/fwdemail.rb</string>
+		<string>app/views/admin/admin_controller.rb</string>
+		<string>lib/graph.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{309, 50}, {1093, 352}}</string>
+	<string>{{351, 15}, {1093, 352}}</string>
 </dict>
 </plist>
