@@ -23,7 +23,14 @@
 	http://localhost:3000/stylesheets/spamfire.css?1265315098
 	http://localhost:3000/stylesheets/spamfire.css?1265315263
 	http://localhost:3000/stylesheets/spamfire.css?1265320284
+	http://localhost:3000/stylesheets/spamfire.css?1265687469
 */
+
+#viewdelete {
+	margin: -10px 0 0 60px;
+}
+
+
 
 fire_grade{
 	float: left;
@@ -98,8 +105,13 @@ div.bottom-spamfire {
 
  {
 	
-	max-width: 150px;
+	max-width: 175px;
 	padding:0;
+}
+
+img {
+	border: none;
+	
 }
 
 #new_spamfire_wrapper label {

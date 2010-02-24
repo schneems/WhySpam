@@ -1,0 +1,24 @@
+<div class = "span-2">
+<%= link_to image_tag( "envelope.png") , home_path, :target => "_blank"  %>
+</div>
+
+<div class = "span-7">
+
+	<input type="text" size="37" onclick="this.focus(); this.select();" style value="<%= @whymail.email if @extra_message.nil? -%><%= @extra_message.to_s %>">
+	
+		<div class = "span-6">
+			<% if current_user %>
+				<%= link_to "View",  {:action => "index", :controller => "spamfire" }%> or 
+			 	<%= link_to "Delete", manage_index_path, :target => "_blank"%>  emails
+			<% else %>
+			  <%= link_to 'Log In', {:action => 'new', :controller => 'spamfire_sessions' } %> to View or Delete Emails
+			<% end %>
+		 </div>
+	</div>
+		
+<!-- </div> -->
+<div class = "span-3">
+		<%= button_to "Back" ,{:controller=> "spamfire", :action => "new", :website => @website, :email => @email } , {:id => "spamfire_button"} -%>  <%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'}%>
+		
+</div>
+

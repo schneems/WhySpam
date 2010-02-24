@@ -19,8 +19,16 @@ describe SpamfireController do
 
    describe "CREATE /spamfire" do
      it "should render create" do
+       atAddress = "@blabetyblahblah.com"
+       post 'create', :addrs => atAddress, :user => { :email => 'foo_email_0@example.com', :website => 'sketchy.com' }, :save => {:checked => '0'}
+       assigns[:whymail].email.should =~ /@blabetyblahblah.com/i
+       response.should render_template("create")
+     end
+     
+     
+     it "should render create" do
        post 'create', :user => { :email => 'foo_email_0@example.com', :website => 'sketchy.com' }, :save => {:checked => '0'}
-       response.should render_template("_create")
+       response.should render_template("create")
      end
 
      it "should give me a session error" do
@@ -44,7 +52,7 @@ describe SpamfireController do
    end 
 
     it "should not allow you to create a disposable email with a bad email" do
-        post 'create', :user => { :email => '@example.com', :website => 'sketchy.com' }, :save => {:checked => '0'}
+        post 'create', :addrs => "@whyspam.me",  :user => { :email => '@example.com', :website => 'sketchy.com' }, :save => {:checked => '0'}
         assigns[:extra_message].should == configatron.bad_email_small
         post 'create', :user => { :email => '', :website => 'sketchy.com' }, :save => {:checked => '0'}
         assigns[:extra_message].should == configatron.bad_email_small

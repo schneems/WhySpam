@@ -1,42 +1,32 @@
-<%= stylesheet_link_tag 'spamfire.css' %>	
-
-<style type="text/css">
-
-</style>
-
-
-<div class = "envelope">
-<%= link_to image_tag( "envelope.png") , home_path, :target => "_blank" %>
+<div class = "span-2" >
+<%= link_to image_tag( "envelope.png") , home_path, :target => "_blank"  %>
 </div>
 
 
-<div id = "new_spamfire_wrapper" class = "span-12">
-	
- 	 <% remote_form_for @user, :controller => 'users', :update => 'update', :loading => "$('#indicator').show();$('#update').hide();", :complete => "$('#indicator').hide();$('#update').show();",
-				:url =>  { :action => "create"}, 
+ 	 <% form_for @user, :controller => 'users', :url =>  { :action => "create"}, 
 				:html => { } do |f| %>			
-	<div class = "span-6">
+	<div class = "span-7">
 		<div class = "span-2">
-						
 			<%= label_tag 'email', 'Email: ' %> 
 			<%= label_tag 'website', 'Website: ' %>
 		</div>
-		<div class = "span-4">
+		<div class = "span-5">
 			<%= f.text_field :email , :rows => 2 %>
 			 <%= f.text_field :website %>
 			<br />
 		</div>
 	</div>
-		<div class = "span-6">
-		<%= f.submit "Generate" %>	
-		&nbsp &nbsp
+	
+	<div class = "span-5">
 		<% if current_user %>
-		  <%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'} %>
+			<%= link_to "View",  {:action => "index", :controller => "spamfire" }%> or 
+		 	<%= link_to "Delete", manage_index_path, :target => "_blank" %>  emails.   
+			<%= link_to 'Log Out', {:controller => 'spamfire_sessions', :action => 'destroy'} %>
+
 		<% else %>
-		  <%= link_to 'Remember Me (Log In)', {:action => 'new', :controller => 'spamfire_sessions' } %>		
+		  <%= link_to 'Log In', {:action => 'new', :controller => 'spamfire_sessions' } %> to View or Delete Emails
 		<% end %>
-		
-		</div>
+	</div>
 
 		<div class = "span-5">
 
@@ -54,16 +44,12 @@
 
 				<%= error_messages_for :user %>
 
+<div id = "viewdelete" class = "span-12 prepend-2">
+	<%= f.submit "Generate" %>	
+	<%=   select_tag "addrs", "<option selected='selected'>@whyspam.me</option><option>@amilegit.com</option>" %>
+	
+	
+
+</div>
 
 <% end %>
-<div class = "span-12 prepend-2">
-	<% if current_user %>
-		<%= link_to "View",  {:action => "index", :controller => "spamfire" }%> or 
-	 	<%= link_to "Delete", manage_index_path, :target => "_blank" %>  emails
-	<% else %>
-	  <%= link_to 'Log In', {:action => 'new', :controller => 'spamfire_sessions' } %> to View or Delete Emails
-	<% end %>
-</div>
-
-</div>
-

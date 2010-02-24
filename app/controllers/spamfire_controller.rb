@@ -1,5 +1,5 @@
 class SpamfireController < ApplicationController
-layout nil
+layout "spamfire"
 
 
 
@@ -22,6 +22,7 @@ end
 
 
 def create
+  atAddress = params[:addrs]||"@whyspam.me"
   session[:count] = session[:count]||0
   @email = email = params[:user][:email]||0
 
@@ -34,14 +35,11 @@ def create
        @extra_message = configatron.session_count_error_small
        @whymail = Whymail.new
      else
-       @whymail = Whymail.create_with_user(email, website)
+       @whymail = Whymail.create_with_user(email, website, atAddress)
        @extra_message = configatron.bad_email_small if @whymail.user.nil?
     end                          
 
-    respond_to do |format|
-      format.html {render :partial => "create"}        
-      format.js { render :partial => "create" }
-   end
+
   
 end
 

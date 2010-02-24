@@ -42,6 +42,13 @@ describe WhymailController do
   describe "CREATE /secure_email" do
     
     
+    it "should render create" do
+      atAddress = "@blabetyblahblah.com"
+      post 'create', :addrs => atAddress, :user => { :email => 'foo_email_0@example.com', :website => 'sketchy.com' }
+      assigns[:whymail].email.should =~ /@blabetyblahblah.com/i
+      response.should render_template("_create")
+    end
+    
     it "should give me a session error" do
         session[:count] = 11
         post 'create', :user => { :email => 'foo_email@example.com', :website => 'sketchy.com' }

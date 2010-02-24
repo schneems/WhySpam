@@ -41,7 +41,18 @@
 	http://localhost:3000/stylesheets/why.css?1265495309
 	http://localhost:3000/stylesheets/why.css?1265687982
 	http://localhost:3000/stylesheets/why.css?1265930876
+	http://localhost:3000/stylesheets/why.css?1266268770
+	http://localhost:3000/stylesheets/why.css?1266889834
+	http://localhost:3000/stylesheets/why.css?1266892568
+	http://localhost:3000/stylesheets/why.css?1266893174
+	http://localhost:3000/stylesheets/why.css?1266896387
 */
+
+#addrsWrapper {
+	margin-top:7px;
+	margin-left: -20px;
+	
+}
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;
@@ -52,6 +63,35 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
+	float: none;
+}
+
+
+#ribbon h2,
+#ribbon h4{
+	color: white;
+	margin-top: 7px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+span.amp {
+	font: 12pt "Times New Roman";
+}
+
+#whymail-index-table {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	
+}
+
+#ribbon {
+	position: relative;
+	right: 14px;
+	float: left;
+	background: url(../images/ribbon.png) no-repeat 0 -13px;
+	height: 100px;
+
 }
 
 #partners  td, 
@@ -229,9 +269,9 @@ table {
 }
 
 #youtube-video {
-	margin: 40px 0 40px 30px;
-	height: 225px;
-	width: 355px;
+	margin: -40px 0 40px 20px;
+	height: 233px;
+	width: 370px;
 	border: 1px solid #8b8b8b;
 
 	background: #caccff url(/images/loading.gif) no-repeat 170px 75px;
@@ -1230,9 +1270,11 @@ width: 415px;
 
 .delete {
 
-margin: 13px 0;
+margin: -20px 0px;
 	
 }
+
+
 
 .ui-state-hover {
 	color: white;

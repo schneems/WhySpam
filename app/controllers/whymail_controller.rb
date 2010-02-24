@@ -8,6 +8,7 @@ class WhymailController < ApplicationController
    
    
    def create 
+        atAddress = params[:addrs]||"@whyspam.me"
         session[:count] = session[:count]||0
         @email = email = params[:user][:email]
         website = params[:user][:website]||" "        
@@ -18,7 +19,7 @@ class WhymailController < ApplicationController
               @extra_message = configatron.session_count_error
               @whymail = Whymail.new
           else
-              @whymail = Whymail.create_with_user(email, website)
+              @whymail = Whymail.create_with_user(email, website, atAddress)
           end
         render :partial => "create" 
    end

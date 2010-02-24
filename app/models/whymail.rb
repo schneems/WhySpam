@@ -22,14 +22,22 @@ class Whymail < ActiveRecord::Base
     errors.add(:website, "cannot be an email address") if is_email(website)
   end    
     
-    def self.create_with_user(email, website)
+    
+    
+    def self.create_with_user(email, website, atAddress)
      user = User.find_or_create_by_email(email)
-     whymail = user.whymail.find(:first, :conditions => ["website = ?", website])||user.whymail.create_with_digest(email, website)   
+     whymail = user.whymail.find(:first, :conditions => ["website = ?", website])
+     
+     if (whymail.nil? ?  true : whymail.email[-atAddress.size, atAddress.size].downcase != atAddress )
+      whymail =  user.whymail.create_with_digest(email, website, atAddress) 
+     end
+     whymail
+      
     end
     
     
-    def self.create_with_digest(email, website)
-      digest = create_digest(email, website, "whyspam.me")
+    def self.create_with_digest(email, website, atAddress)
+      digest = create_digest(email, website, atAddress)
         self.create(:email => digest.upcase , :website => website) 
     end
     
@@ -51,26 +59,16 @@ class Whymail < ActiveRecord::Base
      
 
      
-     def self.create_digest(email, site, server)   
-         email = Digest::SHA1.hexdigest(email+site)    
+     def self.create_digest(email, site, atAddress)   
+         email = Digest::SHA1.hexdigest(email+site+Time.now.to_s)    
           guess = email[0,20]
-          server = server.upcase
-         if Whymail.find_by_email(guess.upcase + "@" + server).nil?
+          atAddress = atAddress.upcase
+         if Whymail.find_by_email(guess.upcase + atAddress).nil?
            # return guess
          else
-           guess = email[20,20]
-
-           if Whymail.find_by_email(guess.upcase + "@" + server).nil?
-             # return guess
-           else
-             count = 0
-             if Whymail.find_by_email(guess.upcase + "@" + server).nil?
-               count = count+1
-               guess = Digest::SHA1.hexdigest(guess+count.to_s)[0,20]
-             end # while 
-           end # second if
+           Whymail.create_digest(guess, site, atAddress)
          end ## first if
-            return guess + "@" + server
+           return guess + atAddress
      end
      
      
