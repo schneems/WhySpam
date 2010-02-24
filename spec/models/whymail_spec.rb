@@ -12,7 +12,7 @@ describe Whymail do
   end
   
   
-  it "create_with_user should allow the same website with a different domain" do    
+  it "create_with_user should return the same website if one already exists with this" do    
       whymail = Whymail.create_with_user(@email, @website, "@whyspam.me" )
       whymail2 = Whymail.create_with_user(@email, @website, "@whyspam.me" )
       whymail.should == whymail2

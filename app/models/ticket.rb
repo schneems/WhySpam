@@ -17,9 +17,9 @@ class Ticket < ActiveRecord::Base
  
   def self.get_email_addresses(email)
     email_array = []
-    email.to.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$/i).nil? } unless email.to.nil?
-    email.cc.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$/i).nil? }  unless email.cc.nil?
-    email.bcc.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$/i).nil? } unless email.bcc.nil?
+    email.to.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$|\@amilegit.com$/i).nil? } unless email.to.nil?
+    email.cc.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$|\@amilegit.com$/i).nil? }  unless email.cc.nil?
+    email.bcc.uniq.each {|address| email_array << address unless address.match(/\@whyspam.me$|\@amilegit.com$/i).nil? } unless email.bcc.nil?
     return email_array
   end
  
