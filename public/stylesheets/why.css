@@ -46,6 +46,8 @@
 	http://localhost:3000/stylesheets/why.css?1266892568
 	http://localhost:3000/stylesheets/why.css?1266893174
 	http://localhost:3000/stylesheets/why.css?1266896387
+	http://localhost:3000/stylesheets/why.css?1266943001
+	http://localhost:3000/stylesheets/why.css?1266975279
 */
 
 #addrsWrapper {
@@ -274,17 +276,45 @@ table {
 	width: 370px;
 	border: 1px solid #8b8b8b;
 
-	background: #caccff url(/images/loading.gif) no-repeat 170px 75px;
-}
+	}
 
 #you-tube-how {
 	height: 380px;
 	width: 560px;
 	border: 1px solid #8b8b8b;
 
-background: #c3c4f7 url(/images/loading.gif) no-repeat 170px 75px;
+}
+
+#whymailSubmitButton {
+	display: block;
+	background: url(../images/bgb.jpg) no-repeat;
+	height: 56px;
+	cursor: pointer;	
+}
+
+
+
+
+#whymailSubmitButton:hover {
+	background: url(../images/bgb.jpg) no-repeat 0 -56px;
 
 }
+
+#whymailSubmitButton a  {
+	text-decoration: none;
+	color:  #fff;
+	display: block;
+	padding-top: 14px;
+	font-weight: bold;
+
+}
+
+#whymailSubmitButton a:hover,
+#whymailSubmitButton h4:hover  {
+	text-decoration: none;
+}
+
+
 
 .disposableEmail #user_website,
 .disposableEmail #user_email {
