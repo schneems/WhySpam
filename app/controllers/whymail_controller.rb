@@ -15,7 +15,7 @@ class WhymailController < ApplicationController
         @secure_email = @extra_message = nil
         session[:count] +=  1 
           
-          if session[:count] > 10 && ENV['RAILS_ENV'] != "development"
+          if session[:count] > 50 && ENV['RAILS_ENV'] != "development"
               @extra_message = configatron.session_count_error
               @whymail = Whymail.new
           else

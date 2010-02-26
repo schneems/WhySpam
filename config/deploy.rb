@@ -1,8 +1,8 @@
-set :user, 'demo'  # Your dreamhost account's username
-set :domain, '174.143.236.205:30000'  # Dreamhost servername where your account is located 
+set :user, 'demo'  
+set :domain, '174.143.236.205:30000'  
 #set :project, 'myapp_name_from_repository'  # Your application as its called in the repository
 set :application, 'whyspam.me'  # Your app's location (domain or sub-domain name as setup in panel)
-set :applicationdir, "/home/#{user}/public_html/#{application}/"  # The standard Dreamhost setup
+set :applicationdir, "/home/#{user}/public_html/#{application}/"
 
 #/home/demo/public_html/whyspam.me/current/public
 # version control config
@@ -63,7 +63,7 @@ namespace :deploy do
   task :canary_check do
     
     
- #   run "rake mailbox:isworking"
+    run "rake mailbox:isworking"
     
   end
   

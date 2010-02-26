@@ -163,6 +163,67 @@
 						   }]
 						});
 
+			//========================================================
+			
+			websites_array = <%= @websites[:data].to_json.gsub!(/\"/, '') %>;
+			whymails_array = <%= @whymails[:data].to_json.gsub!(/\"/, '') %>;
+				var chart = new Highcharts.Chart({
+				   chart: {
+				      renderTo: 'why-versus-websites-per-day',
+				   },
+				        title: {
+				      text: 'New Websites Versus Whymails'
+				   },
+				        subtitle: {
+				      text: 'New websites and Whymails, they\'re awesome and stuff'
+				   },
+				   xAxis: {
+				      type: 'datetime',
+				      title: {
+				         text: null
+				      }
+				   },
+				   yAxis: {
+				      title: {
+				         text: 'websites & Whymails'
+				      },
+				      min: 0,
+				      showFirstLabel: false
+				   },
+				   tooltip: {
+				      formatter: function() {
+						         return Highcharts.numberFormat(this.y, 0) + " " + this.series.name + " on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
+				      }
+				   },
+				   legend: {
+				      enabled: false
+				   },
+				   plotOptions: {
+				      spline: {
+				         marker: {
+				            enable: false
+				         }
+				      }
+				   },
+		  
+		
+				   series: [{
+					  name: 'New Websites',
+				      data: websites_array },
+					{
+					  name: 'New Whymails',
+					  data: whymails_array    
+				   }]
+				
+				});
+
+		
+
+		    // ===========================================================
+
+
+
+
 			</script>
 <% end %>
 
@@ -185,7 +246,8 @@
 <div class = "span-24">
 	<div id = "tickets-per-day" class="small-chart span-11">
 	</div>
-	
+	<div id = "why-versus-websites-per-day" class="small-chart span-11">
+	</div>
 </div>
 	
 	<hr />

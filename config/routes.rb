@@ -77,11 +77,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   
-  map.namespace(:admin) do |admin|
-    admin.with_options(:active_scaffold => true) do |admin_scaffold|
-      admin_scaffold.resources :users
-    end
-  end
+
   
   map.static '/:action', :controller => 'static'
  

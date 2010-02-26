@@ -1,0 +1,40 @@
+<% content_for :html_head do %>
+<%= stylesheet_link_tag 'demo_page.css' %> 
+<%= stylesheet_link_tag 'demo_table_jui.css' %> 
+<%= javascript_include_tag 'jquery.dataTables.min.js' %>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		oTable = $('#example').dataTable({
+			"aaSorting": [[ 1, "desc" ]],			
+			"bJQueryUI": true,
+			"sPaginationType": "full_numbers"
+		});
+	} );
+</script>
+
+<% end %>
+
+<div>Hello world</div>
+<table id = "example">
+
+<thead>
+	<tr>
+		<th>Web Address</th>
+		<th>Created At</th>
+	</tr>
+</thead>
+<tbody>
+
+<% @websites.each do |website| %>
+
+	<tr>
+		<td><%= website.url %></td>
+		<td><%= website.created_at.to_s(:short) %></td>
+		
+	</tr>
+
+<% end %>
+
+<tbody>
+</table>

@@ -5,13 +5,13 @@
     <%= html_title configatron.site_name %>
 
 	<%# bundle :name => "css" do %>
-    	<%# stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
+    	<%= stylesheet_link_tag 'why.css', :media => 'screen, projection' %> 
     	<%= stylesheet_link_tag 'custom_1/jquery-ui-1.7.2.custom.css', :media => 'screen, projection' %> 
 	<%# end %>
 	
 	
 
-    <%= stylesheet_link_tag 'active_scaffold_overrides.css' %> 
+    <%# stylesheet_link_tag 'active_scaffold_overrides.css' %> 
   </head>
 
   <body id="<%= params[:controller] %>" class="<%= params[:action] %>">

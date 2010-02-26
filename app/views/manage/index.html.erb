@@ -8,6 +8,7 @@
 		$(document).ready(function() {
 			window.myboolean = false ;
 			oTable = $('#dataTable_whymails, #dataTable_forms').dataTable({
+				"aaSorting": [[ 3, "desc" ]],							
 				"bJQueryUI": true,
 				"sPaginationType": "full_numbers"
 			});			

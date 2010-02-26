@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
   before_filter :require_user
+  layout "admin"
+  
   include Graph
 
   def index
@@ -19,6 +21,14 @@ class AdminController < ApplicationController
   #    jsvars[:surveys_array] = @surveys[:data]
        
   end
+  
+  
+  def websites
+    @websites = Website.find(:all, :conditions => [ "created_at > ?",  (Time.now.end_of_day - 1.month) ],:order => 'created_at DESC')
+  #  @users = User.find(:all, :conditions => [ "created_at > ?",  (Time.now.end_of_day - 1.month) ],:order => 'created_at DESC')
+  end
+  
+  
   
   
   def show_users
