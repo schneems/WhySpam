@@ -1,0 +1,13 @@
+<p>
+  <b>Word:</b>
+  <%=h @dictionary.word %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @dictionary.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_dictionary_path(@dictionary) %> |
+<%= link_to 'Back', dictionaries_path %>

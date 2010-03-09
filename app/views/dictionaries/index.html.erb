@@ -1,0 +1,22 @@
+<h1>Listing dictionaries</h1>
+
+<table>
+  <tr>
+    <th>Word</th>
+    <th>User</th>
+  </tr>
+
+<% @dictionaries.each do |dictionary| %>
+  <tr>
+    <td><%=h dictionary.word %></td>
+    <td><%=h dictionary.user_id %></td>
+    <td><%= link_to 'Show', dictionary %></td>
+    <td><%= link_to 'Edit', edit_dictionary_path(dictionary) %></td>
+    <td><%= link_to 'Destroy', dictionary, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New dictionary', new_dictionary_path %>

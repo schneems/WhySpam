@@ -29,15 +29,15 @@ class Whymail < ActiveRecord::Base
      whymail = user.whymail.find(:first, :conditions => ["website = ?", website])
      
      if (whymail.nil? ?  true : whymail.email[-atAddress.size, atAddress.size].downcase != atAddress )
-      whymail =  user.whymail.create_with_digest(email, website, atAddress) 
+          whymail =  user.whymail.create_with_digest(email, website, atAddress, :level => user.level) 
      end
      whymail
       
     end
     
     
-    def self.create_with_digest(email, website, atAddress)
-      digest = create_digest(email, website, atAddress)
+    def self.create_with_digest(email, website, atAddress, options = {})
+      digest = create_digest(email, website, atAddress, options)
         self.create(:email => digest.upcase , :website => website) 
     end
     
@@ -57,12 +57,19 @@ class Whymail < ActiveRecord::Base
         end
      end
      
+     
+     
 
      
-     def self.create_digest(email, site, atAddress)   
-         email = Digest::SHA1.hexdigest(email+site+Time.now.to_s)    
-          guess = email[0,20]
-          atAddress = atAddress.upcase
+     def self.create_digest(email, site, atAddress, options = {})   
+         if options[:level].nil?
+           email = Digest::SHA1.hexdigest(email+site+Time.now.to_s)    
+           guess = email[0,20]
+           atAddress = atAddress.upcase
+         else
+           guess = Dictionary.random().word + rand(999).to_s
+         end
+          
          if Whymail.find_by_email(guess.upcase + atAddress).nil?
            # return guess
          else

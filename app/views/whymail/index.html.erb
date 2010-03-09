@@ -1,4 +1,7 @@
 
+
+
+
 <% content_for :html_head do %>
 <%= stylesheet_link_tag 'stylish-select.css', :media => 'screen, projection' %> 
 
@@ -39,6 +42,19 @@ $(document).ready(function(){
 <% end %>
 
 
+
+<!-- area added for facebook share -- >
+	<link rel="video_src" href="http://www.youtube.com/watch#!v=SLJHPMxgAWU"/>
+	<meta name="video_height" content="200" /> 
+	<meta name="video_width" content="300" /> 
+	<meta name="video_type" content="application/x-shockwave-flash" />
+
+	<link rel="image_src" href="images/envelope.png" />
+<!-- area added for facebook share -->
+
+
+
+
 <div class = "span-24 last disposableEmail">
 	<div id = "ribbon-wrapper" class = "span-24">
 		<div id = "ribbon" class = "span-12">
@@ -50,6 +66,9 @@ $(document).ready(function(){
 
 	</div>
 	
+
+
+
 
 	<% remote_form_for @user, :controller => 'secure_email', :update => 'update', 
 					:loading => "$('#indicator').show();$('#update').hide();", 

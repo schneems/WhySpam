@@ -50,7 +50,7 @@ describe WhymailController do
     end
     
     it "should give me a session error" do
-        session[:count] = 11
+        session[:count] = 51
         post 'create', :user => { :email => 'foo_email@example.com', :website => 'sketchy.com' }
         assigns[:extra_message].should == configatron.session_count_error
         session[:count] = 0

@@ -32,8 +32,9 @@ describe SpamfireController do
      end
 
      it "should give me a session error" do
-         session[:count] = 11
+         session[:count] = 51
          post 'create', :user => { :email => 'foo_email_0@example.com', :website => 'sketchy.com' }, :save => {:checked => '0'}
+         
          assigns[:extra_message].should == configatron.session_count_error_small
          session[:count] = 0 
      end 

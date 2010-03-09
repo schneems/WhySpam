@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :dictionaries
+
 # rake routes | mate
   map.resources :users
   map.foreign_show '/foreign_show/:id', :controller => 'forms', :action => 'foreign_show'

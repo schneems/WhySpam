@@ -2,8 +2,22 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Whymail do
     
-  ## testing different @email.com for same website
+    
+  describe "test level" do
+    before(:each) do
+      @whymail = Whymail.new
+      @website = "thinkbohemian.com"
+      @email = "foo@example.com"    
+      @user = Factory.create(:user, :level => "novice")
+    end
   
+    it "something" do    
+      puts Whymail.create_digest("alskjdf@asldfkj.com", "example.com", "@whyspam.me", :level => "novice")      
+    end
+  end
+  
+  
+  ## testing different @email.com for same website
   
   before(:each) do
     @whymail = Whymail.new
@@ -24,6 +38,11 @@ describe Whymail do
       whymail.email.should_not == whymail2.email
   end
   
+  it "should test not duplicate create_digest" do    
+      whymail = Whymail.create_with_user(@email, @website, "@whyspam.me" )
+      digest1 = Whymail.create_digest(@email, @website, "@whyspam.me")
+      whymail.email.should_not == digest1 
+  end
   
   it "should test not duplicate create_digest" do    
       whymail = Whymail.create_with_user(@email, @website, "@whyspam.me" )

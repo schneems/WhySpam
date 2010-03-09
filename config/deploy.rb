@@ -63,7 +63,7 @@ namespace :deploy do
   task :canary_check do
     
     
-    run "rake mailbox:isworking"
+ #   run "rake mailbox:isworking"
     
   end
   

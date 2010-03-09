@@ -31,15 +31,13 @@ def create
   session[:count] = 0 if ENV['RAILS_ENV'] == 'development'
   session[:count] = session[:count] + 1 
     
-     if session[:count] > 50 && ENV['RAILS_ENV'] != "development"
+     if session[:count] > 50 && ENV['RAILS_ENV'] != "development" 
        @extra_message = configatron.session_count_error_small
        @whymail = Whymail.new
      else
        @whymail = Whymail.create_with_user(email, website, atAddress)
        @extra_message = configatron.bad_email_small if @whymail.user.nil?
     end                          
-
-
   
 end
 
