@@ -1,10 +1,10 @@
 
-<% @keywords =  @myurl.to_s + 'report spam mail,spam blocker,spam list,report spammers,report spam email,report spam,blacklist,abuse,website,domains,spam check,email abuse,spam war,utility,spammers'%>
+<% @keywords =  @myurl.to_s + ', is' + @myurl.to_s ' safe , report spam mail,spam blocker,spam list,report spammers,report spam email,report spam,blacklist,abuse,website,domains,spam check,email abuse,spam war,utility,spammers'%>
 
 <% if @website.nil? %>
 
 
-	<% @description = Time.now.strftime("%b %d, %Y") + ': no one has reported if '+ @myurl + ' is a trustworthy site, use caution when giving out our email to them. Generate a disposable email to be safe. '  %>
+	<% @description = Time.now.strftime("%b %d, %Y") + ': Check to see if ' +  @myurl.to_s  + ' is safe and responsible with your information.' %>
 
 	No one has reported anything about <h2><%= @myurl %></h2> good or bad. Use caution when giving out your personal email to them. Generate a 
 
@@ -21,7 +21,7 @@
 		<b><a href = 'http://<%=h @website.url %>' rel="nofollow"><%=h @website.url%></a></b>
 	</center>
 
-	<% @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @website.surveys.count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
+	<%# @description = Time.now.strftime("%b %d, %Y") + ' : '+ @website.url + ' has a ranking of ' + @website.grade + ' from ' + @website.surveys.count.to_s + ' users. To help get more data on the behavior of ' +  @website.url + ' create a disposable email and submit a survey.' %>
 	<hr />
 	<div class="span-8 prepend-1">
 		<b><h2>Grade:<%= @website.grade %></h2></b>

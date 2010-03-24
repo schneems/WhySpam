@@ -1,0 +1,149 @@
+
+
+<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js' %>
+
+
+<%= stylesheet_link_tag 'shady.css', :media => 'screen, projection' %> 
+
+
+<% @keywords = 'free disposable email,temporary email,free email,spam blocker,anonymous email, spam list,remove spam,email,anonymous,spam,stop spam,accountability, secure email,forward,report'%>
+
+<% @description = Time.now.strftime("%b %d, %Y") + ' Free disposable email addresses protect your identity and forward messages straight to your inbox. Keep disposable email addresses for as long as you want and delete them when you\'re ready.'  %>
+
+<%= javascript_include_tag 'jquery.stylish-select.min.js'  %>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	
+	
+	$('#addrs').sSelect();
+});
+
+
+		$(function() {
+			$("#tabs").tabs();
+			
+			$('#user_submit').hover(
+				function() { $(this).addClass('ui-state-hover'); }, 
+				function() { $(this).removeClass('ui-state-hover'); }
+			);
+			
+			
+			$('#youtube-video object').css("display", "block");
+			$('#you-tube-how object').css("display", "block");
+
+
+		});	
+
+</script>
+
+
+<center>
+<%= image_tag "shadyemail.jpg", :alt => "shady email"%>
+<h2 class="brown">Don't just hide your email, Make it Questionable & Suspicious!</h2>
+
+
+	<% remote_form_for @user, :controller => 'shadyemail', :update => 'update', 
+					:loading => "$('#indicator').show();$('#update').hide();", 
+					:complete => "$('#indicator').hide();$('#update').show()",
+					:url =>  { :action => "create"}, 
+					:html => {:name => 'whymail' } do |f| %>
+
+			
+
+			
+			
+			<div class = "span-13">
+			
+<br />
+			<table class = "prepend-1 " id = "whymail-index-table">
+				
+				<tr>
+					<td><%= f.label "Your Email:" %><br />	
+						<span class = "optional_td"><%= link_to " (will remain private)", url_for(:action => "privacy", :controller => "static")  %>		 
+ </span>
+						</td>
+					<td><%= f.default_text_field :email , configatron.default_email %></td>
+				</tr>
+
+				<tr>
+					<td class = "optional_td">
+						<%= f.label "Website to Scare:" %><br />
+					</td>
+
+					<td>
+						<%= f.default_text_field :website, configatron.default_website  %>
+					</td>
+				</tr>
+			</table>
+			<br />
+			<div class='clearfix center span-11 prepend-4 last'>		
+				<div class = "span-6">
+					<%  hidden_field :addrs,  "@awe4.com"%>
+					<input type="hidden" name="addrs" value="@awe4.com" />
+					
+					
+					
+					<%= f.submit "" , :class => "submit" %>
+				</div>				
+				
+			</div>
+
+		</div>
+		
+		<div id = "update" style = "display:none" class = "last"></div>
+			<div class = "center">
+				<div id = "indicator" style="display:none">
+					<hr />
+					<%= image_tag("loading.gif") %>
+				</div>
+			</div>
+			
+		<br />
+		<br />
+		<div class = "brown">
+		
+		Example: 
+		</div>		
+		foo@example.com
+		<br />
+		<br />
+		<div class = "brown">
+		Becomes:
+		</div>
+		foreign-brides.ssn-for-sale-37@awe4.com
+		<br />
+		<br />
+		<br />
+		<br />
+		<div class = "brown">
+			Inspired by <a href="http://shadyurl.com">ShadyUrl.com</a> and powered by <a href = "http://whyspam.me">WhySpam.Me</a>
+		</div>
+		<br />
+		<br />
+		<br />
+<div class = "footer">		
+
+
+Shady Emails are an entertaining version of <a href = "http://whyspam.me" >Disposable Emails </a>.  No one endorses anything contained in the email names.  Some email names may be offensive. Messages sent to shady-email will be forwarded to real email address entered, until shady-email is destroyed.
+</div>
+
+
+		
+		<br />
+
+			
+			
+	</div><!-- span-24 -->
+	
+	<% end %>
+	
+
+</center>
+
+				
+
+
+

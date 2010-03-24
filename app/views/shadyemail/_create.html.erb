@@ -1,0 +1,64 @@
+<hr />
+<div id = "no_spam_container" class = "center">
+<% if  @whymail.try(:valid?)   %>
+	
+	<div id = "no_spam_label">	Your Disposable Email:</div><br />
+	<% @user = @whymail.user %>
+	<% remote_form_for @user, :controller => 'shadyemail', :update => 'update', 
+					:loading => "$('#indicator').show();$('#update').hide();", 
+					:complete => "$('#indicator').hide();$('#update').show()",
+					:url =>  { :action => "update"}, 
+					:html => {:name => 'whymail' } do |f| %>
+	
+			<textarea id = "no_spam" class = "center" cols="40" rows="1"
+			 	readonly onclick="this.focus(); this.select();" style = ""><%= @whymail.email.downcase %></textarea>
+			
+				
+				<%=  f.hidden_field :whymail, :value => @whymail.email %>
+				<%=  f.hidden_field :id, :value => @user.id %>
+				<input type="hidden" name="addrs" value="@awe4.com" />
+				
+				
+				
+				<%#  hidden_field :user,  :id, @user.id %>
+				
+				
+				<%= f.submit "Switch Address"  %>
+			<br /><br />
+			<%= @replace_message unless @replace_message.nil? %>
+	 	 
+			<% end %>
+			<br />
+			<p>All email sent to this disposable email address will be forwarded to <%= @whymail.user.email %>. </p>
+			<p>To test this mailbox send an email to <a href="mailto:<%= @whymail.email %>?subject=This is a Test Email&body=Replace me with your message">yourself</a></p>
+			
+<% else %>
+<center>
+
+	<div class= "remoteErrorMessage">
+		<%= @extra_message %>
+		<%= @whymail.try(:errors).try(:full_messages).try(:first) %>
+	</div>
+	<br />
+</center>
+
+<% end %>
+
+
+<br />
+
+
+
+
+
+
+		<script>function fbs_click() {u=location.href;t=document.title;window.open(’http://www.facebook.com/sharer.php?u=’+encodeURIComponent(u)+’&t=’+encodeURIComponent(t),’sharer’,'toolbar=0,status=0,width=626,height=436′);return false;}</script><a href="http://www.facebook.com/share.php?u=http://shadyemail.com" onclick="return fbs_click();javascript: pageTracker._trackPageview('/outgoing/facebook/share');" target="_blank"><img src="images/fbshare-black.jpg" alt="Share on Facebook" /></a>
+
+		&nbsp &nbsp &nbsp
+	<a href="http://twitter.com/home?status=Don't just hide your email, make it questionable & suspicious http://shadyemail.com" onclick=";javascript: pageTracker._trackPageview('/outgoing/twitter/tweet');" target="_blank"><%= image_tag "tweetus-black.jpg" %></a>
+	
+
+
+</div>
+<hr />
+

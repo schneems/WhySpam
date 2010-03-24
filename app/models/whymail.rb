@@ -24,12 +24,16 @@ class Whymail < ActiveRecord::Base
     
     
     
-    def self.create_with_user(email, website, atAddress)
+    def self.create_with_user(email, website, atAddress, options = {})
+      
      user = User.find_or_create_by_email(email)
      whymail = user.whymail.find(:first, :conditions => ["website = ?", website])
+
      
-     if (whymail.nil? ?  true : whymail.email[-atAddress.size, atAddress.size].downcase != atAddress )
-          whymail =  user.whymail.create_with_digest(email, website, atAddress, :level => user.level) 
+     
+     if (whymail.nil? ?  true : whymail.email[-atAddress.size, atAddress.size].downcase != atAddress ) ## makes sure even if user has existing email, they can create a new one with different domain
+          options[:level] = user.level
+          whymail =  user.whymail.create_with_digest(email, website, atAddress, options) 
      end
      whymail
       
@@ -62,12 +66,13 @@ class Whymail < ActiveRecord::Base
 
      
      def self.create_digest(email, site, atAddress, options = {})   
-         if options[:level].nil?
+         if options[:level].nil? && options[:category].nil?
            email = Digest::SHA1.hexdigest(email+site+Time.now.to_s)    
            guess = email[0,20]
            atAddress = atAddress.upcase
          else
-           guess = Dictionary.random().word + rand(999).to_s
+           guess = Dictionary.generate_email(options) + rand(999).to_s
+           
          end
           
          if Whymail.find_by_email(guess.upcase + atAddress).nil?

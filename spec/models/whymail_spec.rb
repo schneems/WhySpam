@@ -10,9 +10,31 @@ describe Whymail do
       @email = "foo@example.com"    
       @user = Factory.create(:user, :level => "novice")
     end
+    
+    it "test category shady" do
+      whymail = Whymail.create_with_user(@user.email, "website", "@whyspam.me" , :category => "shady")
+      whymail.should be_valid
+      whymail.save.should be_true
+      puts whymail.email.downcase
+    end
+    
+    it "test category shady" do
+      puts "========================"
+      
+      email = @user.email
+      whymail = Whymail.create_with_user(email, "website098098", "@whyspam.me" , :category => "shady")
+      whymail.should be_valid
+      whymail.save.should be_true
+      puts "________________________"
+      
+      whymail2 = Whymail.create_with_user(email, "website098098", "@whyspam.me" , :category => "shady")
+      whymail2.email.should == whymail.email
+    end
+    
   
-    it "something" do    
-      puts Whymail.create_digest("alskjdf@asldfkj.com", "example.com", "@whyspam.me", :level => "novice")      
+    it "something" do
+      whymail =  Whymail.create_digest("alskjdf@asldfkj.com", "example.com", "@whyspam.me", {:level => "novice", :category => "shady"}) 
+      
     end
   end
   

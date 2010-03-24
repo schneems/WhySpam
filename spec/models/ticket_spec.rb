@@ -89,15 +89,7 @@
           array = Ticket.get_email_addresses(mail)
           array.count.should == 6
         end
-        
-        it "should only return an array of email addresses if they end in @whyspam.me" do 
-          mail = TMail::Mail.new
-          mail.bcc = ["hey@foo.me", "what@whyspam.me"]
-          mail.cc = ["sups@foo.me", "hey@whyspam.me"]
-          mail.to = ["olivia@foo.me", "richard@whyspam.me"]
-          array = Ticket.get_email_addresses(mail)
-          array.count.should == 3
-        end
+
         
       end
       # create new ticket, only if one does not already exist.
@@ -108,6 +100,7 @@
           TestMailer.deliver_mime(@whymail.email)
           email = TMail::Mail.parse(getMockEmails.last)
           assert_difference [ "Ticket.count", "getMockEmails.count" ] , 1 do
+            puts "OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
               ticket = Ticket.find_or_create_and_send(email)
           #    ticket.email.body.should == email.body
           end      
@@ -117,6 +110,7 @@
           TestMailer.deliver_mime("foo@foo.com")
           email = TMail::Mail.parse(getMockEmails.last)
           assert_difference [ "Ticket.count", "getMockEmails.count" ], 0 do
+            puts "ffffffffffffffffffffffff"
             Ticket.find_or_create_and_send(email)
           end      
         end

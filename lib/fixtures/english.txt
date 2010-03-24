@@ -387,7 +387,6 @@ cart
 carve
 case
 cash
-cashier
 castle
 cat
 catbird

@@ -13,9 +13,18 @@ class Dictionary < ActiveRecord::Base
   
   
   def self.shady
-    w1 = Dictionary.random(:category => "shady")
-    w2 = Dictionary.random(:category => "shady")
-    return w1.word + ["-", "_", "+"].sort_by {rand}.first + w2.word + ["-", "_", "+", ""].sort_by {rand}.first + rand(9999).to_s 
+    w1 = Dictionary.random(:category => "shady", :length => 100)
+    w2 = Dictionary.random(:category => "shady", :length => 101)
+    return w1.word + ["-", "_", "."].sort_by {rand}.first + w2.word 
+  end
+  
+  
+  def self.generate_email(options = {})
+    if options[:category] == "shady"
+     return  Dictionary.shady
+   else
+     return Dictionary.random(options).word
+   end
   end
   
   def self.random(options={})

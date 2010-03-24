@@ -40,21 +40,26 @@
 			</tr>
 		</thead>
 		<tbody>
-		
-	<% @whymails.each do |whymail| %>
-	<tr class="fixed"  >
-		<td><%=h whymail.email%></td>
-		<td style = ""><%=h whymail.website[22].nil? ? whymail.website : whymail.website[0,22] +"..."  %></td>
-		<% if current_user  %>
-			<td>
-				<%= link_to "Check", { :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show', :target => "_blank"} %>
-				<%= link_to "Delete", { :controller => 'surveys', :id => whymail.id,  :action => 'new' } %>
 			
-			</td>
-		<% end %>
-	</tr>    
+			
+	<% if !@whymails.nil? %>	
+		<% @whymails.each do |whymail| %>
+		<tr class="fixed"  >
+			<td><%=h whymail.email%></td>
+			<td style = ""><%=h whymail.website[22].nil? ? whymail.website : whymail.website[0,22] +"..."  %></td>
+			<% if current_user  %>
+				<td>
+					<%= link_to "Check", { :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show', :target => "_blank"} %>
+					<%= link_to "Delete", { :controller => 'surveys', :id => whymail.id,  :action => 'new' } %>
+			
+				</td>
+			<% end %>
+		</tr>    
                            
-	<% end %>                                                                                     
+		<% end %>    
+	<% else %>   
+	<td>You have no current emails</td>
+	<% end %>                                                                              
 		<tfoot>
 		</tbody>
 			<tr>

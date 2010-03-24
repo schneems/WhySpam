@@ -1,0 +1,54 @@
+/* @override 
+	http://localhost:3000/stylesheets/shady.css
+	http://localhost:3000/stylesheets/shady.css?1268541304
+*/
+
+body {
+background-color: black;
+color:white;
+width: 700px;
+margin: 0 auto 0;
+}
+
+.footer {
+	color: gray;
+	font-size: 10pt;
+}
+
+img {
+	border: none;
+}
+
+textarea {
+	background-color: black;
+	color: white;
+	font-size: 18pt;
+	text-align: center;
+}
+
+input {
+	font-size:  18px;
+}
+
+
+.submit  {
+background-image:url("/images/submitbtn.jpg");
+width: 120px;
+height: 50px;
+cursor: pointer;
+
+}
+
+.brown {
+	color: #A27814;
+}
+
+ a {
+	color: #828282;
+}
+
+.submit:hover {
+	border: solid 2px white;
+}
+
+
