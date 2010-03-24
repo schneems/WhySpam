@@ -45,6 +45,7 @@ describe ShadyemailController do
              post 'create', :user => { :email => 'foo_email1@example.com', :website => 'sketchy.com' }        
            end
          end
+         
    
          it "should get the same email with the same email" do
              post 'create', :user => { :email => 'foo_email2@example.com', :website => 'sketchy.com' }        
