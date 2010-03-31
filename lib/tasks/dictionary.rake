@@ -16,7 +16,6 @@ namespace :dictionary do
         end
         
     end
-  end
   
   # rake cleanup:slopbox
   
