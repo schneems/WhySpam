@@ -1,9 +1,9 @@
+<%= stylesheet_link_tag 'shady.css', :media => 'screen, projection' %>
+
+<%= javascript_include_tag 'jquery.js' %>
 
 
 <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js' %>
-
-
-<%= stylesheet_link_tag 'shady.css', :media => 'screen, projection' %> 
 
 
 <% @keywords = 'free disposable email,temporary email,free email,spam blocker,anonymous email, spam list,remove spam,email,anonymous,spam,stop spam,accountability, secure email,forward,report'%>
@@ -45,6 +45,10 @@ $(document).ready(function(){
 <h2 class="brown">Don't just hide your email, Make it Questionable & Suspicious!</h2>
 
 
+
+
+
+
 	<% remote_form_for @user, :controller => 'shadyemail', :update => 'update', 
 					:loading => "$('#indicator').show();$('#update').hide();", 
 					:complete => "$('#indicator').hide();$('#update').show()",
@@ -70,7 +74,8 @@ $(document).ready(function(){
 
 				<tr>
 					<td class = "optional_td">
-						<%= f.label "Website to Scare:" %><br />
+						<%= f.label "Website to give email to:" %><br />
+						<span class = "optional_td">(Optional)</span>
 					</td>
 
 					<td>

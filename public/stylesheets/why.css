@@ -48,6 +48,7 @@
 	http://localhost:3000/stylesheets/why.css?1266896387
 	http://localhost:3000/stylesheets/why.css?1266943001
 	http://localhost:3000/stylesheets/why.css?1266975279
+	http://localhost:3000/stylesheets/why.css?1267128977
 */
 
 #addrsWrapper {
@@ -72,7 +73,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 #ribbon h2,
 #ribbon h4{
 	color: white;
-	margin-top: 7px;
+	margin-top: 8px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 }
@@ -91,8 +92,8 @@ span.amp {
 	position: relative;
 	right: 14px;
 	float: left;
-	background: url(../images/ribbon.png) no-repeat 0 -13px;
-	height: 100px;
+	background: url(../images/ribbon.png) no-repeat 0 -8px;
+	height: 110px;
 
 }
 

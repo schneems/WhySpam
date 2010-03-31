@@ -13,8 +13,8 @@ class Dictionary < ActiveRecord::Base
   
   
   def self.shady
-    w1 = Dictionary.random(:category => "shady", :length => 100)
-    w2 = Dictionary.random(:category => "shady", :length => 101)
+    w1 = Dictionary.random(:category => "shady", :length => rand(9999))
+    w2 = Dictionary.random(:category => "shady", :length => rand(9999))
     return w1.word + ["-", "_", "."].sort_by {rand}.first + w2.word 
   end
   

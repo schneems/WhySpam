@@ -1,6 +1,19 @@
 class MyMailer < ActionMailer::Base
   
   include Cleanurl
+
+  def shady(from, to , subject, message)
+    @from         = from
+    @recipients   = to
+    headers         "Reply-to" => from
+    @subject      = subject
+    @sent_on      = Time.now
+    @content_type = "text"
+    @message         = message
+    
+  end
+
+
   
   def receive(email) 
     Ticket.find_or_create_and_send(email)

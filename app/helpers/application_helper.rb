@@ -82,16 +82,18 @@ module ApplicationHelper
   
     def default_text_area(name, value)
       self.object = self.object||{}
-      
       if object[name].nil? 
-          text_area(name, :value => value,  :class => "gray-input", :onfocus => "if (this.value=='#{value}') this.value = '';this.style.color = 'black';", :onblur => "if (this.value=='') {this.value = '#{value}';this.style.color = '';}" )    
+          text_area(name, :value => value,  :class => "gray-input", :onfocus => " if (this.value.replace(/\\n|\s|\\n\\r/g,'') == '#{value.gsub(/\s/,'')}' ) {this.value = '';this.style.color = 'black'; }", :onblur => "if (this.value=='') {this.value = '#{value.gsub(/\n\r/, '\\n\\r').gsub(/\r/, '\\r').gsub(/\n/, '\\n')}';this.style.color = '';}" )
       else
         value = object[name] 
         text_area(name, :value => value )    
       end
-      
     end
   end
+  
+  ## unterminated literals suck in javascript have to convert between from \n to \\n to get js strings to == ruby strings or take them out
+
+
   
   def button_with_icon(text , icon, options = { })
     return "<button id='foo_submit' class = '#{options[:class]} ui-corner-all fg-button ui-state-default fg-button-icon-left' type='submit' name='commit'><span class='ui-icon ui-icon-#{icon}'></span>#{text}</button>"

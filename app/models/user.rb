@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   
   
  # named_scope :find_by_email, lambda { |*args| {:conditions => ["email = ?", args.first.downcase]} }
-   
+
   
        def self.find_by_secret_address(email)                                                    
          whymail = Whymail.find(:first, :include => :user, :conditions => ["email = ?", email ])   

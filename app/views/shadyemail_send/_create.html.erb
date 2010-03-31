@@ -1,0 +1,41 @@
+<%= stylesheet_link_tag 'shady.css', :media => 'screen, projection' %> 
+<hr />
+
+
+
+<% if @whymail.nil? %>
+<div class ="center">
+	There were problems with the submission please refresh the page or press submit, and try again.
+	<%= @whymail.try(:errors).try(:full_messages).try(:first) %>
+	<%= @user.try(:errors).try(:full_messages).try(:first) %>		
+</div>
+
+<% else %>
+
+	<div class = "center">
+		<div class = "status">
+			Message Sent successfully
+		</div>
+		<br />
+		<div>
+			Send another message from <%= @whymail.email %>?
+		</div>
+		<div>
+				<%= link_to_remote image_tag("send-email.jpg", :class => "shady-button"), 
+								:url => {
+									:controller => "shadyemail_send",
+
+									:action => "new", 
+									:user => {:whymail => @whymail.email, :id => @user.id},
+									:addrs => "@awe4.com"},
+
+								:update => 'update', 
+								:loading => "$('#indicator').show();$('#update').hide();", 
+								:complete => "$('#indicator').hide();$('#update').show()"
+
+				%>
+		</div>
+	</div>
+
+<% end %>
+<hr />

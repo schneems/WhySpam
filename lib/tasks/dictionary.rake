@@ -1,6 +1,23 @@
 namespace :dictionary do 
 
+  
+  desc "populates the dictionary"
+    task :reset_shady => :environment do
+        d = Dictionary.find(:all, :conditions => {:category => "shady"})
+        d.each do |entry|
+          entry.delete
+        end
+        File.open('lib/fixtures/shady.txt').each do |word|
+          word = word.strip
+          if !word.empty? && word.match(/[\W]/).nil?
+            Dictionary.create(:word => word, :length => word.length, :category => "shady")
 
+          end      
+        end
+        
+    end
+  end
+  
   # rake cleanup:slopbox
   
   desc "populates the dictionary"
@@ -9,7 +26,7 @@ namespace :dictionary do
         word = word.strip
         if !word.empty? && word.match(/[\W]/).nil?
           Dictionary.create(:word => word, :length => word.length, :category => "shady")
-          puts word
+          
         end      
       end
     end

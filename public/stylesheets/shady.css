@@ -1,6 +1,12 @@
 /* @override 
 	http://localhost:3000/stylesheets/shady.css
 	http://localhost:3000/stylesheets/shady.css?1268541304
+	http://localhost:3000/stylesheets/shady.css?1268586963
+	http://localhost:3000/stylesheets/shady.css?1269620470
+	http://localhost:3000/stylesheets/shady.css?1269640695
+	http://localhost:3000/stylesheets/shady.css?1269807137
+	http://localhost:3000/stylesheets/shady.css?1269871104
+	http://localhost:3000/stylesheets/shady.css?1269872260
 */
 
 body {
@@ -10,21 +16,82 @@ width: 700px;
 margin: 0 auto 0;
 }
 
+.simple_captcha_image img{
+padding-top: 20px;
+	
+}
+
+input#captcha.gray-input {
+	
+}
+
+.inactive {
+	color: #616161;
+	background-color: #cecece;
+	font-style: italic;
+	border: 3px solid #cecece;
+}
+
+#captcha {
+position: relative;
+top: -10px;
+	border-color: #a5a5a5;
+}
+
+div.center {
+	text-align: center
+	;
+}
+
+div.status {
+	font-size: 20pt;
+	color: #fdfa00;
+	background-color: #17008d;
+	border: 2px solid #ffb937;
+}
+
+#no_spam {
+	color: white;
+}
+
 .footer {
 	color: gray;
 	font-size: 10pt;
+	font-variant: normal;
 }
 
 img {
 	border: none;
 }
 
+
+
 textarea {
+		font-size: 11pt;
+
+	text-align: left;
+	background-color: white;
+}
+
+div.notify {
+	font-size: 18pt;
+	color: red;
+	border: solid 2px red;
+	
+}
+
+.gray-input {
+	
+	color: #646464;
+}
+
+textarea.black {
 	background-color: black;
-	color: white;
+	color: #666;
 	font-size: 18pt;
 	text-align: center;
 }
+
 
 input {
 	font-size:  18px;
@@ -39,11 +106,25 @@ cursor: pointer;
 
 }
 
+.shady-button:hover {
+	border: solid white 2px;
+	
+}
+
+.shady-button {
+border: solid #a7b2c4 2px;
+cursor: pointer;
+	border-bottom-color: #606060;
+	border-right-color: #606060;
+	margin-right: 15px;
+}
+
 .brown {
 	color: #A27814;
 }
 
- a {
+ a, 
+ span.optional_td {
 	color: #828282;
 }
 
