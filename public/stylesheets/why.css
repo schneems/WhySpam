@@ -49,6 +49,8 @@
 	http://localhost:3000/stylesheets/why.css?1266943001
 	http://localhost:3000/stylesheets/why.css?1266975279
 	http://localhost:3000/stylesheets/why.css?1267128977
+	http://localhost:3000/stylesheets/why.css?1269958070
+	http://localhost:3000/stylesheets/why.css?1270055532
 */
 
 #addrsWrapper {
@@ -69,11 +71,12 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 	float: none;
 }
 
-
-#ribbon h2,
-#ribbon h4{
+#ribbon h2, #ribbon h4 {
+		margin: 0 0 0 30px;
 	color: white;
-	margin-top: 8px;
+}
+#ribbon h2 {
+	margin-top: 15px;
 	margin-bottom: 0px;
 	padding-bottom: 0px;
 }
@@ -90,10 +93,11 @@ span.amp {
 
 #ribbon {
 	position: relative;
-	right: 14px;
+	right: 18px;
 	float: left;
-	background: url(../images/ribbon.png) no-repeat 0 -8px;
-	height: 110px;
+	background: url(../images/ribbon.png) no-repeat 0 0px;
+	height: 120px;
+	width: 480px;
 
 }
 
@@ -1198,8 +1202,7 @@ span.small {
 .chevron {
 	margin: 0 0 0 10px;
 	background: white url(/images/chevron.jpg) no-repeat;
-	height: 180px;
-	
+height: 190px;
 }
 
 div.chev {
