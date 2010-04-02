@@ -68,7 +68,7 @@ class Whymail < ActiveRecord::Base
      def self.create_digest(email, site, atAddress, options = {})   
          if options[:level].nil? && options[:category].nil?
            email = Digest::SHA1.hexdigest(email+site+Time.now.to_s)    
-           guess = email[0,20]
+           guess = email[0,19]
            atAddress = atAddress.upcase
          else
            guess = Dictionary.generate_email(options) + rand(999).to_s

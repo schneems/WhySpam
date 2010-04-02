@@ -52,7 +52,7 @@ describe ShadyemailSendController do
    
      it "should display the create partial" do
        # Parameters: {"whymail"=>"COCKMONGLER_SMOOTH516@AWE4.COM", "captcha"=>"Copy Text from Image", "user"=>"66"}
-       get 'create', :user => {:id => @user.id, :message => "testing" }, :whymail => @whymail.email 
+       get 'create', :id => @user.id, :user => { :message => "testing" }, :whymail => @whymail.email 
        assigns[:whymail].should == @whymail
        assigns[:user].should == @user       
        response.should render_template("_create") 
@@ -67,9 +67,8 @@ describe ShadyemailSendController do
      
      
      it "should not have a whymail if no valid whymail is given " do
-       get 'create', :user => {:id => @user.id}
+       get 'create', :id => @user.id
        assigns[:whymail].should == nil
-       assigns[:user].should == @user       
        response.should render_template("_create") 
      end
      
@@ -84,7 +83,7 @@ describe ShadyemailSendController do
        subject = "this is a subject"
        to = "shadyemailtest@example.com"
        assert_difference "getMockEmails.count" , 1 do
-         get 'create', :whymail => @whymail.email, :user => {:id => @user.id, :subject => subject, :to => to, :message => "world"}
+         get 'create', :whymail => @whymail.email, :id => @user.id,:user => { :subject => subject, :to => to, :message => "world"}
        end
        mail = TMail::Mail.parse(getMockEmails.last)
        mail.subject.should == subject
