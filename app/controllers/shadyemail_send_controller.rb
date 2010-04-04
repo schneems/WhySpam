@@ -24,9 +24,9 @@ class ShadyemailSendController < ApplicationController
         if !@whymail.nil?
           MyMailer.deliver_shady(@whymail.email, to, subject, message)
         end
-        
         render :partial => "create" 
     else
+      puts "================================================"
       @extra_message = "Please Re-Enter Text from the Image Below"
       @user[:subject] = subject
       @user[:message] = message

@@ -7,6 +7,7 @@
 	http://localhost:3000/stylesheets/shady.css?1269807137
 	http://localhost:3000/stylesheets/shady.css?1269871104
 	http://localhost:3000/stylesheets/shady.css?1269872260
+	http://localhost:3000/stylesheets/shady.css?1269958053
 */
 
 body {
@@ -14,6 +15,10 @@ background-color: black;
 color:white;
 width: 700px;
 margin: 0 auto 0;
+}
+
+.replace_message {
+color: red;	
 }
 
 .simple_captcha_image img{
@@ -95,6 +100,18 @@ textarea.black {
 
 input {
 	font-size:  18px;
+}
+
+.send:hover{
+	border: solid white 2px;
+}
+.send {
+	margin: 0 0 0 110px;
+font-size: 0px;	
+background-image:url("/images/send.jpg");
+height: 35px;
+width: 80px;
+cursor: pointer;
 }
 
 

@@ -29,7 +29,6 @@ class ShadyemailController < ApplicationController
     id = params[:user][:id].to_i
     atAddress = params[:addrs]
     user = User.find(:first, :conditions => ["id = ? ", id])
-    
     whymail = user.whymail.find(:first, :conditions => ["email = ?", email ]) unless user.nil?
     
     if !whymail.nil?
@@ -40,7 +39,7 @@ class ShadyemailController < ApplicationController
     sleep 1
 
     @replace_message = "Something went wrong" if @whymail.nil? || whymail.nil?
-    @replace_message  = email.downcase + " was deleted "
+    @replace_message  = email.downcase + " was replaced" unless email.nil? || @whymail.nil?
     render :partial => "create" 
     
   end
