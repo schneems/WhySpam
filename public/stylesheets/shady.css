@@ -120,6 +120,7 @@ background-image:url("/images/submitbtn.jpg");
 width: 120px;
 height: 50px;
 cursor: pointer;
+border: 2px solid #afafaf;
 
 }
 
