@@ -51,6 +51,7 @@
 	http://localhost:3000/stylesheets/why.css?1267128977
 	http://localhost:3000/stylesheets/why.css?1269958070
 	http://localhost:3000/stylesheets/why.css?1270055532
+	http://localhost:3000/stylesheets/why.css?1270068893
 */
 
 #addrsWrapper {
@@ -58,6 +59,29 @@
 	margin-left: -20px;
 	
 }
+
+div.announce a {
+	text-decoration: underline;
+	color: blue;
+	font-weight: bold;
+}
+
+div.announce p{
+	background-color: #f2a400;
+	color: blue;
+	text-align: center;
+	border: 2px solid #fbff00;
+	height: 25px;
+	font-size: 11pt;
+	margin: 0;
+	padding: 0;	
+}
+
+div.announce p {
+	padding: 0;
+	
+}
+	
 
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;
@@ -1044,7 +1068,7 @@ span.ui-icon {
 	    min-height: 100%;
      height: auto !important;
      height: 100%;
-     margin: 0 auto em;
+     margin: 0px auto em;
 }
 
 
@@ -1113,7 +1137,7 @@ a.ui-state-hover:hover {
 }
 
 body {
-background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center top;
+background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center 22px;
 }
 
 #whitespace {
