@@ -52,6 +52,7 @@
 	http://localhost:3000/stylesheets/why.css?1269958070
 	http://localhost:3000/stylesheets/why.css?1270055532
 	http://localhost:3000/stylesheets/why.css?1270068893
+	http://localhost:3000/stylesheets/why.css?1270565202
 */
 
 #addrsWrapper {
@@ -62,19 +63,21 @@
 
 div.announce a {
 	text-decoration: underline;
-	color: blue;
+	color: #633508;
 	font-weight: bold;
+	font-size: 12pt;
+
 }
 
 div.announce p{
-	background-color: #f2a400;
-	color: blue;
+	background-color: #ffbd50;
+	color: #633508;
 	text-align: center;
-	border: 2px solid #fbff00;
 	height: 25px;
 	font-size: 11pt;
 	margin: 0;
-	padding: 0;	
+	padding: 0;
+	font-weight: bold;
 }
 
 div.announce p {
