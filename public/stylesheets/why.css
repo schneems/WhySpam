@@ -1,65 +1,10 @@
 /* @override 
-	http://localhost:3000/stylesheets/screen.css?1256238150
-	http://localhost:3001/stylesheets/screen.css
-	http://localhost:3000/stylesheets/why.css?1257184475
-	http://localhost:3000/stylesheets/why.css?1257968011
-	http://localhost:3000/stylesheets/cache/css.css?1258565418
-	http://localhost:3000/stylesheets/why.css?1258339364
-	http://localhost:3000/stylesheets/why.css?1258569287
-	http://localhost:3000/stylesheets/why.css?1258739717
-	http://localhost:3000/stylesheets/why.css?1259709701
-	http://localhost:3000/stylesheets/why.css?1260467954
-	http://localhost:3000/stylesheets/why.css?1260505614
-	http://localhost:3000/stylesheets/why.css?1260659969
-	http://localhost:3000/stylesheets/why.css?1261172710
-	http://localhost:3000/stylesheets/why.css?1262229739
-	http://localhost:3000/stylesheets/why.css?1262230076
-	http://localhost:3000/stylesheets/why.css?1262473680
-	http://localhost:3000/stylesheets/why.css?1262578290
-	http://localhost:3000/stylesheets/why.css?1262714420
-	http://localhost:3000/stylesheets/why.css?1262828355
-	http://localhost:3000/stylesheets/why.css?1262830696
-	http://localhost:3000/stylesheets/why.css?1262914067
-	http://localhost:3000/stylesheets/why.css?1262994749
-	http://localhost:3000/stylesheets/why.css?1263513364
-	http://localhost:3000/stylesheets/why.css?1263662134
-	http://localhost:3000/stylesheets/why.css?1263662598
-	http://localhost:3000/stylesheets/why.css?1263663055
-	http://localhost:3000/stylesheets/why.css?1263663192
-	http://localhost:3000/stylesheets/why.css?1263680753
-	http://localhost:3000/stylesheets/why.css?1263687330
-	http://localhost:3000/stylesheets/why.css?1263687786
-	http://localhost:3000/stylesheets/why.css?1263688488
-	http://localhost:3000/stylesheets/why.css?1263689966
-	http://localhost:3000/stylesheets/why.css?1263692114
-	http://localhost:3000/stylesheets/why.css?1263692806
-	http://localhost:3000/stylesheets/why.css?1263692969
-	http://localhost:3000/stylesheets/why.css?1263765651
-	http://localhost:3000/stylesheets/why.css?1263946183
-	http://localhost:3000/stylesheets/why.css?1265229996
-	http://localhost:3000/stylesheets/why.css?1265494221
-	http://localhost:3000/stylesheets/why.css?1265495309
-	http://localhost:3000/stylesheets/why.css?1265687982
-	http://localhost:3000/stylesheets/why.css?1265930876
-	http://localhost:3000/stylesheets/why.css?1266268770
-	http://localhost:3000/stylesheets/why.css?1266889834
-	http://localhost:3000/stylesheets/why.css?1266892568
-	http://localhost:3000/stylesheets/why.css?1266893174
-	http://localhost:3000/stylesheets/why.css?1266896387
-	http://localhost:3000/stylesheets/why.css?1266943001
-	http://localhost:3000/stylesheets/why.css?1266975279
-	http://localhost:3000/stylesheets/why.css?1267128977
-	http://localhost:3000/stylesheets/why.css?1269958070
-	http://localhost:3000/stylesheets/why.css?1270055532
-	http://localhost:3000/stylesheets/why.css?1270068893
-	http://localhost:3000/stylesheets/why.css?1270565202
+
+	http://localhost:3000/stylesheets/why.css?1270842972
+	http://localhost:3000/stylesheets/why.css?1271092114
+	http://localhost:3000/stylesheets/why.css?1271093158
 */
 
-#addrsWrapper {
-	margin-top:7px;
-	margin-left: -20px;
-	
-}
 
 div.announce a {
 	text-decoration: underline;
@@ -69,16 +14,53 @@ div.announce a {
 
 }
 
-div.announce p{
+div.announce {
 	background-color: #ffbd50;
 	color: #633508;
 	text-align: center;
 	height: 25px;
 	font-size: 11pt;
 	margin: 0;
-	padding: 0;
+	padding: 0px 0 2px 0;
 	font-weight: bold;
 }
+
+.announce a:hover {
+	color: white;
+}
+
+.rightCloseButton {
+	float: right;
+	margin-right: 50px;
+	width: 17px;
+	border: solid 2px #633508;
+}
+
+
+
+.alignright {
+	float: right;
+	margin-bottom: 1em;
+	margin-left: 1em;
+}
+
+.alignleft {
+	float: left;
+	margin-bottom: 1em;
+	margin-right: 1em;
+}
+
+#addrsWrapper {
+	margin-top:7px;
+	margin-left: -20px;
+	
+}
+
+div.hentry {
+	margin-left: 5px;
+	
+}
+
 
 div.announce p {
 	padding: 0;
@@ -1068,7 +1050,7 @@ span.ui-icon {
 
 
 #content_wrapper {
-	    min-height: 100%;
+	 min-height: 100%;
      height: auto !important;
      height: 100%;
      margin: 0px auto em;
@@ -1140,8 +1122,9 @@ a.ui-state-hover:hover {
 }
 
 body {
-background: #4a83e5 url(/images/body-bg.jpg) no-repeat scroll center 22px;
+background: #4a83e5 url(/images/body-bg-stretch.jpg) no-repeat scroll center 0px;
 }
+
 
 #whitespace {
 	background-color: white;

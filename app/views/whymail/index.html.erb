@@ -1,8 +1,9 @@
 
 
-
-
 <% content_for :html_head do %>
+
+
+					
 <%= stylesheet_link_tag 'stylish-select.css', :media => 'screen, projection' %> 
 
 
@@ -35,9 +36,25 @@ $(document).ready(function(){
 			$('#you-tube-how object').css("display", "block");
 
 
+
+			if ($.cookie('shadyemailbar') != 'closed') {
+				$('#topannounce').fadeIn('slow');
+
+				}
+				
+				
+
 		});	
 
 </script>
+
+
+<% @announce = 'Now you can hide your email and make it suspicious with 
+				<a href = "http://shadyemail.com">ShadyEmail.com</a> 
+				<a href = "#" onclick = "$.cookie(\'shadyemailbar\', \'closed\'); $(\'#topannounce\').fadeOut(\'slow\')" 	
+				class="rightCloseButton" title = "Click to close this Announcements">X</a>'%>
+					
+
 
 <% end %>
 

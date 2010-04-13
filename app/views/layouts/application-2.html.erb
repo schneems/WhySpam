@@ -23,9 +23,14 @@
   </head>
 
   <body id="<%= params[:controller] %>" class="<%= params[:action] %>">
-	<div class = "announce">
-		<p>Now you can hide your email and make it suspicious with <a href = "http://shadyemail.com">ShadyEmail.com</a></p>
-	</div>
+	<% if @announce %>
+		<div id = "topannounce" class = "announce" style = "display:none;">
+				<%= @announce %>   
+		</div>
+	<% end %>
+	
+	
+	
 	<div id = "content_wrapper" >
 		<div id="dialog">
 			<div id = "partial_update"></div>
@@ -61,6 +66,7 @@
 	<%= javascript_include_tag 'jquery.js' unless RAILS_ENV == 'production' %>
 
   <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js' %>
+  <%= javascript_include_tag 'jquery.cookie.js' %>
 
 
 
