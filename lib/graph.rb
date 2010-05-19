@@ -1,5 +1,59 @@
 module Graph
-  ##   http://dynamic.boingboing.net/cgi-bin/mt/mt-cp.cgi?__mode=register&blog_id=1&return_to=http%3A%2F%2Fboingboing.net%2F
+  
+  
+  def format_highchart(graph_hash = { }) ## high level call, takes in has of class and date returns formatted hash:class => "User", :months => 1
+    
+    month_data = getDateAndData(graph_hash)
+    highchart_array = []
+      0.upto((month_data[:date_array].size) - 1) do |count|
+        year =  month_data[:date_array][count].strftime("%Y")
+        month = month_data[:date_array][count].strftime("%m").to_i - 1
+        month = month.to_s
+        day = month_data[:date_array][count].strftime("%d")    
+        highchart_array << ["Date.UTC(#{year}, #{month}, #{day})", month_data[:array][count] ]
+      end
+    
+      highchart_hash = {:data => highchart_array, :count => month_data[:count]}
+      return highchart_hash
+  end
+  
+  
+  
+  def getDateAndData(graph_hash = { }) ## returns array of dates, array of counted objects, and sum of the count
+    days = getDays(graph_hash)
+    # how do we know the cache is up to date? 
+    # implement, last updated token, probably the easiest
+    
+    
+    
+    # if cache_is_up_to_date(graph_hash)
+      # return cache 
+        ## pull last date / count pair, and 
+      # else populate cache 
+    # end
+    
+    
+    found_objects = getModelArray(days, graph_hash) 
+    output_array = getModelCountArray(found_objects, days)
+    date_array = getDateTimeArray(days)
+    count = getTotalCount(output_array)
+    month_data = {:date_array => date_array.compact, :array => output_array.compact, :count => count }    
+    return month_data
+  end
+    
+ # cache_graph_data(:hello, "blah")
+ # p get_graph_data(:hello)
+ # p delete_graph_data(:hello)
+  
+  @@default_pstore_name = "graph_data.pstore"
+  
+  
+
+  
+  
+  
+  
+
   
 
   def getModelArray(days, graph_hash = {})
@@ -37,22 +91,9 @@ module Graph
         days = graph_hash[:days] || 0
         elapsed_time = months.month + days.day
         days = elapsed_time.to_i/60/60/24 
-             
       return days
     end
   
-  
-  #  def removeValues()
-  #    ## section removes all values that equal a certain number such as zeroes.
-  #    if !graph_hash[:removeValue].nil?
-  #      output_array.each_index do |index| 
-  #        if output_array[index] == graph_hash[:removeValue].to_i
-  #          output_array[index] = nil
-  #          date_array[index] = nil
-  #        end         
-  #      end
-  #    end
-  #  end
   
     def getTotalCount(output_array)
       count = 0
@@ -60,53 +101,47 @@ module Graph
       return count
     end
   
-    def getDateAndData(graph_hash = { })
-      days = getDays(graph_hash)
-      found_objects = getModelArray(days, graph_hash) 
-      output_array = getModelCountArray(found_objects, days)
-      date_array = getDateTimeArray(days)
-      count = getTotalCount(output_array)
-      
-      month_data = {:date_array => date_array.compact, :array => output_array.compact, :count => count }
-      return month_data
-    end
   
   
-    def format_highchart(graph_hash = { })
-      month_data = getDateAndData(graph_hash)
-      highchart_array = []
-    
-        0.upto((month_data[:date_array].size) - 1) do |count|
-          year =  month_data[:date_array][count].strftime("%Y")
-          month = month_data[:date_array][count].strftime("%m").to_i - 1
-          month = month.to_s
-          day = month_data[:date_array][count].strftime("%d")    
-          highchart_array << ["Date.UTC(#{year}, #{month}, #{day})", month_data[:array][count] ]
-        end
-      
-        highchart_hash = {:data => highchart_array, :count => month_data[:count]}
-        return highchart_hash
+  # def pcach_is_current?( input )
+  #   key = input[:class]
+  #   data = pget_data(key)
+  #   if data[:]
+  #     
+  #   end
+  # end
+  
+     def pdelete_data(key, options = {} )
+        store = options[:name].blank? ?  PStore.new(@@default_pstore_name) : PStore.new(options[:name])
+        store.transaction do 
+             return store.delete(key.to_sym) || Exception.new("#{key} does not exist in PStore cache")
+       end
+     end
+  
+  
+  
+  
+  
+  
+  def pcache_data(key, data, options = {} )
+     store = options[:name].blank? ?  PStore.new(@@default_pstore_name) : PStore.new(options[:name])
+     store.transaction do 
+       store[key]  = data
     end
+  end
+  
+  def pget_data(key, options = {} )
+     store = options[:name].blank? ?  PStore.new(@@default_pstore_name) : PStore.new(options[:name])
+     store.transaction do 
+       return store[key] 
+    end
+  end
+
+
+
+
+  
+
   
   end
   
-  # output_array.collect!{|item| item == 0 ? nil : item }
-  
-  
-  
-  #  output_array = []
-  #  
-  #  offset = days
-  #  
-  #  found_objects.each do |object|
-  #    index = object.created_at.day + offset
-  #    output_array[index].nil? ? output_array[index] = 1 : output_array[index] +=  1
-  #    
-  #    puts object.created_at.day
-  #  end
-  #  
-
-  #  
-  #  days.downto(0) do |date|
-  #    date_array[date]  
-  #  end

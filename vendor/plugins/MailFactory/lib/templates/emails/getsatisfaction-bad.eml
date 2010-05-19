@@ -1,0 +1,258 @@
+Delivered-To: foo@example.com
+Received: by 10.229.56.140 with SMTP id y12cs59197qcg;
+        Wed, 21 Apr 2010 09:21:16 -0700 (PDT)
+Received: from mr.google.com ([10.229.190.209])
+        by 10.229.190.209 with SMTP id dj17mr5115221qcb.52.1271866876182 (num_hops = 1);
+        Wed, 21 Apr 2010 09:21:16 -0700 (PDT)
+Received: by 10.229.190.209 with SMTP id dj17mr4066325qcb.52.1271866876048;
+        Wed, 21 Apr 2010 09:21:16 -0700 (PDT)
+X-Forwarded-To: foo@example.com
+X-Forwarded-For: foo2@example.com foo@example.com
+Delivered-To: foo2@example.com
+Received: by 10.229.80.78 with SMTP id s14cs123636qck;
+        Wed, 21 Apr 2010 09:21:15 -0700 (PDT)
+Received: by 10.114.252.28 with SMTP id z28mr361605wah.39.1271866868116;
+        Wed, 21 Apr 2010 09:21:08 -0700 (PDT)
+Return-Path: <mailman@mimimail14.com>
+Received: from mail.whyspam.me (mail.whyspam.me [174.143.235.251])
+        by mx.google.com with ESMTP id 9si10690438ywh.81.2010.04.21.09.21.06;
+        Wed, 21 Apr 2010 09:21:07 -0700 (PDT)
+Received-SPF: softfail (google.com: domain of transitioning mailman@mimimail14.com does not designate 174.143.235.251 as permitted sender) client-ip=174.143.235.251;
+DomainKey-Status: bad (test mode)
+Authentication-Results: mx.google.com; spf=softfail (google.com: domain of transitioning mailman@mimimail14.com does not designate 174.143.235.251 as permitted sender) smtp.mail=mailman@mimimail14.com; domainkeys=hardfail (test mode) header.From=autoMailer@whyspam.me
+Received: from whyspam.me (unknown [174.143.236.205])
+	(Authenticated sender: postmaster@whyspam.me)
+	by mail.whyspam.me (Postfix) with ESMTPSA id 40E5BE40F5
+	for <foo2@example.com>; Wed, 21 Apr 2010 16:21:06 +0000 (UTC)
+DomainKey-Signature: a=rsa-sha1; s=mail; d=whyspam.me; c=simple; q=dns;
+	b=nquU/dbrefwQB3I9ToZ/rwkSdNUvXmKLCsC+jPKVeje02YIFbWz061TcmVG+nQutb
+	6pTsM5kfyS9D7B6/W7F50Fhflf1UNrCNu/KcQUiwXpw1G7p9239YT7OD+iuwpNhBltN
+	MWJY72bMpfMSfMapFTjj9qwgSywifahP8nOXt/0=
+Date: Wed, 21 Apr 2010 16:21:06 +0000
+From: "Get Satisfaction     (Fwd: WhySpam.Me)" <autoMailer@whyspam.me>
+Reply-To: newsletter@getsatisfaction.com
+To: foo2@example.com
+Message-Id: <4bcf25f23049b_289e4d993c2b7@snowball.tmail>
+Subject: Get Satisfaction + Facebook
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_4bcf25f23819d_289e4d993c38c
+Dkim-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=mimi; d=madmimi.com; h=Date:From:To:Message-Id:Subject:Mime-Version:Content-Type:List-Unsubscribe; bh=RlBX78lpXTECCDoMZtcN09mAJFc=;
+	b=nVz3CcZBefPlNVZwMq6hwH8NnzwnvfpSA5S+ZlvknheuLg0d/LOh/fdSD9jnTccReEH3LBDN0WMb 1UBd7a0lXZ5R48T/YeMraIj99bLmKvneAVoJ55aw6S6S93zXVbJWetOF+5GIBg9AZcNadD3D2OE7 VQ+ivzkUDeWM9KWmhUs=
+X-Original-To: example@whyspam.me
+List-Unsubscribe: <mailto:mailman@mimimail1.com>
+Mimiaid: 973865320
+Delivered-To: postmaster@whyspam.me
+Precendence: bulk
+
+
+
+--mimepart_4bcf25f23819d_289e4d993c38c
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+INTRODUCING GET SATISFACTION + FACEBOOK
+
+Delight your followers, fans & customers inside their favorite social network.
+==========
+
+
+
+
+Facebook is where your most social customers are sharing questions. Get Satisfaction is where you’ve built a community to share answers. We’ve put them both together in the best way. Get Satisfaction - your community on your wall.
+
+ Watch the video here on [GetSatisfaction.tv](http://getsatisfaction.tv/2010/04/get-satisfaction-facebook-tab/).
+
+HERE’S WHY IT’S SO COOL.
+
+Built by Facebook experts at Involver.com with our API, the Get Satisfaction + Facebook app recreates the community experience [inside the fan page](http://bit.ly/GetSat-FB). 
+
+
+* **Permanence**: Unlike on the fan page wall, all content is permanently hosted inside the Get Satisfaction platform: Ideas, questions, official responses, and community engagement can be sustained over time.
+* **Scalability**: When a fan asks a question or has a problem, the Get Satisfaction + Facebook app first checks in your community to search the existing topics, before posting the new topic. The app displays the most relevant topics and answers to get your fans the right information.
+* **Content**: Wall conversations in Facebook and stored in Get Satisfaction, so you can syndicate community content where you need, whether for product marketing, service and support, or cultivating brand advocates. You can run analytics on this content to get even more insight into the value of your Facebook Fans.
+* **Visibility**: The conversation you’re having with your customers inside Facebook happens everywhere: on your website or anywhere you've placed a Get Satisfaction widget.  Google picks up community conversations, giving your business [targeted SEO](http://bit.ly/GetSat-FB).
+
+Small & Medium Business: Support Tab on the Facebook Fan Page
+==========
+
+
+The simplest and most effective way for small and medium companies to use the Fan Page App to support their customers on Facebook. [Click here](http://bit.ly/GetSat-FB) to sign up! 
+
+ 
+
+
+For the Enterprise: Social Engagement Hub
+==========
+
+
+A custom integration for brands and high volume communities that lets you fully brand the community experience inside Facebook fan pages with:
+
+* Brand customization and banner real estate in the fan page community
+* Configurable viral post messaging to maximize acquisition of new fans
+* Customizable tab name 
+* [Ask us](http://bit.ly/GetSat-FB) about other customization possibilities.
+
+ 
+
+Read the [press release](http://blog.getsatisfaction.com/press-releases/get_satisfaction_facebook).
+View this email on the web here:
+http://mim.io/56863?fe=1&pact=973865320
+Unsubscribe:
+http://go.madmimi.com/opt_out?fe=1&pact=973865320&amx=175101608
+You can also forward to a friend:
+http://go.madmimi.com/forward/973865320?amx=175101608
+
+Get Satisfaction | 
+
+______________________________________________________________
+      Forwarded from WhySpam.Me: to block emails through example@whyspam.me, 
+      go to http://www.whyspam.me/manage and delete this disposable address.
+--mimepart_4bcf25f23819d_289e4d993c38c
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <title>Get Satisfaction + Facebook</title>
+
+
+
+
+	
+</head>
+<body style="background-color: #B1C7FF;">
+
+<br />
+
+
+
+
+
+
+<div id="madmimi_outer_wrapper" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0;">
+	<table cellspacing="0" id="madmimi_wrapper" align="center" style="background: none; background-color: #FFFFFF; border: 1px solid #EFEFEF; border-collapse: collapse; border-color: #EFEFEF; border-spacing: 0; margin-bottom: 0; margin-left: auto; margin-right: auto; margin-top: 0; width: 590px;" width="590" cellpadding="0">
+		<tr>
+			<td style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">
+				<table cellspacing="0" id="madmimi_header" align="center" style="background: none; border-collapse: collapse; border-spacing: 0; font-family: Helvetica Neue, Helvetica, Arial, Verdana, sans-serif; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; width: 590px;" width="590" cellpadding="0">
+					<tr>
+						<td id="madmimi_header_content" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">
+							
+        
+					
+					<a href="http://go.madmimi.com/redirects/6a7b8a967a431f81288428e11dddebe3?pa=973865320" style="color: #597BB7;">
+						<img src="http://madmimi.com/system/promotion_images/0039/6113/social_business_community.png" height="170" alt="Social_business_community" style="border: 0;" width="590" /></a>
+					
+				
+
+						</td>
+					</tr>
+				</table>
+				<table cellspacing="0" id="madmimi_body" align="center" style="background: none; border-collapse: collapse; border-spacing: 0; font-family: Helvetica Neue, Helvetica, Arial, Verdana, sans-serif; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; width: 590px;" width="590" cellpadding="0">
+					<tr valign="top">
+						<td id="madmimi_body_content" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 8px 18px 8px 18px;" width="566">
+							
+	<div class="module header" style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><table style="border-collapse: collapse; border-spacing: 0; margin: auto;" width="554"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;" width="554"><div class="madmimi-header-container" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><h2 style="color: #C85206; font-family: Georgia; font-size: 21px; font-weight: bold; line-height: 1.2em; margin-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 10px; padding: 0;">Introducing Get Satisfaction + Facebook</h2></div></td></tr></table></div><div class="module combo-right" style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><table style="border-collapse: collapse; border-spacing: 0; margin: auto;" width="554"><tr><td style="clear: both; margin-bottom: 0; margi
+ n-left: 0; margin-right: 0; margin-top: 0; padding: 0;" width="554"><!--[if gte mso 9]><table height="180" align="right" width="180" style="border-collapse: collapse; border-spacing: 0; float: right; margin: auto;"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><![endif]--><div class="madmimi-image-container" style="float: right; margin-bottom: 15px; margin-left: 20px; margin-right: 0; margin-top: 4px; padding: 0;"><a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973865320" target="_blank" style="color: #597BB7;"><img src="http://madmimi.com/system/promotion_images/0041/1806/gs_square.jpg" height="180" style="border: 0;" width="180" /></a></div><!--[if gte mso 9]></td></tr></table><![endif]--><div class="madmimi-text-container" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><h1 style="color: #000000; font-family: Helvetica; font-size: 18px; font-weig
+ ht: bold; line-height: 1.3em; margin-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">Delight your followers, fans &amp; customers inside their favorite social network.</h1>
+
+<p style="color: #3A352A; font-family: Helvetica; font-size: 12px; line-height: 1.5em; margin-bottom: 1.3em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-top: 3px; vertical-align: top;">Facebook is where your most social customers are sharing questions. Get Satisfaction is where you’ve built a community to share answers. We’ve put them both together in the best way. Get Satisfaction - your community on your wall.</p>
+
+<p style="color: #3A352A; font-family: Helvetica; font-size: 12px; line-height: 1.5em; margin-bottom: 1.3em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-top: 3px; vertical-align: top;">Watch the video here on <a href="http://go.madmimi.com/redirects/4d07d9f3fd5b7181bf13b330f783b5a8?pa=973865320" target="_blank" style="color: #597BB7; text-decoration: underline;">GetSatisfaction.tv</a>.</p></div></td></tr></table></div><div class="module header" style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><table style="border-collapse: collapse; border-spacing: 0; margin: auto;" width="554"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;" width="554"><div class="madmimi-header-container" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><h2 style="color: #C85206; font-family: Georgia; font-size: 21px; font-weight: bold; lin
+ e-height: 1.2em; margin-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 10px; padding: 0;">Here’s why it’s so cool.</h2></div></td></tr></table></div><div class="module combo-left" style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><table style="border-collapse: collapse; border-spacing: 0; margin: auto;" width="554"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;" width="554"><!--[if gte mso 9]><table height="180" align="left" width="179" style="border-collapse: collapse; border-spacing: 0; float: left; margin: auto;"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><![endif]--><div class="madmimi-image-container" style="float: left; margin-bottom: 15px; margin-left: 0; margin-right: 20px; margin-top: 4px; padding: 0;"><a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973
+ 865320" target="_blank" style="color: #597BB7;"><img src="http://madmimi.com/system/promotion_images/0041/1807/Facebook_Logo.png" height="180" style="border: 0;" width="179" /></a></div><!--[if gte mso 9]></td></tr></table><![endif]--><div class="madmimi-text-container" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><p style="color: #3A352A; font-family: Helvetica; font-size: 12px; line-height: 1.5em; margin-bottom: 1.3em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-top: 3px; vertical-align: top;">Built by Facebook experts at Involver.com with our API, the Get Satisfaction + Facebook app recreates the community experience <a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973865320" target="_blank" style="color: #597BB7; text-decoration: underline;">inside the fan page</a>. </p>
+
+<ul style="line-height: 1.5em; margin-bottom: 1em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;"><strong style="font-style: normal; font-weight: bold;">Permanence</strong>: Unlike on the fan page wall, all content is permanently hosted inside the Get Satisfaction platform: Ideas, questions, official responses, and community engagement can be sustained over time.</li>
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;"><strong style="font-style: normal; font-weight: bold;">Scalability</strong>: When a fan asks a question or has a problem, the Get Satisfaction + Facebook app first checks in your community to search the existing topics, before posting the new topic. The app displays the most relevant topics and answers to get your fans the right information.</li>
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;"><strong style="font-style: normal; font-weight: bold;">Content</strong>: Wall conversations in Facebook and stored in Get Satisfaction, so you can syndicate community content where you need, whether for product marketing, service and support, or cultivating brand advocates. You can run analytics on this content to get even more insight into the value of your Facebook Fans.</li>
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;"><strong style="font-style: normal; font-weight: bold;">Visibility</strong>: The conversation you’re having with your customers inside Facebook happens everywhere: on your website or anywhere you've placed a Get Satisfaction widget.  Google picks up community conversations, giving your business <a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973865320" target="_blank" style="color: #597BB7; text-decoration: underline;">targeted SEO</a>.</li>
+</ul></div></td></tr></table></div><div class="module combo-left" style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><table style="border-collapse: collapse; border-spacing: 0; margin: auto;" width="554"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;" width="554"><!--[if gte mso 9]><table height="46" align="left" width="178" style="border-collapse: collapse; border-spacing: 0; float: left; margin: auto;"><tr><td style="clear: both; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><![endif]--><div class="madmimi-image-container" style="float: left; margin-bottom: 15px; margin-left: 0; margin-right: 20px; margin-top: 4px; padding: 0;"><a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973865320" target="_blank" style="color: #597BB7;"><img src="http://madmimi.com/system/promotion_images/0041/1808/seeplans.png" height=
+ "46" style="border: 0;" width="178" /></a><p style="clear: both; color: #3A352A; font-family: Helvetica; font-size: 12px; font-style: italic; line-height: 1.5em; margin-bottom: 1.5em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; width: 178px;">See Plans and Pricing.</p></div><!--[if gte mso 9]></td></tr></table><![endif]--><div class="madmimi-text-container" style="margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;"><h1 style="color: #000000; font-family: Helvetica; font-size: 18px; font-weight: bold; line-height: 1.3em; margin-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">Small &amp; Medium Business: Support Tab on the Facebook Fan Page</h1>
+
+<p style="color: #3A352A; font-family: Helvetica; font-size: 12px; line-height: 1.5em; margin-bottom: 1.3em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-top: 3px; vertical-align: top;">The simplest and most effective way for small and medium companies to use the Fan Page App to support their customers on Facebook. <a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973865320" target="_blank" style="color: #597BB7; text-decoration: underline;">Click here</a> to sign up! </p>
+
+<h1 style="color: #000000; font-family: Helvetica; font-size: 18px; font-weight: bold; line-height: 1.3em; margin-bottom: 10px; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">For the Enterprise: Social Engagement Hub</h1>
+
+<p style="color: #3A352A; font-family: Helvetica; font-size: 12px; line-height: 1.5em; margin-bottom: 1.3em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-top: 3px; vertical-align: top;">A custom integration for brands and high volume communities that lets you fully brand the community experience inside Facebook fan pages with:</p>
+
+<ul style="line-height: 1.5em; margin-bottom: 1em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;">Brand customization and banner real estate in the fan page community</li>
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;">Configurable viral post messaging to maximize acquisition of new fans</li>
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;">Customizable tab name </li>
+<li style="color: #3A352A; font-family: Helvetica; font-size: 12px; font-weight: normal; list-style: none; list-style-type: square; margin-bottom: 0.7em; margin-left: 30px; margin-right: 0; margin-top: 0; padding: 0;"><a href="http://go.madmimi.com/redirects/7c98036cc50d2eea322832e6d32b55f3?pa=973865320" target="_blank" style="color: #597BB7; text-decoration: underline;">Ask us</a> about other customization possibilities.</li>
+</ul>
+
+<p style="color: #3A352A; font-family: Helvetica; font-size: 12px; line-height: 1.5em; margin-bottom: 1.3em; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-top: 3px; vertical-align: top;">Read the <a href="http://go.madmimi.com/redirects/def99c611c15bd7e61eacb51b92c1fe7?pa=973865320" target="_blank" style="color: #597BB7; text-decoration: underline;">press release</a>.</p></div></td></tr></table></div>
+
+						</td>
+					</tr>
+				</table>
+				<table cellspacing="0" id="madmimi_footer" style="background: none; border-collapse: collapse; border-spacing: 0; font-family: Helvetica Neue, Helvetica, Arial, Verdana, sans-serif; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; width: 590px;" width="590" cellpadding="0">
+					<tr>
+						<td id="madmimi_footer_content" style="background-color: #FFFFFF; color: #222; font-family: Helvetica Neue, Helvetica, Arial, Verdana, sans-serif; font-size: 11px; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; padding-top: 10px; text-align: left;" width="590">
+							
+<div class="footer" style="color: #999999; font-family: Helvetica; font-size: 11px; margin-bottom: 0; margin-left: 0; margin-right: 0; margin-top: 0; padding: 0;">&copy;2010 Get Satisfaction | </div>
+
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+<table align="center" style="margin-top:10px;" width="592">
+  <tr>
+	  <td align="center">
+			<p class="toolbar" style="background-color: #FFFFFF; border-color: #EFEFEF; border-width: 2px; color: #999999; font-family: Helvetica; font-size: 11px; line-height: 1.2em; padding: 8px;">
+				This email was sent to <a style="color: #999999; font-family: Helvetica; font-size: 11px;">example@whyspam.me</a>. 
+				To ensure that you continue receiving our emails, please add us to your address book or safe list. View this email on the web
+				<a href="http://mim.io/56863?fe=1&pact=973865320" style="color: #999999; font-family: Helvetica; font-size: 11px; text-decoration: underline;">here</a>.
+				You can also <a href="http://go.madmimi.com/forward/973865320?amx=175101608" style="color: #999999; font-family: Helvetica; font-size: 11px; text-decoration: underline;">forward to a friend</a>.
+				<br />
+				<a href="http://go.madmimi.com/opt_out?fe=1&pact=973865320&amx=175101608" style="color: #999999; font-family: Helvetica; font-size: 11px; font-weight: bold; text-decoration: underline;">Unsubscribe</a>
+      </p>
+    </td>
+  </tr>
+</table>
+
+
+
+<table align="center" style="margin-top:8px;" width="158">
+	<tr>
+		<td align="center">
+			<p class="toolbar" style="background-color: #FFFFFF; border-color: #EFEFEF; color: #999999; font-family: Helvetica; font-size: 11px; font-weight: bold; padding: 4px; text-align: center; width: 158px;">Powered by <a href="http://madmimi.com/?fe=1&pact=973865320&utm_source=Get+Satisfaction&utm_medium=customer+promotion&utm_campaign=Get+Satisfaction+%2B+Facebook" style="color: #999999; font-family: Helvetica; font-size: 11px;">Mad Mimi</a>&reg;</p>
+		</td>
+	</tr>
+</table>
+
+<p style="visibility:hidden;">
+<img src="http://go.madmimi.com/images/973865320/beacon.gif" alt="" border="0" />
+</p>
+
+</body>
+</html>
+<div class = 'wrapper' style = 'min-height: 100%;	height: auto !important;height: 100%;margin: 0 auto -142px;'>
+                <div class = 'push' style = 'height: 142px;'> &nbsp</div>
+              </div><!-- wrapper -->
+              <div class = 'footer' style = 'height: 142px;height:100%; color:black; background-color:white;' >                      
+                <hr />
+                <p>Forwarded from WhySpam.Me: to block emails through example@whyspam.me
+                go to <a href = 'http://www.whyspam.me/manage'>Manage Emails</a> and delete this disposable address.</p>
+              </div>
+--mimepart_4bcf25f23819d_289e4d993c38c--

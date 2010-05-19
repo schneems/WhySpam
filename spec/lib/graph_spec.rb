@@ -1,7 +1,18 @@
+
+
+
 require File.expand_path(File.dirname(__FILE__) + '../../spec_helper')
 include Graph
 
 describe "Graph" do 
+  
+  describe "cache_graph_data" do
+    # can take a different name
+    it "should write data to pstore" do
+      
+      cache_graph_data(data)
+    end
+  end
   
   describe "getDateTimeArray" do
     it "should give me an array of dates and times" do

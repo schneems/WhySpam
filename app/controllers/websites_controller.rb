@@ -11,11 +11,7 @@ class WebsitesController < ApplicationController
     @website = Website.find(:first, :include => [{:surveys => :user}], :conditions => ["id = ?", website_id])||Website.find(:first, :include => [{:surveys => :user}], :conditions => ["url = ?", @myurl])
     
     if !@website.nil?      
-
-
       @whymail_count = Whymail.find(:all, :conditions => ["website = ?", @myurl ]).count
-      
-      
       @percent_deleted = 100 * @website.surveys.count / (@website.surveys.count + @whymail_count ) if (@whymail_count  + @website.surveys.count) != 0 
       @percent_deleted = @percent_deleted||100 
     end  
@@ -60,9 +56,12 @@ class WebsitesController < ApplicationController
     if params[:query]
       options[:conditions] = [ "LOWER(url) LIKE :query", {:query => "%#{params[:query]}%"} ]
       options[:order] = 'created_at ASC'
-      options[:limit] = 100
+    #  options[:limit] = 1000
       options[:include] = :surveys
     end
+    
+    options[:limit] = 1000
+    
     
     @websites = Website.find(:all,  options)
     respond_to do |format|

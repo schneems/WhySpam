@@ -76,8 +76,28 @@ class Ticket < ActiveRecord::Base
 
 
 
-    
 
+  def testing 
+    
+    reload!
+    mail = TMail::Mail.parse(readEmail('getsatisfaction-good.eml'))
+    newEmail = mail
+    newEmail.to = "getatest@testing.com"  
+    newEmail["Reply-To"] = "testamfication@test.com" ## must come before newEmail.from
+    Fwdemail.change_friendly_from( newEmail , "autoMailer@whyspam.me", :append_message => "     (Fwd: WhySpam.Me)")
+  #  plain = "______________________________________________________________Forwarded from WhySpam.Me: to block emails through , go to http://www.whyspam.me/manage and delete this disposable address."
+    plain = "alsdkjflaskdjflaksdjflkasdjflkasdjf"
+  #  html = "= 
+  #  =3Cdiv class =3D 'blah'=3Ehello=3C/div=3E=="
+  html = "<><><><>><>><><+++++++++====><><><><><><="
+         #   Fwdemail.appendfooter(newEmail)    
+         
+            puts "=========================lookatme====================================="
+            Fwdemail.appendfooter(newEmail, {:html => html, :plain => plain} )
+            MyMailer.deliver(newEmail)  # MyMailer.deliver_forward(self.whymail.user.email, whymail_address, email)
+            File.open("failMail.eml", 'w') {|f| f.write(getMockEmails.last)}
+            
+      end
   
 
     

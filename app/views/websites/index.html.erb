@@ -47,7 +47,7 @@
 		<% for website in @websites %>
 			<tr  class="clickable"  onclick = "window.location.href = '<%=  website_path(website.id) %>' ">
 				<td><%= website.created_at.strftime("%m/%d/%Y") %></td>
-				<td><%= link_to "#{h website.url}", show_website_path(:url => website.url) %></td>
+				<td><%= link_to "#{h website.url[0,30]}", show_website_path(:url => website.url) %></td>
 			</tr>
 		
 		<% end %>

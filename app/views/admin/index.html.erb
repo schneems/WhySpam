@@ -65,51 +65,7 @@
 		    // ===========================================================
 
 		
-				date_array = <%= @tickets[:data].to_json.gsub!(/\"/, '') %>;
-					var chart = new Highcharts.Chart({
-					   chart: {
-					      renderTo: 'tickets-per-day',
-					   },
-					        title: {
-					      text: 'New Tickets Per Day'
-					   },
-					        subtitle: {
-					      text: 'New Tickets, they\'re awesome and stuff'
-					   },
-					   xAxis: {
-					      type: 'datetime',
-					      title: {
-					         text: null
-					      }
-					   },
-					   yAxis: {
-					      title: {
-					         text: 'Tickets'
-					      },
-					      min: 0,
-					      showFirstLabel: false
-					   },
-					   tooltip: {
-					      formatter: function() {
-					         return Highcharts.numberFormat(this.y, 0) + " Tickets on <br />" + Highcharts.dateFormat('%A %B %e %Y', this.x) + ':<br/>';
-					      }
-					   },
-					   legend: {
-					      enabled: false
-					   },
-					   plotOptions: {
-					      spline: {
-					         marker: {
-					            enable: false
-					         }
-					      }
-					   },
 
-					   series: [{
-					      data: date_array
-					   }]
-					});
-	
 	
 	
 					whymail_array = <%= @whymails[:data].to_json.gsub!(/\"/, '') %>;
@@ -276,7 +232,7 @@ Users Total 30 Day: <%= @users[:count] %>
 <br />
 Whymail Total 30 Day: <%= @whymails[:count]  %>
 <br />
-Ticket Total 30 Day: <%= @tickets[:count]  %>
+Ticket Total 30 Day: <%# @tickets[:count]  %>
 <br />
 Websites Total 30 Day: <%= @websites[:count]  %>
 

@@ -1,6 +1,7 @@
 class MyMailer < ActionMailer::Base
   
   include Cleanurl
+  
 
   def shady(from, to , subject, message)
     @from         = from
@@ -12,12 +13,25 @@ class MyMailer < ActionMailer::Base
     @message         = message
     
   end
+  
+  class Foo < ActionMailer::Base
+      puts "fffffffff"
+      $blah
+      def foo(blah)
+        $blah =  quoted_printable(blah, 'utf-8')
+        puts $blah
+      end
+     # return quoted_printable(foo, 'utf-8')
+  end
+  
 
 
   
   def receive(email) 
     Ticket.find_or_create_and_send(email)
   end
+  
+  
   
     # ====================================================================================
     def mypartworker(p)      
@@ -112,7 +126,6 @@ class MyMailer < ActionMailer::Base
   
   
   def forward(to_email_address, whymail_address, email)
-    
     @recipients   = to_email_address
     @from         = "autoMailer@whyspam.me"
     headers         "Reply-to" => email.from.first
