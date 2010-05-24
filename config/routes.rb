@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   map.view_all_spam '/view_all_spam', :controller => 'whymail', :action => ''
   
   
-  map.root :controller => 'whymail'
+  map.root :controller => 'whymail', :action => 'index'
   
   map.home '/', :controller => 'whymail', :action => 'index'
   

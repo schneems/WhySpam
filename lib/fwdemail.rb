@@ -19,17 +19,20 @@ module Fwdemail
         end
     else
         if part.content_type == "text/html"
-          
-          
-          
-          ## by setting creating a new TMail object and setting its body, TMail will encode  the body for us.
-          tempTMail = TMail::Mail.new
-          
-          tempTMail.body =  footer[:html] unless footer[:html].nil?      
-          ## calling part.encoded will return encoded body wich contains an extra set of Content-Type:, Content-Transfer-Encoding:, and Content-Disposition:
-          part.body = part.encoded.gsub(/Content-Type:(.)+$|Content-Transfer-Encoding:(.)+$|Content-Disposition:(.)+$/, "") +  tempTMail.encoded
+       #   
+       #   
+       #   
+       #   ## by setting creating a new TMail object and setting its body, TMail will encode  the body for us.
+       #   tempTMail = TMail::Mail.new
+       #   
+       #   tempTMail.body =  footer[:html] unless footer[:html].nil?      
+       #   ## calling part.encoded will return encoded body wich contains an extra set of Content-Type:, Content-Transfer-Encoding:, and Content-Disposition:
+       #   part.body = part.encoded.gsub(/Content-Type:(.)+$|Content-Transfer-Encoding:(.)+$|Content-Disposition:(.)+$/, "") +  tempTMail.encoded
+       
+            part.body  = part.body + footer[:html].to_s
+            
         elsif part.content_type == "text/plain"          
-            part.body = part.encoded + footer[:plain] unless footer[:plain].nil?
+            part.body  = part.body + footer[:plain].to_s
         end  
       end 
     end

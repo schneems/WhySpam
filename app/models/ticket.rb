@@ -68,6 +68,7 @@ class Ticket < ActiveRecord::Base
               </div>"
 
       Fwdemail.appendfooter(newEmail, {:html => html, :plain => plain} )
+  
       
       MyMailer.deliver(newEmail)  # MyMailer.deliver_forward(self.whymail.user.email, whymail_address, email)  
     end

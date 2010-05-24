@@ -1,10 +1,9 @@
 /* @override 
-
 	http://localhost:3000/stylesheets/why.css?1270842972
 	http://localhost:3000/stylesheets/why.css?1271092114
 	http://localhost:3000/stylesheets/why.css?1271093158
+	http://localhost:3000/stylesheets/why.css?1271093647
 */
-
 
 div.announce a {
 	text-decoration: underline;
@@ -285,7 +284,7 @@ table {
 }
 
 #youtube-video {
-	margin: -40px 0 40px 20px;
+	margin: -40px 0 0px 20px;
 	height: 233px;
 	width: 370px;
 	border: 1px solid #8b8b8b;
