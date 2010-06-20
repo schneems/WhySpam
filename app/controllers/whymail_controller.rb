@@ -21,7 +21,7 @@ class WhymailController < ApplicationController
               @extra_message = configatron.session_count_error
               @whymail = Whymail.new
           else
-              bingo!("whymail")
+              bingo!("video")
               @whymail = Whymail.create_with_user(email, website, atAddress)
           end
         render :partial => "create" 
