@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   layout "application-2", :except => [:test, :localtest, :foreign_show]  
   helper :all # include all helpers, all the time
+  before_filter :set_abingo_identity
   
   
   
@@ -84,6 +85,16 @@ class ApplicationController < ActionController::Base
          activate_authlogic
          @error = 500
          render :template => "/static/notfound.html.erb", :status => @error     
+   end
+   
+   
+
+   def set_abingo_identity
+     if (session[:abingo_identity])
+       Abingo.identity = session[:abingo_identity]
+     else
+       session[:abingo_identity] = Abingo.identity = rand(10 ** 10).to_i
+     end
    end
     
     

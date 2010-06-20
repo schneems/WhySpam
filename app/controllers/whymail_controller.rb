@@ -5,7 +5,7 @@ class WhymailController < ApplicationController
   def index
     @user = User.new
     # Abingo.options[:enable_specification] = true 
-    # params[:video] = fals
+    # params[:video] = false
   end
    
    
