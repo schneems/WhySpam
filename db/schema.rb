@@ -9,7 +9,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100307201122) do
+ActiveRecord::Schema.define(:version => 20100620021445) do
+
+  create_table "alternatives", :force => true do |t|
+    t.integer "experiment_id"
+    t.string  "content"
+    t.string  "lookup",        :limit => 32
+    t.integer "weight",                      :default => 1
+    t.integer "participants",                :default => 0
+    t.integer "conversions",                 :default => 0
+  end
+
+  add_index "alternatives", ["experiment_id"], :name => "index_alternatives_on_experiment_id", :limit => {"experiment_id"=>nil}
+  add_index "alternatives", ["lookup"], :name => "index_alternatives_on_lookup", :limit => {"lookup"=>nil}
 
   create_table "dictionaries", :force => true do |t|
     t.string   "word"
@@ -19,6 +31,15 @@ ActiveRecord::Schema.define(:version => 20100307201122) do
     t.string   "category"
     t.integer  "length"
   end
+
+  create_table "experiments", :force => true do |t|
+    t.string   "test_name"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "experiments", ["test_name"], :name => "index_experiments_on_test_name", :limit => {"test_name"=>nil}
 
   create_table "forms", :force => true do |t|
     t.text     "comments"
@@ -67,7 +88,19 @@ ActiveRecord::Schema.define(:version => 20100307201122) do
     t.text     "email"
   end
 
+  add_index "tickets", ["to_email", "body", "from_email"], :name => "index_tickets_on_to_email_and_body_and_from_email", :unique => true, :limit => {"body"=>"255", "to_email"=>"255", "from_email"=>"255"}
   add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
+
+  create_table "usedwhymail", :force => true do |t|
+    t.string   "website"
+    t.string   "email"
+    t.string   "main_url"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "usedwhymail", ["email"], :name => "index_usedwhymail_on_email", :limit => {"email"=>nil}
 
   create_table "users", :force => true do |t|
     t.datetime "created_at"
@@ -116,5 +149,7 @@ ActiveRecord::Schema.define(:version => 20100307201122) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "whymail", ["email"], :name => "index_whymail_on_email", :limit => {"email"=>nil}
 
 end

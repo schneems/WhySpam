@@ -85,14 +85,19 @@ $(document).ready(function(){
 			<h4>Hide your Email <span class = "amp">&</span> Expose Spammers</h4>
 			</div>
 		</div>
-		<div class = "span-3 pull-1">
-			<a href = "http://www.killerstartups.com/Web-App-Tools/whyspam-me-have-a-disposable-email-for-free" rel="nofollow">
-				<img src = "images/killerstartups.jpg" />
-			</a>
+		<div class = "span-11 ">
+			<br />
+			Hide your email and make it questionably suspicious using <a href="http://shadyemail.com">ShadyEmail.com</a>
+			<!-- 
+				<a href = "http://www.killerstartups.com/Web-App-Tools/whyspam-me-have-a-disposable-email-for-free" rel="nofollow">
+					<img src = "images/killerstartups.jpg" />
+				</a>
+			-->
 		</div>
 
 	</div>
 	
+
 
 
 
@@ -145,15 +150,21 @@ $(document).ready(function(){
 
 		</div>
 		
-		<div class = "span-9 last" id = "youtube-video">
+		<% if ab_test('video', :conversion => 'login') %>
+		<% @video_show = true %>
+		
+			<div class = "span-9 last" id = "youtube-video">
 			
-			<object width="370" height="233" ><param name="movie" value="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="370" height="233"></embed></object>
+				<object width="370" height="233" ><param name="movie" value="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/SLJHPMxgAWU&hl=en_US&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="370" height="233"></embed></object>
 			
 			
-		</div>
-		<div class = "center span-9 prepend-1">
-			Video by: <a href = "http://designacast.com">DesignaCast.com</a>
-		</div>
+			</div>
+			<div class = "center span-9 prepend-1">
+				Video by: <a href = "http://designacast.com">DesignaCast.com</a>
+			</div>
+		
+		<% end %>
+		
 		<%# render :partial => "static/ads"%>
 		
 		<br />
@@ -218,19 +229,20 @@ $(document).ready(function(){
 
 				<div class = "prepend-1 span-17">
 						<br />
-						<p><h3>How Do I Generate A Disposable Email?</h3></p>
-
 						
-						<p> 
-						<div id = "you-tube-how">
-<object width="560" height="380"><param name="movie" value="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="380"></embed></object>
+						<% if !@video_show.blank? %>
+							<p><h3>How Do I Generate A Disposable Email?</h3></p>
+							<p> 							
+							<div id = "you-tube-how">
+	<object width="560" height="380"><param name="movie" value="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/DtjOTK-_PJY&hl=en_US&fs=1&color1=0x2b405b&color2=0x6b8ab6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="560" height="380"></embed></object>
 
 
 
-						</div>
-						<div class = "center span-9 prepend-3">
-							Video by: <a href = "http://designacast.com">DesignaCast.com</a>
-						</div>	
+							</div>
+							<div class = "center span-9 prepend-3">
+								Video by: <a href = "http://designacast.com">DesignaCast.com</a>
+							</div>	
+						<% end %>
 				</div>
 
 

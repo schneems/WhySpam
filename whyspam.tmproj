@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>db/migrate/20091223193335_add_unique_index.rb</string>
+	<string>db/migrate/20090224040619_create_tickets.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -13,6 +13,8 @@
 			<string>whyspam</string>
 			<key>regexFolderFilter</key>
 			<string>!.*/(\.[^/]*|CVS|_darcs|_MTN|\{arch\}|blib|.*~\.nib|.*\.(framework|app|pbproj|pbxproj|xcode(proj)?|bundle))$</string>
+			<key>selected</key>
+			<true/>
 			<key>sourceDirectory</key>
 			<string></string>
 		</dict>
@@ -415,20 +417,6 @@
 			<key>firstVisibleLine</key>
 			<integer>1</integer>
 		</dict>
-		<key>db/migrate/20090330035403_create_surveys.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>15</integer>
-				<key>line</key>
-				<integer>11</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>db/migrate/20090330041207_create_websites.rb</key>
 		<dict>
 			<key>caret</key>
@@ -518,9 +506,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>4</integer>
+				<integer>32</integer>
 				<key>line</key>
-				<integer>4</integer>
+				<integer>2</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -767,6 +755,20 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>public/dispatch.cgi</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>public/javascripts/jquery.cookie.js</key>
 		<dict>
 			<key>caret</key>
@@ -972,29 +974,10 @@
 		<string>deploy_readme</string>
 		<string>app/views/whymail/index.html.erb</string>
 		<string>db/migrate/20090224040619_create_tickets.rb</string>
-		<string>db/migrate/20090330035403_create_surveys.rb</string>
-		<string>db/migrate/20090330041207_create_websites.rb</string>
-		<string>db/migrate/20090408035914_create_simple_captcha_data.rb</string>
-		<string>db/migrate/20090415022510_create_forms.rb</string>
-		<string>db/migrate/20090524194237_add_tickets_to_forms.rb</string>
-		<string>db/migrate/20090730034054_website_grade.rb</string>
-		<string>db/migrate/20090923003235_create_permissions.rb</string>
-		<string>db/migrate/20091223193335_add_unique_index.rb</string>
-		<string>cucumber.yml</string>
-		<string>config/schedule.rb</string>
-		<string>app/helpers/application_helper.rb</string>
-		<string>config/config.yml</string>
-		<string>config/mailer_daemon.yml</string>
-		<string>lib/mail_fixture.rb</string>
-		<string>lib/tasks/getmail.rake</string>
-		<string>vendor/rails/railties/environments/environment.rb</string>
-		<string>config/environment.rb</string>
-		<string>spec/controllers/user_sessions_controller_spec.rb</string>
-		<string>app/models/user_session.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{366, 12}, {1090, 384}}</string>
+	<string>{{374, 161}, {1090, 384}}</string>
 </dict>
 </plist>

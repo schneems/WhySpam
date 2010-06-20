@@ -16,7 +16,8 @@ describe User do
       puts user.email
       user.save
       user.email.should == user.password
-      user.should be_valid
+      user.should be_valid      
+      
     end
     
     it "should be able to create an account with no login" do

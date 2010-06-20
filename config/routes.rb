@@ -21,7 +21,10 @@ ActionController::Routing::Routes.draw do |map|
    map.resource :password_reset
    map.resources :users
    map.resource :user_session
-
+   
+   map.abingo '/abingo', :controller =>  'abingo_dashboard'
+  
+#   map.abingoTest "/abingo/:action/:id", :controller=> :abingo_dashboard
 
 
 

@@ -4,6 +4,8 @@ class WhymailController < ApplicationController
   
   def index
     @user = User.new
+    # Abingo.options[:enable_specification] = true 
+    # params[:video] = fals
   end
    
    
@@ -19,6 +21,7 @@ class WhymailController < ApplicationController
               @extra_message = configatron.session_count_error
               @whymail = Whymail.new
           else
+              bingo!("whymail")
               @whymail = Whymail.create_with_user(email, website, atAddress)
           end
         render :partial => "create" 
