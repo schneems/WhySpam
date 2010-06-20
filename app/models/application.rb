@@ -4,6 +4,7 @@ class Application < ActiveRecord::Base
   
   before_filter :set_abingo_identity
   
+  protected
   def set_abingo_identity
     if (session[:abingo_identity])
       Abingo.identity = session[:abingo_identity]
