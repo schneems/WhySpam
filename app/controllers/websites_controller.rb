@@ -49,13 +49,13 @@ class WebsitesController < ApplicationController
 
    def index
     options = {
-      :order => 'created_at ASC'
+      :order => 'created_at DESC'
       # :page => params[:page]
     }
 
     if params[:query]
       options[:conditions] = [ "LOWER(url) LIKE :query", {:query => "%#{params[:query]}%"} ]
-      options[:order] = 'created_at ASC'
+      options[:order] = 'created_at DESC'
     #  options[:limit] = 1000
       options[:include] = :surveys
     end

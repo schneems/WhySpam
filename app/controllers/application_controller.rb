@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   layout "application-2", :except => [:test, :localtest, :foreign_show]  
   helper :all # include all helpers, all the time
+ 
   before_filter :set_abingo_identity
   
   
