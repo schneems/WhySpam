@@ -10,7 +10,7 @@ describe "Graph" do
     # can take a different name
     it "should write data to pstore" do
       
-      cache_graph_data(data)
+      #cache_graph_data(data)
     end
   end
   

@@ -92,9 +92,9 @@ describe ShadyemailSendController do
      end
      
      
-     it "fail" do 
-       false.should == true
-     end
+ #    it "fail" do 
+ #      false.should == true
+ #    end
      
    
    end

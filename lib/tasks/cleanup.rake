@@ -1,5 +1,16 @@
 namespace :cleanup do 
 
+  desc "clean out Tickets over 30 days old"
+    task :old_tickets => :environment do 
+      tickets = Ticket.find(:all, :conditions => ["created_at < ?", 30.days.ago ])
+      puts "Deleteing #{tickets.count} old (30 days or more) tickets"
+      tickets.each do |ticket|
+        ticket.delete
+      end
+    end
+    
+    
+  
 
   # rake cleanup:slopbox
   desc "cleans out slop box over 24 hours old"
