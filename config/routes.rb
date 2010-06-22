@@ -22,6 +22,9 @@ ActionController::Routing::Routes.draw do |map|
    map.resources :users
    map.resource :user_session
    
+   map.manage '/manage', :controller => 'manage', :action => 'index'
+   
+   
    map.abingo '/abingo', :controller =>  'abingo_dashboard'
   
 #   map.abingoTest "/abingo/:action/:id", :controller=> :abingo_dashboard
