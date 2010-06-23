@@ -43,7 +43,6 @@
 			<tr>
 				<th>Disposable Email Address</th>
 				<th>Website</th>
-				<th>Last Used</th>
 				<th>Created</th>
 				<% if current_user == @user && current_user  %>
 					<th>Action</th>
@@ -56,7 +55,6 @@
 	<tr class="clickable"  onclick = "window.location.href = window.myboolean ? '#' : '<%= url_for :controller => 'manage', :id => whymail.id, :type => "whymail", :action => 'show' %>' ">
 		<td><%=h whymail.email %></td>
 		<td><%=h whymail.website[0,20] %></td>
-		<td><%= whymail.tickets.empty? ?  "--"  : whymail.tickets.last.created_at.strftime("%Y/%m/%d") %></td>
 		<td><%= whymail.created_at.strftime("%Y/%m/%d") %></td>
 		<% if  current_user == @user && current_user  %>
 			<td>			
@@ -75,7 +73,6 @@
 			<tr>
 				<th>Disposable Email Address</th>
 				<th>Website</th>
-				<th>Last Used</th>
 				<th>Created</th>
 				<% if current_user == @user && current_user %>
 					<th>Action</th>
@@ -119,7 +116,6 @@
 			 ><%=h forms_url + '/'+ form.address %></a></td>
 		
 		<td class = "comments"><%= form.comments %></td> 
-		<td><%= form.tickets.empty? ?  "--" : form.tickets.last.created_at.strftime("%m/%d/%Y") %></td>
 		<td><%= form.created_at.strftime("%m/%d/%Y") %></td>
 		<% if  current_user == @user && current_user  %>
 			<td>				<!-- form_path(form.id,:method => "delete") -->
@@ -134,7 +130,6 @@
 			<tr>
 				<th>Disposable Email Address</th>
 				<th>Website</th>
-				<th>Last Used</th>
 				<th>Created</th>
 				<% if current_user == @user && current_user %>
 					<th>Action</th>

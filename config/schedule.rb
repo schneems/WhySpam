@@ -10,6 +10,6 @@ end
 
 
 every 6.hours do
-  rake "cleanup:slopbox"
+  rake "cleanup:old_tickets"
 end
 

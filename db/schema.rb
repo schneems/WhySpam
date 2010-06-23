@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100620021445) do
+ActiveRecord::Schema.define(:version => 20100623141736) do
 
   create_table "alternatives", :force => true do |t|
     t.integer "experiment_id"
@@ -88,19 +88,8 @@ ActiveRecord::Schema.define(:version => 20100620021445) do
     t.text     "email"
   end
 
-  add_index "tickets", ["to_email", "body", "from_email"], :name => "index_tickets_on_to_email_and_body_and_from_email", :unique => true, :limit => {"body"=>"255", "to_email"=>"255", "from_email"=>"255"}
   add_index "tickets", ["to_email", "body_hash", "from_email"], :name => "index_tickets_on_to_email_and_body_hash_and_from_email", :unique => true, :limit => {"body_hash"=>nil, "to_email"=>"255", "from_email"=>"255"}
-
-  create_table "usedwhymail", :force => true do |t|
-    t.string   "website"
-    t.string   "email"
-    t.string   "main_url"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "usedwhymail", ["email"], :name => "index_usedwhymail_on_email", :limit => {"email"=>nil}
+  add_index "tickets", ["whymail_id"], :name => "index_tickets_on_whymail_id", :limit => {"whymail_id"=>nil}
 
   create_table "users", :force => true do |t|
     t.datetime "created_at"
@@ -149,7 +138,5 @@ ActiveRecord::Schema.define(:version => 20100620021445) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "whymail", ["email"], :name => "index_whymail_on_email", :limit => {"email"=>nil}
 
 end

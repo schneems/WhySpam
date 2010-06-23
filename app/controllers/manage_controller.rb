@@ -5,7 +5,7 @@ class ManageController < ApplicationController
    
   def index
      if current_user 
-      @user = User.find(:first, :include => [:whymail => :tickets], :conditions => {:id => current_user })
+      @user = User.find(:first, :include => [:whymail], :conditions => {:id => current_user })
       @whymails = @user.whymail
       @forms = @user.forms
       else
