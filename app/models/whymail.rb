@@ -23,21 +23,16 @@ class Whymail < ActiveRecord::Base
   end    
     
     
-    
     def self.create_with_user(email, website, atAddress, options = {})
-      puts "========================"
       Abingo.bingo!("video")
-      
      user = User.find_or_create_by_email(email)
      whymail = user.whymail.find(:first, :conditions => ["website = ?", website])
      
      if (whymail.nil? ?  true : whymail.email[-atAddress.size, atAddress.size].downcase != atAddress ) ## makes sure even if user has existing email, they can create a new one with different domain
           options[:level] = user.level
           whymail =  user.whymail.create_with_digest(email, website, atAddress, options) 
-          
      end
      whymail
-      
     end
     
     
