@@ -53,7 +53,7 @@ module Fetcher
     # Send message to receiver object
     def process_message(message)
       begin
-        @receiver.receive(message)
+      @receiver.receive(message)
       rescue
       end
     end

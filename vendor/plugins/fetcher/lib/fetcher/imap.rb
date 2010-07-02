@@ -48,7 +48,7 @@ module Fetcher
         begin
           process_message(msg)
           add_to_processed_folder(uid) if @processed_folder
-        rescue
+        rescue Exception
           handle_bogus_message(msg)
         end
         # Mark message as deleted 

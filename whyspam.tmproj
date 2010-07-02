@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>lib/tasks/getmail.rake</string>
+	<string>vendor/plugins/fetcher/lib/fetcher/imap.rb</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -529,20 +529,6 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
-		<key>lib/getmail.rb</key>
-		<dict>
-			<key>caret</key>
-			<dict>
-				<key>column</key>
-				<integer>5</integer>
-				<key>line</key>
-				<integer>8</integer>
-			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
-		</dict>
 		<key>lib/mail_fixture.rb</key>
 		<dict>
 			<key>caret</key>
@@ -604,9 +590,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>13</integer>
+				<integer>31</integer>
 				<key>line</key>
-				<integer>6</integer>
+				<integer>29</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -869,6 +855,62 @@
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
 		</dict>
+		<key>vendor/plugins/fetcher/lib/fetcher.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>22</integer>
+				<key>line</key>
+				<integer>21</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>vendor/plugins/fetcher/lib/fetcher/base.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>57</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>19</integer>
+		</dict>
+		<key>vendor/plugins/fetcher/lib/fetcher/imap.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>10</integer>
+				<key>line</key>
+				<integer>51</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>28</integer>
+		</dict>
+		<key>vendor/plugins/fetcher/lib/fetcher/pop.rb</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
 		<key>vendor/rails/railties/environments/environment.rb</key>
 		<dict>
 			<key>caret</key>
@@ -887,16 +929,16 @@
 	<key>openDocuments</key>
 	<array>
 		<string>lib/tasks/cleanup.rake</string>
-		<string>app/views/manage/index.html.erb</string>
-		<string>db/migrate/20100623141736_create_add_whymail_id_index_to_tickets.rb</string>
-		<string>db/migrate/20090128003231_create_users.rb</string>
-		<string>config/schedule.rb</string>
-		<string>lib/getmail.rb</string>
 		<string>lib/tasks/getmail.rake</string>
+		<string>app/views/manage/index.html.erb</string>
+		<string>vendor/plugins/fetcher/lib/fetcher/base.rb</string>
+		<string>vendor/plugins/fetcher/lib/fetcher/pop.rb</string>
+		<string>vendor/plugins/fetcher/lib/fetcher/imap.rb</string>
+		<string>vendor/plugins/fetcher/lib/fetcher.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{396, 68}, {1044, 384}}</string>
+	<string>{{603, -327}, {1113, 878}}</string>
 </dict>
 </plist>
