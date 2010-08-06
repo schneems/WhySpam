@@ -120,8 +120,6 @@
 					});	
 			</script>
 
-
-
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -139,7 +137,6 @@
 
 		<script type="text/javascript" charset="utf-8">
 		  var feedback_widget_options = {};
-
 		  feedback_widget_options.display = "overlay";  
 		  feedback_widget_options.company = "why_spam_me";
 		  feedback_widget_options.placement = "left";
@@ -149,6 +146,28 @@
 		</script>
 
 
+
+<script type='text/javascript'> var mp_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://'); document.write(unescape('%3Cscript src="' + mp_protocol + 'api.mixpanel.com/site_media/js/api/mixpanel.js" type="text/javascript"%3E%3C/script%3E')); </script> <script type='text/javascript'> try {  var mpmetrics = new MixpanelLib('831c5d9fbbd4cc4bb95d9f5b3a82b70e'); } catch(err) { null_fn = function () {}; var mpmetrics = {  track: null_fn,  track_funnel: null_fn,  register: null_fn,  register_once: null_fn, register_funnel: null_fn }; } </script>
+
+<script type="text/javascript" charset="utf-8">
+/*
+corner cases
+*/
+
+var links = $('a');
+$.each(links, function(index, link) { 
+	 // don't assign onclick event handler if onclick is defined
+ 			if ($(link).attr("onclick") === undefined) {
+				$(link).addClass("mpmetrics_"+this.text)
+				$(link).click(function() {
+					mpmetrics.track(this.text);
+			  });
+		  };
+});
+
+
+
+</script>
 
 
 		<%= yield :html_head %>

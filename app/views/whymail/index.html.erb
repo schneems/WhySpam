@@ -46,6 +46,8 @@ $(document).ready(function(){
 
 		});	
 
+		mpmetrics.track("Load Homepage");
+
 </script>
 
 
@@ -150,9 +152,7 @@ $(document).ready(function(){
 
 		</div>
 		
-		<% if ab_test('video') %>
-		
-		<% @video_show = true %>
+
 		
 			<div class = "span-9 last" id = "youtube-video">
 			
@@ -164,7 +164,6 @@ $(document).ready(function(){
 				Video by: <a href = "http://designacast.com">DesignaCast.com</a>
 			</div>
 		
-		<% end %>
 		
 		<%# render :partial => "static/ads"%>
 		
@@ -231,7 +230,6 @@ $(document).ready(function(){
 				<div class = "prepend-1 span-17">
 						<br />
 						
-						<% if !@video_show.blank? %>
 							<p><h3>How Do I Generate A Disposable Email?</h3></p>
 							<p> 							
 							<div id = "you-tube-how">
@@ -243,7 +241,6 @@ $(document).ready(function(){
 							<div class = "center span-9 prepend-3">
 								Video by: <a href = "http://designacast.com">DesignaCast.com</a>
 							</div>	
-						<% end %>
 				</div>
 
 
