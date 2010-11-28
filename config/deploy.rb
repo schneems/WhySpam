@@ -8,7 +8,7 @@ set :applicationdir, "/home/#{user}/public_html/#{application}/"
 # version control config
 
 set :scm, 'git'
-set :repository,  "git://github.com/thinkbohemian/WhySpam.git"
+set :repository,  "git://github.com/Schneems/WhySpam.git"
 # file:///users/home/anoop/git/mephisto.git
 
 set :deploy_via, :remote_cache
