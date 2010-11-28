@@ -1,5 +1,11 @@
+Site is down due to repeated abuse of the mail server. Feel free to fork this project or to take code snippets from it to build your own email tools.
 
-Site is currently in a fully operational beta!!
+The site will remain up for another month though it will not be able to send or receive email. You can still check existing emails in the database. If you had any important email communication routing through our servers, please update any email addresses pointing to our servers to other email addresses.
+
+
+--
+@schneems Nov 28, 2010
+
 
 ==== Whyspam Me ===
  

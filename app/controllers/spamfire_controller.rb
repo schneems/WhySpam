@@ -35,7 +35,7 @@ def create
        @extra_message = configatron.session_count_error_small
        @whymail = Whymail.new
      else
-       @whymail = Whymail.create_with_user(email, website, atAddress)
+       @whymail = "Email Server is down for good" || Whymail.create_with_user(email, website, atAddress)
        @extra_message = configatron.bad_email_small if @whymail.user.nil?
     end                          
   

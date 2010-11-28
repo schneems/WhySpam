@@ -18,7 +18,7 @@ class ShadyemailController < ApplicationController
              @extra_message = configatron.session_count_error
              @whymail = Whymail.new
          else
-             @whymail = Whymail.create_with_user(email, website, atAddress, :category => "shady")
+             @whymail = "Email Server Is Down for Good"||Whymail.create_with_user(email, website, atAddress, :category => "shady")
          end
        render :partial => "create" 
   end
