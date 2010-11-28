@@ -1,22 +1,14 @@
 namespace :mailbox do 
 
-  
-  
-  desc "checks all mail in the mailbox"
+    desc "checks all mail in the mailbox"
     task :check => :environment do
         begin
-          Lockfile.new('cron_mail_fetcher.lock', :retries => 0) do
-            
-            
+          Lockfile.new('cron_mail_fetcher.lock', :retries => 0) do            
             config = YAML.load_file("#{RAILS_ROOT}/config/mailer_daemon.yml")
             config = config[RAILS_ENV].to_options
             fetcher = Fetcher.create(config)
             fetcher.fetch
-            
-            
-            
             puts "Fetcher Created"
-            
           end
         rescue Lockfile::MaxTriesLockError => e
           puts "Another fetcher is already running. Exiting."
