@@ -4,4 +4,4 @@
 
 [submodule "vendor/plugins/mockIMAP"]
 	path = vendor/plugins/mockIMAP
-	url = git://github.com/thinkbohemian/mockIMAP
+	url = git://github.com/Schneems/mockIMAP
