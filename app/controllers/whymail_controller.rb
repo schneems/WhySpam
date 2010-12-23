@@ -21,7 +21,7 @@ class WhymailController < ApplicationController
               @extra_message = configatron.session_count_error
               @whymail = Whymail.new
           else
-              @whymail = Whymail.create_with_user(email, website, atAddress)
+              @whymail = "Email Server Is Down for Good" || Whymail.create_with_user(email, website, atAddress)
           #   bingo!("video") if @whymail.valid?
               
           end
